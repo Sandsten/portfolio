@@ -9,7 +9,7 @@
 ## Transpiling JSX
 
 Install the following packages:  
-`npm i -D1 @babel/core @babel/preset-env @babel/preset-react @babel/preset-react babel-loader`
+`npm i -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-react babel-loader`
 
 - "@babel/core": needed for babel-loader to work
 - "@babel/preset-env": some magic thing that makes our life easier?

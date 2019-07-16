@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // Removes unused files from dist/
 
 module.exports = {
   target: 'web',
@@ -8,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../build'),
-    filename: '[name].frontend.js'
+    filename: '[name].[contenthash].frontend.js' // Content hash is a hash based on the file content
   },
   devServer: {
     // host: '0.0.0.0',
@@ -59,9 +60,24 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: 'index.html'
     })
-  ]
+  ],
+  optimization: {
+    moduleIds: 'hashed', // Make vendor hash stay consistent between builds
+    runtimeChunk: 'single', // Generate a single bundle for all runtime code. What's runtime? Code that is executed while your code is running, especially those instructions that you did not write explicitly, but are necessary for the proper execution of your code.
+    splitChunks: {
+      cacheGroups: {
+        // Split node modules such as lodash into a separate vendor, since these packages are rarely updated
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'node_modules',
+          chunks: 'all'
+        }
+      }
+    }
+  }
 };
