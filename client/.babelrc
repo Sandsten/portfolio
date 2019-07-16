@@ -1,0 +1,4 @@
+// Transpile settings for es6 and react
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
