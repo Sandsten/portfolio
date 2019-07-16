@@ -8,18 +8,9 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, '../build'),
+    path: path.resolve(__dirname, '../server/build'),
     filename: '[name].[contenthash].frontend.js' // Content hash is a hash based on the file content
   },
-  devServer: {
-    // host: '0.0.0.0',
-    // publicPath: '/assets/',
-    // contentBase: path.resolve(__dirname, './views'),
-    // watchContentBase: true,
-    // compress: true,
-    port: 3000
-  },
-  devtool: 'inline-source-map', // Remove this when in production, takes alot of space!
   module: {
     rules: [
       {

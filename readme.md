@@ -4,7 +4,7 @@
 - I should be able to **add** projects, blogposts and so forth through my website
 - All the data should be **stored on a server**
 - I will be using **NodeJS as back-end**, **React as front-end** and **Webpack as bundler**.
-- I want to be able to package front- and back-end separatly
+- I want to be able to package front- and back-end separatly (Not really necessary to bundle backend, might skip this)
 
 ## Transpiling JSX
 

@@ -2,14 +2,22 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "set NODE_ENV=production&& webpack",
+    "start:prod": "set NODE_ENV=production&& nodemon"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6",
     "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
   }
 }
