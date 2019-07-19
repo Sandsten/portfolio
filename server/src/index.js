@@ -18,9 +18,10 @@ const router = express.Router();
 app.use('/api', router);
 // No authentication
 router.get('/get-blogposts', databse.getBlogposts);
-router.get('/get-blogpost/:id', databse.getBlogpost);
+router.get('/get-blogpost', databse.getBlogpost);
 // With authentication
 router.post('/add-blogpost', databse.newBlogpost);
+router.put('/update-blogpost', databse.updateBlogpost);
 router.delete('/remove-blogpost', databse.removeBlogpost);
 //TODO: remove blogpost
 //TODO: edit blogpost

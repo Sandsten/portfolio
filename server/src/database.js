@@ -4,15 +4,13 @@ const ObjectId = mongodb.ObjectId;
 
 const DATABASE_URL = 'mongodb://localhost:27017/portfolio';
 
-let db;
+var db;
+var blogposts;
 
 exports.newBlogpost = (req, res) => {
-  console.log(req.body);
-
   var obj = req.body;
-  var col = db.collection('blogposts');
 
-  col
+  blogposts
     .insertOne(obj)
     .then(result => {
       res.status(200).json(result);
@@ -32,8 +30,7 @@ exports.removeBlogpost = (req, res) => {
     return;
   }
 
-  var col = db.collection('blogposts');
-  col
+  blogposts
     .deleteOne({ _id: ObjectId(id) })
     .then(result => {
       if (result.deletedCount == 0) {
@@ -47,11 +44,63 @@ exports.removeBlogpost = (req, res) => {
     });
 };
 
-exports.editBlogpost = (req, res) => {};
+exports.updateBlogpost = (req, res) => {
+  var body = req.body,
+    id = body.id,
+    newTitle = body.newTitle;
 
-exports.getBlogposts = (req, res) => {};
+  blogposts
+    .updateOne(
+      {
+        _id: ObjectId(id)
+      },
+      {
+        $set: { title: newTitle }
+      }
+    )
+    .then(result => {
+      console.log(result);
+      if (result.matchedCount == 0) {
+        res.status(410).send('no blogpost with that id found');
+        return;
+      }
+      res.status(200).send(result);
+    })
+    .catch(error => {
+      res.status(400).send(error);
+    });
+};
 
-exports.getBlogpost = (req, res) => {};
+exports.getBlogposts = (req, res) => {
+  blogposts
+    .find() // No filters mean all blogposts. This returns a cursor
+    .toArray() // Returns an array with all the documents for the cursor
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(error => {
+      res.status(404).send(error);
+    });
+};
+
+exports.getBlogpost = (req, res) => {
+  var id = req.body.id;
+
+  if (!id) {
+    res.status(400).send('no id provided when trying to get blogpost');
+    return;
+  }
+
+  blogposts
+    .find({ _id: ObjectId(id) })
+    .toArray()
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(error => {
+      res.status(404).send(error);
+    });
+};
 
 exports.authenticate = (req, res) => {};
 
@@ -59,6 +108,7 @@ MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
   if (err) throw err;
 
   db = client.db('portfolio');
+  blogposts = db.collection('blogposts');
 
   console.log('Connection to database established');
 });

@@ -34,11 +34,35 @@ class App extends React.Component {
       });
   };
 
+  handleOnClickUpdate = event => {
+    event.preventDefault();
+    var newTitle = event.target.firstChild.value;
+
+    axios
+      .put('http://localhost:3001/api/update-blogpost', {
+        id: '5d30bae45315194069af76b4',
+        newTitle
+      })
+      .then(result => {
+        console.log(result.data);
+        console.log(result.status);
+      })
+      .catch(e => {
+        console.error(e.response.status + '\n' + e.response.data);
+      });
+
+    event.target.firstChild.value = '';
+  };
+
   render() {
     return (
       <>
         <button onClick={this.handleOnClickAdd}>Add</button>
         <button onClick={this.handleOnClickRemove}>Remove</button>
+        <form onSubmit={this.handleOnClickUpdate}>
+          <input name="newTitle" type="text" placeholder="New Title" />
+          <input type="submit" value="Submit" />{' '}
+        </form>
       </>
     );
   }
