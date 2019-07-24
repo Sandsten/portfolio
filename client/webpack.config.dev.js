@@ -7,7 +7,8 @@ module.exports = {
     app: './src/index.js'
   },
   devServer: {
-    port: 3000
+    port: 3000,
+    historyApiFallback: true // 404 responses will fall back to index.html. Required for using react-router-dom
   },
   devtool: 'inline-source-map', // Remove this when in production, takes alot of space!
   module: {
@@ -27,9 +28,7 @@ module.exports = {
         test: /\.scss$/,
         // Order of modules matters
         use: [
-          process.env.NODE_ENV !== 'production'
-            ? 'style-loader'
-            : MiniCssExtractPlugin.loader,
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
