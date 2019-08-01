@@ -8,6 +8,8 @@ export const BASE1 = '#93a1a1';
 export const BASE2 = '#eee8d5';
 export const BASE3 = '#fdf6e3';
 
+export const BASE2_SATURATED = '#eddeaf';
+
 export const YELLOW = '#b58900';
 export const ORANGE = '#cb4b16';
 export const RED = '#dc322f';

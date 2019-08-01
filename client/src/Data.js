@@ -27,7 +27,7 @@ export const PROJECTS = [
     date: 'Jan - 2019',
     bgUrl: 'bandmate.png',
     tools: ['react', 'redux', 'nodejs', 'mongodb'],
-    descriptionShort: 'Online tool for finding a band and musicians in Sweden',
+    descriptionShort: 'Online tool for finding bands and musicians in Sweden',
     description:
       'Me and a friend launched our website we call BandMate. BandMate is a tool designed for musicians to find a band to join, and for bands to find musicians. We saw a lack of such services in Sweden where current ones were either outdated or over complicated according to us.',
     website: 'http://bandmate.xyz',
@@ -60,7 +60,7 @@ export const PROJECTS = [
     date: 'KTH: May - 2018',
     bgUrl: 'lion.png',
     tools: ['python', 'tensorflow'],
-    descriptionShort: '',
+    descriptionShort: 'Styletransfer using a CNN in Python',
     description:
       "A re-implementation of the original style transfer algorithm using a convolutional neural network, as presented by Gatys et al. Additional experiments with different total loss functions and wether or not there's a correlation between content loss and our subjective perception.",
     website: 'https://github.com/Sandsten/Pixicasso',
@@ -71,7 +71,7 @@ export const PROJECTS = [
     date: 'KTH: Feb-Apr - 2018',
     bgUrl: 'away-from-home.png',
     tools: ['d3js', 'html', 'javascript', 'css'],
-    descriptionShort: '',
+    descriptionShort: 'Unbiased visualization of the refugee population between 1951 and 2016',
     description:
       'A web application that visualizes the refugee population from 1951 to 2016 in an unbiased way, using data from The UN Refugee Agency. I mainly worked with programming the grid and bar-charts using javascript with d3.',
     website: 'https://sonia-ch.github.io/ivis-project/#',
@@ -82,9 +82,9 @@ export const PROJECTS = [
     date: 'KTH: Mar-Apr - 2017',
     bgUrl: 'storylines.png',
     tools: ['angular', 'd3js'],
-    descriptionShort: '',
+    descriptionShort: 'A web app using the Trello api',
     description:
-      'Project in a web development course. The application uses the Trello api in order to give the user an overview of their Trello projects and the ability to create new ones. I worked on all parts of the project.',
+      'Project in a web development course. The application is using the Trello api in order to give the user an overview of their Trello projects and the ability to create new ones. I worked on all parts of the project.',
     website: 'https://martin36.github.io/StoryLines/app/#!/login',
     groupSize: 4
   },
@@ -93,7 +93,7 @@ export const PROJECTS = [
     date: 'KTH: Nov-Dec - 2016',
     bgUrl: 'haptic-curling.png',
     tools: ['novint-falcon', 'cpp'],
-    descriptionShort: '',
+    descriptionShort: 'Curling game using the Novint Falcon for haptic feedback',
     description:
       'Virtual curling with haptic feedback. Feel the weight of the stone as you push it along the ice. Novint falcon provides haptic feedback in three dimensions which we utilize to make the feedback feel as realistic as possible.',
     website: 'https://github.com/Sandsten/DT2140_HapticProject',
@@ -104,7 +104,7 @@ export const PROJECTS = [
     date: 'KTH: Nov-Dec - 2016',
     bgUrl: 'birch-tree.png',
     tools: ['unity', 'vuforia', 'c-sharp', 'firebase'],
-    descriptionShort: '',
+    descriptionShort: 'Watch your own tree grow in AR',
     description:
       'The goal with this project was to explore AR technology and enable users to leave a personal mark in the world and share it with others. In the form of designing your own tree.',
     website: 'https://apan1000.github.io/bARk/',
@@ -115,7 +115,7 @@ export const PROJECTS = [
     date: 'KTH: Sep-Okt - 2016',
     bgUrl: 'soundark.png',
     tools: ['oculus-rift', 'unity', 'c-sharp'],
-    descriptionShort: '',
+    descriptionShort: 'A VR game in which you see through echo location',
     description:
       'A Virtual Reality game in which the player with the use echolocation, navigate through procedurally generated maces. Sound is picked up by oculus rift and translated into sound waves that enables the player to see.',
     website: 'https://hubris37.github.io/Sonar/',
@@ -126,7 +126,7 @@ export const PROJECTS = [
     date: 'KTH: Mar-May - 2016',
     bgUrl: 'crowdsim.png',
     tools: ['unity', 'c-sharp'],
-    descriptionShort: '',
+    descriptionShort: 'Exploration of group formations using the RVO algorithm',
     description: 'We explored simulation of group formations in Unity using the RVO algorithm. ',
     website: 'https://crowdsimulationproject.blogspot.com/',
     groupSize: 2
@@ -136,7 +136,7 @@ export const PROJECTS = [
     date: 'KTH: Mar-Apr - 2016',
     bgUrl: 'lastShip.png',
     tools: ['html', 'javascript', 'css'],
-    descriptionShort: '',
+    descriptionShort: 'Local multiplayer game, last one alive wins',
     description: 'A local multiplayer game in which you battle each other with pirate ships.',
     website: 'http://martin36.github.io/LastShipStanding/LastShipStanding/',
     groupSize: 4
@@ -146,7 +146,7 @@ export const PROJECTS = [
     date: 'KTH: Nov-Dec - 2015',
     bgUrl: 'godball.png',
     tools: ['unity', 'c-sharp'],
-    descriptionShort: '',
+    descriptionShort: 'Online 1v1 smartphone football game',
     description:
       'An online 1v1 smartphone game in which you play football against each other in a mythological greek setting.',
     website: 'http://godball.github.io/',
