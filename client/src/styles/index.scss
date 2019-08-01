@@ -1,0 +1,17 @@
+@import './constants.scss';
+@import './fonts.scss';
+
+* {
+  font-family: 'Fira Code';
+  /* Include padding in total width and height
+    in our case it's for the height, to not go over 100% 
+    of screen size 
+    https://www.w3schools.com/csS/css3_box-sizing.asp
+  */
+  box-sizing: border-box;
+}
+
+body {
+  background: $blue-color;
+  margin: 0;
+}

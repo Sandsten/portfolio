@@ -11,6 +11,6 @@ exports.headerConfig = (req, res, next) => {
 
   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
   // This is for being able to use 'withCredentials: true', which is used for storing the token cookie in the browser
-  // res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Credentials', 'true');
   next();
 };

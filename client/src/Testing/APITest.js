@@ -6,9 +6,15 @@ import axios from 'axios';
 class APITest extends React.Component {
   handleOnClickAdd = () => {
     axios
-      .post('http://localhost:3001/api/add-blogpost', {
-        title: 'HOW TO CREATE POST REQUESTS WITH STYLE'
-      })
+      .post(
+        'http://localhost:3001/api/add-blogpost',
+        {
+          title: 'AuTHENSTAS'
+        },
+        {
+          withCredentials: true
+        }
+      )
       .then(result => {
         console.log(result.data);
         console.log(result.status);
@@ -54,11 +60,28 @@ class APITest extends React.Component {
     event.target.firstChild.value = '';
   };
 
+  handleOnClickGetPosts = () => {
+    axios
+      .get('http://localhost:3001/api/get-blogposts')
+      .then(res => {
+        console.log(res);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  handleOnClickPurgePosts = () => {
+    axios.delete('http://localhost:3001/api/purge-blogposts', { withCredentials: true });
+  };
+
   render() {
     return (
       <>
         <button onClick={this.handleOnClickAdd}>Add</button>
         <button onClick={this.handleOnClickRemove}>Remove</button>
+        <button onClick={this.handleOnClickGetPosts}>Get Posts</button>
+        <button onClick={this.handleOnClickPurgePosts}>Purge posts</button>
         <form onSubmit={this.handleOnClickUpdate}>
           <input name="newTitle" type="text" placeholder="New Title" />
           <input type="submit" value="Submit" />{' '}

@@ -1,14 +1,83 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const ObjectId = mongodb.ObjectId;
+const bcrypt = require('bcrypt');
+
+const jwtUtilities = require('./jwtUtilities');
 
 const DATABASE_URL = 'mongodb://localhost:27017/portfolio';
+const SALTROUNDS = 10;
 
 var db;
 var blogposts;
+var users;
 
-exports.newBlogpost = (req, res) => {
+exports.signIn = (req, res) => {
+  const { email, password } = req.body;
+
+  users.findOne({ email }).then(user => {
+    if (user === null) {
+      res.status(404).send('User not found');
+    }
+    bcrypt.compare(password, user.password, (err, correctPassword) => {
+      if (err) throw err;
+      if (correctPassword) {
+        var token = jwtUtilities.createJWT(user);
+        res
+          .cookie('access-card', token, { httpOnly: true })
+          .status(200)
+          .send('COOKIE MONSTER!');
+        // res.status(200).send('Authenticated!');
+      } else {
+        res.status(401).send('Invalid password!');
+      }
+    });
+  });
+};
+
+exports.createAccount = (req, res) => {
+  const { email, password } = req.body;
+
+  users
+    .find({ email })
+    .count()
+    .then(result => {
+      if (result !== 0) {
+        console.log('User with email already in database');
+        res.status(404).send('Email already taken');
+      } else {
+        console.log('Good to go, creating account');
+        // Hash password
+        bcrypt.genSalt(SALTROUNDS, (err, salt) => {
+          bcrypt.hash(password, salt, (err, hash) => {
+            // Create user
+            users
+              .insertOne({
+                email,
+                password: hash
+              })
+              .then(result => {
+                res.status(200).send('User created!');
+              })
+              .catch(error => {
+                res.status(202).send('User creation failed');
+              });
+          });
+        });
+      }
+    });
+};
+
+exports.getUser = (id, res) => {
+  users.findOne({ _id: id }).then(user => {
+    res.status(200).send(user);
+  });
+};
+
+exports.addBlogpost = (req, res) => {
   var obj = req.body;
+
+  console.log(req.user);
 
   blogposts
     .insertOne(obj)
@@ -76,6 +145,7 @@ exports.getBlogposts = (req, res) => {
     .find() // No filters mean all blogposts. This returns a cursor
     .toArray() // Returns an array with all the documents for the cursor
     .then(result => {
+      console.log('Sending blogposts');
       res.status(200).send(result);
     })
     .catch(error => {
@@ -102,13 +172,24 @@ exports.getBlogpost = (req, res) => {
     });
 };
 
-exports.authenticate = (req, res) => {};
+exports.purgeBlogposts = (req, res) => {
+  blogposts
+    .remove()
+    .then(result => {
+      console.log('PURGING!!!');
+      res.status(200).send('Purge completed');
+    })
+    .catch(e => {
+      res.status(404).send('Purge Failed');
+    });
+};
 
 MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
   if (err) throw err;
 
   db = client.db('portfolio');
   blogposts = db.collection('blogposts');
+  users = db.collection('users');
 
   console.log('Connection to database established');
 });

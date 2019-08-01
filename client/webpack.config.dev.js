@@ -38,6 +38,11 @@ module.exports = {
         use: ['file-loader']
       },
       {
+        //Load fonts
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ['file-loader']
+      },
+      {
         test: /\.html$/,
         use: [
           {
