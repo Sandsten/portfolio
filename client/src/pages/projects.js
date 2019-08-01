@@ -5,79 +5,18 @@ import Project from '../components/Project';
 
 const StyledProjects = styled.div`
   grid-area: main;
-  /* padding: 50px 20px 0px 20px; */
+  padding: 50px 20px 0px 20px;
+  height: 100vh;
+  overflow: scroll;
 
   display: grid;
-  grid-template-areas: 'content';
-  /*
-  grid-template-columns: 1fr; */
-  /* grid-template-rows: auto; */
+
+  background-color: white;
 `;
 
 export default function projects() {
   return (
     <StyledProjects>
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf aosdijf sdfjs jf lsdjslkdf
-      {/* <Project />
       <Project />
       <Project />
       <Project />
@@ -93,7 +32,8 @@ export default function projects() {
       <Project />
       <Project />
       <Project />
-      <Project /> */}
+      <Project />
+      <Project />
     </StyledProjects>
   );
 }
