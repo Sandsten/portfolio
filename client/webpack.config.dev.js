@@ -6,6 +6,11 @@ module.exports = {
   entry: {
     app: './src/index.js'
   },
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: '[name].js',
+    publicPath: '/'
+  },
   devServer: {
     port: 3000,
     historyApiFallback: true // 404 responses will fall back to index.html. Required for using react-router-dom

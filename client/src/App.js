@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Sidebar from './components/Sidebar';
@@ -8,6 +8,7 @@ import HomePage from './Testing/HomePage';
 import APITest from './Testing/APITest';
 import CreateAccout from './Testing/CreateAccount';
 import projects from './pages/projects';
+import project from './pages/project';
 import Red from './Testing/Red';
 
 import './styles/index.scss';
@@ -21,20 +22,25 @@ const MainContainer = styled.div`
   height: 100vh;
 `;
 
+// https://reacttraining.com/react-router/web/api/Switch
+
 class App extends React.Component {
   render() {
     return (
       <MainContainer>
-        <Router>
+        <BrowserRouter>
           {/* Render the sidebar on all pages */}
           <Route path="/" component={Sidebar} />
-          {/* <Route path="/" component={TopBar} /> */}
-          <Route path="/" exact component={HomePage} />
-          <Route path="/test" exact component={APITest} />
-          <Route path="/create-account" component={CreateAccout} />
-          <Route path="/red" component={Red} />
-          <Route path="/projects" component={projects} />
-        </Router>
+          <Switch>
+            {/* <Route path="/" component={TopBar} /> */}
+            <Route path="/" exact component={HomePage} />
+            <Route path="/test" exact component={APITest} />
+            <Route path="/create-account" component={CreateAccout} />
+            <Route path="/red" component={Red} />
+            <Route path="/projects/:name" component={project} />
+            <Route path="/projects" component={projects} />
+          </Switch>
+        </BrowserRouter>
       </MainContainer>
     );
   }

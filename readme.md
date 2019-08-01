@@ -32,6 +32,17 @@ module.exports = {
 };
 ```
 
+The following has to be included in webpack.config in order to avoid  
+error when routing. Error that occurs otherwise is of type MIME type ('text/html')
+
+```javascript
+output: {
+   path: path.join(__dirname, 'public'),
+   filename: '[name].js',
+   publicPath: '/', <--------
+}
+```
+
 ```javascript
 // .babelrc
 {
