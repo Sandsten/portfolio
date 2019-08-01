@@ -2,18 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { BLACK } from '../constants/colors';
+import { BASE02, BASE2, BASE03, GREEN, ORANGE, YELLOW, CYAN } from '../constants/colors';
 
 const StyledSidebar = styled.div`
   grid-area: sidebar;
   padding: 20px;
-  height: 100vh;
-  background-color: #e1e0dd;
+  background-color: ${BASE2};
 `;
 
 const Name = styled.div`
   font-size: 2.5em;
   margin-bottom: 20px;
+  color: ${GREEN};
 `;
 
 const StyledLink = styled(Link)`
@@ -21,18 +21,21 @@ const StyledLink = styled(Link)`
   margin-bottom: 20px;
   font-size: 1.2em;
   text-decoration: none;
-  color: ${BLACK};
+  outline: none;
+  color: ${BASE03};
 
   :hover {
     text-decoration: underline;
   }
+
+  :focus {
+    color: ${CYAN};
+  }
 `;
 
-export default function Sidebar() {
-  console.log(window.innerHeight);
-
+const Sidebar = () => {
   return (
-    <StyledSidebar height={window.innerHeight}>
+    <StyledSidebar>
       <Name>Staffan Sandberg</Name>
       <StyledLink to="/projects">Projects</StyledLink>
       <StyledLink to="/tutorials">Tutorials</StyledLink>
@@ -40,4 +43,6 @@ export default function Sidebar() {
       <StyledLink to="/about">About</StyledLink>
     </StyledSidebar>
   );
-}
+};
+
+export default Sidebar;

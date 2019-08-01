@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Sidebar from './components/Sidebar';
-import TopBar from './components/TopBar';
+// import TopBar from './components/TopBar';
 import HomePage from './Testing/HomePage';
 import APITest from './Testing/APITest';
 import CreateAccout from './Testing/CreateAccount';
@@ -17,6 +17,8 @@ const MainContainer = styled.div`
   display: grid;
   grid-template-areas: 'sidebar main';
   grid-template-columns: 250px 1fr;
+  /* Set height of website to 100% of screen height */
+  height: 100vh;
 `;
 
 class App extends React.Component {

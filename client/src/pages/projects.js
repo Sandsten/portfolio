@@ -2,38 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Project from '../components/Project';
+import { BASE00, BASE01, BASE3 } from '../constants/colors';
+
+import { PROJECTS } from '../Data';
 
 const StyledProjects = styled.div`
   grid-area: main;
   padding: 50px 20px 0px 20px;
-  height: 100vh;
   overflow: scroll;
 
   display: grid;
 
-  background-color: white;
+  background-color: ${BASE3};
 `;
 
-export default function projects() {
-  return (
-    <StyledProjects>
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-      <Project />
-    </StyledProjects>
-  );
-}
+//TODO: Get projects from database
+const renderProjects = () => {
+  return PROJECTS.map(project => {
+    return <Project key={project.title} data={project} />;
+  });
+};
+
+const projects = () => {
+  return <StyledProjects>{renderProjects()}</StyledProjects>;
+};
+
+export default projects;
