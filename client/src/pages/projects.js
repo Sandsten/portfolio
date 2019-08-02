@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import ProjectCard from '../components/ProjectCard';
 import { BASE00, BASE01, BASE3, BASE2, BASE1, BASE0 } from '../constants/colors';
-import { DESKTOP_XS } from '../constants/sizes';
+import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 
 import { PROJECTS } from '../Data';
 
@@ -23,7 +23,7 @@ const StyledProjects = styled.div`
     padding: 50px 20px 0px 20px;
   }
 
-  @media (min-width: 1300px) {
+  @media (min-width: ${DESKTOP_XL}) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;

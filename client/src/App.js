@@ -8,7 +8,7 @@ import HomePage from './Testing/HomePage';
 import APITest from './Testing/APITest';
 import CreateAccout from './Testing/CreateAccount';
 import projects from './pages/projects';
-import project from './pages/project';
+import projectPage from './pages/projectPage';
 import Red from './Testing/Red';
 
 import { DESKTOP_XS } from './constants/sizes';
@@ -44,7 +44,7 @@ class App extends React.Component {
             <Route path="/test" exact component={APITest} />
             <Route path="/create-account" component={CreateAccout} />
             <Route path="/red" component={Red} />
-            <Route path="/projects/:name" component={project} />
+            <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
           </Switch>
         </BrowserRouter>

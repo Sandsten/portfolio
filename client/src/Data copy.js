@@ -14,7 +14,6 @@ export const PROJECTS = [
   },
   {
     title: 'Three.js shader exploration',
-    localURL: 'threejs-shader-exploration',
     date: '2/2 - 2019',
     bgUrl: 'WebGL.png',
     tools: ['react', 'threejs', 'blender'],
@@ -26,7 +25,6 @@ export const PROJECTS = [
   },
   {
     title: 'BandMate',
-    localURL: 'bandmate',
     date: 'Jan - 2019',
     bgUrl: 'bandmate.png',
     tools: ['react', 'redux', 'nodejs', 'mongodb'],
@@ -38,7 +36,6 @@ export const PROJECTS = [
   },
   {
     title: 'Bear with me',
-    localURL: 'bear-with-me',
     date: 'Global Game Jam 2019',
     bgUrl: 'bear-with-me.png',
     tools: ['unity', 'c-sharp'],
@@ -50,7 +47,6 @@ export const PROJECTS = [
   },
   {
     title: 'Card tracking',
-    localURL: 'card-tracking',
     date: 'KTH: Nov-Dec - 2018',
     bgUrl: 'tracking-cards.png',
     tools: ['unity', 'vuforia', 'c-sharp', 'firebase'],
@@ -62,20 +58,17 @@ export const PROJECTS = [
   },
   {
     title: 'Style transfer',
-    localURL: 'Style-transfer',
     date: 'KTH: May - 2018',
     bgUrl: 'lion.png',
     tools: ['python', 'tensorflow'],
     descriptionShort: 'Styletransfer using a CNN in Python',
     description:
       "A re-implementation of the original style transfer algorithm using a convolutional neural network, as presented by Gatys et al. Additional experiments with different total loss functions and wether or not there's a correlation between content loss and our subjective perception.",
-    github: 'https://github.com/Sandsten/Pixicasso',
-    website: null,
+    website: 'https://github.com/Sandsten/Pixicasso',
     groupSize: 3
   },
   {
     title: 'Away from home',
-    localURL: 'away-from-home',
     date: 'KTH: Feb-Apr - 2018',
     bgUrl: 'away-from-home.png',
     tools: ['d3js', 'html', 'javascript', 'css'],
@@ -87,7 +80,6 @@ export const PROJECTS = [
   },
   {
     title: 'Storylines',
-    localURL: 'storylines',
     date: 'KTH: Mar-Apr - 2017',
     bgUrl: 'storylines.png',
     tools: ['angular', 'd3js'],
@@ -99,20 +91,17 @@ export const PROJECTS = [
   },
   {
     title: 'Haptic curling',
-    localURL: 'haptic-curling',
     date: 'KTH: Nov-Dec - 2016',
     bgUrl: 'haptic-curling.png',
     tools: ['novint-falcon', 'cpp'],
     descriptionShort: 'Curling game using the Novint Falcon for haptic feedback',
     description:
       'Virtual curling with haptic feedback. Feel the weight of the stone as you push it along the ice. Novint falcon provides haptic feedback in three dimensions which we utilize to make the feedback feel as realistic as possible.',
-    github: 'https://github.com/Sandsten/DT2140_HapticProject',
-    website: null,
+    website: 'https://github.com/Sandsten/DT2140_HapticProject',
     groupSize: 4
   },
   {
     title: 'bARk',
-    localURL: 'bark',
     date: 'KTH: Nov-Dec - 2016',
     bgUrl: 'birch-tree.png',
     tools: ['unity', 'vuforia', 'c-sharp', 'firebase'],
@@ -124,7 +113,6 @@ export const PROJECTS = [
   },
   {
     title: 'SounDark',
-    localURL: 'soundark',
     date: 'KTH: Sep-Okt - 2016',
     bgUrl: 'soundark.png',
     tools: ['oculus-rift', 'unity', 'c-sharp'],
@@ -136,7 +124,6 @@ export const PROJECTS = [
   },
   {
     title: 'Crowd simulation',
-    localURL: 'crowd-simulation',
     date: 'KTH: Mar-May - 2016',
     bgUrl: 'crowdsim.png',
     tools: ['unity', 'c-sharp'],
@@ -147,18 +134,16 @@ export const PROJECTS = [
   },
   {
     title: 'Last ship standing',
-    localURL: 'last-ship-standing',
     date: 'KTH: Mar-Apr - 2016',
     bgUrl: 'lastShip.png',
     tools: ['html', 'javascript', 'css'],
     descriptionShort: 'Local multiplayer game, last one alive wins',
     description: 'A local multiplayer game in which you battle each other with pirate ships.',
-    github: 'http://martin36.github.io/LastShipStanding/LastShipStanding/',
+    website: 'http://martin36.github.io/LastShipStanding/LastShipStanding/',
     groupSize: 4
   },
   {
     title: 'Godball',
-    localURL: 'godbal',
     date: 'KTH: Nov-Dec - 2015',
     bgUrl: 'godball.png',
     tools: ['unity', 'c-sharp'],
