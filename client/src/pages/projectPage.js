@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { PROJECTS } from '../Data';
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 
-const StyledProojectPage = styled.div`
+const StyledProjectPage = styled.div`
   display: grid;
   padding: 20px;
   grid-row-gap: 10px;
@@ -58,7 +58,7 @@ const projectPage = props => {
     // Prevent StyledProjectPage from being a direct sibling to the sidebar
     // otherwise its height will match it automatically which we don't want
     <div>
-      <StyledProojectPage>
+      <StyledProjectPage>
         <ProjectTitle>{project.title}</ProjectTitle>
         <div>{project.date}</div>
         <div>{project.tools.join(', ')}</div>
@@ -66,7 +66,7 @@ const projectPage = props => {
         <Description>{project.description}</Description>
         {website}
         {github}
-      </StyledProojectPage>
+      </StyledProjectPage>
     </div>
   );
 };

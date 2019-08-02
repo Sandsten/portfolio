@@ -4,12 +4,12 @@ import styled from 'styled-components';
 
 import Sidebar from './components/Sidebar';
 // import TopBar from './components/TopBar';
-import HomePage from './Testing/HomePage';
+import HomePage from './pages/homePage';
 import APITest from './Testing/APITest';
 import CreateAccout from './Testing/CreateAccount';
 import projects from './pages/projects';
 import projectPage from './pages/projectPage';
-import Red from './Testing/Red';
+import cv from './pages/cv';
 
 import { DESKTOP_XS } from './constants/sizes';
 
@@ -41,9 +41,9 @@ class App extends React.Component {
             {/* <Route path="/" component={TopBar} /> */}
             {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
             <Route path="/" exact component={HomePage} />
-            <Route path="/test" exact component={APITest} />
-            <Route path="/create-account" component={CreateAccout} />
-            <Route path="/red" component={Red} />
+            {/* <Route path="/test" exact component={APITest} /> */}
+            {/* <Route path="/create-account" component={CreateAccout} /> */}
+            <Route path="/cv" component={cv} />
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
           </Switch>

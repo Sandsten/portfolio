@@ -30,7 +30,7 @@ const Name = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   font-size: 1.2em;
   margin-bottom: 5px;
   margin-right: 20px;
@@ -45,7 +45,9 @@ const StyledLink = styled(Link)`
   :focus {
     color: ${CYAN};
   }
+`;
 
+const SidebarLink = styled(StyledLink)`
   @media (min-width: ${DESKTOP_XS}) {
     display: block;
     margin-bottom: 20px;
@@ -56,10 +58,10 @@ const Sidebar = () => {
   return (
     <StyledSidebar>
       <Name>Staffan Sandberg</Name>
-      <StyledLink to="/about">About</StyledLink>
-      <StyledLink to="/contact">CV</StyledLink>
-      <StyledLink to="/projects">Projects</StyledLink>
-      <StyledLink to="/tutorials">Blog</StyledLink>
+      <SidebarLink to="/">About</SidebarLink>
+      <SidebarLink to="/projects">Projects</SidebarLink>
+      <SidebarLink to="/cv">CV</SidebarLink>
+      <SidebarLink to="/blog">Blog</SidebarLink>
     </StyledSidebar>
   );
 };
