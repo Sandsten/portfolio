@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Sidebar from './components/Sidebar';
@@ -14,6 +14,7 @@ import cv from './pages/cv';
 import { DESKTOP_XS } from './constants/sizes';
 
 import './styles/index.scss';
+import blog from './pages/blog';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -46,6 +47,12 @@ class App extends React.Component {
             <Route path="/cv" component={cv} />
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
+            <Route path="/blog" component={blog} />
+            <Route
+              render={() => {
+                return <Redirect to="/" />;
+              }}
+            />
           </Switch>
         </BrowserRouter>
       </MainContainer>

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "connect-history-api-fallback": "^1.6.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "jwt-simple": "^0.5.6",

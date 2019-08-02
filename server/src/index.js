@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const history = require('connect-history-api-fallback');
 const databse = require('./database');
 const config = require('./headerConfig');
 const jwtUtilities = require('./jwtUtilities');
@@ -12,6 +13,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// Fixes the Cannot GET error when refreshing on a path
+app.use(history());
 
 app.use(config.headerConfig);
 
@@ -42,7 +46,7 @@ router.delete('/purge-blogposts', jwtUtilities.checkToken, databse.purgeBlogpost
 // Serve static front-end content when in production
 if (process.env.NODE_ENV === 'production') {
   console.log('PRODUCTION MODE ENGAGED');
-  var staticPath = path.join(__dirname, '../../build');
+  var staticPath = path.join(__dirname, '../build');
   console.log(staticPath);
   app.use(express.static(staticPath));
 }

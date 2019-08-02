@@ -9,7 +9,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../server/build'),
-    filename: '[name].[contenthash].frontend.js' // Content hash is a hash based on the file content
+    filename: '[name].[contenthash].frontend.js', // Content hash is a hash based on the file content
+    publicPath: '/'
   },
   module: {
     rules: [

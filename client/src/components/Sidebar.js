@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { BASE02, BASE2, BASE03, GREEN, ORANGE, YELLOW, CYAN, BASE0, BASE1, BASE2_SATURATED } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
@@ -48,20 +48,41 @@ export const StyledLink = styled(Link)`
 `;
 
 const SidebarLink = styled(StyledLink)`
+  /* Keep the button highlighted when de-focused or page refreshes */
+  ${props =>
+    props.path === props.to &&
+    css`
+      color: ${CYAN};
+    `}
+
   @media (min-width: ${DESKTOP_XS}) {
     display: block;
     margin-bottom: 20px;
   }
 `;
 
-const Sidebar = () => {
+const Sidebar = props => {
+  const [urlPath, setUrlPath] = useState(null);
+
+  useEffect(() => {
+    setUrlPath(props.location.pathname);
+  });
+
   return (
     <StyledSidebar>
       <Name>Staffan Sandberg</Name>
-      <SidebarLink to="/">About</SidebarLink>
-      <SidebarLink to="/projects">Projects</SidebarLink>
-      <SidebarLink to="/cv">CV</SidebarLink>
-      <SidebarLink to="/blog">Blog</SidebarLink>
+      <SidebarLink path={urlPath} to="/">
+        About
+      </SidebarLink>
+      <SidebarLink path={urlPath} to="/projects">
+        Projects
+      </SidebarLink>
+      <SidebarLink path={urlPath} to="/cv">
+        CV
+      </SidebarLink>
+      <SidebarLink path={urlPath} to="/blog">
+        Blog
+      </SidebarLink>
     </StyledSidebar>
   );
 };

@@ -42,7 +42,7 @@ const homePage = () => {
       <StyledProjectPage>
         <p>
           Hello and welcome to my website. My name is Staffan Sandberg and I'm currently a master's student at{' '}
-          <StyledA href="https://www.kth.se/"> Kungliga Tekniska Högskolan </StyledA> in{' '}
+          <StyledA href="https://www.kth.se/"> Kungliga Tekniska Högskolan</StyledA> in{' '}
           <StyledA href="https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765">
             Interactive media technology
           </StyledA>
@@ -67,7 +67,7 @@ const homePage = () => {
           {' '}
           I'm always open to new opportunities.
           <br />
-          You can also find and contact me here:
+          You can find and contact me here:
         </div>
         <Contact>
           <StyledA href="https://www.linkedin.com/in/stsa/">Linkedin</StyledA>

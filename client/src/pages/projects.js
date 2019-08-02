@@ -20,7 +20,7 @@ const StyledProjects = styled.div`
   background-color: ${BASE3};
 
   @media (min-width: ${DESKTOP_XS}) {
-    padding: 50px 20px 0px 20px;
+    padding: 20px 20px 0px 20px;
   }
 
   @media (min-width: ${DESKTOP_XL}) {

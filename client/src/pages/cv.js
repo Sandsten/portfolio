@@ -7,7 +7,7 @@ import { BASE3 } from '../constants/colors';
 
 const StyledCV = styled.div`
   padding: 20px;
-  font-size: 1.3em;
+  font-size: 1.2em;
   background-color: ${BASE3};
 `;
 
