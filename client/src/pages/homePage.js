@@ -45,7 +45,7 @@ const Contact = styled.div`
 
 const homePage = () => {
   const theme = useSelector(state => state.appSettings.theme);
-
+  if (!theme) return null;
   return (
     <Wrapper theme={theme}>
       <StyledProjectPage>

@@ -33,13 +33,9 @@ const Spacer = styled.div`
   height: 20px;
 `;
 
-//TODO: Get projects from database
-const renderProjects = () => {
-  return;
-};
-
 const projects = () => {
   const theme = useSelector(state => state.appSettings.theme);
+  if (!theme) return null;
   return (
     <StyledProjects theme={theme}>
       {PROJECTS.map(project => {

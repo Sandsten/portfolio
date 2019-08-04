@@ -49,6 +49,7 @@ const projectPage = props => {
 
   if (project === undefined) return <Redirect to="/projects" />;
   if (!project) return 'Loading...';
+  if (!theme) return null;
 
   const website = project.website ? (
     <span>

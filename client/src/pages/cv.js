@@ -16,7 +16,7 @@ const StyledCV = styled.div`
 
 const cv = () => {
   const theme = useSelector(state => state.appSettings.theme);
-
+  if (!theme) return null;
   return (
     <StyledCV theme={theme}>
       <div>At the moment my CV is only availabe through PDF</div>

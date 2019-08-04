@@ -19,6 +19,8 @@ import {
 } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
 
+import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
+
 const StyledSidebar = styled.div`
   grid-area: sidebar;
   padding: 10px;
@@ -26,15 +28,25 @@ const StyledSidebar = styled.div`
   position: sticky;
   top: 0;
   background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
+  z-index: 100;
   /* color: ${p => (p.theme === 'LIGHT' ? 'black' : BASE1)}; */
+
+  display: grid;
+  grid-template-areas: "name options" "nav options";
+  grid-template-columns: 1fr auto;
 
   @media (min-width: ${DESKTOP_XS}) {
     height: 100vh;
     padding: 20px;
+    display: block;
+    /* grid-template-areas: "name"  "nav" "options";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto; */
   }
 `;
 
 const Name = styled.div`
+  grid-area: name;
   font-size: 1.7em;
   margin-bottom: 5px;
   color: ${ORANGE};
@@ -72,32 +84,68 @@ const SidebarLink = styled(StyledLink)`
   }
 `;
 
+const Button = styled.button`
+  grid-area: options;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+
+  background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
+  color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE2)};
+
+  @media (min-width: ${DESKTOP_XS}) {
+    position: absolute;
+    /* align-self: bottom; */
+    width: 100px;
+    height: 100px;
+    bottom: 75px;
+    left: 75px;
+  }
+`;
+
 const Sidebar = props => {
   const [urlPath, setUrlPath] = useState(null);
   const theme = useSelector(state => state.appSettings.theme);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    var storedTheme = localStorage.getItem('theme');
+    if (!storedTheme) storedTheme = 'LIGHT';
+    dispatch(setTheme(storedTheme));
+    console.log('Called on mount!');
+  }, []);
+
+  useEffect(() => {
     setUrlPath(props.location.pathname);
+    if (theme) localStorage.setItem('theme', theme);
   });
 
-  console.log(theme);
+  const handleThemeToggle = () => {
+    dispatch(toggleTheme());
+  };
+
+  if (!theme) return null;
 
   return (
     <StyledSidebar theme={theme}>
       <Name>Staffan Sandberg</Name>
-      <SidebarLink theme={theme} path={urlPath} to="/">
-        About
-      </SidebarLink>
-      <SidebarLink theme={theme} path={urlPath} to="/projects">
-        Projects
-      </SidebarLink>
-      <SidebarLink theme={theme} path={urlPath} to="/cv">
-        CV
-      </SidebarLink>
-      <SidebarLink theme={theme} path={urlPath} to="/blog">
-        Blog
-      </SidebarLink>
+      <span>
+        <SidebarLink theme={theme} path={urlPath} to="/">
+          About
+        </SidebarLink>
+        <SidebarLink theme={theme} path={urlPath} to="/projects">
+          Projects
+        </SidebarLink>
+        <SidebarLink theme={theme} path={urlPath} to="/cv">
+          CV
+        </SidebarLink>
+        <SidebarLink theme={theme} path={urlPath} to="/blog">
+          Blog
+        </SidebarLink>
+      </span>
+      <Button theme={theme} onClick={handleThemeToggle}>
+        {theme === 'LIGHT' ? 'Dark' : 'Light'}
+      </Button>
     </StyledSidebar>
   );
 };

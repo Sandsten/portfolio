@@ -14,6 +14,8 @@ const StyledBlog = styled.div`
 const blog = () => {
   const theme = useSelector(state => state.appSettings.theme);
 
+  if (!theme) return null;
+
   return <StyledBlog theme={theme}>No blog posts at the moment</StyledBlog>;
 };
 

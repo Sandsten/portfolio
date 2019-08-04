@@ -4,3 +4,9 @@ export const setTheme = theme => {
     payload: theme
   };
 };
+
+export const toggleTheme = theme => {
+  return {
+    type: 'TOGGLE_THEME'
+  };
+};
