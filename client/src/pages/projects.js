@@ -1,8 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import ProjectCard from '../components/ProjectCard';
-import { BASE00, BASE01, BASE3, BASE2, BASE1, BASE0 } from '../constants/colors';
+import { BASE02, BASE01, BASE3, BASE2, BASE1, BASE0 } from '../constants/colors';
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 
 import { PROJECTS } from '../Data';
@@ -17,7 +18,7 @@ const StyledProjects = styled.div`
   grid-row-gap: 20px;
   grid-column-gap: 30px;
 
-  background-color: ${BASE3};
+  background-color: ${p => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
 
   @media (min-width: ${DESKTOP_XS}) {
     padding: 20px 20px 0px 20px;
@@ -34,15 +35,16 @@ const Spacer = styled.div`
 
 //TODO: Get projects from database
 const renderProjects = () => {
-  return PROJECTS.map(project => {
-    return <ProjectCard key={project.title} data={project} />;
-  });
+  return;
 };
 
 const projects = () => {
+  const theme = useSelector(state => state.appSettings.theme);
   return (
-    <StyledProjects>
-      {renderProjects()}
+    <StyledProjects theme={theme}>
+      {PROJECTS.map(project => {
+        return <ProjectCard theme={theme} key={project.title} data={project} />;
+      })}
       <Spacer />
     </StyledProjects>
   );

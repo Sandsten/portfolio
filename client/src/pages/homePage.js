@@ -1,8 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
-import { BASE03, CYAN, RED, BLUE, BASE3 } from '../constants/colors';
+import { BASE03, BASE02, CYAN, RED, BLUE, BASE3, BASE1, BASE2 } from '../constants/colors';
+
+export const Wrapper = styled.div`
+  min-height: 100vh;
+  background-color: ${p => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
+  color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
+`;
 
 const StyledProjectPage = styled.div`
   display: grid;
@@ -37,8 +44,10 @@ const Contact = styled.div`
 `;
 
 const homePage = () => {
+  const theme = useSelector(state => state.appSettings.theme);
+
   return (
-    <div style={{ backgroundColor: BASE3 }}>
+    <Wrapper theme={theme}>
       <StyledProjectPage>
         <p>
           Hello and welcome to my website. My name is Staffan Sandberg and I'm currently a master's student at{' '}
@@ -77,7 +86,7 @@ const homePage = () => {
           </StyledA>
         </Contact>
       </StyledProjectPage>
-    </div>
+    </Wrapper>
   );
 };
 

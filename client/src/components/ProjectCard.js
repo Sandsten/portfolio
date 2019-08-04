@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { BASE03, BASE2, BASE1, BASE2_SATURATED } from '../constants/colors';
+import { BASE03, BASE2, BASE01, BASE2_SATURATED, BASE02_SATURATED, BASE1 } from '../constants/colors';
 
-const StyledProject = styled(Link)`
+const StyledProjectCard = styled(Link)`
   height: 200px;
   text-decoration: none;
   outline: none;
-  color: ${BASE03};
+  color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
 
   display: grid;
   grid-template-areas:
@@ -19,12 +19,12 @@ const StyledProject = styled(Link)`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 10px;
 
-  background-color: ${BASE2};
+  background-color: ${p => (p.theme === 'LIGHT' ? BASE2 : BASE02_SATURATED)};
   padding: 10px;
   border-radius: 10px;
 
   :hover {
-    background-color: ${BASE2_SATURATED};
+    background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
   }
 `;
 
@@ -44,6 +44,7 @@ const Image = styled.img`
   height: 100%;
   width: 100%;
   border-radius: 10px;
+  filter: ${p => (p.theme === 'LIGHT' ? 'none' : 'brightness(80%)')};
 `;
 
 const Tags = styled.div`
@@ -51,7 +52,7 @@ const Tags = styled.div`
   font-size: 0.9em;
 `;
 
-const ProjectCard = ({ data }) => {
+const ProjectCard = ({ data, theme }) => {
   var thumbnail;
   try {
     thumbnail = require(`../img/${data.bgUrl}`);
@@ -60,14 +61,14 @@ const ProjectCard = ({ data }) => {
   }
 
   return (
-    <StyledProject to={'/projects/' + data.localURL}>
+    <StyledProjectCard theme={theme} to={'/projects/' + data.localURL}>
       <Title>
         <b>{data.title}</b>
       </Title>
       <Description>{data.descriptionShort}</Description>
       <Tags>{data.tools.join(', ')}</Tags>
       <Image src={thumbnail} alt={data.title + 'thumbnail'} />
-    </StyledProject>
+    </StyledProjectCard>
   );
 };
 

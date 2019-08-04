@@ -3,6 +3,8 @@ export const BASE01 = '#586e75';
 export const BASE02 = '#073642';
 export const BASE03 = '#002b36';
 
+export const BASE02_SATURATED = '#002028';
+
 export const BASE0 = '#839496';
 export const BASE1 = '#93a1a1';
 export const BASE2 = '#eee8d5';
