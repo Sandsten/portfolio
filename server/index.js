@@ -2,9 +2,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const history = require('connect-history-api-fallback');
-const databse = require('./database');
-const config = require('./headerConfig');
-const jwtUtilities = require('./jwtUtilities');
+const databse = require('./src/database');
+const config = require('./src/headerConfig');
+const jwtUtilities = require('./src/jwtUtilities');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
