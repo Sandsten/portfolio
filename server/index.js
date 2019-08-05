@@ -46,7 +46,7 @@ router.delete('/purge-blogposts', jwtUtilities.checkToken, databse.purgeBlogpost
 // Serve static front-end content when in production
 if (process.env.NODE_ENV === 'production') {
   console.log('PRODUCTION MODE ENGAGED');
-  var staticPath = path.join(__dirname, '../build');
+  var staticPath = path.join(__dirname, './build');
   console.log(staticPath);
   app.use(express.static(staticPath));
 }
