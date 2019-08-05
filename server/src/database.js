@@ -3,9 +3,9 @@ const MongoClient = mongodb.MongoClient;
 const ObjectId = mongodb.ObjectId;
 const bcrypt = require('bcrypt');
 
-const jwtUtilities = require('./jwtUtilities');
+require('dotenv').config();
 
-const DATABASE_URL = 'mongodb://localhost:27017/portfolio';
+const jwtUtilities = require('./jwtUtilities');
 const SALTROUNDS = 100000;
 
 var db;
@@ -183,6 +183,13 @@ exports.purgeBlogposts = (req, res) => {
       res.status(404).send('Purge Failed');
     });
 };
+
+var DATABASE_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'mongodb://localhost:27017/portfolio'
+    : `mongodb+srv://${process.env.DB_USER}:${
+        process.env.DB_PASS
+      }@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
 
 MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
   if (err) throw err;
