@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const jwtUtilities = require('./jwtUtilities');
 
 const DATABASE_URL = 'mongodb://localhost:27017/portfolio';
-const SALTROUNDS = 10;
+const SALTROUNDS = 100000;
 
 var db;
 var blogposts;

@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 module.exports = {
   target: 'web',
@@ -62,6 +63,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: path.join(__dirname, 'src/index.html'),
       filename: 'index.html'
-    })
+    }),
+    new ErrorOverlayPlugin()
   ]
 };
