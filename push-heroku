@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# The purpouse of this is to ignore the /build directory when pushing to version control
+# But keep it when pushing to Heroku for hosting
+# Separating the repositories into two different folders
+# Run this script when we've built and tested the app localy.
+
+rm -r ../heroku-files/build  # To avoid keeping files that aren't used
+cp -r server/* ../heroku-files  # Copy over our server content with it's build/ folder
+rm -r ../heroku-files/node_modules  # Remove node modules, will be installed automatically on heroku
+(cd ../heroku-files; git add .; git commit -m'new version'; git push) # Push it
