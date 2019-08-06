@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '';
+
 class CreateAccount extends Component {
   createAccount = event => {
     event.preventDefault();
@@ -9,7 +11,7 @@ class CreateAccount extends Component {
     const password = event.target[1].value;
 
     // Make a POST request to the server for creating an account
-    axios.post(`${process.env.NODE_ENV === 'development' ? 'http' : 'https'}://localhost:3001/create-account`, {
+    axios.post(`/create-account`, {
       username,
       password
     });
@@ -22,7 +24,7 @@ class CreateAccount extends Component {
 
     axios
       .post(
-        `${process.env.NODE_ENV === 'development' ? 'http' : 'https'}://localhost:3001/sign-in`,
+        '/sign-in',
         {
           username,
           password
@@ -37,7 +39,7 @@ class CreateAccount extends Component {
 
   testCookie = () => {
     axios.post(
-      `${process.env.NODE_ENV === 'development' ? 'http' : 'https'}://localhost:3001/valid-token`,
+      `/valid-token`,
       {},
       {
         // This will allow sending cookies with CORS policy

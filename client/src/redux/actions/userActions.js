@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = `${process.env.NODE_ENV === 'development' ? 'http' : 'https'}://localhost:3001`;
+const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '';
 
 export const autoSignIn = () => dispatch => {
   axios
