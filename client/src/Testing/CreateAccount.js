@@ -9,7 +9,7 @@ class CreateAccount extends Component {
     const password = event.target[1].value;
 
     // Make a POST request to the server for creating an account
-    axios.post('http://localhost:3001/create-account', {
+    axios.post(`${process.env.NODE_ENV === 'development' ? 'http' : 'https'}://localhost:3001/create-account`, {
       username,
       password
     });
@@ -22,7 +22,7 @@ class CreateAccount extends Component {
 
     axios
       .post(
-        'http://localhost:3001/sign-in',
+        `${process.env.NODE_ENV === 'development' ? 'http' : 'https'}://localhost:3001/sign-in`,
         {
           username,
           password
@@ -31,12 +31,13 @@ class CreateAccount extends Component {
       )
       .then(() => {
         this.props.dispatch({ type: 'LOGIN_SUCCESS' });
+        this.props.history;
       });
   };
 
   testCookie = () => {
     axios.post(
-      'http://localhost:3001/valid-token',
+      `${process.env.NODE_ENV === 'development' ? 'http' : 'https'}://localhost:3001/valid-token`,
       {},
       {
         // This will allow sending cookies with CORS policy
