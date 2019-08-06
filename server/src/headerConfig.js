@@ -2,7 +2,7 @@ exports.headerConfig = (req, res, next) => {
   // res.header('Access-Control-Allow-Origin', '*');
   // res.header('Access-Control-Allow-Headers', 'X-Requested-With');
   // FOR PRODUCTION
-  // res.header("Access-Control-Allow-Origin", "https://bandmate.xyz");
+  res.header('Access-Control-Allow-Origin', 'https://staffansandberg.xyz');
   // FOR DEVELOPMENT
   // console.log(process.env.NODE_ENV);
   if (process.env.NODE_ENV === 'development') res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
