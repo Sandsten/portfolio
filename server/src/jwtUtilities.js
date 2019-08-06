@@ -1,27 +1,40 @@
 const moment = require('moment');
 const jwt = require('jwt-simple');
 
-//TODO: Create environment variable
-const SECRET = 'POTATIS FARMARNA';
+const SECRET = process.env.JWT_SECRET;
 
-exports.checkToken = (req, res, next) => {
+// Middleware for checking if a valid JWT was passed with the api request
+exports.authorizeAPICall = (req, res, next) => {
   // The token will be sent through a cookie
-  var token = req.cookies['access-card'];
+  var tokenData = this.decodeToken(req);
 
-  try {
-    var decoded = jwt.decode(token, SECRET);
-    req.user = decoded; // Pass along the user data
-    console.log('Token Accepted!');
-  } catch (error) {
-    // If decoding of JWT fails. return unauthorized and don't continue by calling return instead of next()
-    console.log('Token Invalid!');
-    res.status(404).send('Unautorized');
-    return;
+  if (tokenData) {
+    req.user = tokenData;
+  } else {
+    res.status(404).send('Unauthorized');
+    return false;
   }
 
   next();
 };
 
+// Checks if a JWT is present in the request
+// Returns the decoded data if it exists, otherwise false
+exports.checkToken = req => {
+  var token = req.cookies['access-card'];
+
+  try {
+    var decoded = jwt.decode(token, SECRET);
+    console.log('The token is accepted!');
+    return decoded;
+  } catch (error) {
+    // If decoding of JWT fails. return unauthorized and don't continue by calling return instead of next()
+    console.log('Invalid token!');
+    return false;
+  }
+};
+
+// Generates a JWT and returns it
 exports.createJWT = user => {
   // Create JWT here and send it back to the user!
   var expires = moment()

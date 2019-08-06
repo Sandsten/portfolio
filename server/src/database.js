@@ -3,19 +3,18 @@ const MongoClient = mongodb.MongoClient;
 const ObjectId = mongodb.ObjectId;
 const bcrypt = require('bcrypt');
 
-require('dotenv').config();
-
 const jwtUtilities = require('./jwtUtilities');
-const SALTROUNDS = 100000;
+const SALTROUNDS = 12;
 
 var db;
 var blogposts;
 var users;
 
+// Sign in to the website using a username and password
 exports.signIn = (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  users.findOne({ email }).then(user => {
+  users.findOne({ username }).then(user => {
     if (user === null) {
       res.status(404).send('User not found');
     }
@@ -26,7 +25,7 @@ exports.signIn = (req, res) => {
         res
           .cookie('access-card', token, { httpOnly: true })
           .status(200)
-          .send('COOKIE MONSTER!');
+          .send('Credentials accepted, welcome!');
         // res.status(200).send('Authenticated!');
       } else {
         res.status(401).send('Invalid password!');
@@ -35,25 +34,38 @@ exports.signIn = (req, res) => {
   });
 };
 
+// Sign in to the website using a token
+exports.signInWithToken = (req, res) => {
+  var token = jwtUtilities.checkToken(req);
+
+  if (token) {
+    res.status(200).send(token);
+  } else {
+    res.status(404).send('No token for signing in');
+  }
+};
+
 exports.createAccount = (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   users
-    .find({ email })
+    .find()
     .count()
     .then(result => {
-      if (result !== 0) {
-        console.log('User with email already in database');
-        res.status(404).send('Email already taken');
+      if (result > 0) {
+        console.log('There is already a user in the database. Maximum 1');
+        res.status(404).send('There is already a user managing this site');
       } else {
         console.log('Good to go, creating account');
         // Hash password
         bcrypt.genSalt(SALTROUNDS, (err, salt) => {
+          console.log('SALT GENERATED');
           bcrypt.hash(password, salt, (err, hash) => {
             // Create user
+            console.log('Hashing completed');
             users
               .insertOne({
-                email,
+                username,
                 password: hash
               })
               .then(result => {
@@ -198,5 +210,7 @@ MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
   blogposts = db.collection('blogposts');
   users = db.collection('users');
 
-  console.log('Connection to database established');
+  console.log(
+    `Connection to database established: ${process.env.NODE_ENV === 'development' ? 'Local server' : 'Mongo Atlas'}`
+  );
 });

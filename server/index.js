@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const history = require('connect-history-api-fallback');
+
+// Allows us read .env variables from process.env.
+require('dotenv').config();
+
 const databse = require('./src/database');
 const config = require('./src/headerConfig');
 const jwtUtilities = require('./src/jwtUtilities');
@@ -21,22 +25,23 @@ app.use(config.headerConfig);
 
 // Account handling
 app.post('/sign-in', databse.signIn);
+app.post('/auto-signin', databse.signInWithToken);
 app.post('/create-account', databse.createAccount);
-app.post('/valid-token', jwtUtilities.checkToken);
+app.post('/valid-token', databse.signInWithToken);
 
 // Create a specific router with the prefix /api to use with all api requests
 const router = express.Router();
 app.use('/api', router);
-// No authentication
+// No authentication required
 router.get('/get-blogposts', databse.getBlogposts);
 router.get('/get-blogpost', databse.getBlogpost);
 
 //! These api requests require authentication! use checkToken middleware
 //router.use(jwtUtilities.checkToken); //? This doesn't work for some reason
-router.post('/add-blogpost', jwtUtilities.checkToken, databse.addBlogpost);
-router.put('/update-blogpost', jwtUtilities.checkToken, databse.updateBlogpost);
-router.delete('/remove-blogpost', jwtUtilities.checkToken, databse.removeBlogpost);
-router.delete('/purge-blogposts', jwtUtilities.checkToken, databse.purgeBlogposts);
+router.post('/add-blogpost', jwtUtilities.authorizeAPICall, databse.addBlogpost);
+router.put('/update-blogpost', jwtUtilities.authorizeAPICall, databse.updateBlogpost);
+router.delete('/remove-blogpost', jwtUtilities.authorizeAPICall, databse.removeBlogpost);
+router.delete('/purge-blogposts', jwtUtilities.authorizeAPICall, databse.purgeBlogposts);
 
 //? GET     - Get data
 //? POST    - Create data
@@ -49,6 +54,8 @@ if (process.env.NODE_ENV === 'production') {
   var staticPath = path.join(__dirname, './build');
   console.log(staticPath);
   app.use(express.static(staticPath));
+} else {
+  console.log('DEV MODE ENGAGED!');
 }
 
 app.listen(PORT, () => {

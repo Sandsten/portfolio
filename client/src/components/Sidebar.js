@@ -108,11 +108,11 @@ const Sidebar = props => {
   const theme = useSelector(state => state.appSettings.theme);
   const dispatch = useDispatch();
 
+  // This is equivalent to componentDidMount
   useEffect(() => {
     var storedTheme = localStorage.getItem('theme');
     if (!storedTheme) storedTheme = 'LIGHT';
     dispatch(setTheme(storedTheme));
-    console.log('Called on mount!');
   }, []);
 
   useEffect(() => {

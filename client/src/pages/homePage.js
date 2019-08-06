@@ -69,8 +69,13 @@ const homePage = () => {
           and want to share.
         </p>
         <p>
-          My main interests are web development, visualization computer graphics and UX. This website is made from
-          scratch using React, Webpack and CSS Grid.
+          My main interests are web development and computer graphics. I also enjoy tinkering with servers, networks and
+          general linux based operating systems.
+        </p>
+        <p>
+          I created this website from scratch using the following: <br />
+          Front-end: React, CSS Grid and Webpack. <br />
+          Back-end: Node.js, Express, MongoDB and Heroku.
         </p>
         <div>
           {' '}

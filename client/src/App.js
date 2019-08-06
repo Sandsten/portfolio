@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import Sidebar from './components/Sidebar';
@@ -10,11 +11,13 @@ import CreateAccout from './Testing/CreateAccount';
 import projects from './pages/projects';
 import projectPage from './pages/projectPage';
 import cv from './pages/cv';
+import blog from './pages/blog';
+
+import { autoSignIn } from './redux/actions/userActions';
 
 import { DESKTOP_XS } from './constants/sizes';
 
 import './styles/index.scss';
-import blog from './pages/blog';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -29,21 +32,25 @@ const MainContainer = styled.div`
   }
 `;
 
-// https://reacttraining.com/react-router/web/api/Switch
-
 class App extends React.Component {
+  componentDidMount() {
+    console.log('CHECK IF TOKEN IS PRESENT, IF SO, ENABLE ADMIN MODE');
+    this.props.autoSignIn();
+  }
+
   render() {
     return (
       <MainContainer>
         <BrowserRouter>
+          {/* // https://reacttraining.com/react-router/web/api/Switch */}
           {/* Render the sidebar on all pages */}
           <Route path="/" component={Sidebar} />
           <Switch>
             {/* <Route path="/" component={TopBar} /> */}
             {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
             <Route path="/" exact component={HomePage} />
-            {/* <Route path="/test" exact component={APITest} /> */}
-            {/* <Route path="/create-account" component={CreateAccout} /> */}
+            <Route path="/test" exact component={APITest} />
+            <Route path="/admin-login" component={CreateAccout} />
             <Route path="/cv" component={cv} />
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
@@ -60,4 +67,7 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(
+  null,
+  { autoSignIn }
+)(App);
