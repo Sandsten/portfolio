@@ -55,7 +55,7 @@ const Tags = styled.div`
 const ProjectCard = ({ data, theme }) => {
   var thumbnail;
   try {
-    thumbnail = require(`../img/${data.bgUrl}`);
+    thumbnail = require(`../img/bg/${data.bgUrl}`);
   } catch (error) {
     thumbnail = '';
   }

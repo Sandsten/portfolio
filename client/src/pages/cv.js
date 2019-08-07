@@ -19,9 +19,9 @@ const cv = () => {
   if (!theme) return null;
   return (
     <StyledCV theme={theme}>
-      <div>At the moment my CV is only availabe through PDF</div>
+      <div>Here you can download my CV in pdf format</div>
       <StyledA theme={theme} href={cvPDF}>
-        Download PDF
+        Download CV
       </StyledA>
     </StyledCV>
   );
