@@ -9,6 +9,7 @@ const StyledProjectCard = styled(Link)`
   text-decoration: none;
   outline: none;
   color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
+  overflow: hidden;
 
   display: grid;
   grid-template-areas:
@@ -17,11 +18,10 @@ const StyledProjectCard = styled(Link)`
     'tags  img';
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 10px;
 
   background-color: ${p => (p.theme === 'LIGHT' ? BASE2 : BASE02_SATURATED)};
-  padding: 10px;
-  border-radius: 10px;
+  /* padding: 10px; */
+  border-radius: 5px;
 
   :hover {
     background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
@@ -31,11 +31,14 @@ const StyledProjectCard = styled(Link)`
 const Title = styled.div`
   grid-area: title;
   font-size: 1.1em;
+  margin: 10px;
 `;
 
 const Description = styled.div`
   grid-area: desc;
   font-size: 0.9em;
+  margin: 10px;
+  margin-top: 0;
 `;
 
 const Image = styled.img`
@@ -43,13 +46,14 @@ const Image = styled.img`
   object-fit: cover;
   height: 100%;
   width: 100%;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   filter: ${p => (p.theme === 'LIGHT' ? 'none' : 'brightness(80%)')};
 `;
 
 const Tags = styled.div`
   grid-area: tags;
   font-size: 0.9em;
+  margin: 10px;
 `;
 
 const ProjectCard = ({ data, theme }) => {
