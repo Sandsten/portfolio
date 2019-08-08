@@ -50,12 +50,13 @@ const homePage = () => {
     <Wrapper theme={theme}>
       <StyledProjectPage>
         <p>
-          Hello and welcome to my website. My name is Staffan Sandberg and I'm currently a master's student at{' '}
-          <StyledA href="https://www.kth.se/"> Kungliga Tekniska Högskolan</StyledA> in the{' '}
+          Hello and welcome to my website. My name is Staffan Sandberg and I'm currently in the final stretch of my
+          studies at <StyledA href="https://www.kth.se/"> Kungliga Tekniska Högskolan</StyledA> in the master's
+          programme{' '}
           <StyledA href="https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765">
             Interactive media technology
-          </StyledA>{' '}
-          programme.
+          </StyledA>
+          .
         </p>
         <p>
           My bachelor was in{' '}
@@ -65,18 +66,19 @@ const homePage = () => {
           also at KTH. Which sparked my interest for programming and graphics.
         </p>
         <p>
-          On this site you can see different projects that I've been a part of and blog posts about things I've learnt
-          and want to share.
+          My main interests are web development, game design and computer graphics. I also enjoy tinkering with servers,
+          networks and general linux based operating systems.
         </p>
-        <p>
-          My main interests are web development and computer graphics. I also enjoy tinkering with servers, networks and
-          general linux based operating systems.
-        </p>
+        <p>In my free time I enjoy playing guitar, video games, reading books and learn new things in general.</p>
         {/* <p>
           I created this website from scratch using the following: <br />
           Front-end: React, CSS Grid and Webpack. <br />
           Back-end: Node.js, Express, MongoDB and Heroku.
         </p> */}
+        <p>
+          On this site you can see different projects that I've been a part of and blog posts about things I've learnt
+          and want to share.
+        </p>
         <div>
           {' '}
           I'm always open to new opportunities.
