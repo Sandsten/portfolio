@@ -69,7 +69,7 @@ const homePage = () => {
           My main interests are web development, game design and computer graphics. I also enjoy tinkering with servers,
           networks and general linux based operating systems.
         </p>
-        <p>In my free time I enjoy playing guitar, video games, reading books and learn new things in general.</p>
+        <p>In my free time I enjoy playing guitar, video games, reading books and learning new things in general.</p>
         {/* <p>
           I created this website from scratch using the following: <br />
           Front-end: React, CSS Grid and Webpack. <br />
