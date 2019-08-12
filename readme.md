@@ -1,9 +1,17 @@
-## What i want to do
+## TODO
+
+- ~~Front end should be responsive.~~
+- ~~Dark and light color theme option.~~
+- ~~Sign in to website as admin~~
+- ~~Authorize certain api calls with JWT~~
+- **add**/**update** projects, blogposts and so forth through my website.
+- All the data should be stored on **Atlas**.
+- Integrated CV, not just a PDF.
+
+## Goal
 
 - Create a **front-end** and **back-end** application as my portfolio
-- I should be able to **add** projects, blogposts and so forth through my website
-- All the data should be **stored on a server**
-- I will be using **NodeJS as back-end**, **React as front-end** and **Webpack as bundler** for the front-end.
+- To use **NodeJS with MongoDB as back-end**, **React as front-end**, **Webpack as bundler** and host it on **Heroku**
 
 ## Transpiling JSX
 
@@ -49,4 +57,17 @@ output: {
   "plugins": ["@babel/plugin-proposal-class-properties"],
   "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
+```
+
+## Mongo db
+
+```bash
+# Connect to Atlas with shell
+> mongo "mongodb+srv://cluster0-l6pm1.mongodb.net/test" --username <username>
+
+# Create collection
+> db.createCollection("<collectionName>");
+
+# Insert array of objects
+> db.<collectionName>.insertMany([{},{},{},....]);
 ```

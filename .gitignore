@@ -3,3 +3,4 @@ HerokuFiles
 build
 .firebase
 .env
+test.js
