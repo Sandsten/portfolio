@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { BASE03, BASE2, BASE01, BASE2_SATURATED, BASE02_SATURATED, BASE1 } from '../constants/colors';
+import { BASE03, BASE2, BASE2_SATURATED, BASE02_SATURATED, BASE1 } from '../constants/colors';
 import { MOBILE_XS } from '../constants/sizes';
 
 const StyledProjectCard = styled(Link)`
@@ -24,7 +24,7 @@ const StyledProjectCard = styled(Link)`
   overflow: hidden;
 
   @media (min-width: ${MOBILE_XS}) {
-    min-height: auto;
+    min-height: auto; /*Nullify the previous min-height*/
     height: 200px;
     grid-template-areas:
       'title img'
@@ -57,7 +57,6 @@ const Image = styled.img`
   object-fit: cover;
   height: 100%;
   width: 100%;
-  /* border-radius: 10px; */
   filter: ${p => (p.theme === 'LIGHT' ? 'none' : 'brightness(80%)')};
 `;
 

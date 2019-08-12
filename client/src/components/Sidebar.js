@@ -3,45 +3,27 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import {
-  BASE02,
-  BASE2,
-  BASE03,
-  GREEN,
-  ORANGE,
-  YELLOW,
-  CYAN,
-  BLUE,
-  BASE0,
-  BASE1,
-  BASE2_SATURATED,
-  BASE3
-} from '../constants/colors';
+import { BASE00, BASE2, BASE03, ORANGE, BASE0, BASE1, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
-
 import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
 
 const StyledSidebar = styled.div`
   grid-area: sidebar;
   padding: 10px;
   height: auto;
-  position: sticky;
+  position: sticky; /*Important that the parent has the correct height for this to work properly*/
   top: 0;
   background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
   z-index: 100;
-  /* color: ${p => (p.theme === 'LIGHT' ? 'black' : BASE1)}; */
 
   display: grid;
-  grid-template-areas: "name options" "nav options";
+  grid-template-areas: 'name options' 'nav options';
   grid-template-columns: 1fr auto;
 
   @media (min-width: ${DESKTOP_XS}) {
     height: 100vh;
     padding: 20px;
     display: block;
-    /* grid-template-areas: "name"  "nav" "options";
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto; */
   }
 `;
 
@@ -84,18 +66,42 @@ const SidebarLink = styled(StyledLink)`
   }
 `;
 
-const Button = styled.button`
-  grid-area: options;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+const ThemeButton = ({ className, width = 24, height = 24, handleClick }) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      onClick={handleClick}
+    >
+      <defs>
+        <path id="a" d="M0 0h24v24H0V0z" />
+      </defs>
+      <clipPath id="b">
+        <use xlinkHref="#a" overflow="visible" />
+      </clipPath>
+      <path
+        d="M6 14l3 3v5h6v-5l3-3V9H6zm5-12h2v3h-2zM3.5 5.875L4.914 4.46l2.12 2.122L5.62 7.997zm13.46.71l2.123-2.12 1.414 1.414L18.375 8z"
+        clip-path="url(#b)"
+      />
+    </svg>
+  );
+};
 
-  background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
-  color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE2)};
+const StyledThemeButton = styled(ThemeButton)`
+  grid-area: options;
+  fill: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE2_SATURATED)};
+
+  :hover {
+    cursor: pointer;
+    fill: ${p => (p.theme === 'LIGHT' ? 'black' : YELLOW)};
+  }
 
   @media (min-width: ${DESKTOP_XS}) {
     position: absolute;
-    /* align-self: bottom; */
     width: 100px;
     height: 100px;
     bottom: 75px;
@@ -143,9 +149,7 @@ const Sidebar = props => {
           Blog
         </SidebarLink>
       </span>
-      <Button theme={theme} onClick={handleThemeToggle}>
-        {theme === 'LIGHT' ? 'Dark' : 'Light'}
-      </Button>
+      <StyledThemeButton theme={theme} width="50" height="50" handleClick={handleThemeToggle} />
     </StyledSidebar>
   );
 };
