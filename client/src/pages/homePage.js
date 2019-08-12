@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import { BASE03, BASE02, CYAN, RED, BLUE, BASE3, BASE1, BASE2 } from '../constants/colors';
+import { Spacer } from './projects';
 
 export const Wrapper = styled.div`
   min-height: 100vh;
@@ -15,9 +16,10 @@ const StyledProjectPage = styled.div`
   display: grid;
   padding: 0 20px 0 20px;
   grid-auto-columns: auto;
-  font-size: 1.2em;
+  font-size: 1em;
 
   @media (min-width: ${DESKTOP_XS}) {
+    font-size: 1.2em;
     width: 70vw;
   }
 
@@ -79,12 +81,12 @@ const homePage = () => {
           On this site you can see different projects that I've been a part of and blog posts about things I've learnt
           and want to share.
         </p>
-        <div>
+        <p>
           {' '}
           I'm always open to new opportunities.
           <br />
           You can find and contact me here:
-        </div>
+        </p>
         <Contact>
           <StyledA href="https://www.linkedin.com/in/stsa/">Linkedin</StyledA>
           <StyledA href="https://github.com/Sandsten">Github</StyledA>
@@ -92,6 +94,7 @@ const homePage = () => {
             Email
           </StyledA>
         </Contact>
+        <Spacer />
       </StyledProjectPage>
     </Wrapper>
   );

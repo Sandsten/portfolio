@@ -3,25 +3,36 @@ import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { BASE03, BASE2, BASE01, BASE2_SATURATED, BASE02_SATURATED, BASE1 } from '../constants/colors';
+import { MOBILE_XS } from '../constants/sizes';
 
 const StyledProjectCard = styled(Link)`
-  height: 200px;
+  display: grid;
+  grid-template-areas:
+    'img'
+    'title'
+    'desc'
+    'tags';
+  grid-template-rows: 150px auto 1fr auto;
+
+  /* height: 300px; */
+  min-height: 300px;
+  border-radius: 5px;
   text-decoration: none;
   outline: none;
   color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
+  background-color: ${p => (p.theme === 'LIGHT' ? BASE2 : BASE02_SATURATED)};
   overflow: hidden;
 
-  display: grid;
-  grid-template-areas:
-    'title img'
-    'desc  img'
-    'tags  img';
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 1fr 1fr;
-
-  background-color: ${p => (p.theme === 'LIGHT' ? BASE2 : BASE02_SATURATED)};
-  /* padding: 10px; */
-  border-radius: 5px;
+  @media (min-width: ${MOBILE_XS}) {
+    min-height: auto;
+    height: 200px;
+    grid-template-areas:
+      'title img'
+      'desc  img'
+      'tags  img';
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 1fr;
+  }
 
   :hover {
     background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};

@@ -29,7 +29,7 @@ const StyledProjects = styled.div`
   }
 `;
 
-const Spacer = styled.div`
+export const Spacer = styled.div`
   height: 20px;
 `;
 
