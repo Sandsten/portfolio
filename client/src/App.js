@@ -34,7 +34,6 @@ const MainContainer = styled.div`
 
 class App extends React.Component {
   componentDidMount() {
-    console.log('CHECK IF TOKEN IS PRESENT, IF SO, ENABLE ADMIN MODE');
     this.props.autoSignIn();
   }
 

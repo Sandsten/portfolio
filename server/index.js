@@ -33,6 +33,8 @@ app.post('/valid-token', databse.signInWithToken);
 const router = express.Router();
 app.use('/api', router);
 // No authentication required
+router.get('/get-projects', databse.getProjects);
+router.get('/get-project', databse.getProject);
 router.get('/get-blogposts', databse.getBlogposts);
 router.get('/get-blogpost', databse.getBlogpost);
 

@@ -6,9 +6,11 @@ const bcrypt = require('bcrypt');
 const jwtUtilities = require('./jwtUtilities');
 const SALTROUNDS = 12;
 
-var db;
-var blogposts;
-var users;
+var db, blogposts, users, projects;
+
+//////////////
+/// User
+//////////////
 
 // Sign in to the website using a username and password
 exports.signIn = (req, res) => {
@@ -85,6 +87,43 @@ exports.getUser = (id, res) => {
     res.status(200).send(user);
   });
 };
+
+//////////////
+/// Projects
+//////////////
+
+exports.getProjects = (req, res) => {
+  projects
+    .find()
+    .toArray()
+    .then(projects => {
+      console.log('Sending projects to client');
+      res.status(200).send(projects);
+    })
+    .catch(e => {
+      console.log('ERROR' + e);
+      res.status(404).send(e);
+    });
+};
+
+exports.getProject = (req, res) => {
+  const { localURL } = req.query;
+  projects
+    .findOne({ localURL })
+    .then(project => {
+      // Return it as an array with one element
+      if (!project) res.status(200).send([]);
+      // Send back an empty array instead of null
+      else res.status(200).send([project]);
+    })
+    .catch(e => {
+      res.status(404).send(e);
+    });
+};
+
+//////////////
+/// Blog posts
+//////////////
 
 exports.addBlogpost = (req, res) => {
   var obj = req.body;
@@ -209,6 +248,7 @@ MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
   db = client.db('portfolio');
   blogposts = db.collection('blogposts');
   users = db.collection('users');
+  projects = db.collection('projects');
 
   console.log(
     `Connection to database established: ${process.env.NODE_ENV === 'development' ? 'Local server' : 'Mongo Atlas'}`

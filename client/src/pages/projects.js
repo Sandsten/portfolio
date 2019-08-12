@@ -1,18 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import ProjectCard from '../components/ProjectCard';
-import { BASE02, BASE01, BASE3, BASE2, BASE1, BASE0 } from '../constants/colors';
-import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 
-import { PROJECTS } from '../Data';
+import { fetchProjects } from '../redux/actions/projectsActions';
+
+import { BASE02, BASE3 } from '../constants/colors';
+import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 
 const StyledProjects = styled.div`
   grid-area: main;
   padding: 20px 10px 0px 10px;
   overflow: scroll;
 
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
@@ -35,10 +37,20 @@ export const Spacer = styled.div`
 
 const projects = () => {
   const theme = useSelector(state => state.appSettings.theme);
+  const projects = useSelector(state => state.projects.projects);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Update to not fetch if we already have all the project in our redux store state
+    dispatch(fetchProjects());
+  }, []);
+
   if (!theme) return null;
+  if (!projects) return <StyledProjects theme={theme}>Loading projects...</StyledProjects>;
+
   return (
     <StyledProjects theme={theme}>
-      {PROJECTS.map(project => {
+      {projects.map(project => {
         return <ProjectCard theme={theme} key={project.title} data={project} />;
       })}
       <Spacer />

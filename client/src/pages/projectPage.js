@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
 import styled from 'styled-components';
 
-import { PROJECTS } from '../Data';
+import { fetchProject } from '../redux/actions/projectsActions';
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import { Wrapper } from './homePage';
 import { BASE1, BASE03, BASE02, BASE3, BLUE } from '../constants/colors';
@@ -35,20 +35,24 @@ const Link = styled.a`
 const Description = styled.div``;
 
 const projectPage = props => {
-  const [project, setProject] = useState(null);
+  // const [project, setProject] = useState(null);
   const theme = useSelector(state => state.appSettings.theme);
+  const project = useSelector(state => {
+    if (!state.projects.projects) return null;
+    // Find the correct project in the redux state
+    return state.projects.projects.map(project => (project.localURL === props.match.params.name ? project : false))[0];
+  });
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setProject(
-      PROJECTS.find(project => {
-        return project.localURL === props.match.params.name;
-      })
-    );
-    return () => {};
-  });
+    // If project wasn't in the redux state, fetch from database
+    if (!project) {
+      dispatch(fetchProject(props.match.params.name));
+    }
+  }, []);
 
   if (project === undefined) return <Redirect to="/projects" />;
-  if (!project) return 'Loading...';
+  if (!project) return <StyledProjectPage style={{ height: '100vh' }}>'Loading...'</StyledProjectPage>;
   if (!theme) return null;
 
   const website = project.website ? (
