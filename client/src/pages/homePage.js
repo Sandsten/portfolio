@@ -1,10 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import { BASE03, BASE02, CYAN, RED, BLUE, BASE3, BASE1, BASE2 } from '../constants/colors';
 import { Spacer } from './projects';
+
+import '../CSSTransitions/transitions.scss';
 
 export const Wrapper = styled.div`
   min-height: 100vh;
@@ -45,55 +48,69 @@ const Contact = styled.div`
   }
 `;
 
+const CONTENT = [
+  <p>
+    Hello and welcome to my website. My name is Staffan Sandberg and I'm currently in the final stretch of my studies at{' '}
+    <StyledA href="https://www.kth.se/"> Kungliga Tekniska Högskolan</StyledA> in the master's programme{' '}
+    <StyledA href="https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765">
+      Interactive media technology
+    </StyledA>
+    .
+  </p>,
+  <p>
+    My bachelor was in{' '}
+    <StyledA href="https://www.kth.se/student/kurser/program/TSVDK/20122/mal">
+      Simulation Technology and Virtual Design
+    </StyledA>{' '}
+    also at KTH. Which sparked my interest for programming and graphics.
+  </p>,
+  <p>
+    My main interests are web development, game design and computer graphics. I also enjoy tinkering with servers,
+    networks and general linux based operating systems.
+  </p>,
+  <p>In my free time I enjoy playing guitar, video games, reading books and learning new things in general.</p>,
+  <p>
+    On this site you can see different projects that I've been a part of and blog posts about things I've learnt and
+    want to share.
+  </p>,
+  <p>
+    {' '}
+    I'm always open to new opportunities.
+    <br />
+    You can find and contact me here:
+  </p>,
+  <Contact>
+    <StyledA href="https://www.linkedin.com/in/stsa/">Linkedin</StyledA>
+    <StyledA href="https://github.com/Sandsten">Github</StyledA>
+    <StyledA target="_blank" href="mailto:stsand@kth.se" rel="noopener noreferrer">
+      Email
+    </StyledA>
+  </Contact>
+];
+
 const homePage = () => {
   const theme = useSelector(state => state.appSettings.theme);
+  const staggerDelay = 0.03;
+
   if (!theme) return null;
+
   return (
     <Wrapper theme={theme}>
       <StyledProjectPage>
-        <p>
-          Hello and welcome to my website. My name is Staffan Sandberg and I'm currently in the final stretch of my
-          studies at <StyledA href="https://www.kth.se/"> Kungliga Tekniska Högskolan</StyledA> in the master's
-          programme{' '}
-          <StyledA href="https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765">
-            Interactive media technology
-          </StyledA>
-          .
-        </p>
-        <p>
-          My bachelor was in{' '}
-          <StyledA href="https://www.kth.se/student/kurser/program/TSVDK/20122/mal">
-            Simulation Technology and Virtual Design
-          </StyledA>{' '}
-          also at KTH. Which sparked my interest for programming and graphics.
-        </p>
-        <p>
-          My main interests are web development, game design and computer graphics. I also enjoy tinkering with servers,
-          networks and general linux based operating systems.
-        </p>
-        <p>In my free time I enjoy playing guitar, video games, reading books and learning new things in general.</p>
-        {/* <p>
-          I created this website from scratch using the following: <br />
-          Front-end: React, CSS Grid and Webpack. <br />
-          Back-end: Node.js, Express, MongoDB and Heroku.
-        </p> */}
-        <p>
-          On this site you can see different projects that I've been a part of and blog posts about things I've learnt
-          and want to share.
-        </p>
-        <p>
-          {' '}
-          I'm always open to new opportunities.
-          <br />
-          You can find and contact me here:
-        </p>
-        <Contact>
-          <StyledA href="https://www.linkedin.com/in/stsa/">Linkedin</StyledA>
-          <StyledA href="https://github.com/Sandsten">Github</StyledA>
-          <StyledA target="_blank" href="mailto:stsand@kth.se" rel="noopener noreferrer">
-            Email
-          </StyledA>
-        </Contact>
+        {CONTENT.map((paragraph, i) => {
+          return (
+            <CSSTransition
+              key={i}
+              in={true}
+              appear={true}
+              classNames="fade"
+              timeout={500}
+              style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
+            >
+              {paragraph}
+            </CSSTransition>
+          );
+        })}
         <Spacer />
       </StyledProjectPage>
     </Wrapper>

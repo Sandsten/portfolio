@@ -40,12 +40,14 @@ const projectPage = props => {
   const project = useSelector(state => {
     if (!state.projects.projects) return null;
     // Find the correct project in the redux state
-    return state.projects.projects.map(project => (project.localURL === props.match.params.name ? project : false))[0];
+    return state.projects.projects.map(project => (project.localURL === props.match.params.name ? project : null))[0];
   });
   const dispatch = useDispatch();
 
   useEffect(() => {
     // If project wasn't in the redux state, fetch from database
+    //TODO: Make the check wether or not the project exist in state here instead of in the useSelector function
+    console.log(project);
     if (!project) {
       dispatch(fetchProject(props.match.params.name));
     }

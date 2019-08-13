@@ -41,8 +41,10 @@ exports.signInWithToken = (req, res) => {
   var token = jwtUtilities.checkToken(req);
 
   if (token) {
+    console.log('Signed in with token successfully');
     res.status(200).send(token);
   } else {
+    console.log('Signin in with token failed, no token provided?');
     res.status(404).send('No token for signing in');
   }
 };

@@ -25,11 +25,9 @@ exports.checkToken = req => {
 
   try {
     var decoded = jwt.decode(token, SECRET);
-    console.log('The token is accepted!');
     return decoded;
   } catch (error) {
     // If decoding of JWT fails. return unauthorized and don't continue by calling return instead of next()
-    console.log('Invalid token!');
     return false;
   }
 };

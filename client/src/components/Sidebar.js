@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import { BASE00, BASE2, BASE03, ORANGE, BASE0, BASE1, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
+import { BASE2, BASE03, ORANGE, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
 import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
 
