@@ -23,6 +23,7 @@ exports.signIn = (req, res) => {
     bcrypt.compare(password, user.password, (err, correctPassword) => {
       if (err) throw err;
       if (correctPassword) {
+        console.log("Correct password, admin signed in - sending back JWT");
         var token = jwtUtilities.createJWT(user);
         res
           .cookie('access-card', token, { httpOnly: true })
@@ -51,6 +52,9 @@ exports.signInWithToken = (req, res) => {
 
 exports.createAccount = (req, res) => {
   const { username, password } = req.body;
+
+  console.log("CREATE ACCOUNT");
+  console.log(username)
 
   users
     .find()
