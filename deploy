@@ -5,6 +5,7 @@
 # Avoids a bunch of headaches (very nice)
 
 (cd client; npm run build) # Build our frontent
+printf "\033[0;32mBuild done\033[0m deploying to Heroku"
 # rm -r  won't deleting hidden files, so our .git folder is safe
 rm -r ../heroku-files/* # To avoid keeping files that aren't used anymore
 cp -r server/* ../heroku-files  # Copy over our server content with it's build/ folder
