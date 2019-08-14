@@ -18,6 +18,7 @@ const StyledProjectPage = styled.div`
   grid-auto-columns: auto;
   background-color: ${p => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
   color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
+  word-break: break-word;
 
   @media (min-width: ${DESKTOP_XS}) {
     grid-row-gap: 20px;
