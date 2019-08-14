@@ -41,13 +41,14 @@ export const Spacer = styled.div`
 const projects = () => {
   const theme = useSelector(state => state.appSettings.theme);
   const projects = useSelector(state => state.projects.projects);
+  const projectsFetched = useSelector(state => state.projects.fetched);
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const dispatch = useDispatch();
   const staggerDelay = 0.01;
 
   useEffect(() => {
     // Update to not fetch if we already have all the project in our redux store state
-    dispatch(fetchProjects());
+    if (!projectsFetched) dispatch(fetchProjects());
   }, []);
 
   if (!theme) return null;

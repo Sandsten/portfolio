@@ -1,5 +1,6 @@
 const DEFAULT = {
-  projects: null
+  projects: null,
+  fetched: false
 };
 
 // Array of projects. Use this to show individual projects as well as for now.
@@ -9,6 +10,7 @@ const reducer = (state = DEFAULT, action) => {
       return {
         ...state,
         projects: action.payload,
+        fetched: true,
         error: null
       };
     case 'PROJECTS_FETCHED_FAILED':

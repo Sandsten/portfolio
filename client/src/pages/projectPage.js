@@ -4,7 +4,7 @@ import { Redirect } from 'react-router';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
-import { fetchProject } from '../redux/actions/projectsActions';
+import { fetchProjects } from '../redux/actions/projectsActions';
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import { Wrapper } from './homePage';
 import { BASE1, BASE03, BASE02, BASE3, BLUE } from '../constants/colors';
@@ -43,18 +43,22 @@ const projectPage = props => {
   const project = useSelector(state => {
     if (!state.projects.projects) return null;
     // Find the correct project in the redux state
-    return state.projects.projects.map(project => (project.localURL === props.match.params.name ? project : null))[0];
+    return state.projects.projects.find(project => {
+      return project.localURL === props.match.params.name;
+    });
   });
+  const projectsFetched = useSelector(state => state.projects.fetched);
   const dispatch = useDispatch();
   const staggerDelay = 0.02;
 
   useEffect(() => {
     // If project wasn't in the redux state, fetch from database
-    //TODO: Make the check wether or not the project exist in state here instead of in the useSelector function
-    console.log(project);
-    if (!project) {
-      dispatch(fetchProject(props.match.params.name));
-    }
+    if (!projectsFetched) dispatch(fetchProjects());
+
+    //TODO: Opportunity for slight optimization, if refreshing on project page, only fetch that specific project
+    // if (!project) {
+    //   dispatch(fetchProject(props.match.params.name));
+    // }
   }, []);
 
   if (project === undefined) return <Redirect to="/projects" />;
