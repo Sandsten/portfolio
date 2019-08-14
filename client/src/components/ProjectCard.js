@@ -66,7 +66,7 @@ const Tags = styled.div`
   margin: 10px;
 `;
 
-const ProjectCard = ({ data, theme }) => {
+const ProjectCard = ({ data, theme, style }) => {
   var thumbnail;
   try {
     thumbnail = require(`../img/bg/${data.bgUrl}`);
@@ -75,7 +75,7 @@ const ProjectCard = ({ data, theme }) => {
   }
 
   return (
-    <StyledProjectCard theme={theme} to={'/projects/' + data.localURL}>
+    <StyledProjectCard style={style} theme={theme} to={'/projects/' + data.localURL}>
       <Title>
         <b>{data.title}</b>
       </Title>

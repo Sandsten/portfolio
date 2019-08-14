@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 
 import { fetchProject } from '../redux/actions/projectsActions';
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import { Wrapper } from './homePage';
 import { BASE1, BASE03, BASE02, BASE3, BLUE } from '../constants/colors';
+
+import '../CSSTransitions/transitions.scss';
 
 const StyledProjectPage = styled.div`
   display: grid;
@@ -43,6 +46,7 @@ const projectPage = props => {
     return state.projects.projects.map(project => (project.localURL === props.match.params.name ? project : null))[0];
   });
   const dispatch = useDispatch();
+  const staggerDelay = 0.02;
 
   useEffect(() => {
     // If project wasn't in the redux state, fetch from database
@@ -69,18 +73,36 @@ const projectPage = props => {
     </span>
   ) : null;
 
+  const CONTENT = [
+    <ProjectTitle>{project.title}</ProjectTitle>,
+    <div>{project.date}</div>,
+    <div>{project.tools.join(', ')}</div>,
+    <div>Project group size: {project.groupSize}</div>,
+    <Description>{project.description}</Description>,
+    website,
+    github
+  ];
+
   return (
     // Prevent StyledProjectPage from being a direct sibling to the sidebar
     // otherwise its height will match it automatically which we don't want
     <Wrapper theme={theme}>
       <StyledProjectPage theme={theme}>
-        <ProjectTitle>{project.title}</ProjectTitle>
-        <div>{project.date}</div>
-        <div>{project.tools.join(', ')}</div>
-        <div>Project group size: {project.groupSize}</div>
-        <Description>{project.description}</Description>
-        {website}
-        {github}
+        {CONTENT.map((text, i) => {
+          if (!text) return null; // Prevent github/website to try and render with cssTransition if they are null
+          return (
+            <CSSTransition
+              key={i}
+              in={true}
+              appear={true}
+              classNames="fade"
+              timeout={500}
+              style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
+            >
+              {text}
+            </CSSTransition>
+          );
+        })}
       </StyledProjectPage>
     </Wrapper>
   );

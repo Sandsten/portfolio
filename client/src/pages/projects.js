@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 
 import ProjectCard from '../components/ProjectCard';
 
@@ -8,6 +9,8 @@ import { fetchProjects } from '../redux/actions/projectsActions';
 
 import { BASE02, BASE3 } from '../constants/colors';
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
+
+import '../CSSTransitions/transitions.scss';
 
 const StyledProjects = styled.div`
   grid-area: main;
@@ -38,7 +41,9 @@ export const Spacer = styled.div`
 const projects = () => {
   const theme = useSelector(state => state.appSettings.theme);
   const projects = useSelector(state => state.projects.projects);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
   const dispatch = useDispatch();
+  const staggerDelay = 0.01;
 
   useEffect(() => {
     // Update to not fetch if we already have all the project in our redux store state
@@ -50,8 +55,13 @@ const projects = () => {
 
   return (
     <StyledProjects theme={theme}>
-      {projects.map(project => {
-        return <ProjectCard theme={theme} key={project.title} data={project} />;
+      {projects.map((project, i) => {
+        return (
+          <CSSTransition key={project._id} in={shouldAnimate} appear={shouldAnimate} classNames="fade" timeout={500}>
+            {/* transition delay has to be passed down to the component for it to work */}
+            <ProjectCard theme={theme} data={project} style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }} />
+          </CSSTransition>
+        );
       })}
       <Spacer />
     </StyledProjects>

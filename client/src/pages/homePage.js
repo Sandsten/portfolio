@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -90,7 +90,8 @@ const CONTENT = [
 
 const homePage = () => {
   const theme = useSelector(state => state.appSettings.theme);
-  const staggerDelay = 0.03;
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+  const staggerDelay = 0.02;
 
   if (!theme) return null;
 
@@ -101,8 +102,8 @@ const homePage = () => {
           return (
             <CSSTransition
               key={i}
-              in={true}
-              appear={true}
+              in={shouldAnimate}
+              appear={shouldAnimate}
               classNames="fade"
               timeout={500}
               style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
