@@ -70,6 +70,7 @@ const testCookie = () => {
 const Admin = () => {
   const isSignedIn = useSelector(state => state.user.signedIn);
   const projects = useSelector(state => state.projects);
+  const updatingProjects = useSelector(state => state.projects.updating);
   const [dragList, setDragList] = useState(null);
   const [draggedProject, setDraggedProject] = useState(null);
   const dispatch = useDispatch();
@@ -88,11 +89,9 @@ const Admin = () => {
   });
 
   const saveChanges = () => {
-    //TODO: Call an action for updating the order of the projects
-    // console.log(dragList);
-    var temp = [...dragList];
+    // var temp = [...dragList];
 
-    dispatch(updateProjectOrder(temp));
+    dispatch(updateProjectOrder(dragList));
   };
 
   const dragStartHandler = ev => {
@@ -132,7 +131,8 @@ const Admin = () => {
   if (isSignedIn === null) return <div style={{ margin: "10px" }}>Loading...</div>;
 
   // If you are signed in and projects haven't been fetched yet
-  if (isSignedIn && !dragList) return <div style={{ margin: "10px" }}>Loading projects data...</div>;
+  if (isSignedIn && !dragList)
+    return <div style={{ margin: "10px" }}>Loading projects data...</div>;
 
   const notSignedInView = (
     <>
@@ -172,7 +172,9 @@ const Admin = () => {
           </DraggableProject>
         );
       })}
-      <button onClick={() => saveChanges()}>Save</button>
+      <button onClick={() => saveChanges()} disabled={updatingProjects}>
+        Save
+      </button>
     </DraggableList>
   );
 

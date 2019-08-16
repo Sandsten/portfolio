@@ -25,6 +25,7 @@ export const fetchProject = localURL => dispatch => {
 };
 
 export const updateProjectOrder = projects => dispatch => {
+  dispatch({ type: "PROJECTS_UPDATING" });
   axios
     .put(`${URL}/api/update-project-order`, { projects }, { withCredentials: true })
     .then(res => {

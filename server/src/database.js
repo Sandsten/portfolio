@@ -130,7 +130,7 @@ exports.getProject = (req, res) => {
 
 exports.updateProjectOrder = (req, res) => {
   var promises = [];
-  //TODO: go through all projects and update their "order" variale with their index in the array
+
   req.body.projects.forEach((project, i) => {
     promises.push(
       projects
@@ -152,7 +152,7 @@ exports.updateProjectOrder = (req, res) => {
       res.status(200).send("All projects updated");
     })
     .catch(() => {
-      console.log("Something failed");
+      console.log("Failed to update projects");
       res.status(404).send("Failed to update projects");
     });
 };
