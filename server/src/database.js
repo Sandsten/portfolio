@@ -1,9 +1,9 @@
-const mongodb = require('mongodb');
+const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 const ObjectId = mongodb.ObjectId;
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
-const jwtUtilities = require('./jwtUtilities');
+const jwtUtilities = require("./jwtUtilities");
 const SALTROUNDS = 12;
 
 var db, blogposts, users, projects;
@@ -18,7 +18,7 @@ exports.signIn = (req, res) => {
 
   users.findOne({ username }).then(user => {
     if (user === null) {
-      res.status(404).send('User not found');
+      res.status(404).send("User not found");
     }
     bcrypt.compare(password, user.password, (err, correctPassword) => {
       if (err) throw err;
@@ -26,12 +26,12 @@ exports.signIn = (req, res) => {
         console.log("Correct password, admin signed in - sending back JWT");
         var token = jwtUtilities.createJWT(user);
         res
-          .cookie('access-card', token, { httpOnly: true })
+          .cookie("access-card", token, { httpOnly: true })
           .status(200)
-          .send('Credentials accepted, welcome!');
+          .send("Credentials accepted, welcome!");
         // res.status(200).send('Authenticated!');
       } else {
-        res.status(401).send('Invalid password!');
+        res.status(401).send("Invalid password!");
       }
     });
   });
@@ -42,11 +42,11 @@ exports.signInWithToken = (req, res) => {
   var token = jwtUtilities.checkToken(req);
 
   if (token) {
-    console.log('Signed in with token successfully');
+    console.log("Signed in with token successfully");
     res.status(200).send(token);
   } else {
-    console.log('Signin in with token failed, no token provided?');
-    res.status(404).send('No token for signing in');
+    console.log("Signin in with token failed, no token provided?");
+    res.status(404).send("No token for signing in");
   }
 };
 
@@ -54,33 +54,33 @@ exports.createAccount = (req, res) => {
   const { username, password } = req.body;
 
   console.log("CREATE ACCOUNT");
-  console.log(username)
+  console.log(username);
 
   users
     .find()
     .count()
     .then(result => {
       if (result > 0) {
-        console.log('There is already a user in the database. Maximum 1');
-        res.status(404).send('There is already a user managing this site');
+        console.log("There is already a user in the database. Maximum 1");
+        res.status(404).send("There is already a user managing this site");
       } else {
-        console.log('Good to go, creating account');
+        console.log("Good to go, creating account");
         // Hash password
         bcrypt.genSalt(SALTROUNDS, (err, salt) => {
-          console.log('SALT GENERATED');
+          console.log("SALT GENERATED");
           bcrypt.hash(password, salt, (err, hash) => {
             // Create user
-            console.log('Hashing completed');
+            console.log("Hashing completed");
             users
               .insertOne({
                 username,
                 password: hash
               })
               .then(result => {
-                res.status(200).send('User created!');
+                res.status(200).send("User created!");
               })
               .catch(error => {
-                res.status(202).send('User creation failed');
+                res.status(202).send("User creation failed");
               });
           });
         });
@@ -101,13 +101,14 @@ exports.getUser = (id, res) => {
 exports.getProjects = (req, res) => {
   projects
     .find()
+    .sort({ order: 1 })
     .toArray()
     .then(projects => {
-      console.log('Sending projects to client');
+      console.log("Sending projects to client");
       res.status(200).send(projects);
     })
     .catch(e => {
-      console.log('ERROR' + e);
+      console.log("ERROR" + e);
       res.status(404).send(e);
     });
 };
@@ -124,6 +125,35 @@ exports.getProject = (req, res) => {
     })
     .catch(e => {
       res.status(404).send(e);
+    });
+};
+
+exports.updateProjectOrder = (req, res) => {
+  var promises = [];
+  //TODO: go through all projects and update their "order" variale with their index in the array
+  req.body.projects.forEach((project, i) => {
+    promises.push(
+      projects
+        .updateOne(
+          {
+            _id: ObjectId(project._id)
+          },
+          {
+            $set: { order: i }
+          }
+        )
+        .then(project => {})
+    );
+  });
+
+  Promise.all(promises)
+    .then(() => {
+      console.log("All projects updated");
+      res.status(200).send("All projects updated");
+    })
+    .catch(() => {
+      console.log("Something failed");
+      res.status(404).send("Failed to update projects");
     });
 };
 
@@ -152,7 +182,7 @@ exports.removeBlogpost = (req, res) => {
   var id = body.id;
 
   if (!id) {
-    res.status(400).send('no id provided when trying to remove blogpost');
+    res.status(400).send("no id provided when trying to remove blogpost");
     return;
   }
 
@@ -160,7 +190,7 @@ exports.removeBlogpost = (req, res) => {
     .deleteOne({ _id: ObjectId(id) })
     .then(result => {
       if (result.deletedCount == 0) {
-        res.status(410).send('blogpost already deleted');
+        res.status(410).send("blogpost already deleted");
         return;
       }
       res.status(200).send(result);
@@ -187,7 +217,7 @@ exports.updateBlogpost = (req, res) => {
     .then(result => {
       console.log(result);
       if (result.matchedCount == 0) {
-        res.status(410).send('no blogpost with that id found');
+        res.status(410).send("no blogpost with that id found");
         return;
       }
       res.status(200).send(result);
@@ -202,7 +232,7 @@ exports.getBlogposts = (req, res) => {
     .find() // No filters mean all blogposts. This returns a cursor
     .toArray() // Returns an array with all the documents for the cursor
     .then(result => {
-      console.log('Sending blogposts');
+      console.log("Sending blogposts");
       res.status(200).send(result);
     })
     .catch(error => {
@@ -214,7 +244,7 @@ exports.getBlogpost = (req, res) => {
   var id = req.body.id;
 
   if (!id) {
-    res.status(400).send('no id provided when trying to get blogpost');
+    res.status(400).send("no id provided when trying to get blogpost");
     return;
   }
 
@@ -233,17 +263,17 @@ exports.purgeBlogposts = (req, res) => {
   blogposts
     .remove()
     .then(result => {
-      console.log('PURGING!!!');
-      res.status(200).send('Purge completed');
+      console.log("PURGING!!!");
+      res.status(200).send("Purge completed");
     })
     .catch(e => {
-      res.status(404).send('Purge Failed');
+      res.status(404).send("Purge Failed");
     });
 };
 
 var DATABASE_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'mongodb://localhost:27017/portfolio'
+  process.env.NODE_ENV === "development"
+    ? "mongodb://localhost:27017/portfolio"
     : `mongodb+srv://${process.env.DB_USER}:${
         process.env.DB_PASS
       }@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
@@ -251,12 +281,14 @@ var DATABASE_URL =
 MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
   if (err) throw err;
 
-  db = client.db('portfolio');
-  blogposts = db.collection('blogposts');
-  users = db.collection('users');
-  projects = db.collection('projects');
+  db = client.db("portfolio");
+  blogposts = db.collection("blogposts");
+  users = db.collection("users");
+  projects = db.collection("projects");
 
   console.log(
-    `Connection to database established: ${process.env.NODE_ENV === 'development' ? 'Local server' : 'Mongo Atlas'}`
+    `Connection to database established: ${
+      process.env.NODE_ENV === "development" ? "Local server" : "Mongo Atlas"
+    }`
   );
 });

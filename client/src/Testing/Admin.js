@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 
-import { fetchProjects } from "../redux/actions/projectsActions";
+import { fetchProjects, updateProjectOrder } from "../redux/actions/projectsActions";
 
 const DraggableList = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 10px;
+  /* grid-row-gap: 10px; */
   width: 50vh;
 `;
 
@@ -16,14 +16,14 @@ const DraggableProject = styled.div`
   padding: 10px;
   border: 1px black solid;
   border-radius: 2px;
+  margin-bottom: 5px;
 
   :hover {
     cursor: move;
   }
 `;
 
-const URL =
-  process.env.NODE_ENV === "development" ? "http://localhost:3001" : "";
+const URL = process.env.NODE_ENV === "development" ? "http://localhost:3001" : "";
 
 const createAccount = event => {
   event.preventDefault();
@@ -85,30 +85,38 @@ const Admin = () => {
     if (projects.fetched && dragList === null) {
       setDragList(projects.projects);
     }
-    // console.log(dragList);
   });
+
+  const saveChanges = () => {
+    //TODO: Call an action for updating the order of the projects
+    // console.log(dragList);
+    var temp = [...dragList];
+
+    dispatch(updateProjectOrder(temp));
+  };
 
   const dragStartHandler = ev => {
     // Store the dragged item in state
     var draggedItemIndex = ev.target.id;
     setDraggedProject(dragList[draggedItemIndex]);
 
-    // Store the project name in the dragged item
-    // This is used to filter out the project from its previous position
-    ev.dataTransfer.setData("project/title", ev.target.innerText);
+    ev.dataTransfer.setData("required", draggedItemIndex);
 
+    // ev.dataTransfer.effectAllowed = "move";
     console.log("Dragging has started!");
   };
 
   const dragOverHandler = ev => {
-    var dragItemTitle = ev.dataTransfer.getData("project/title");
-    var dragOverIndex = ev.target.id; // Index of project we are hovering over
+    ev.preventDefault(); // This is needed in order to stop the animation when droping an item
+    ev.dataTransfer.dropEffect = "move";
+    // Index of project we are hovering over
+    var dragOverIndex = ev.target.id;
 
     // Copy of array, don't manipulate state variable directly
     var newList = [...dragList];
 
     // Delete dragged project from the list, so it only appear once
-    newList = newList.filter(project => project.title !== dragItemTitle);
+    newList = newList.filter(project => project.title !== draggedProject.title);
 
     // Insert dragged project at the position we are hovering over
     newList.splice(dragOverIndex, 0, draggedProject);
@@ -116,14 +124,15 @@ const Admin = () => {
     setDragList(newList);
   };
 
-  //TODO: change to use fetched instead, so this isn't shown when we are signed out too
-  if (isSignedIn === null)
-    return <div style={{ margin: "10px" }}>Loading...</div>;
+  const onDragEndHandler = ev => {
+    ev.dataTransfer.dropEffect = "none";
+    setDraggedProject(null);
+  };
 
-  //TODO: fetch project data if it hasn't been done yet. "useEffect"
+  if (isSignedIn === null) return <div style={{ margin: "10px" }}>Loading...</div>;
+
   // If you are signed in and projects haven't been fetched yet
-  if (isSignedIn && !dragList)
-    return <div style={{ margin: "10px" }}>Loading projects data...</div>;
+  if (isSignedIn && !dragList) return <div style={{ margin: "10px" }}>Loading projects data...</div>;
 
   const notSignedInView = (
     <>
@@ -150,8 +159,6 @@ const Admin = () => {
   const signedInView = (
     <DraggableList>
       {dragList.map((project, i) => {
-        if (!project)
-          return <DraggableProject key={i}>UNDEFINED </DraggableProject>;
         return (
           <DraggableProject
             id={i} // use this as index
@@ -159,11 +166,13 @@ const Admin = () => {
             draggable
             onDragStart={dragStartHandler}
             onDragOver={dragOverHandler}
+            onDragEnd={onDragEndHandler}
           >
             {project.title}
           </DraggableProject>
         );
       })}
+      <button onClick={() => saveChanges()}>Save</button>
     </DraggableList>
   );
 
@@ -176,14 +185,3 @@ const Admin = () => {
 };
 
 export default Admin;
-
-/*
-		STATES
-		signed in is null - we haven't checked yet
-		signed in is true - we are signed in
-		signed in is false - we are signed out
-
-		These should only be checked if we are signed in
-		projects fetched is false - projects havent been fetched yet
-		projects fetched is true - projects have been fetched
-	*/

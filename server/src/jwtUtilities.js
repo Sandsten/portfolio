@@ -1,17 +1,17 @@
-const moment = require('moment');
-const jwt = require('jwt-simple');
+const moment = require("moment");
+const jwt = require("jwt-simple");
 
 const SECRET = process.env.JWT_SECRET;
 
 // Middleware for checking if a valid JWT was passed with the api request
 exports.authorizeAPICall = (req, res, next) => {
   // The token will be sent through a cookie
-  var tokenData = this.decodeToken(req);
+  var tokenData = this.checkToken(req);
 
   if (tokenData) {
     req.user = tokenData;
   } else {
-    res.status(404).send('Unauthorized');
+    res.status(404).send("Unauthorized");
     return false;
   }
 
@@ -21,7 +21,7 @@ exports.authorizeAPICall = (req, res, next) => {
 // Checks if a JWT is present in the request
 // Returns the decoded data if it exists, otherwise false
 exports.checkToken = req => {
-  var token = req.cookies['access-card'];
+  var token = req.cookies["access-card"];
 
   try {
     var decoded = jwt.decode(token, SECRET);
@@ -36,7 +36,7 @@ exports.checkToken = req => {
 exports.createJWT = user => {
   // Create JWT here and send it back to the user!
   var expires = moment()
-    .add(7, 'days')
+    .add(7, "days")
     .valueOf();
 
   var token = jwt.encode(
