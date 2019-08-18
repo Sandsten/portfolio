@@ -4,9 +4,11 @@ import { Redirect } from 'react-router';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
-import { fetchProjects } from '../redux/actions/projectsActions';
-import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import { Wrapper } from './homePage';
+
+import { fetchProjects } from '../redux/actions/projectsActions';
+
+import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import { BASE1, BASE03, BASE02, BASE3, BLUE } from '../constants/colors';
 
 import '../CSSTransitions/transitions.scss';

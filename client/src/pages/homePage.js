@@ -1,24 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
-import { BASE03, BASE02, CYAN, RED, BLUE, BASE3, BASE1, BASE2 } from '../constants/colors';
+import { BLUE } from '../constants/colors';
 import { Spacer } from './projects';
 
 import '../CSSTransitions/transitions.scss';
 
-export const Wrapper = styled.div`
-  min-height: 100vh;
-  background-color: ${p => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
-  color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
-`;
-
 const StyledProjectPage = styled.div`
-  display: grid;
+  display: block;
+  min-height: 100vh;
   padding: 0 20px 0 20px;
-  grid-auto-columns: auto;
   font-size: 1em;
 
   @media (min-width: ${DESKTOP_XS}) {
@@ -89,32 +82,27 @@ const CONTENT = [
 ];
 
 const homePage = () => {
-  const theme = useSelector(state => state.appSettings.theme);
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const staggerDelay = 0.02;
 
-  if (!theme) return null;
-
   return (
-    <Wrapper theme={theme}>
-      <StyledProjectPage>
-        {CONTENT.map((paragraph, i) => {
-          return (
-            <CSSTransition
-              key={i}
-              in={shouldAnimate}
-              appear={shouldAnimate}
-              classNames="fade"
-              timeout={500}
-              style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
-            >
-              {paragraph}
-            </CSSTransition>
-          );
-        })}
-        <Spacer />
-      </StyledProjectPage>
-    </Wrapper>
+    <StyledProjectPage>
+      {CONTENT.map((paragraph, i) => {
+        return (
+          <CSSTransition
+            key={i}
+            in={shouldAnimate}
+            appear={shouldAnimate}
+            classNames="fade"
+            timeout={500}
+            style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
+          >
+            {paragraph}
+          </CSSTransition>
+        );
+      })}
+      <Spacer />
+    </StyledProjectPage>
   );
 };
 

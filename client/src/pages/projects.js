@@ -13,17 +13,14 @@ import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import '../CSSTransitions/transitions.scss';
 
 const StyledProjects = styled.div`
-  grid-area: main;
-  padding: 20px 10px 0px 10px;
-  overflow: scroll;
-
-  height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
   grid-column-gap: 30px;
 
-  background-color: ${p => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
+  height: 100vh;
+  padding: 20px 10px 0px 10px;
+  overflow: scroll;
 
   @media (min-width: ${DESKTOP_XS}) {
     padding: 20px 20px 0px 20px;
@@ -44,7 +41,7 @@ const projects = () => {
   const projectsFetched = useSelector(state => state.projects.fetched);
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const dispatch = useDispatch();
-  const staggerDelay = 0.01;
+  const staggerDelay = 0.02;
 
   useEffect(() => {
     // Update to not fetch if we already have all the project in our redux store state
@@ -55,7 +52,7 @@ const projects = () => {
   if (!projects) return <StyledProjects theme={theme}>Loading projects...</StyledProjects>;
 
   return (
-    <StyledProjects theme={theme}>
+    <StyledProjects>
       {projects.map((project, i) => {
         return (
           <CSSTransition key={project._id} in={shouldAnimate} appear={shouldAnimate} classNames="fade" timeout={500}>

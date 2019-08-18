@@ -8,22 +8,22 @@ import { DESKTOP_XS } from '../constants/sizes';
 import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
 
 const StyledSidebar = styled.div`
-  grid-area: sidebar;
-  padding: 10px;
-  height: auto;
-  position: sticky; /*Important that the parent has the correct height for this to work properly*/
-  top: 0;
-  background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
-  z-index: 100;
-
   display: grid;
   grid-template-areas: 'name options' 'nav options';
   grid-template-columns: 1fr auto;
 
+  padding: 10px;
+  height: auto;
+  position: sticky; /*Important that the parent has the correct height for this to work properly*/
+  top: 0;
+  /* Maybe make this less saturated? */
+  background-color: ${p => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
+  z-index: 100;
+
   @media (min-width: ${DESKTOP_XS}) {
+    display: block;
     height: 100vh;
     padding: 20px;
-    display: block;
   }
 `;
 
@@ -57,7 +57,7 @@ const SidebarLink = styled(StyledLink)`
   ${props =>
     props.path === props.to &&
     css`
-      color: ${p => (p.theme === 'LIGHT' ? BLUE : BLUE)};
+      color: ${BLUE};
     `}
 
   @media (min-width: ${DESKTOP_XS}) {
@@ -136,18 +136,13 @@ const Sidebar = props => {
     <StyledSidebar theme={theme}>
       <Name>Staffan Sandberg</Name>
       <span>
-        <SidebarLink theme={theme} path={urlPath} to="/">
-          About
-        </SidebarLink>
-        <SidebarLink theme={theme} path={urlPath} to="/projects">
-          Projects
-        </SidebarLink>
-        <SidebarLink theme={theme} path={urlPath} to="/cv">
-          CV
-        </SidebarLink>
-        <SidebarLink theme={theme} path={urlPath} to="/blog">
-          Blog
-        </SidebarLink>
+        {[['/', 'About'], ['/projects', 'Projects'], ['/cv', 'CV'], ['/blog', 'Blog']].map(page => {
+          return (
+            <SidebarLink theme={theme} path={urlPath} to={page[0]}>
+              {page[1]}
+            </SidebarLink>
+          );
+        })}
       </span>
       <StyledThemeButton theme={theme} width="50" height="50" handleClick={handleThemeToggle} />
     </StyledSidebar>
