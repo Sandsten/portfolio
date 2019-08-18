@@ -138,7 +138,7 @@ const Sidebar = props => {
       <span>
         {[['/', 'About'], ['/projects', 'Projects'], ['/cv', 'CV'], ['/blog', 'Blog']].map(page => {
           return (
-            <SidebarLink theme={theme} path={urlPath} to={page[0]}>
+            <SidebarLink key={page[1]} theme={theme} path={urlPath} to={page[0]}>
               {page[1]}
             </SidebarLink>
           );

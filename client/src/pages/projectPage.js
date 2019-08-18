@@ -1,44 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
-import { Wrapper } from './homePage';
-
 import { fetchProjects } from '../redux/actions/projectsActions';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
-import { BASE1, BASE03, BASE02, BASE3, BLUE } from '../constants/colors';
+import { BLUE } from '../constants/colors';
 
 import '../CSSTransitions/transitions.scss';
 
 const StyledProjectPage = styled.div`
-  display: grid;
+  display: block;
   padding: 20px;
-  grid-row-gap: 10px;
-  grid-auto-columns: auto;
-  background-color: ${p => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
-  color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
   word-break: break-word;
+  min-height: 100vh;
 
   @media (min-width: ${DESKTOP_XS}) {
-    grid-row-gap: 20px;
     width: 70vw;
   }
 
   @media (min-width: ${DESKTOP_XL}) {
-    grid-row-gap: 20px;
     width: 50vw;
   }
 `;
 const ProjectTitle = styled.b`
-  font-size: 1.3em;
+  font-size: 1.4em;
 `;
 const Link = styled.a`
   color: ${p => (p.theme === 'LIGHT' ? '' : BLUE)};
 `;
-const Description = styled.div``;
 
 const projectPage = props => {
   // const [project, setProject] = useState(null);
@@ -69,23 +61,23 @@ const projectPage = props => {
   if (!theme) return null;
 
   const website = project.website ? (
-    <span>
+    <p>
       Website: <Link href={project.website}>{project.website}</Link>
-    </span>
+    </p>
   ) : null;
 
   const github = project.github ? (
-    <span>
+    <p>
       Github: <Link href={project.github}>{project.github}</Link>
-    </span>
+    </p>
   ) : null;
 
   const CONTENT = [
     <ProjectTitle>{project.title}</ProjectTitle>,
-    <div>{project.date}</div>,
-    <div>{project.tools.join(', ')}</div>,
-    <div>Project group size: {project.groupSize}</div>,
-    <Description>{project.description}</Description>,
+    <p>{project.date}</p>,
+    <p>{project.tools.join(', ')}</p>,
+    <p>Project group size: {project.groupSize}</p>,
+    <p>{project.description}</p>,
     website,
     github
   ];
@@ -93,25 +85,24 @@ const projectPage = props => {
   return (
     // Prevent StyledProjectPage from being a direct sibling to the sidebar
     // otherwise its height will match it automatically which we don't want
-    <Wrapper theme={theme}>
-      <StyledProjectPage theme={theme}>
-        {CONTENT.map((text, i) => {
-          if (!text) return null; // Prevent github/website to try and render with cssTransition if they are null
-          return (
-            <CSSTransition
-              key={i}
-              in={true}
-              appear={true}
-              classNames="fade"
-              timeout={500}
-              style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
-            >
-              {text}
-            </CSSTransition>
-          );
-        })}
-      </StyledProjectPage>
-    </Wrapper>
+    <StyledProjectPage theme={theme}>
+      {CONTENT.map((text, i) => {
+        if (!text) return null; // Prevent github/website to try and render with cssTransition if they are null
+        console.log(text);
+        return (
+          <CSSTransition
+            key={i}
+            in={true}
+            appear={true}
+            classNames="fade"
+            timeout={500}
+            style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
+          >
+            {text}
+          </CSSTransition>
+        );
+      })}
+    </StyledProjectPage>
   );
 };
 
