@@ -74,7 +74,7 @@ const threeShaders = () => {
       geometry = null;
       material = null;
     };
-  });
+  }, []); // Don't forget the last empty angled brackets! Otherwise this + cleanup will trigger on state change too.
 
   const start = () => {
     if (!frameId) {
