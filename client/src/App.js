@@ -7,7 +7,7 @@ import Sidebar from './components/Sidebar';
 // import TopBar from './components/TopBar';
 import HomePage from './pages/homePage';
 import APITest from './Admin/APITest';
-import CreateAccout from './Admin/Admin';
+import Admin from './Admin/Admin';
 import projects from './pages/projects';
 import projectPage from './pages/projectPage';
 import cv from './pages/cv';
@@ -58,7 +58,7 @@ const App = () => {
           {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
           <Route path="/" exact component={HomePage} />
           <Route path="/test" exact component={APITest} />
-          <Route path="/admin" component={CreateAccout} />
+          <Route path="/admin" component={Admin} />
           <Route path="/cv" component={cv} />
           <Route path="/projects/:name" component={projectPage} />
           <Route path="/projects" component={projects} />
