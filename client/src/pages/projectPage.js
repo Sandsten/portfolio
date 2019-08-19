@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
@@ -28,7 +29,10 @@ const StyledProjectPage = styled.div`
 const ProjectTitle = styled.b`
   font-size: 1.4em;
 `;
-const Link = styled.a`
+const StyledA = styled.a`
+  color: ${p => (p.theme === 'LIGHT' ? '' : BLUE)};
+`;
+const StyledLink = styled(Link)`
   color: ${p => (p.theme === 'LIGHT' ? '' : BLUE)};
 `;
 
@@ -57,18 +61,30 @@ const projectPage = props => {
   }, []);
 
   if (project === undefined) return <Redirect to="/projects" />;
-  if (!project) return <StyledProjectPage style={{ height: '100vh' }}>'Loading...'</StyledProjectPage>;
+  if (!project)
+    return (
+      <StyledProjectPage style={{ height: '100vh' }}>'Loading...'</StyledProjectPage>
+    );
   if (!theme) return null;
 
-  const website = project.website ? (
+  var website = project.website ? (
     <p>
-      Website: <Link href={project.website}>{project.website}</Link>
+      Website: <StyledA href={project.website}>{project.website}</StyledA>
     </p>
   ) : null;
 
+  website =
+    project.website === '/shaders' ? (
+      <p>
+        Website: <StyledLink to="/shaders">Shader</StyledLink>
+      </p>
+    ) : (
+      website
+    );
+
   const github = project.github ? (
     <p>
-      Github: <Link href={project.github}>{project.github}</Link>
+      Github: <StyledA href={project.github}>{project.github}</StyledA>
     </p>
   ) : null;
 
@@ -88,7 +104,6 @@ const projectPage = props => {
     <StyledProjectPage theme={theme}>
       {CONTENT.map((text, i) => {
         if (!text) return null; // Prevent github/website to try and render with cssTransition if they are null
-        console.log(text);
         return (
           <CSSTransition
             key={i}

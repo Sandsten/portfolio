@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
 // import TopBar from './components/TopBar';
 import HomePage from './pages/homePage';
-import APITest from './Testing/APITest';
-import CreateAccout from './Testing/Admin';
+import APITest from './Admin/APITest';
+import CreateAccout from './Admin/Admin';
 import projects from './pages/projects';
 import projectPage from './pages/projectPage';
 import cv from './pages/cv';
@@ -34,7 +34,7 @@ const MainContainer = styled.div`
 
   @media (min-width: ${DESKTOP_XS}) {
     display: grid;
-    /* grid-template-areas: 'sidebar main'; */
+    grid-template-areas: 'sidebar main';
     grid-template-columns: 250px 1fr;
   }
 `;

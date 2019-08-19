@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+import axios from "axios";
 
-import { fetchProjects, updateProjectOrder } from '../redux/actions/projectsActions';
+import { fetchProjects, updateProjectOrder } from "../redux/actions/projectsActions";
 
 const DraggableList = styled.div`
   display: grid;
@@ -23,7 +23,49 @@ const DraggableProject = styled.div`
   }
 `;
 
-const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '';
+const URL = process.env.NODE_ENV === "development" ? "http://localhost:3001" : "";
+
+const createAccount = event => {
+  event.preventDefault();
+  const username = event.target[0].value;
+  const password = event.target[1].value;
+
+  // Make a POST request to the server for creating an account
+  axios.post(`${URL}/create-account`, {
+    username,
+    password
+  });
+};
+
+const authenticate = event => {
+  event.preventDefault();
+  const username = event.target[0].value;
+  const password = event.target[1].value;
+
+  axios
+    .post(
+      `${URL}/sign-in`,
+      {
+        username,
+        password
+      },
+      { withCredentials: true }
+    )
+    .then(() => {
+      dispatch({ type: "LOGIN_SUCCESS" });
+    });
+};
+
+const testCookie = () => {
+  axios.post(
+    `${URL}/valid-token`,
+    {},
+    {
+      // This will allow sending cookies with CORS policy
+      withCredentials: true
+    }
+  );
+};
 
 const Admin = () => {
   const isSignedIn = useSelector(state => state.user.signedIn);
@@ -46,50 +88,8 @@ const Admin = () => {
     }
   });
 
-  const createAccount = event => {
-    event.preventDefault();
-    const username = event.target[0].value;
-    const password = event.target[1].value;
-
-    // Make a POST request to the server for creating an account
-    axios.post(`${URL}/create-account`, {
-      username,
-      password
-    });
-  };
-
-  const authenticate = event => {
-    event.preventDefault();
-    const username = event.target[0].value;
-    const password = event.target[1].value;
-
-    axios
-      .post(
-        `${URL}/sign-in`,
-        {
-          username,
-          password
-        },
-        { withCredentials: true }
-      )
-      .then(() => {
-        dispatch({ type: 'LOGIN_SUCCESS' });
-      });
-  };
-
-  const testCookie = () => {
-    axios.post(
-      `${URL}/valid-token`,
-      {},
-      {
-        // This will allow sending cookies with CORS policy
-        withCredentials: true
-      }
-    );
-  };
-
   const saveChanges = () => {
-    // var temp = [...dragList];
+    // var temp = [...dragList];s
 
     dispatch(updateProjectOrder(dragList));
   };
@@ -99,15 +99,15 @@ const Admin = () => {
     var draggedItemIndex = ev.target.id;
     setDraggedProject(dragList[draggedItemIndex]);
 
-    ev.dataTransfer.setData('required', draggedItemIndex);
+    ev.dataTransfer.setData("required", draggedItemIndex);
 
     // ev.dataTransfer.effectAllowed = "move";
-    console.log('Dragging has started!');
+    console.log("Dragging has started!");
   };
 
   const dragOverHandler = ev => {
     ev.preventDefault(); // This is needed in order to stop the animation when droping an item
-    ev.dataTransfer.dropEffect = 'move';
+    ev.dataTransfer.dropEffect = "move";
     // Index of project we are hovering over
     var dragOverIndex = ev.target.id;
 
@@ -124,14 +124,15 @@ const Admin = () => {
   };
 
   const onDragEndHandler = ev => {
-    ev.dataTransfer.dropEffect = 'none';
+    ev.dataTransfer.dropEffect = "none";
     setDraggedProject(null);
   };
 
-  if (isSignedIn === null) return <div style={{ margin: '10px' }}>Loading...</div>;
+  if (isSignedIn === null) return <div style={{ margin: "10px" }}>Loading...</div>;
 
   // If you are signed in and projects haven't been fetched yet
-  if (!dragList) return <div style={{ margin: '10px' }}>Loading projects data...</div>;
+  if (isSignedIn && !dragList)
+    return <div style={{ margin: "10px" }}>Loading projects data...</div>;
 
   const notSignedInView = (
     <>
@@ -178,7 +179,7 @@ const Admin = () => {
   );
 
   return (
-    <div style={{ margin: '10px' }}>
+    <div style={{ margin: "10px" }}>
       {!isSignedIn && notSignedInView}
       {isSignedIn && signedInView}
     </div>
