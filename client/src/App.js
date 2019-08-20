@@ -12,6 +12,7 @@ import projects from './pages/projects';
 import projectPage from './pages/projectPage';
 import cv from './pages/cv';
 import blog from './pages/blog';
+import blogpostPage from './pages/blogpostPage';
 import threeShaders from './pages/threeShaders';
 
 import { autoSignIn } from './redux/actions/userActions';
@@ -62,7 +63,8 @@ const App = () => {
           <Route path="/cv" component={cv} />
           <Route path="/projects/:name" component={projectPage} />
           <Route path="/projects" component={projects} />
-          <Route path="/blog" component={blog} />
+          <Route path="/blogposts/:name" component={blogpostPage} />
+          <Route path="/blogposts" component={blog} />
           <Route path="/shaders" component={threeShaders} />
           <Route
             render={() => {

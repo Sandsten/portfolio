@@ -3,7 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import { BASE2, BASE03, ORANGE, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
+import {
+  BASE2,
+  BASE03,
+  ORANGE,
+  BASE2_SATURATED,
+  BLUE,
+  YELLOW
+} from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
 import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
 
@@ -136,7 +143,12 @@ const Sidebar = props => {
     <StyledSidebar theme={theme}>
       <Name>Staffan Sandberg</Name>
       <span>
-        {[['/', 'About'], ['/projects', 'Projects'], ['/cv', 'CV'], ['/blog', 'Blog']].map(page => {
+        {[
+          ['/', 'About'],
+          ['/projects', 'Projects'],
+          ['/cv', 'CV'],
+          ['/blogposts', 'Blog']
+        ].map(page => {
           return (
             <SidebarLink key={page[1]} theme={theme} path={urlPath} to={page[0]}>
               {page[1]}
@@ -144,7 +156,12 @@ const Sidebar = props => {
           );
         })}
       </span>
-      <StyledThemeButton theme={theme} width="50" height="50" handleClick={handleThemeToggle} />
+      <StyledThemeButton
+        theme={theme}
+        width="50"
+        height="50"
+        handleClick={handleThemeToggle}
+      />
     </StyledSidebar>
   );
 };
