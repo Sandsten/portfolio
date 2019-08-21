@@ -40,9 +40,9 @@ const projectPage = props => {
   // const [project, setProject] = useState(null);
   const theme = useSelector(state => state.appSettings.theme);
   const project = useSelector(state => {
-    if (!state.projects.projects) return null;
+    if (!state.projects.data) return null;
     // Find the correct project in the redux state
-    return state.projects.projects.find(project => {
+    return state.projects.data.find(project => {
       return project.localURL === props.match.params.name;
     });
   });

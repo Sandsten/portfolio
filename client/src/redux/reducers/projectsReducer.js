@@ -1,26 +1,26 @@
 const DEFAULT = {
-  projects: null,
+  data: null,
   fetched: false
 };
 
 // Array of projects. Use this to show individual projects as well as for now.
 const reducer = (state = DEFAULT, action) => {
   switch (action.type) {
-    case "PROJECTS_FETCHED":
+    case 'PROJECTS_FETCHED':
       return {
         ...state,
-        projects: action.payload,
+        data: action.payload,
         fetched: true,
         error: null,
         updating: false
       };
-    case "PROJECTS_FETCHED_FAILED":
+    case 'PROJECTS_FETCHED_FAILED':
       return {
         ...state,
-        projects: null,
+        data: null,
         error: action.payload
       };
-    case "PROJECTS_UPDATING":
+    case 'PROJECTS_UPDATING':
       return {
         ...state,
         updating: true

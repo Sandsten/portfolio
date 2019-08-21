@@ -37,7 +37,7 @@ export const Spacer = styled.div`
 
 const projects = () => {
   const theme = useSelector(state => state.appSettings.theme);
-  const projects = useSelector(state => state.projects.projects);
+  const projects = useSelector(state => state.projects.data);
   const projectsFetched = useSelector(state => state.projects.fetched);
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const dispatch = useDispatch();
@@ -49,15 +49,26 @@ const projects = () => {
   }, []);
 
   if (!theme) return null;
-  if (!projects) return <StyledProjects theme={theme}>Loading projects...</StyledProjects>;
+  if (!projects)
+    return <StyledProjects theme={theme}>Loading projects...</StyledProjects>;
 
   return (
     <StyledProjects>
       {projects.map((project, i) => {
         return (
-          <CSSTransition key={project._id} in={shouldAnimate} appear={shouldAnimate} classNames="fade" timeout={500}>
+          <CSSTransition
+            key={project._id}
+            in={shouldAnimate}
+            appear={shouldAnimate}
+            classNames="fade"
+            timeout={500}
+          >
             {/* transition delay has to be passed down to the component for it to work */}
-            <ProjectCard theme={theme} data={project} style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }} />
+            <ProjectCard
+              theme={theme}
+              data={project}
+              style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
+            />
           </CSSTransition>
         );
       })}
