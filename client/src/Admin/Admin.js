@@ -7,10 +7,18 @@ import ItemDragList from './ItemDragList';
 import { fetchProjects, updateProjectOrder } from '../redux/actions/projectsActions';
 import { signIn, testCookie, signOut } from '../redux/actions/userActions';
 
-const DraggableList = styled.div`
+const StyledAdmin = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
-  width: 50vh;
+  grid-template-columns: 300px 1fr;
+  grid-template-areas: 'projectOrder other';
+`;
+
+const StyledItemDragList = styled(ItemDragList)`
+  grid-area: projectOrder;
+`;
+
+const StyledOtherSettings = styled.div`
+  justify-self: right;
 `;
 
 const Admin = () => {
@@ -47,6 +55,21 @@ const Admin = () => {
   // If you are signed in and projects haven't been fetched yet
   if (!projects) return <div style={{ margin: '10px' }}>Loading projects data...</div>;
 
+  const signedInView = (
+    <StyledAdmin>
+      <StyledItemDragList
+        items={projects.data}
+        onNewItemOrder={handleNewProjectOrder}
+        disabled={updatingProjects}
+      />
+      <StyledOtherSettings>
+        <button style={{ marginBottom: '30px' }} onClick={() => dispatch(signOut())}>
+          SignOut
+        </button>
+      </StyledOtherSettings>
+    </StyledAdmin>
+  );
+
   const notSignedInView = (
     <>
       <label>Create admin account</label>
@@ -67,19 +90,6 @@ const Admin = () => {
       </form>
       <button onClick={dispatch(testCookie())}>Test Cookie</button>
     </>
-  );
-
-  const signedInView = (
-    <DraggableList>
-      <button style={{ marginBottom: '30px' }} onClick={() => dispatch(signOut())}>
-        SignOut
-      </button>
-      <ItemDragList
-        items={projects.data}
-        onNewItemOrder={handleNewProjectOrder}
-        disabled={updatingProjects}
-      />
-    </DraggableList>
   );
 
   return (

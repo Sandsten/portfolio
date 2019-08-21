@@ -60,7 +60,7 @@ const ItemDragList = ({ items, onNewItemOrder, disabled }) => {
   };
 
   return (
-    <>
+    <div>
       {dragList.map((project, i) => {
         return (
           <DraggableItem
@@ -78,7 +78,7 @@ const ItemDragList = ({ items, onNewItemOrder, disabled }) => {
       <button onClick={() => onNewItemOrder(dragList)} disabled={disabled}>
         Save
       </button>
-    </>
+    </div>
   );
 };
 
