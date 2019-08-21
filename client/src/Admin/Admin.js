@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import axios from 'axios';
 
 import { fetchProjects, updateProjectOrder } from '../redux/actions/projectsActions';
+import { signIn, testCookie, signOut } from '../redux/actions/userActions';
 
 const DraggableList = styled.div`
   display: grid;
@@ -22,8 +22,6 @@ const DraggableProject = styled.div`
     cursor: move;
   }
 `;
-
-const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '';
 
 const Admin = () => {
   const isSignedIn = useSelector(state => state.user.signedIn);
@@ -50,48 +48,14 @@ const Admin = () => {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
-
-    // Make a POST request to the server for creating an account
-    axios.post(`${URL}/create-account`, {
-      username,
-      password
-    });
+    dispatch(createAccount(username, password));
   };
 
-  const authenticate = event => {
+  const handleSignIn = event => {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
-
-    axios
-      .post(
-        `${URL}/sign-in`,
-        {
-          username,
-          password
-        },
-        { withCredentials: true }
-      )
-      .then(() => {
-        dispatch({ type: 'LOGIN_SUCCESS' });
-      });
-  };
-
-  const testCookie = () => {
-    axios.post(
-      `${URL}/valid-token`,
-      {},
-      {
-        // This will allow sending cookies with CORS policy
-        withCredentials: true
-      }
-    );
-  };
-
-  const saveChanges = () => {
-    // var temp = [...dragList];s
-
-    dispatch(updateProjectOrder(dragList));
+    dispatch(signIn(username, password));
   };
 
   const dragStartHandler = ev => {
@@ -144,19 +108,22 @@ const Admin = () => {
         <input type="submit" value="Submit" />
       </form>
       <label>Sign in</label>
-      <form onSubmit={authenticate}>
+      <form onSubmit={handleSignIn}>
         <input name="username" type="text" placeholder="username" />
         <br />
         <input name="password" type="password" placeholder="password" />
         <br />
         <input type="submit" value="Login" />
       </form>
-      <button onClick={testCookie}>Test Cookie</button>
+      <button onClick={dispatch(testCookie())}>Test Cookie</button>
     </>
   );
 
   const signedInView = (
     <DraggableList>
+      <button style={{ marginBottom: '30px' }} onClick={() => dispatch(signOut())}>
+        SignOut
+      </button>
       {dragList.map((project, i) => {
         return (
           <DraggableProject
@@ -171,7 +138,7 @@ const Admin = () => {
           </DraggableProject>
         );
       })}
-      <button onClick={() => saveChanges()} disabled={updatingProjects}>
+      <button onClick={() => dispatch(updateProjectOrder())} disabled={updatingProjects}>
         Save
       </button>
     </DraggableList>

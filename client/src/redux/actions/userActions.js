@@ -12,3 +12,43 @@ export const autoSignIn = () => dispatch => {
       dispatch({ type: 'LOGIN_FAILED', payload: e });
     });
 };
+
+export const signIn = (username, password) => dispatch => {
+  axios
+    .post(
+      `${URL}/sign-in`,
+      {
+        username,
+        password
+      },
+      { withCredentials: true }
+    )
+    .then(() => {
+      dispatch({ type: 'LOGIN_SUCCESS' });
+    });
+};
+
+export const testCookie = () => dispatch => {
+  axios.post(
+    `${URL}/valid-token`,
+    {},
+    {
+      // This will allow sending cookies with CORS policy
+      withCredentials: true
+    }
+  );
+};
+
+export const createAccount = (username, password) => dispatch => {
+  // Make a POST request to the server for creating an account
+  axios.post(`${URL}/create-account`, {
+    username,
+    password
+  });
+};
+
+export const signOut = () => dispatch => {
+  axios.post(`${URL}/sign-out`, {}, { withCredentials: true }).then(() => {
+    dispatch({ type: 'LOGOUT_SUCCESS' });
+  });
+};
