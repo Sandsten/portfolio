@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=production&& node index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "export NODE_ENV=development&& nodemon"
+    "start:dev": "cross-env NODE_ENV=development nodemon",
+    "start:dev:live": "cross-env NODE_ENV=development SERVER=live nodemon"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^6.0.0",
     "kill-port": "^1.5.1",
     "nodemon": "^1.19.1"
   },

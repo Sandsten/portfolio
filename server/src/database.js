@@ -282,12 +282,15 @@ exports.purgeBlogposts = (req, res) => {
     });
 };
 
-var DATABASE_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'mongodb://localhost:27017/portfolio'
-    : `mongodb+srv://${process.env.DB_USER}:${
-        process.env.DB_PASS
-      }@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
+// Pick if we are using live or local server
+var DATABASE_URL;
+if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
+  DATABASE_URL = 'mongodb://localhost:27017/portfolio';
+  console.log('Using LOCAL server');
+} else {
+  DATABASE_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
+  console.log('Using LIVE server');
+}
 
 MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
   if (err) throw err;
@@ -297,9 +300,5 @@ MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
   users = db.collection('users');
   projects = db.collection('projects');
 
-  console.log(
-    `Connection to database established: ${
-      process.env.NODE_ENV === 'development' ? 'Local server' : 'Mongo Atlas'
-    }`
-  );
+  console.log(`Connection to database established!`);
 });
