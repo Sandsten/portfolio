@@ -43,28 +43,30 @@ const Contact = styled.div`
 
 const CONTENT = [
   <p>
-    Hello and welcome to my website. My name is Staffan Sandberg and I'm currently in the final stretch of my studies at{' '}
-    <StyledA href="https://www.kth.se/"> Kungliga Tekniska Högskolan</StyledA> in the master's programme{' '}
-    <StyledA href="https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765">
-      Interactive media technology
-    </StyledA>
-    .
+    Hello and welcome to my website. My name is Staffan Sandberg and I'm currently in
+    search for interesting job opportunities in anything tech related. My main interest is
+    in web development.{' '}
   </p>,
   <p>
     My bachelor was in{' '}
     <StyledA href="https://www.kth.se/student/kurser/program/TSVDK/20122/mal">
       Simulation Technology and Virtual Design
     </StyledA>{' '}
-    also at KTH. Which sparked my interest for programming and graphics.
+    at <StyledA href="https://www.kth.se/"> Kungliga Tekniska Högskolan</StyledA>. Which
+    sparked my interest for programming and graphics.
   </p>,
   <p>
-    My main interests are web development, game design and computer graphics. I also enjoy tinkering with servers,
-    networks and general linux based operating systems.
+    After I received my degree I decided to take master level courses in Interactive Media
+    Technology. From evaluation methods to information visualization. And I have now
+    decided that I want to take what I've learned and use it in the real world.
   </p>,
-  <p>In my free time I enjoy playing guitar, video games, reading books and learning new things in general.</p>,
   <p>
-    On this site you can see different projects that I've been a part of and blog posts about things I've learnt and
-    want to share.
+    In my free time I enjoy playing guitar, video games, reading books and learning new
+    things in general.
+  </p>,
+  <p>
+    On this site you can see different projects that I've been a part of and blog posts
+    about things I've learnt and want to share.
   </p>,
   <p>
     {' '}

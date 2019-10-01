@@ -21,7 +21,7 @@ const ItemDragList = ({ items, onNewItemOrder, disabled }) => {
     return () => {};
   }, []);
 
-  console.log(disabled);
+  // console.log(disabled);
 
   if (!dragList) return null;
 
@@ -33,7 +33,7 @@ const ItemDragList = ({ items, onNewItemOrder, disabled }) => {
     ev.dataTransfer.setData('required', draggedItemIndex);
 
     // ev.dataTransfer.effectAllowed = "move";
-    console.log('Dragging has started!');
+    // console.log('Dragging has started!');
   };
 
   const dragOverHandler = ev => {

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { StyledA } from './homePage';
 
-import cvPDF from '../CV-Staffan-EN-V3.pdf';
+import cvPDF from '../Staffan_Sandberg_CV.pdf';
 
 const StyledCV = styled.div`
   font-size: 1.2em;

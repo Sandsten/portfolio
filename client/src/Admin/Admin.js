@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ItemDragList from './ItemDragList';
 
 import { fetchProjects, updateProjectOrder } from '../redux/actions/projectsActions';
-import { signIn, testCookie, signOut } from '../redux/actions/userActions';
+import { signIn, testCookie, signOut, createAccount } from '../redux/actions/userActions';
 
 const StyledAdmin = styled.div`
   display: grid;
@@ -33,7 +33,7 @@ const Admin = () => {
     }
   }, []);
 
-  const createAccount = event => {
+  const handleCreateAccount = event => {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
@@ -73,7 +73,7 @@ const Admin = () => {
   const notSignedInView = (
     <>
       <label>Create admin account</label>
-      <form onSubmit={createAccount}>
+      <form onSubmit={handleCreateAccount}>
         <input name="username" type="text" placeholder="username" />
         <br />
         <input name="password" type="password" placeholder="password" />

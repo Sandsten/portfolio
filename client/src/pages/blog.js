@@ -11,7 +11,7 @@ const StyledBlog = styled.div`
   min-height: 100vh;
 
   @media (min-width: ${DESKTOP_XS}) {
-    /* font-size: 1.2em; */
+    font-size: 1.2em;
     width: 70vw;
   }
 
@@ -33,11 +33,11 @@ const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
 const blog = () => {
   return (
     <StyledBlog>
-      No blog posts at the moment
-      <StyledSyntaxHighlighter language="javascript" style={darcula} showLineNumbers>
+      Work in progress
+      {/* <StyledSyntaxHighlighter language="javascript" style={darcula} showLineNumbers>
         {codeString}
       </StyledSyntaxHighlighter>
-      <code>hello</code>
+      <code>hello</code> */}
     </StyledBlog>
   );
 };
