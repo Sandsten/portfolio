@@ -51,13 +51,14 @@ exports.signInWithToken = (req, res) => {
 };
 
 exports.signOut = (req, res) => {
+  console.log("Admin signing out. Deleting JWT from client");
   res.clearCookie('access-card').sendStatus(200);
 };
 
 exports.createAccount = (req, res) => {
   const { username, password } = req.body;
 
-  console.log('CREATE ACCOUNT');
+  console.log('\nAttempting to create a new admin account');
   console.log(username);
 
   users
@@ -65,26 +66,26 @@ exports.createAccount = (req, res) => {
     .count()
     .then(result => {
       if (result > 0) {
-        console.log('There is already a user in the database. Maximum 1');
-        res.status(404).send('There is already a user managing this site');
+        console.log('There is already an admin for this website');
+        res.status(404).send("Hej");
       } else {
-        console.log('Good to go, creating account');
         // Hash password
         bcrypt.genSalt(SALTROUNDS, (err, salt) => {
-          console.log('SALT GENERATED');
           bcrypt.hash(password, salt, (err, hash) => {
             // Create user
-            console.log('Hashing completed');
+            console.log('Password hashed for maximum security');
             users
               .insertOne({
                 username,
                 password: hash
               })
               .then(result => {
-                res.status(200).send('User created!');
+                console.log('New admin account created successfully')
+                res.status(200).send('Admin created successfully!');
               })
               .catch(error => {
-                res.status(202).send('User creation failed');
+                console.log('Failed to upload new admin to database')
+                res.status(202).send();
               });
           });
         });
@@ -294,7 +295,7 @@ if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
   console.log('Using LIVE server');
 }
 
-MongoClient.connect(DATABASE_URL, { useNewUrlParser: true }, (err, client) => {
+MongoClient.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
   if (err) throw err;
 
   db = client.db('portfolio');

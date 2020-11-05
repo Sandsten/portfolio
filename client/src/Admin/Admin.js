@@ -88,7 +88,7 @@ const Admin = () => {
         <br />
         <input type="submit" value="Login" />
       </form>
-      <button onClick={dispatch(testCookie())}>Test Cookie</button>
+      <button onClick={() => dispatch(testCookie())}>Test Cookie</button>
     </>
   );
 

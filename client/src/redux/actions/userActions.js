@@ -29,14 +29,9 @@ export const signIn = (username, password) => dispatch => {
 };
 
 export const testCookie = () => dispatch => {
-  axios.post(
-    `${URL}/valid-token`,
-    {},
-    {
-      // This will allow sending cookies with CORS policy
-      withCredentials: true
-    }
-  );
+  axios.post(`${URL}/valid-token`, {}, {withCredentials: true})
+  .then(result => console.log(result))
+  .catch(e => console.log(e));
 };
 
 export const createAccount = (username, password) => dispatch => {
