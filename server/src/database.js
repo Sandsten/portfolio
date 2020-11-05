@@ -282,6 +282,8 @@ exports.purgeBlogposts = (req, res) => {
     });
 };
 
+console.log(`Signing in as ${process.env.DB_USER}`);
+
 // Pick if we are using live or local server
 var DATABASE_URL;
 if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
