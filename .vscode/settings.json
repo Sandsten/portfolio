@@ -1,0 +1,6 @@
+{
+  // Set workspace default file association to use javascriptreact
+  "files.associations": {
+    "*.js": "javascriptreact"
+  }
+}

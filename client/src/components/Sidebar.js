@@ -147,7 +147,8 @@ const Sidebar = props => {
           ['/', 'About'],
           ['/projects', 'Projects'],
           ['/cv', 'CV'],
-          ['/blogposts', 'Blog']
+          ['/blogposts', 'Blog'],
+          ['/tutorials', 'Tutorials']
         ].map(page => {
           return (
             <SidebarLink key={page[1]} theme={theme} path={urlPath} to={page[0]}>

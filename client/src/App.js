@@ -14,6 +14,7 @@ import cv from './pages/cv';
 import blog from './pages/blog';
 import blogpostPage from './pages/blogpostPage';
 import threeShaders from './pages/threeShaders';
+import tutorials from './pages/tutorials';
 
 import { autoSignIn } from './redux/actions/userActions';
 
@@ -66,6 +67,7 @@ const App = () => {
           <Route path="/blogposts/:name" component={blogpostPage} />
           <Route path="/blogposts" component={blog} />
           <Route path="/shaders" component={threeShaders} />
+          <Route path="/tutorials" component={tutorials} />
           <Route
             render={() => {
               return <Redirect to="/" />;
