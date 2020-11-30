@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "- ~~Front end should be responsive.~~ - ~~Dark and light color theme option.~~ - ~~Sign in to website as admin~~ - ~~Authorize certain api calls with JWT~~ - **add**/**update** projects, blogposts and so forth through my website. - All the data should be stored on **Atlas**. - Integrated CV, not just a PDF.",
   "scripts": {
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "install": "(cd client && npm install) && (cd server && npm install)" 
   },
   "repository": {
     "type": "git",
