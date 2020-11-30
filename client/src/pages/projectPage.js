@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { CSSTransition } from "react-transition-group";
 
-import { fetchProjects } from '../redux/actions/projectsActions';
+import { fetchProjects } from "../redux/actions/projectsActions";
 
-import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
-import { BLUE } from '../constants/colors';
+import { DESKTOP_XS, DESKTOP_XL } from "../constants/sizes";
+import { BLUE } from "../constants/colors";
 
-import '../CSSTransitions/transitions.scss';
+import "../CSSTransitions/transitions.scss";
 
 const StyledProjectPage = styled.div`
   display: block;
@@ -30,23 +30,23 @@ const ProjectTitle = styled.b`
   font-size: 1.4em;
 `;
 const StyledA = styled.a`
-  color: ${p => (p.theme === 'LIGHT' ? '' : BLUE)};
+  color: ${(p) => (p.theme === "LIGHT" ? "" : BLUE)};
 `;
 const StyledLink = styled(Link)`
-  color: ${p => (p.theme === 'LIGHT' ? '' : BLUE)};
+  color: ${(p) => (p.theme === "LIGHT" ? "" : BLUE)};
 `;
 
-const projectPage = props => {
+const projectPage = (props) => {
   // const [project, setProject] = useState(null);
-  const theme = useSelector(state => state.appSettings.theme);
-  const project = useSelector(state => {
+  const theme = useSelector((state) => state.appSettings.theme);
+  const project = useSelector((state) => {
     if (!state.projects.data) return null;
     // Find the correct project in the redux state
-    return state.projects.data.find(project => {
+    return state.projects.data.find((project) => {
       return project.localURL === props.match.params.name;
     });
   });
-  const projectsFetched = useSelector(state => state.projects.fetched);
+  const projectsFetched = useSelector((state) => state.projects.fetched);
   const dispatch = useDispatch();
   const staggerDelay = 0.02;
 
@@ -61,9 +61,13 @@ const projectPage = props => {
   }, []);
 
   if (project === undefined) return <Redirect to="/projects" />;
+
+  // If projects haven't loaded yet
   if (!project)
     return (
-      <StyledProjectPage style={{ height: '100vh' }}>'Loading...'</StyledProjectPage>
+      <StyledProjectPage style={{ height: "100vh" }}>
+        'Loading...'
+      </StyledProjectPage>
     );
   if (!theme) return null;
 
@@ -74,7 +78,7 @@ const projectPage = props => {
   ) : null;
 
   website =
-    project.website === '/shaders' ? (
+    project.website === "/shaders" ? (
       <p>
         Website: <StyledLink to="/shaders">Shader</StyledLink>
       </p>
@@ -91,11 +95,11 @@ const projectPage = props => {
   const CONTENT = [
     <ProjectTitle>{project.title}</ProjectTitle>,
     <p>{project.date}</p>,
-    <p>{project.tools.join(', ')}</p>,
+    <p>{project.tools.join(", ")}</p>,
     <p>Project group size: {project.groupSize}</p>,
     <p>{project.description}</p>,
     website,
-    github
+    github,
   ];
 
   return (

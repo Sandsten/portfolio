@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import Cell from '../components/Cell';
+
 /*
   TODO: 
   * Create different components for showing code, text & images
@@ -20,9 +22,21 @@ const StyledCodeSection = styled.div`
 
 `;
 
+// Single column straight down with some padding to the left and right
+const Container = styled.div`
+  grid-area: main;
+
+  display: grid;
+  grid-template-areas: '. content .';
+  grid-template-columns: 50px 1fr 50px;
+  grid-template-rows: auto;
+`;
+
 const tutorials = () => {
   return (
-    <div>Tutorials!</div>
+    <Container>
+      <Cell />
+    </Container>
   )
 }
 

@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "- ~~Front end should be responsive.~~ - ~~Dark and light color theme option.~~ - ~~Sign in to website as admin~~ - ~~Authorize certain api calls with JWT~~ - **add**/**update** projects, blogposts and so forth through my website. - All the data should be stored on **Atlas**. - Integrated CV, not just a PDF.",
+  "scripts": {
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sandsten/portfolio-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sandsten/portfolio-website/issues"
+  },
+  "homepage": "https://github.com/Sandsten/portfolio-website#readme"
+}
