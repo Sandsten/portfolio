@@ -17,7 +17,6 @@ jobs:
     runs-on: self-hosted
     
     steps:
-      name: Checkout newes version
       uses: actions/checkout@v2
       
       name: Use Node.js ${{ env.NODE_VERSION }}
