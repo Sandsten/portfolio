@@ -1,9 +1,6 @@
-name: Upload to Digital Ocean
+name: Upload to Digitalocean droplet
 
-# on:
-#   release:
-#     types: created
-
+# When something new is pushed to the master branch
 on:
   push:
     branches:
@@ -13,7 +10,8 @@ env:
   NODE_VERSION: '12.x' # Node version on digitalocean server
 
 jobs:
-  build:
+  build: # Job name, can be anything
+    # Run on our self hosted runner on our droplet. 
     runs-on: self-hosted
     
     steps:
@@ -26,5 +24,5 @@ jobs:
         run: |
           npm install 
           npm run build
-      # install will run in root folder, which will install npm packages in both the client and server modules
+      # TODO: If this is successfull, 
     
