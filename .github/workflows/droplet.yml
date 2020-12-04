@@ -13,14 +13,18 @@ env:
   NODE_VERSION: '12.x' # Node version on digitalocean server
 
 jobs:
-  name: Build and deploy
-    runs-on: self-hosted 
+  build:
+    runs-on: self-hosted
+    
     steps:
+      name: Checkout newes version
       uses: actions/checkout@v2
+      
       name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
+      
       name: npm install, build
       run: |
         npm install 
