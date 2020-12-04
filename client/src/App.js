@@ -26,56 +26,56 @@ import './styles/index.scss';
 
 // Main container for the whole website
 const MainContainer = styled.div`
-  display: block;
+	display: block;
 
-  /* Base background color for whole website */
-  /* TODO: Remove unneeded background color modifiers on pages which this will cover */
-  /* Basically all "Wrapper" components */
-  background-color: ${p => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
-  color: ${p => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
+	/* Base background color for whole website */
+	/* TODO: Remove unneeded background color modifiers on pages which this will cover */
+	/* Basically all "Wrapper" components */
+	background-color: ${(p) => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
+	color: ${(p) => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
 
-  @media (min-width: ${DESKTOP_XS}) {
-    display: grid;
-    grid-template-areas: 'sidebar main';
-    grid-template-columns: 250px 1fr;
-  }
+	@media (min-width: ${DESKTOP_XS}) {
+		display: grid;
+		grid-template-areas: 'sidebar main';
+		grid-template-columns: 250px 1fr;
+	}
 `;
 
 const App = () => {
-  const theme = useSelector(state => state.appSettings.theme);
-  const dispatch = useDispatch();
+	const theme = useSelector((state) => state.appSettings.theme);
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(autoSignIn());
-  }, []);
+	useEffect(() => {
+		dispatch(autoSignIn());
+	}, []);
 
-  return (
-    <MainContainer theme={theme}>
-      <BrowserRouter>
-        {/* // https://reacttraining.com/react-router/web/api/Switch */}
-        {/* Render the sidebar on all pages */}
-        <Route path="/" component={Sidebar} />
-        <Switch>
-          {/* <Route path="/" component={TopBar} /> */}
-          {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
-          <Route path="/" exact component={HomePage} />
-          <Route path="/test" exact component={APITest} />
-          <Route path="/admin" component={Admin} />
-          <Route path="/cv" component={cv} />
-          <Route path="/projects/:name" component={projectPage} />
-          <Route path="/projects" component={projects} />
-          <Route path="/blogposts/:name" component={blogpostPage} />
-          <Route path="/blogposts" component={blog} />
-          <Route path="/shaders" component={threeShaders} />
-          <Route path="/tutorials" component={tutorials} />
-          <Route
-            render={() => {
-              return <Redirect to="/" />;
-            }}
-          />
-        </Switch>
-      </BrowserRouter>
-    </MainContainer>
-  );
+	return (
+		<MainContainer theme={theme}>
+			<BrowserRouter>
+				{/* // https://reacttraining.com/react-router/web/api/Switch */}
+				{/* Render the sidebar on all pages */}
+				<Route path="/" component={Sidebar} />
+				<Switch>
+					{/* <Route path="/" component={TopBar} /> */}
+					{/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
+					<Route path="/" exact component={HomePage} />
+					<Route path="/test" exact component={APITest} />
+					<Route path="/admin" component={Admin} />
+					{/* <Route path="/cv" component={cv} /> */}
+					<Route path="/projects/:name" component={projectPage} />
+					<Route path="/projects" component={projects} />
+					{/* <Route path="/blogposts/:name" component={blogpostPage} /> */}
+					{/* <Route path="/blogposts" component={blog} /> */}
+					<Route path="/shaders" component={threeShaders} />
+					{/* <Route path="/tutorials" component={tutorials} /> */}
+					<Route
+						render={() => {
+							return <Redirect to="/" />;
+						}}
+					/>
+				</Switch>
+			</BrowserRouter>
+		</MainContainer>
+	);
 };
 export default App;
