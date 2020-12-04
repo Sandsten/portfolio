@@ -14,16 +14,16 @@ env:
 
 jobs:
   name: Build and deploy
-      runs-on: self-hosted 
-      steps:
-        uses: actions/checkout@v2
-        name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-        name: npm install, build
-        run: |
-          npm install 
-          npm build
-        # install will run in root folder, which will install npm packages in both the client and server modules
+    runs-on: self-hosted 
+    steps:
+      uses: actions/checkout@v2
+      name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+      name: npm install, build
+      run: |
+        npm install 
+        npm build
+      # install will run in root folder, which will install npm packages in both the client and server modules
     
