@@ -25,6 +25,6 @@ jobs:
       - name: npm install, build
         run: |
           npm install 
-          npm build
+          npm run build
       # install will run in root folder, which will install npm packages in both the client and server modules
     
