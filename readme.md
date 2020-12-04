@@ -71,3 +71,9 @@ output: {
 # Insert array of objects
 > db.<collectionName>.insertMany([{},{},{},....]);
 ```
+
+
+## Digital Ocean ##
+run the following command in order to start the server with "npm start"
+
+pm2 start npm --name "portfolio" -- start
