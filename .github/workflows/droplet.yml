@@ -7,7 +7,7 @@ on:
       master
 
 env:
-  NODE_VERSION: '12.x' # Node version on digitalocean server
+  NODE_VERSION: '14.x' # Node version on digitalocean server
 
 jobs:
   build: # Job name, can be anything

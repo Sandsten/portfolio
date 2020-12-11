@@ -39,9 +39,12 @@ const StyledProjectCard = styled(Link)`
 		grid-template-columns: 1fr 1fr;
 	}
 
-	:hover {
+	&:hover {
 		background-color: ${(p) =>
 			p.theme === 'LIGHT' ? BASE2_SATURATED : BASE02_SATURATED};
+		/* outline-style: solid; */
+		box-shadow: 0 0 0 2pt; // will look like a rounded outline
+		transform: scale(1.01);
 	}
 `;
 
