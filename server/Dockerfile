@@ -14,4 +14,4 @@ WORKDIR /home/server
 
 RUN npm install
 
-CMD [ "npm", "start:dev:live" ]
+CMD [ "npm", "run", "start:dev:live" ]

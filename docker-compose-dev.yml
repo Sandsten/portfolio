@@ -6,9 +6,15 @@ services:
   frontend:
     image: portfolio-frontend
     ports: 
-      - 3000:3001
+      - 3001:3001
+    depends_on: 
+      - backend
 
   backend:
     image: portfolio-backend
+    ports:
+      - 3000:3000
+    environment: 
+      - PORT=3000
     # When in dev we want to link the content to our local files.
     # So we can easily edit without rebuilding all the time

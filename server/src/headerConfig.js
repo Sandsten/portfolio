@@ -7,7 +7,7 @@ exports.headerConfig = (req, res, next) => {
 	// FOR DEVELOPMENT
 	// console.log(process.env.NODE_ENV);
 	if (process.env.NODE_ENV === 'development')
-		res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+		res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
 
 	res.header(
 		'Access-Control-Allow-Headers',
