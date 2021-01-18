@@ -1,0 +1,14 @@
+version: "3"
+
+services: 
+  # This will start our frontend in dev mode from our built image
+  # This should not be run when in production, then we build the frontend with webpack and just serve it with node
+  frontend:
+    image: portfolio-frontend
+    ports: 
+      - 3000:3001
+
+  backend:
+    image: portfolio-backend
+    # When in dev we want to link the content to our local files.
+    # So we can easily edit without rebuilding all the time
