@@ -1,3 +1,12 @@
+## Starting  
+To start developing, simply run the following command:  
+```bash
+docker-compose -f docker-compose.dev.yml up --build
+```  
+
+It will serve frontend with a webpack-dev-server and the backend with nodemon, all local changes on HOST are linked to the containers using bind mounts. Handy when developing.
+
+
 ## TODO
 
 - ~~Front end should be responsive.~~

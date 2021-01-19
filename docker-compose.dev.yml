@@ -1,0 +1,37 @@
+version: "3"
+
+services: 
+  
+  frontend:
+    build:
+      context: ./client # Build our frontend image
+    ports: 
+      - 3001:3001 # For webpack-dev-server
+      - 9229:9229 # For attaching a debuger
+    # Map local frontend code onto our container client folder. (bind mount)
+    # The name of the folder in our container is defined in its Dockerfile
+    # By doing this we can make changes on our HOST and see changes in our container
+    volumes: 
+      - ./client:/client 
+    environment: 
+      - NODE_ENV=development
+
+  # Node backend
+  backend:
+    build:
+      context: ./server
+    ports:
+      - 3000:3000
+    volumes: 
+      - ./server:/server
+    environment: 
+      - PORT=3000
+      - NODE_ENV=development
+      - SERVER=live
+    command: ["npm", "run", "start:dev"]
+
+
+  # Mongo database
+
+
+# Volumes for mongo database
