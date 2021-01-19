@@ -1,11 +1,17 @@
 ## Starting  
 To start developing, simply run the following command:  
 ```bash
-docker-compose -f docker-compose.dev.yml up --build
+npm run dev
 ```  
 
-It will serve frontend with a webpack-dev-server and the backend with nodemon, all local changes on HOST are linked to the containers using bind mounts. Handy when developing.
+It's using docker-compose to build the frontend + backend in separate containers.
 
+To start the production build
+```bash
+npm run prod
+```  
+
+It will build the frontend with webpack and then move the build folder into our server directory.
 
 ## TODO
 

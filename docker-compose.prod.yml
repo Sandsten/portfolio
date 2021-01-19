@@ -1,0 +1,18 @@
+version: "3"
+
+services: 
+  # Node backend
+  app:
+    build:
+      context: ./
+    ports:
+      - 3000:3000
+    environment: 
+      - PORT=3000
+      - NODE_ENV=production
+      - SERVER=live
+
+    # Mongo database
+
+
+# Volumes for mongo database

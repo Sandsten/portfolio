@@ -8,7 +8,7 @@ module.exports = {
 		app: './src/index.js',
 	},
 	output: {
-		path: path.resolve(__dirname, '../server/build'),
+		path: path.resolve(__dirname, './build'),
 		filename: '[name].[contenthash].frontend.js', // Content hash is a hash based on the file content
 		publicPath: '/',
 	},

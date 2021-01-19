@@ -1,10 +1,10 @@
 {
-  "name": "portfolio-website",
-  "version": "1.0.0",
+  "name": "portfolio_website",
+  "version": "2.0.0",
   "description": "- ~~Front end should be responsive.~~ - ~~Dark and light color theme option.~~ - ~~Sign in to website as admin~~ - ~~Authorize certain api calls with JWT~~ - **add**/**update** projects, blogposts and so forth through my website. - All the data should be stored on **Atlas**. - Integrated CV, not just a PDF.",
   "scripts": {
-    "build": "cd client && npm run build",
-    "install": "(cd client && npm install) && (cd server && npm install)" 
+    "prod": "docker-compose -f docker-compose.prod.yml up --build -d --remove-orphans",
+    "dev": "docker-compose -f docker-compose.dev.yml up --build --remove-orphans"
   },
   "repository": {
     "type": "git",
