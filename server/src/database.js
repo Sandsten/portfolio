@@ -283,6 +283,9 @@ exports.purgeBlogposts = (req, res) => {
     });
 };
 
+console.log("Signing in as: " + projects.env.MONGODB_ATLAS_USERNAME);
+console.log("WITH _FILE Signing in as: " + projects.env.MONGODB_ATLAS_USERNAME_FILE);
+
 // Pick if we are using live or local server
 var DATABASE_URL;
 if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
