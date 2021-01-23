@@ -283,15 +283,13 @@ exports.purgeBlogposts = (req, res) => {
     });
 };
 
-console.log(`Signing in as ${process.env.DB_USER}`);
-
 // Pick if we are using live or local server
 var DATABASE_URL;
 if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
   DATABASE_URL = 'mongodb://localhost:27017/portfolio';
   console.log('Using LOCAL server');
 } else {
-  DATABASE_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
+  DATABASE_URL = `mongodb+srv://${process.env.MONGODB_ATLAS_USERNAME}:${process.env.MONGODB_ATLAS_PASSWORD}@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
   console.log('Using LIVE server');
 }
 
