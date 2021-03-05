@@ -4,12 +4,10 @@ const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 module.exports = {
 	target: 'web',
-	entry: {
-		app: './src/index.js',
-	},
+	mode: 'development',
 	output: {
-		path: path.join(__dirname, 'public'),
-		filename: '[name].js',
+		// path: path.join(__dirname, 'public'),
+		// filename: '[name].js',
 		publicPath: '/',
 	},
 	devServer: {
@@ -18,6 +16,10 @@ module.exports = {
 		historyApiFallback: true, // 404 responses will fall back to index.html. Required for using react-router-dom
 		// disableHostCheck: true // Might have to be enabled in order to run dev server in docker container
 	},
+	// node: {
+	// 	Buffer: false,
+	// 	process: false,
+	// },
 	devtool: 'source-map', // Remove this when in production, takes alot of space!
 	resolve: {
 		// changed from extensions: [".js", ".jsx"]

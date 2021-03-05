@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // Removes unuse
 
 module.exports = {
 	target: 'web',
+	mode: 'production',
 	entry: {
 		app: './src/index.js',
 	},
@@ -65,17 +66,9 @@ module.exports = {
 		}),
 	],
 	optimization: {
-		moduleIds: 'hashed', // Make vendor hash stay consistent between builds
 		runtimeChunk: 'single', // Generate a single bundle for all runtime code. What's runtime? Code that is executed while your code is running, especially those instructions that you did not write explicitly, but are necessary for the proper execution of your code.
 		splitChunks: {
-			cacheGroups: {
-				// Split node modules such as lodash into a separate vendor, since these packages are rarely updated
-				vendor: {
-					test: /[\\/]node_modules[\\/]/,
-					name: 'node_modules',
-					chunks: 'all',
-				},
-			},
+			chunks: 'all',
 		},
 	},
 };
