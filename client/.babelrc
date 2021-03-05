@@ -1,5 +1,0 @@
-// Transpile settings for es6 and react
-{
-  "plugins": ["@babel/plugin-proposal-class-properties"],
-  "presets": ["@babel/preset-env", "@babel/preset-react"]
-}

@@ -12,6 +12,7 @@ RUN npm install
 COPY ./src ./src
 COPY .babelrc .babelrc
 COPY webpack.config.dev.js webpack.config.dev.js
+COPY tsconfig.json tsconfig.json
 
 CMD [ "npm", "start" ]
 
