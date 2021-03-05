@@ -10,7 +10,6 @@ RUN npm install
 
 # Copy over source code and other config files
 COPY ./src ./src
-COPY .babelrc .babelrc
 COPY webpack.config.dev.js webpack.config.dev.js
 COPY tsconfig.json tsconfig.json
 
