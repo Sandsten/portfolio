@@ -1,8 +1,12 @@
 name: Create a docker image, save it on docker hub and deploy it on my home server
 
+# on:
+#   push:
+#     branches: docker
+
 on:
-  push:
-    branches: docker
+  release:
+    types: ["published"]
 
 jobs:
   build:

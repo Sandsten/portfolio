@@ -4,11 +4,14 @@ FROM node:14
 
 WORKDIR /client
 
+# Install all node packages
 COPY [ "package.json", "package-lock.json", "./" ]
-
 RUN npm install
 
-COPY . .
+# Copy over source code and other config files
+COPY ./src ./src
+COPY .babelrc .babelrc
+COPY webpack.config.dev.js webpack.config.dev.js
 
 CMD [ "npm", "start" ]
 

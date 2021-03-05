@@ -6,9 +6,9 @@ const history = require('connect-history-api-fallback');
 // Allows us read .env variables from process.env.
 require('dotenv').config();
 
-const databse = require('./src/database');
-const config = require('./src/headerConfig');
-const jwtUtilities = require('./src/jwtUtilities');
+const databse = require('./database');
+const config = require('./headerConfig');
+const jwtUtilities = require('./jwtUtilities');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
