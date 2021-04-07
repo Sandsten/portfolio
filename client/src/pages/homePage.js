@@ -42,7 +42,7 @@ const Contact = styled.div`
 `;
 
 const CONTENT = [
-	<p>Hello and welcome to my website! </p>,
+	<p>Hello and welcome to my website!! </p>,
 	<p>
 		My bachelor is in{' '}
 		<StyledA href="https://www.kth.se/student/kurser/program/TSVDK/20122/mal">

@@ -16,29 +16,27 @@ var db, blogposts, users, projects;
 
 // Sign in to the website using a username and password
 exports.signIn = (req, res) => {
-	console.log(req.body);
 	const { username, password } = req.body;
-
+	console.log("Attempting to sign in");
 	users.findOne({ username }).then((user) => {
 		if (user === null) {
-			res.status(404).send('User not found');
+			console.log('Wrong username or password');
+			res.status(404).send();
+		} else {
+			bcrypt.compare(password, user.password, (err, correctPassword) => {
+				if (err) throw err;
+				if (correctPassword) {
+					console.log('Admin signed in. Sending back JWT');
+					var token = jwtUtilities.createJWT(user);
+					res
+						.cookie('access-card', token, { httpOnly: true })
+						.status(200).send();
+				} else {
+					console.log('Wrong username or password');
+					res.status(404).send();
+				}
+			});
 		}
-		console.log(user);
-		bcrypt.compare(password, user.password, (err, correctPassword) => {
-			if (err) throw err;
-			if (correctPassword) {
-				console.log('Correct password, admin signed in - sending back JWT');
-				var token = jwtUtilities.createJWT(user);
-				res
-					.cookie('access-card', token, { httpOnly: true })
-					.status(200)
-					.send('Credentials accepted, welcome!');
-				// res.status(200).send('Authenticated!');
-			} else {
-				console.log('INVALID PASSWORD');
-				res.status(401).send('Invalid password!');
-			}
-		});
 	});
 };
 
