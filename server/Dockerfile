@@ -10,8 +10,9 @@ COPY [ "package.json", "package-lock.json", "./" ]
 
 RUN npm install
 
-COPY ./src ./src
-COPY ./.env ./
+COPY . .
+# COPY ./src ./src
+# COPY ./.env ./
 
 # Default is to just run the regular start command
 CMD [ "npm", "start" ]

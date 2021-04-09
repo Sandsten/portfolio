@@ -9,9 +9,10 @@ COPY [ "package.json", "package-lock.json", "./" ]
 RUN npm install
 
 # Copy over source code and other config files
-COPY ./src ./src
-COPY webpack.config.dev.js webpack.config.dev.js
-COPY tsconfig.json tsconfig.json
+COPY . .
+# COPY ./src ./src
+# COPY webpack.config.dev.js webpack.config.dev.js
+# COPY tsconfig.json tsconfig.json
 
 CMD [ "npm", "start" ]
 
