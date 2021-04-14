@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "node index.js",
-    "start:dev": "nodemon",
+    "start:dev": "nodemon --trace-warnings",
     "start:dev:trace": "nodemon --trace-warnings"
   },
   "keywords": [],
