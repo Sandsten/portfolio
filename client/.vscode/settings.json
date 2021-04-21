@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "workbench.settings.editor": "json",
+  "editor.codeLens": false,
+  "editor.minimap.enabled": false,
+  "editor.folding": true
+}

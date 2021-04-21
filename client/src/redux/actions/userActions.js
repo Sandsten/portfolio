@@ -7,10 +7,10 @@ export const autoSignIn = () => (dispatch) => {
 	axios
 		.post(`${URL}/auto-signin`, {}, { withCredentials: true })
 		.then((result) => {
-			dispatch({ type: 'LOGIN_SUCCESS' });
+			//dispatch({ type: 'LOGIN_SUCCESS' });
 		})
 		.catch((e) => {
-			dispatch({ type: 'LOGIN_FAILED', payload: e });
+			//dispatch({ type: 'LOGIN_FAILED', payload: e });
 		});
 };
 
@@ -25,7 +25,7 @@ export const signIn = (username, password) => (dispatch) => {
 			{ withCredentials: true }
 		)
 		.then(() => {
-			dispatch({ type: 'LOGIN_SUCCESS' });
+			//dispatch({ type: 'LOGIN_SUCCESS' });
 		});
 };
 
@@ -46,6 +46,6 @@ export const createAccount = (username, password) => (dispatch) => {
 
 export const signOut = () => (dispatch) => {
 	axios.post(`${URL}/sign-out`, {}, { withCredentials: true }).then(() => {
-		dispatch({ type: 'LOGOUT_SUCCESS' });
+		//dispatch({ type: 'LOGOUT_SUCCESS' });
 	});
 };

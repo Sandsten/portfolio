@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -16,7 +17,8 @@ import blogpostPage from './pages/blogpostPage';
 import threeShaders from './pages/threeShaders';
 import tutorials from './pages/tutorials';
 
-import { autoSignIn } from './redux/actions/userActions';
+// import { autoSignIn } from './redux/actions/userActions';
+import { signIn } from './redux-toolkit/features/account/accountSlice';
 
 import { BASE02, BASE3, BASE03, BASE1 } from './constants/colors';
 
@@ -42,11 +44,12 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-	const theme = useSelector((state) => state.appSettings.theme);
+	// const theme = useSelector((state) => state.appSettings.theme);
+	const theme = "DARK";
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(autoSignIn());
+		//dispatch(autoSignIn());
 	}, []);
 
 	return (

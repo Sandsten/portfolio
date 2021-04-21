@@ -4,7 +4,7 @@ services:
   
   frontend:
     build:
-      context: ./client # Build our frontend image
+      context: ./client # Build our frontend image. It will find the Dockerfile and build from it
     ports: 
       - 3001:3001 # For webpack-dev-server
       - 9229:9229 # For attaching a debuger

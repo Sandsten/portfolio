@@ -52,11 +52,12 @@ const projectPage = (props) => {
 
 	useEffect(() => {
 		// If project wasn't in the redux state, fetch from database
-		if (!projectsFetched) dispatch(fetchProjects());
+
+		// if (!projectsFetched) dispatch(fetchProjects());
 
 		//TODO: Opportunity for slight optimization, if refreshing on project page, only fetch that specific project
 		// if (!project) {
-		//   dispatch(fetchProject(props.match.params.name));
+		//   //dispatch(fetchProject(props.match.params.name));
 		// }
 	}, []);
 

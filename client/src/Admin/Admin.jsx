@@ -22,48 +22,53 @@ const StyledOtherSettings = styled.div`
 `;
 
 const Admin = () => {
-  const isSignedIn = useSelector(state => state.user.signedIn);
-  const projects = useSelector(state => state.projects);
-  const updatingProjects = useSelector(state => state.projects.updating);
+  // const isSignedIn = useSelector(state => state.user.signedIn);
+  // const projects = useSelector(state => state.projects);
+  // const updatingProjects = useSelector(state => state.projects.updating);
+  const isSignedIn = false
+  const projects = null
+  const updatingProjects = null
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!projects.fetched) {
-      dispatch(fetchProjects());
-    }
+    // if (!projects.fetched) {
+    //   //dispatch(fetchProjects());
+    // }
   }, []);
 
   const handleCreateAccount = event => {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
-    dispatch(createAccount(username, password));
+    //dispatch(createAccount(username, password));
   };
 
   const handleSignIn = event => {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
-    dispatch(signIn(username, password));
+    //dispatch(signIn(username, password));
   };
 
   const handleNewProjectOrder = newProjectsOrder => {
-    dispatch(updateProjectOrder(newProjectsOrder));
+    //dispatch(updateProjectOrder(newProjectsOrder));
   };
 
   if (isSignedIn === null) return <div style={{ margin: '10px' }}>Loading...</div>;
   // If you are signed in and projects haven't been fetched yet
-  if (!projects) return <div style={{ margin: '10px' }}>Loading projects data...</div>;
+  // if (!projects) return <div style={{ margin: '10px' }}>Loading projects data...</div>;
 
   const signedInView = (
     <StyledAdmin>
-      <StyledItemDragList
+      {projects && <StyledItemDragList
         items={projects.data}
         onNewItemOrder={handleNewProjectOrder}
         disabled={updatingProjects}
-      />
+      />}
       <StyledOtherSettings>
-        <button style={{ marginBottom: '30px' }} onClick={() => dispatch(signOut())}>
+        <button style={{ marginBottom: '30px' }}>
+          {/* <button style={{ marginBottom: '30px' }} onClick={() => dispatch(signOut()) }> */}
           SignOut
         </button>
       </StyledOtherSettings>
@@ -88,7 +93,8 @@ const Admin = () => {
         <br />
         <input type="submit" value="Login" />
       </form>
-      <button onClick={() => dispatch(testCookie())}>Test Cookie</button>
+      <button></button>
+      {/* <button onClick={() => //dispatch(testCookie())}>Test Cookie</button> */}
     </>
   );
 

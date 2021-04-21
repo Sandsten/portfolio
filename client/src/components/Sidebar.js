@@ -118,7 +118,8 @@ const StyledThemeButton = styled(ThemeButton)`
 
 const Sidebar = (props) => {
 	const [urlPath, setUrlPath] = useState(null);
-	const theme = useSelector((state) => state.appSettings.theme);
+	// const theme = useSelector((state) => state.appSettings.theme);
+	const theme = "DARK";
 	const dispatch = useDispatch();
 
 	// This is equivalent to componentDidMount
@@ -126,7 +127,7 @@ const Sidebar = (props) => {
 		// If there's no theme stored in local storage, default to dark theme!
 		var storedTheme = localStorage.getItem('theme');
 		if (!storedTheme) storedTheme = 'DARK';
-		dispatch(setTheme(storedTheme));
+		// //dispatch(setTheme(storedTheme));
 	}, []);
 
 	useEffect(() => {
@@ -135,7 +136,7 @@ const Sidebar = (props) => {
 	});
 
 	const handleThemeToggle = () => {
-		dispatch(toggleTheme());
+		// //dispatch(toggleTheme());
 	};
 
 	if (!theme) return null;
