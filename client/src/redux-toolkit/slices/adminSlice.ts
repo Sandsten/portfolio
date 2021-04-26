@@ -1,33 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 import { Admin, Credentials, AdminError } from '../../types/admin'
 
 const URL =
 	process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
+const credentialsSetting = process.env.NODE_ENV === "development" ? "include" : "same-origin"
 
-export const signIn = createAsyncThunk<Admin, Credentials, {rejectValue: AdminError}>(
-	'admin/signIn',
-	async (credentials, thunkApi) => {
-		const { username, password } = credentials;
-		// When using AXIOS with await we have to use a try/catch statement. Othwerwize we will get undefined if an error is returned
-		try {
-			const response = await axios.post(
-				`${URL}/sign-in`,
-				{
-					username,
-					password,
-				},
-				{ withCredentials: true } // This allow us to set a cookie
-			);
-			return response.data as Admin;
-		} catch (error) {
-			const { message } = error.response.data;
- 			return thunkApi.rejectWithValue(({errorMessage: message}) as AdminError); // Make sure it's sent back as an AdminError
+export const signIn = createAsyncThunk<Admin, Credentials, {rejectValue: AdminError}>
+	('admin/signIn', async (credentials, thunkApi) => {
+		const response = await fetch(`${URL}/sign-in`, {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			credentials: credentialsSetting,
+			body: JSON.stringify(credentials) // Converts Object to string format
+		})
+		if(response.status !== 200){
+			return thunkApi.rejectWithValue((await response.json()) as AdminError) 
 		}
-	}
-);
+		return (await response.json()) as Admin;
+	});
 
 const initialState: Admin = {
 	signedIn: null,
@@ -48,8 +42,11 @@ const adminSlice = createSlice({
 			state.signedIn = true;
 			state.status = 'success';
 		});
-		builder.addCase(signIn.rejected, (state, {payload}) => {
-			if (payload) state.error = payload.errorMessage;
+		builder.addCase(signIn.rejected, (state, action) => {
+			console.log(action)
+			if (action.payload) {
+        state.error = action.payload.message
+      }
 			state.status = null
 		})
 	},

@@ -10,5 +10,5 @@ export interface Credentials {
 }
 
 export interface AdminError {
-	errorMessage: string;
+	message: string;
 }
