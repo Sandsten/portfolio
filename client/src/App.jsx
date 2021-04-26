@@ -18,7 +18,7 @@ import threeShaders from './pages/threeShaders';
 import tutorials from './pages/tutorials';
 
 // import { autoSignIn } from './redux/actions/userActions';
-import { signIn } from './redux-toolkit/features/account/accountSlice';
+import { signIn } from './redux-toolkit/actions/adminSlice';
 
 import { BASE02, BASE3, BASE03, BASE1 } from './constants/colors';
 

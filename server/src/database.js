@@ -17,12 +17,13 @@ var db, blogposts, users, projects;
 // Sign in to the website using a username and password
 exports.signIn = (req, res) => {
 	const { username, password } = req.body;
-	console.log("Attempting to sign in");
+
+	// Find a user with the given username in the database
 	users.findOne({ username }).then((user) => {
 		if (user === null) {
-			console.log('Wrong username or password');
-			res.status(404).send();
+			res.status(400).send({ message: 'Wrong username or password' });
 		} else {
+			// If  a user is found see if password is correct
 			bcrypt.compare(password, user.password, (err, correctPassword) => {
 				if (err) throw err;
 				if (correctPassword) {
@@ -30,10 +31,11 @@ exports.signIn = (req, res) => {
 					var token = jwtUtilities.createJWT(user);
 					res
 						.cookie('access-card', token, { httpOnly: true })
-						.status(200).send();
+						.status(200)
+						.send('Success!');
 				} else {
 					console.log('Wrong username or password');
-					res.status(404).send();
+					res.status(400).send('Wrong username or password');
 				}
 			});
 		}

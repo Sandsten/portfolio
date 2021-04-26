@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import accountReducer from './features/account/accountSlice';
+import adminReducer from './slices/adminSlice';
 
 export default configureStore({
     reducer: {
-        account: accountReducer
+        admin: adminReducer
     },
 })
