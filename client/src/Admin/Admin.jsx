@@ -7,7 +7,7 @@ import ItemDragList from './ItemDragList';
 // import { fetchProjects, updateProjectOrder } from '../redux/actions/projectsActions';
 // import { signIn, testCookie, signOut, createAccount } from '../redux/actions/userActions';
 
-import { signIn, signOut } from '../redux-toolkit/slices/adminSlice'
+import { signIn, signOut, createAdminAccount } from '../redux-toolkit/slices/adminSlice'
 
 const StyledAdmin = styled.div`
   display: grid;
@@ -43,7 +43,7 @@ const Admin = () => {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
-    //dispatch(createAccount(username, password));
+    dispatch(createAdminAccount({username, password}));
   };
 
   const handleSignIn = event => {

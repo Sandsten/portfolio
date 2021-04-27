@@ -1,20 +1,19 @@
-version: "3"
+version: '3'
 
-services: 
-  
+services:
   frontend:
     build:
       context: ./client # Build our frontend image. It will find the Dockerfile and build from it
-    ports: 
+    ports:
       - 3001:3001 # For webpack-dev-server
       - 9229:9229 # For attaching a debuger
     # Map local frontend code onto our container client folder. (bind mount)
     # The name of the folder in our container is defined in its Dockerfile
     # By doing this we can make changes on our HOST and see changes in our container
-    volumes: 
-      - ./client/src:/client/src 
+    volumes:
+      - ./client/src:/client/src
       # - /client/node_modules
-    environment: 
+    environment:
       - NODE_ENV=development
 
   # Node backend
@@ -23,19 +22,24 @@ services:
       context: ./server
     ports:
       - 3000:3000
-    volumes: 
+    volumes:
       # Only include the src/ as a bind mount if we want to keep our local folder free of node_modules
       # If we had ./server:/server instead, the installed node_modules in in our container would be deleted!
-      - ./server/src:/server/src 
-      # - /server/node_modules 
-    environment: 
+      - ./server/src:/server/src
+      # - /server/node_modules
+    environment:
       - PORT=3000
       - NODE_ENV=development
-      - SERVER=live
-    command: ["npm", "run", "start:dev"]
+      - SERVER=local
+    command: ['npm', 'run', 'start:dev']
 
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/mongo-data:/data/db
 
   # Mongo database
-
-
 # Volumes for mongo database

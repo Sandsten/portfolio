@@ -19,7 +19,7 @@ exports.signIn = (req, res) => {
 	const { username, password } = req.body;
 
 	// Find a user with the given username in the database
-	users.findOne({ username }).then((user) => {
+	users.findOne({ username: username.toLowerCase().trim() }).then((user) => {
 		if (user === null) {
 			res.status(400).send({ message: 'Wrong username or password' });
 		} else {
@@ -64,6 +64,7 @@ exports.signOut = (req, res) => {
 };
 
 exports.createAccount = (req, res) => {
+	console.log(req.body);
 	const { username, password } = req.body;
 
 	console.log('\nAttempting to create a new admin account');
@@ -84,7 +85,7 @@ exports.createAccount = (req, res) => {
 						console.log('Password hashed for maximum security');
 						users
 							.insertOne({
-								username,
+								username: username.toLowerCase(),
 								password: hash,
 							})
 							.then((result) => {
@@ -294,7 +295,7 @@ exports.purgeBlogposts = (req, res) => {
 // Pick if we are using live or local server
 var DATABASE_URL;
 if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
-	DATABASE_URL = 'mongodb://localhost:27017/portfolio';
+	DATABASE_URL = 'mongodb://mongodb:27017/portfolio'; // IP is the name of the serive in our compose file
 	console.log('Using LOCAL server');
 } else {
 	var username =
@@ -309,11 +310,14 @@ if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
 	console.log('Using LIVE server');
 }
 
+console.log(DATABASE_URL);
 MongoClient.connect(
 	DATABASE_URL,
 	{ useNewUrlParser: true, useUnifiedTopology: true },
 	(err, client) => {
 		if (err) throw err;
+
+		console.log('CONNECTING TO DB');
 
 		db = client.db('portfolio');
 		blogposts = db.collection('blogposts');
