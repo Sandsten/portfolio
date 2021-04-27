@@ -44,8 +44,7 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-	// const theme = useSelector((state) => state.appSettings.theme);
-	const theme = "DARK";
+	const theme = useSelector((state) => state.theme.version);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -57,7 +56,7 @@ const App = () => {
 			<BrowserRouter>
 				{/* // https://reacttraining.com/react-router/web/api/Switch */}
 				{/* Render the sidebar on all pages */}
-				<Route path="/" component={Sidebar} />
+				<Route path="/" component={Sidebar}/>
 				<Switch>
 					{/* <Route path="/" component={TopBar} /> */}
 					{/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}

@@ -32,10 +32,10 @@ exports.signIn = (req, res) => {
 					res
 						.cookie('access-card', token, { httpOnly: true })
 						.status(200)
-						.send('Success!');
+						.send({ message: 'Signed in successfully' });
 				} else {
 					console.log('Wrong username or password');
-					res.status(400).send('Wrong username or password');
+					res.status(400).send({ message: 'Wrong username or password' });
 				}
 			});
 		}
@@ -57,7 +57,10 @@ exports.signInWithToken = (req, res) => {
 
 exports.signOut = (req, res) => {
 	console.log('Admin signing out. Deleting JWT from client');
-	res.clearCookie('access-card').sendStatus(200);
+	res.clearCookie('access-card').status(200);
+	res.send({
+		message: 'Signed out successfully',
+	});
 };
 
 exports.createAccount = (req, res) => {

@@ -3,5 +3,7 @@
   "workbench.settings.editor": "json",
   "editor.codeLens": false,
   "editor.minimap.enabled": false,
-  "editor.folding": true
+  "editor.folding": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSaveMode": "file"
 }

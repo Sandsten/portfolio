@@ -1,33 +1,49 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Admin, Credentials, AdminError } from '../../types/admin'
+import { Admin, AdminPayload, Credentials, AdminError } from '../../types/admin';
 
-const URL =
-	process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
-const credentialsSetting = process.env.NODE_ENV === "development" ? "include" : "same-origin"
+const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
+const credentialsSetting = process.env.NODE_ENV === 'development' ? 'include' : 'same-origin';
 
-export const signIn = createAsyncThunk<Admin, Credentials, {rejectValue: AdminError}>
-	('admin/signIn', async (credentials, thunkApi) => {
+export const signIn = createAsyncThunk<AdminPayload, Credentials, { rejectValue: AdminError }>(
+	'admin/signIn',
+	async (credentials, thunkApi) => {
 		const response = await fetch(`${URL}/sign-in`, {
-			method: "POST",
+			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json', // Set contentype that it is in JSON format
 			},
 			credentials: credentialsSetting,
-			body: JSON.stringify(credentials) // Converts Object to string format
-		})
-		if(response.status !== 200){
-			return thunkApi.rejectWithValue((await response.json()) as AdminError) 
+			body: JSON.stringify(credentials), // Converts Object to string format
+		});
+		console.log(response.status);
+		console.log(await response.body);
+		if (response.status !== 200) {
+			return thunkApi.rejectWithValue((await response.json()) as AdminError);
 		}
-		return (await response.json()) as Admin;
-	});
+		return (await response.json()) as AdminPayload;
+	}
+);
+
+// AdminPayload is the type for our payload, make sure it's matching what our API is returning for ease of use
+export const signOut = createAsyncThunk<AdminPayload, Credentials, { rejectValue: AdminError }>(
+	'admin/signOut',
+	async () => {
+		const response = await fetch(`${URL}/sign-out`, {
+			method: 'POST',
+			credentials: credentialsSetting,
+		});
+		console.log(await response.status);
+		return (await response.json()) as AdminPayload;
+	}
+);
 
 const initialState: Admin = {
 	signedIn: null,
 	status: null,
-	error: null
-}
+	error: null,
+};
 
 const adminSlice = createSlice({
 	name: 'admin',
@@ -38,17 +54,30 @@ const adminSlice = createSlice({
 		builder.addCase(signIn.pending, (state) => {
 			state.status = 'loading';
 		});
-		builder.addCase(signIn.fulfilled, (state, {payload}) => {
+		builder.addCase(signIn.fulfilled, (state, { payload }) => {
 			state.signedIn = true;
 			state.status = 'success';
 		});
 		builder.addCase(signIn.rejected, (state, action) => {
-			console.log(action)
+			console.log(action);
 			if (action.payload) {
-        state.error = action.payload.message
-      }
-			state.status = null
-		})
+				state.error = action.payload.message;
+			}
+			state.status = null;
+		});
+
+		builder.addCase(signOut.pending, (state) => {
+			state.status = 'loading';
+		});
+		builder.addCase(signOut.fulfilled, (state, { payload }) => {
+			console.log(payload?.message);
+			state.signedIn = null;
+			state.status = 'success';
+		});
+		builder.addCase(signOut.rejected, (state, action) => {
+			console.log(action.payload?.message);
+			state.status = null;
+		});
 	},
 });
 

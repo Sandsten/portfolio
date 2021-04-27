@@ -3,16 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import {
-	BASE2,
-	BASE03,
-	ORANGE,
-	BASE2_SATURATED,
-	BLUE,
-	YELLOW,
-} from '../constants/colors';
+import { BASE2, BASE03, ORANGE, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
-import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
+// import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
+import { toggleTheme, setTheme } from '../redux-toolkit/slices/themeSlice';
 
 const StyledSidebar = styled.div`
 	display: grid;
@@ -118,8 +112,7 @@ const StyledThemeButton = styled(ThemeButton)`
 
 const Sidebar = (props) => {
 	const [urlPath, setUrlPath] = useState(null);
-	// const theme = useSelector((state) => state.appSettings.theme);
-	const theme = "DARK";
+	const theme = useSelector((state) => state.theme.version);
 	const dispatch = useDispatch();
 
 	// This is equivalent to componentDidMount
@@ -127,7 +120,7 @@ const Sidebar = (props) => {
 		// If there's no theme stored in local storage, default to dark theme!
 		var storedTheme = localStorage.getItem('theme');
 		if (!storedTheme) storedTheme = 'DARK';
-		// //dispatch(setTheme(storedTheme));
+		dispatch(setTheme({ storedTheme }));
 	}, []);
 
 	useEffect(() => {
@@ -136,10 +129,10 @@ const Sidebar = (props) => {
 	});
 
 	const handleThemeToggle = () => {
-		// //dispatch(toggleTheme());
+		dispatch(toggleTheme());
 	};
 
-	if (!theme) return null;
+	// if (!theme) return null;
 
 	return (
 		<StyledSidebar theme={theme}>
@@ -153,23 +146,13 @@ const Sidebar = (props) => {
 					// ['/tutorials', 'Tutorials'],
 				].map((page) => {
 					return (
-						<SidebarLink
-							key={page[1]}
-							theme={theme}
-							path={urlPath}
-							to={page[0]}
-						>
+						<SidebarLink key={page[1]} theme={theme} path={urlPath} to={page[0]}>
 							{page[1]}
 						</SidebarLink>
 					);
 				})}
 			</span>
-			<StyledThemeButton
-				theme={theme}
-				width="50"
-				height="50"
-				handleClick={handleThemeToggle}
-			/>
+			<StyledThemeButton theme={theme} width="50" height="50" handleClick={handleThemeToggle} />
 		</StyledSidebar>
 	);
 };
