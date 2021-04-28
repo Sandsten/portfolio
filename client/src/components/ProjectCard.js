@@ -19,8 +19,8 @@ const StyledProjectCard = styled(Link)`
 	text-decoration: none;
 	outline: none;
 	overflow: hidden;
-	color: ${(p) => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
-	background-color: ${(p) => (p.theme === 'LIGHT' ? BASE2 : BASE03)};
+	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : BASE1)};
+	background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2 : BASE03)};
 
 	@media (min-width: ${MOBILE_XS}) {
 		min-height: auto; /*Nullify the previous min-height*/
@@ -34,7 +34,7 @@ const StyledProjectCard = styled(Link)`
 	}
 
 	:hover {
-		background-color: ${(p) => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE02_SATURATED)};
+		background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2_SATURATED : BASE02_SATURATED)};
 		box-shadow: 0 0 0 3pt; // will look like a rounded outline
 		transform: scale(1.01);
 	}
@@ -58,7 +58,7 @@ const Image = styled.img`
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
-	filter: ${(p) => (p.theme === 'LIGHT' ? 'none' : 'brightness(80%)')};
+	filter: ${(p) => (p.theme.main === 'LIGHT' ? 'none' : 'brightness(80%)')};
 `;
 
 const Tags = styled.div`
@@ -67,7 +67,7 @@ const Tags = styled.div`
 	margin: 10px;
 `;
 
-const ProjectCard = ({ data, theme, style }) => {
+const ProjectCard = ({ data, style }) => {
 	var thumbnail;
 	try {
 		thumbnail = `https://staffansandberg.com/${data.bgUrl}`;
@@ -76,7 +76,7 @@ const ProjectCard = ({ data, theme, style }) => {
 	}
 
 	return (
-		<StyledProjectCard style={style} theme={theme} to={'/projects/' + data.localURL}>
+		<StyledProjectCard style={style} to={'/projects/' + data.localURL}>
 			<Title>
 				<b>{data.title}</b>
 			</Title>

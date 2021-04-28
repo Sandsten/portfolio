@@ -30,15 +30,14 @@ const ProjectTitle = styled.b`
 	font-size: 1.4em;
 `;
 const StyledA = styled.a`
-	color: ${(p) => (p.theme === 'LIGHT' ? '' : BLUE)};
+	color: ${(p) => (p.theme.main === 'LIGHT' ? '' : BLUE)};
 `;
 const StyledLink = styled(Link)`
-	color: ${(p) => (p.theme === 'LIGHT' ? '' : BLUE)};
+	color: ${(p) => (p.theme.main === 'LIGHT' ? '' : BLUE)};
 `;
 
 const projectPage = (props) => {
 	// const [project, setProject] = useState(null);
-	const theme = useSelector((state) => state.config.theme);
 	const project = useSelector((state) => {
 		if (!state.projects.data) return null;
 		// Find the correct project in the redux state
@@ -64,7 +63,6 @@ const projectPage = (props) => {
 	// If projects haven't loaded yet
 	if (!project)
 		return <StyledProjectPage style={{ height: '100vh' }}>'Loading...'</StyledProjectPage>;
-	if (!theme) return null;
 
 	var website = project.website ? (
 		<p>
@@ -100,7 +98,7 @@ const projectPage = (props) => {
 	return (
 		// Prevent StyledProjectPage from being a direct sibling to the sidebar
 		// otherwise its height will match it automatically which we don't want
-		<StyledProjectPage theme={theme}>
+		<StyledProjectPage>
 			{CONTENT.map((text, i) => {
 				if (!text) return null; // Prevent github/website to try and render with cssTransition if they are null
 				return (

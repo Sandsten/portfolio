@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
+import styled, {ThemeProvider} from 'styled-components';
 
 import Sidebar from './components/Sidebar';
 // import TopBar from './components/TopBar';
@@ -19,6 +19,7 @@ import tutorials from './pages/tutorials';
 
 // import { autoSignIn } from './redux/actions/userActions';
 import { signIn } from './redux-toolkit/actions/adminSlice';
+import {setTheme} from './redux-toolkit/slices/siteConfigSlice';
 
 import { BASE02, BASE3, BASE03, BASE1 } from './constants/colors';
 
@@ -33,8 +34,8 @@ const MainContainer = styled.div`
 	/* Base background color for whole website */
 	/* TODO: Remove unneeded background color modifiers on pages which this will cover */
 	/* Basically all "Wrapper" components */
-	background-color: ${(p) => (p.theme === 'LIGHT' ? BASE3 : BASE02)};
-	color: ${(p) => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
+	background-color: ${(props) => (props.theme.main === 'LIGHT' ? BASE3 : BASE02)};
+	color: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE1)};
 
 	@media (min-width: ${DESKTOP_XS}) {
 		display: grid;
@@ -44,15 +45,23 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-	const theme = useSelector((state) => state.config.theme);
+	const config = useSelector((state) => state.config);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		var storedTheme = localStorage.getItem('theme');
+		if (!storedTheme) storedTheme = 'DARK';
+		dispatch(setTheme({ storedTheme }));
 		//dispatch(autoSignIn());
 	}, []);
 
+	useEffect(() => {
+		localStorage.setItem('theme', config.theme);
+	})
+
 	return (
-		<MainContainer theme={theme}>
+		<ThemeProvider theme={{main: config.theme}}> {/*Pass the theme down to all components*/}
+		<MainContainer >
 			<BrowserRouter>
 				{/* // https://reacttraining.com/react-router/web/api/Switch */}
 				{/* Render the sidebar on all pages */}
@@ -78,6 +87,7 @@ const App = () => {
 				</Switch>
 			</BrowserRouter>
 		</MainContainer>
+		</ThemeProvider>
 	);
 };
 export default App;

@@ -11,7 +11,6 @@ import { BASE02, BASE3 } from '../constants/colors';
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 
 import '../CSSTransitions/transitions.scss';
-import axios from 'axios';
 
 const StyledProjects = styled.div`
 	display: grid;
@@ -37,7 +36,6 @@ export const Spacer = styled.div`
 `;
 
 const projects = () => {
-	const theme = useSelector((state) => state.config.theme);
 	const projects = useSelector((state) => state.projects);
 	// const projectsFetched = useSelector((state) => state.projects.fetched);
 
@@ -63,7 +61,7 @@ const projects = () => {
 						timeout={500}
 					>
 						{/* transition delay has to be passed down to the component for it to work */}
-						<ProjectCard theme={theme} data={project} />
+						<ProjectCard data={project} />
 					</CSSTransition>
 				);
 			})}

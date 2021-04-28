@@ -18,7 +18,7 @@ const StyledSidebar = styled.div`
 	position: sticky; /*Important that the parent has the correct height for this to work properly*/
 	top: 0;
 	/* Maybe make this less saturated? */
-	background-color: ${(p) => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
+	background-color: ${(props) => (props.theme.main === 'LIGHT' ? BASE2_SATURATED : BASE03)};
 	z-index: 100;
 
 	@media (min-width: ${DESKTOP_XS}) {
@@ -46,7 +46,7 @@ export const StyledLink = styled(Link)`
 	margin-right: 20px;
 	text-decoration: none;
 	outline: none;
-	color: ${(p) => (p.theme === 'LIGHT' ? BASE03 : BASE2)};
+	color: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE2)};
 
 	:hover {
 		text-decoration: underline;
@@ -94,11 +94,11 @@ const ThemeButton = ({ className, width = 24, height = 24, handleClick }) => {
 
 const StyledThemeButton = styled(ThemeButton)`
 	grid-area: options;
-	fill: ${(p) => (p.theme === 'LIGHT' ? BASE03 : BASE2_SATURATED)};
+	fill: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE2_SATURATED)};
 
 	:hover {
 		cursor: pointer;
-		fill: ${(p) => (p.theme === 'LIGHT' ? 'black' : YELLOW)};
+		fill: ${(props) => (props.theme.main === 'LIGHT' ? 'black' : YELLOW)};
 	}
 
 	@media (min-width: ${DESKTOP_XS}) {
@@ -112,30 +112,19 @@ const StyledThemeButton = styled(ThemeButton)`
 
 const Sidebar = (props) => {
 	const [urlPath, setUrlPath] = useState(null);
-	const theme = useSelector((state) => state.config.theme);
 	const dispatch = useDispatch();
-
-	// This is equivalent to componentDidMount
-	useEffect(() => {
-		// If there's no theme stored in local storage, default to dark theme!
-		var storedTheme = localStorage.getItem('theme');
-		if (!storedTheme) storedTheme = 'DARK';
-		dispatch(setTheme({ storedTheme }));
-	}, []);
 
 	useEffect(() => {
 		setUrlPath(props.location.pathname);
-		if (theme) localStorage.setItem('theme', theme);
 	});
 
 	const handleThemeToggle = () => {
+		// Updating the theme for the site is handled inside the top level component App.jsx
 		dispatch(toggleTheme());
 	};
 
-	// if (!theme) return null;
-
 	return (
-		<StyledSidebar theme={theme}>
+		<StyledSidebar>
 			<Name>Staffan Sandberg</Name>
 			<span>
 				{[
@@ -146,13 +135,13 @@ const Sidebar = (props) => {
 					// ['/tutorials', 'Tutorials'],
 				].map((page) => {
 					return (
-						<SidebarLink key={page[1]} theme={theme} path={urlPath} to={page[0]}>
+						<SidebarLink key={page[1]} path={urlPath} to={page[0]}>
 							{page[1]}
 						</SidebarLink>
 					);
 				})}
 			</span>
-			<StyledThemeButton theme={theme} width="50" height="50" handleClick={handleThemeToggle} />
+			<StyledThemeButton width="50" height="50" handleClick={handleThemeToggle} />
 		</StyledSidebar>
 	);
 };
