@@ -2,13 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import {
-	BASE03,
-	BASE2,
-	BASE2_SATURATED,
-	BASE02_SATURATED,
-	BASE1,
-} from '../constants/colors';
+import { BASE03, BASE2, BASE2_SATURATED, BASE02_SATURATED, BASE1 } from '../constants/colors';
 import { MOBILE_XS } from '../constants/sizes';
 
 const StyledProjectCard = styled(Link)`
@@ -39,11 +33,9 @@ const StyledProjectCard = styled(Link)`
 		grid-template-columns: 1fr 1fr;
 	}
 
-	&:hover {
-		background-color: ${(p) =>
-			p.theme === 'LIGHT' ? BASE2_SATURATED : BASE02_SATURATED};
-		/* outline-style: solid; */
-		box-shadow: 0 0 0 2pt; // will look like a rounded outline
+	:hover {
+		background-color: ${(p) => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE02_SATURATED)};
+		box-shadow: 0 0 0 3pt; // will look like a rounded outline
 		transform: scale(1.01);
 	}
 `;
@@ -84,11 +76,7 @@ const ProjectCard = ({ data, theme, style }) => {
 	}
 
 	return (
-		<StyledProjectCard
-			style={style}
-			theme={theme}
-			to={'/projects/' + data.localURL}
-		>
+		<StyledProjectCard style={style} theme={theme} to={'/projects/' + data.localURL}>
 			<Title>
 				<b>{data.title}</b>
 			</Title>

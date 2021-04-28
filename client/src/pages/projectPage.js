@@ -38,7 +38,7 @@ const StyledLink = styled(Link)`
 
 const projectPage = (props) => {
 	// const [project, setProject] = useState(null);
-	const theme = useSelector((state) => state.appSettings.theme);
+	const theme = useSelector((state) => state.config.theme);
 	const project = useSelector((state) => {
 		if (!state.projects.data) return null;
 		// Find the correct project in the redux state
@@ -52,9 +52,7 @@ const projectPage = (props) => {
 
 	useEffect(() => {
 		// If project wasn't in the redux state, fetch from database
-
 		// if (!projectsFetched) dispatch(fetchProjects());
-
 		//TODO: Opportunity for slight optimization, if refreshing on project page, only fetch that specific project
 		// if (!project) {
 		//   //dispatch(fetchProject(props.match.params.name));
@@ -65,11 +63,7 @@ const projectPage = (props) => {
 
 	// If projects haven't loaded yet
 	if (!project)
-		return (
-			<StyledProjectPage style={{ height: '100vh' }}>
-				'Loading...'
-			</StyledProjectPage>
-		);
+		return <StyledProjectPage style={{ height: '100vh' }}>'Loading...'</StyledProjectPage>;
 	if (!theme) return null;
 
 	var website = project.website ? (

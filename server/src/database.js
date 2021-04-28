@@ -14,6 +14,8 @@ var db, blogposts, users, projects;
 /// User
 //////////////
 
+// ALWAYS SEND BACK DATA IN JSON FORMAT
+
 // Sign in to the website using a username and password
 exports.signIn = (req, res) => {
 	const { username, password } = req.body;
@@ -122,7 +124,7 @@ exports.getProjects = (req, res) => {
 			console.log('GET PROJECTS');
 			console.log('Sending projects to client');
 			console.log(typeof projects);
-			res.status(200).send(projects);
+			res.status(200).send({ projects });
 		})
 		.catch((e) => {
 			console.log('ERROR' + e);

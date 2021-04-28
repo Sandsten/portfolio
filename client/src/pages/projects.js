@@ -5,7 +5,6 @@ import { CSSTransition } from 'react-transition-group';
 
 import ProjectCard from '../components/ProjectCard';
 
-import { fetchProjects } from '../redux/actions/projectsActions';
 import { getProjects } from '../redux-toolkit/slices/projectsSlice';
 
 import { BASE02, BASE3 } from '../constants/colors';
@@ -38,23 +37,18 @@ export const Spacer = styled.div`
 `;
 
 const projects = () => {
-	// const theme = useSelector((state) => state.appSettings.theme);
+	const theme = useSelector((state) => state.config.theme);
 	const projects = useSelector((state) => state.projects);
 	// const projectsFetched = useSelector((state) => state.projects.fetched);
-	const theme = 'DARK';
-	// const projects = null;
-	// const projectsFetched = false;
 
 	const [shouldAnimate, setShouldAnimate] = useState(true);
 	const dispatch = useDispatch();
-	const staggerDelay = 0.02;
 
 	useEffect(() => {
 		// Update to not fetch if we already have all the project in our redux store state
 		if (projects.status == null) dispatch(getProjects());
 	}, []);
 
-	if (!theme) return null;
 	if (!projects.data) return <StyledProjects theme={theme}>Loading projects...</StyledProjects>;
 
 	return (
@@ -69,11 +63,7 @@ const projects = () => {
 						timeout={500}
 					>
 						{/* transition delay has to be passed down to the component for it to work */}
-						<ProjectCard
-							theme={theme}
-							data={project}
-							style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
-						/>
+						<ProjectCard theme={theme} data={project} />
 					</CSSTransition>
 				);
 			})}

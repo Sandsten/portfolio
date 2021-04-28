@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 import { Projects, ProjectPayload, ProjectPayloadError } from '../../types/projects';
 
@@ -18,11 +17,9 @@ export const getProjects = createAsyncThunk<
 			accept: 'application/json', // VERY IMPORTANT - set this to json in order to be able to recieve json data from the server. If not set it will return 404
 		},
 	});
-	console.log(await response);
-	// if (response.status !== 200) {
-	// 	return thunkApi.rejectWithValue((await response.json()) as ProjectPayloadError);
-	// }
-	console.log(await response);
+	if (response.status !== 200) {
+		return thunkApi.rejectWithValue((await response.json()) as ProjectPayloadError);
+	}
 	return (await response.json()) as ProjectPayload;
 });
 
