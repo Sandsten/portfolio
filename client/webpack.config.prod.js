@@ -5,22 +5,18 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // Removes unuse
 module.exports = {
 	target: 'web',
 	mode: 'production',
-	entry: {
-		app: './src/index.js',
-	},
 	output: {
-		path: path.resolve(__dirname, './build'),
-		filename: '[name].[contenthash].frontend.js', // Content hash is a hash based on the file content
 		publicPath: '/',
+	},
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js', '.jsx'],
 	},
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.(t|j)sx?$/,
+				use: { loader: 'ts-loader' },
 				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader',
-				},
 			},
 			{
 				test: /\.glsl$/,
@@ -30,9 +26,7 @@ module.exports = {
 				test: /\.scss$/,
 				// Order of modules matters
 				use: [
-					process.env.NODE_ENV !== 'production'
-						? 'style-loader'
-						: MiniCssExtractPlugin.loader,
+					process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
 					'css-loader',
 					'sass-loader',
 				],
@@ -58,17 +52,10 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
 		new HtmlWebPackPlugin({
-			template: './src/index.html',
+			template: path.join(__dirname, 'src/index.html'),
 			filename: 'index.html',
 			favicon: 'src/favicon.ico',
 		}),
 	],
-	optimization: {
-		runtimeChunk: 'single', // Generate a single bundle for all runtime code. What's runtime? Code that is executed while your code is running, especially those instructions that you did not write explicitly, but are necessary for the proper execution of your code.
-		splitChunks: {
-			chunks: 'all',
-		},
-	},
 };
