@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import { BASE2, BASE03, ORANGE, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
 // import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
-import { toggleTheme, setTheme } from '../redux-toolkit/slices/themeSlice';
+import { toggleTheme, setTheme } from '../redux-toolkit/slices/siteConfigSlice';
 
 const StyledSidebar = styled.div`
 	display: grid;
@@ -112,7 +112,7 @@ const StyledThemeButton = styled(ThemeButton)`
 
 const Sidebar = (props) => {
 	const [urlPath, setUrlPath] = useState(null);
-	const theme = useSelector((state) => state.theme.version);
+	const theme = useSelector((state) => state.config.theme);
 	const dispatch = useDispatch();
 
 	// This is equivalent to componentDidMount

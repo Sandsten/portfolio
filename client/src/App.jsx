@@ -44,7 +44,7 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-	const theme = useSelector((state) => state.theme.version);
+	const theme = useSelector((state) => state.config.theme);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

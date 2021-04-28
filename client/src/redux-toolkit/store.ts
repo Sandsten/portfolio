@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import adminReducer from './slices/adminSlice';
-import themeReducer from './slices/themeSlice';
+import siteConfigSlice from './slices/siteConfigSlice';
+import projectsSlice from './slices/projectsSlice';
 
 export default configureStore({
 	reducer: {
 		admin: adminReducer,
-		theme: themeReducer,
+		config: siteConfigSlice,
+		projects: projectsSlice,
 	},
 });

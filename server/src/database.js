@@ -113,17 +113,21 @@ exports.getUser = (id, res) => {
 //////////////
 
 exports.getProjects = (req, res) => {
+	console.log('GET PROJECTS');
 	projects
 		.find()
 		.sort({ order: 1 })
 		.toArray()
 		.then((projects) => {
+			console.log('GET PROJECTS');
 			console.log('Sending projects to client');
+			console.log(typeof projects);
 			res.status(200).send(projects);
 		})
 		.catch((e) => {
 			console.log('ERROR' + e);
-			res.status(404).send(e);
+			console.log('GET PROJECTS');
+			res.status(401).send({ message: e });
 		});
 };
 
@@ -310,7 +314,6 @@ if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
 	console.log('Using LIVE server');
 }
 
-console.log(DATABASE_URL);
 MongoClient.connect(
 	DATABASE_URL,
 	{ useNewUrlParser: true, useUnifiedTopology: true },
