@@ -6,6 +6,8 @@ module.exports = {
 	target: 'web',
 	mode: 'production',
 	output: {
+		path: path.resolve(__dirname, './build'),
+		filename: '[name].[contenthash].frontend.js', // Content hash is a hash based on
 		publicPath: '/',
 	},
 	resolve: {
@@ -58,4 +60,10 @@ module.exports = {
 			favicon: 'src/favicon.ico',
 		}),
 	],
+	optimization: {
+		runtimeChunk: 'single', // Generate a single bundle for all runtime code. What's runtime? Code that is executed while your code is running, especially those instructions that you did not write explicitly, but are necessary for the proper execution of your code.
+		splitChunks: {
+			chunks: 'all',
+		},
+	},
 };
