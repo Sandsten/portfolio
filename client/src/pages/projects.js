@@ -14,7 +14,9 @@ import '../CSSTransitions/transitions.scss';
 
 const StyledProjects = styled.div`
 	display: grid;
-	grid-template-columns: 1fr;
+	/* Autofit will create as many columns as will fit within the given max value, without each cell going bellow the min value */
+	/* In this case. Create as many columns no smaller than 450 pixels within 1fr of the given space */
+	grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 	grid-row-gap: 20px;
 	grid-column-gap: 30px;
 
@@ -24,10 +26,6 @@ const StyledProjects = styled.div`
 
 	@media (min-width: ${DESKTOP_XS}) {
 		padding: 20px 20px 0px 20px;
-	}
-
-	@media (min-width: ${DESKTOP_XL}) {
-		grid-template-columns: repeat(2, 1fr);
 	}
 `;
 

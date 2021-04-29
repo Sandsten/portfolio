@@ -34,9 +34,7 @@ const StyledProjectCard = styled(Link)`
 	}
 
 	:hover {
-		background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2_SATURATED : BASE02_SATURATED)};
-		box-shadow: 0 0 0 3pt; // will look like a rounded outline
-		transform: scale(1.01);
+		transform: scale(1.02);
 	}
 `;
 

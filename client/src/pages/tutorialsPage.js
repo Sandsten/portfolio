@@ -3,18 +3,19 @@ import styled from 'styled-components';
 
 const StyledTutorialsPage = styled.div`
 	display: grid;
+	max-width: 1024px;
 	grid-column-gap: 30px;
 
-	padding: 20px 10px 10px 10px;
+	padding: 20px 10px 20px 20px;
 `;
 
 const StyledIframe = styled.iframe`
-	justify-self: center;
+	/* justify-self: center; */
 `;
 const StyledInfo = styled.div``;
 
 const TutorialsPage = (props) => {
-	const [width, setWidth] = useState(360 * 2);
+	const [width, setWidth] = useState(300 * 2);
 	const [height, setHeight] = useState(null);
 
 	useEffect(() => {
