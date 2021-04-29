@@ -55,9 +55,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebPackPlugin({
-			template: path.join(__dirname, 'src/index.html'),
-			filename: 'index.html',
-			favicon: 'src/favicon.ico',
+			template: './src/index.html',
 		}),
 	],
 	optimization: {

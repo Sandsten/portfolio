@@ -66,12 +66,8 @@ exports.signOut = (req, res) => {
 };
 
 exports.createAccount = (req, res) => {
-	console.log(req.body);
 	const { username, password } = req.body;
-
 	console.log('\nAttempting to create a new admin account');
-	console.log(username);
-
 	users
 		.find()
 		.count()
@@ -115,20 +111,17 @@ exports.getUser = (id, res) => {
 //////////////
 
 exports.getProjects = (req, res) => {
-	console.log('GET PROJECTS');
 	projects
 		.find()
 		.sort({ order: 1 })
 		.toArray()
 		.then((projects) => {
-			console.log('GET PROJECTS');
 			console.log('Sending projects to client');
 			console.log(typeof projects);
 			res.status(200).send({ projects });
 		})
 		.catch((e) => {
 			console.log('ERROR' + e);
-			console.log('GET PROJECTS');
 			res.status(401).send({ message: e });
 		});
 };
@@ -184,8 +177,6 @@ exports.updateProjectOrder = (req, res) => {
 exports.addBlogpost = (req, res) => {
 	var obj = req.body;
 
-	console.log(req.user);
-
 	blogposts
 		.insertOne(obj)
 		.then((result) => {
@@ -198,7 +189,6 @@ exports.addBlogpost = (req, res) => {
 
 exports.removeBlogpost = (req, res) => {
 	var body = req.body;
-
 	var id = body.id;
 
 	if (!id) {
@@ -235,7 +225,6 @@ exports.updateBlogpost = (req, res) => {
 			}
 		)
 		.then((result) => {
-			console.log(result);
 			if (result.matchedCount == 0) {
 				res.status(410).send('no blogpost with that id found');
 				return;
@@ -302,7 +291,7 @@ exports.purgeBlogposts = (req, res) => {
 var DATABASE_URL;
 if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
 	DATABASE_URL = 'mongodb://mongodb:27017/portfolio'; // IP is the name of the serive in our compose file
-	console.log('Using LOCAL server');
+	console.log('Using LOCAL database');
 } else {
 	var username =
 		dockerSecret.read(process.env.MONGODB_ATLAS_USERNAME_FILE) ||
@@ -313,7 +302,7 @@ if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
 		process.env.MONGODB_ATLAS_PASSWORD;
 
 	DATABASE_URL = `mongodb+srv://${username}:${password}@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
-	console.log('Using LIVE server');
+	console.log('Using REMOTE database');
 }
 
 MongoClient.connect(
@@ -321,9 +310,6 @@ MongoClient.connect(
 	{ useNewUrlParser: true, useUnifiedTopology: true },
 	(err, client) => {
 		if (err) throw err;
-
-		console.log('CONNECTING TO DB');
-
 		db = client.db('portfolio');
 		blogposts = db.collection('blogposts');
 		users = db.collection('users');

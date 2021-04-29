@@ -70,7 +70,8 @@ const Tags = styled.div`
 const ProjectCard = ({ data, style }) => {
 	var thumbnail;
 	try {
-		thumbnail = `https://staffansandberg.com/${data.bgUrl}`;
+		// Update database to use webp format instead?
+		thumbnail = `https://staffansandberg.com/${data.bgUrl}`.replace('png', 'webp');
 	} catch (error) {
 		thumbnail = '';
 	}

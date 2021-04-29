@@ -55,12 +55,12 @@ router.delete('/purge-blogposts', jwtUtilities.authorizeAPICall, databse.purgeBl
 
 // Serve static front-end content when in production
 if (process.env.NODE_ENV === 'production') {
-	console.log('PRODUCTION MODE ENGAGED');
-	var staticPath = path.join(__dirname, './build');
-	console.log(staticPath);
+	console.log('Production mode active');
+	var staticPath = path.join(__dirname, '../build');
 	app.use(express.static(staticPath));
 } else {
-	console.log('DEV MODE ENGAGED!');
+	// When in dev mode the frontend is hosted on it's own port using webpack
+	console.log('Development mode active');
 }
 
 app.listen(PORT, () => {
