@@ -4,7 +4,7 @@
   "description": "- ~~Front end should be responsive.~~ - ~~Dark and light color theme option.~~ - ~~Sign in to website as admin~~ - ~~Authorize certain api calls with JWT~~ - **add**/**update** projects, blogposts and so forth through my website. - All the data should be stored on **Atlas**. - Integrated CV, not just a PDF.",
   "scripts": {
     "prod": "docker-compose -f docker-compose.prod.yml up --build -d --remove-orphans",
-    "dev": "docker-compose -f docker-compose.dev.yml up --build --remove-orphans"
+    "dev": "docker-compose -f docker-compose.dev.yml up --build"
   },
   "repository": {
     "type": "git",
