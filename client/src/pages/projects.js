@@ -16,14 +16,19 @@ const StyledProjects = styled.div`
 	display: grid;
 	/* Autofit will create as many columns as will fit within the given max value, without each cell going bellow the min value */
 	/* In this case. Create as many columns no smaller than 450 pixels within 1fr of the given space */
-	grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+	/* grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); */
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	// Make the rows always 200px tall
+	grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+	height: 100vh;
 	grid-row-gap: 20px;
 	grid-column-gap: 30px;
 
-	height: 100vh;
+	/* height: 100vh; */
 	padding: 20px 10px 10px 10px;
 	overflow-y: scroll;
 
+	grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 	@media (min-width: ${DESKTOP_XS}) {
 		padding: 20px 20px 0px 20px;
 	}
