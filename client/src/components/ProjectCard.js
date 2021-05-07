@@ -12,24 +12,19 @@ const StyledProjectCard = styled(Link)`
 		'title'
 		'desc'
 		'tags';
-	grid-template-rows: 150px auto 1fr auto;
 
-	min-height: 300px;
 	border-radius: 5px;
 	text-decoration: none;
-	outline: none;
-	overflow: hidden;
+
 	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : BASE1)};
 	background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2 : BASE03)};
 
 	@media (min-width: ${MOBILE_XS}) {
-		min-height: auto; /*Nullify the previous min-height*/
 		height: 200px;
 		grid-template-areas:
 			'title img'
 			'desc  img'
 			'tags  img';
-		grid-template-rows: auto 1fr auto;
 		grid-template-columns: 1fr 1fr;
 	}
 

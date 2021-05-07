@@ -28,18 +28,29 @@ import './styles/index.scss';
 
 // Main container for the whole website
 const MainContainer = styled.div`
-	display: block;
+	display: grid;
+	
+	grid-template-areas:
+		'sidebar'
+		'main'
+	;
+	
+	/* Make the menu at the top take up 90px and the main content the rest */
+	grid-template-rows: 90px 1fr;
+	
+	/* vh: Relative to 1% of the height of the viewport* */
+	/* The webpage should always stretch the entire viewport */
+	height: 100vh;
 
-	/* Base background color for whole website */
-	/* TODO: Remove unneeded background color modifiers on pages which this will cover */
-	/* Basically all "Wrapper" components */
 	background-color: ${(props) => (props.theme.main === 'LIGHT' ? BASE3 : BASE02)};
 	color: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE1)};
 
+	/* Place the menu to the left when the screen is wide enough */
 	@media (min-width: ${DESKTOP_XS}) {
-		display: grid;
 		grid-template-areas: 'sidebar main';
+		
 		grid-template-columns: 250px 1fr;
+		grid-template-rows: 1fr;
 	}
 `;
 
