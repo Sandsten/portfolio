@@ -15,7 +15,7 @@ const StyledProjectCard = styled(Link)`
 
 	border-radius: 5px;
 	text-decoration: none;
-	overflow: hidden;
+	grid-template-rows: auto 1fr auto;
 
 	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : BASE1)};
 	background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2 : BASE03)};
@@ -27,7 +27,6 @@ const StyledProjectCard = styled(Link)`
 			'desc  img'
 			'tags  img';
 
-		grid-template-rows: auto 1fr auto;
 		grid-template-columns: 1fr 1fr;
 	}
 
@@ -60,26 +59,19 @@ const Image = styled.img`
 const TagContainer = styled.div`
 	grid-area: tags;
 	margin: 10px;
-
-	/* grid: subgrid / subgrid; */
-
-	display: grid;
-
-	grid-auto-flow: column;
-
-	/* align-content: start; */
-	grid-column-gap: 10px;
-	justify-content: left;
-	/* grid-template-rows: 1fr; */
-	/* grid-auto-columns: 50px; */
-	/* grid-auto-flow: row; */
+	/* Using flex here since we can't have uneven grid columns */
+	display: flex;
+	flex-wrap: wrap;
 `;
 
 const Tag = styled.div`
 	font-size: 0.8em;
-	/* border: yellow solid; */
 	padding: 2px 5px 2px 5px;
+	width: max-content; // Sets the width of the div to its content
 	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+
 	background-color: ${(props) => (props.theme.main === 'LIGHT' ? '' : B0)};
 `;
 
