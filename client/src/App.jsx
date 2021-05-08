@@ -20,7 +20,7 @@ import tutorialsPage from './pages/tutorialsPage';
 // import { autoSignIn } from './redux/actions/userActions';
 import {setTheme} from './redux-toolkit/slices/siteConfigSlice';
 
-import { BASE02, BASE3, BASE03, BASE1 } from './constants/colors';
+import { BASE02, BASE3, BASE03, BASE1, R3 } from './constants/colors';
 
 import { DESKTOP_XS } from './constants/sizes';
 

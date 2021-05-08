@@ -18,6 +18,8 @@ const StyledProjects = styled.div`
 
 	display: grid;
 
+	align-content: safe start;
+
 	grid-template-columns: 1fr;
 	grid-row-gap: 20px;
 
@@ -30,15 +32,9 @@ const StyledProjects = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
 		/* Autofit will create as many columns as will fit within the given max value, without each cell going bellow the min value */
 		/* In this case. Create as many columns no smaller than 450 pixels within 1fr of the given space */
-		/* grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); */
-
-		// Make the rows always 200px tall
 		grid-column-gap: 20px;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-
-		height: 100vh;
-		padding: 20px 10px 10px 10px;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		/* grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)); */
 	}
 `;
 

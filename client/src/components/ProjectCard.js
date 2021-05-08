@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { BASE03, BASE2, BASE2_SATURATED, BASE02_SATURATED, BASE1 } from '../constants/colors';
+import { BASE03, BASE2, BASE1, B0 } from '../constants/colors';
 import { MOBILE_XS } from '../constants/sizes';
 
 const StyledProjectCard = styled(Link)`
@@ -15,6 +15,7 @@ const StyledProjectCard = styled(Link)`
 
 	border-radius: 5px;
 	text-decoration: none;
+	overflow: hidden;
 
 	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : BASE1)};
 	background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2 : BASE03)};
@@ -25,6 +26,8 @@ const StyledProjectCard = styled(Link)`
 			'title img'
 			'desc  img'
 			'tags  img';
+
+		grid-template-rows: auto 1fr auto;
 		grid-template-columns: 1fr 1fr;
 	}
 
@@ -51,13 +54,33 @@ const Image = styled.img`
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
-	filter: ${(p) => (p.theme.main === 'LIGHT' ? 'none' : 'brightness(80%)')};
+	/* overflow: hidden; */
 `;
 
-const Tags = styled.div`
+const TagContainer = styled.div`
 	grid-area: tags;
-	font-size: 0.9em;
 	margin: 10px;
+
+	/* grid: subgrid / subgrid; */
+
+	display: grid;
+
+	grid-auto-flow: column;
+
+	/* align-content: start; */
+	grid-column-gap: 10px;
+	justify-content: left;
+	/* grid-template-rows: 1fr; */
+	/* grid-auto-columns: 50px; */
+	/* grid-auto-flow: row; */
+`;
+
+const Tag = styled.div`
+	font-size: 0.8em;
+	/* border: yellow solid; */
+	padding: 2px 5px 2px 5px;
+	border-radius: 5px;
+	background-color: ${(props) => (props.theme.main === 'LIGHT' ? '' : B0)};
 `;
 
 const ProjectCard = ({ data, style }) => {
@@ -75,7 +98,12 @@ const ProjectCard = ({ data, style }) => {
 				<b>{data.title}</b>
 			</Title>
 			<Description>{data.descriptionShort}</Description>
-			<Tags>{data.tools.join(', ')}</Tags>
+			<TagContainer>
+				{data.tools.map((value) => (
+					<Tag>{value}</Tag>
+				))}
+			</TagContainer>
+			{/* <Tags>{data.tools.join(', ')}</Tags> */}
 			<Image src={thumbnail} alt={data.title + 'thumbnail'} />
 		</StyledProjectCard>
 	);
