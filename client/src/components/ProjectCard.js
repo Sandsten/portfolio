@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { BASE03, BASE2, BASE1, B0 } from '../constants/colors';
+import { BASE03, BASE2, BASE1, B0, DARK_THEME } from '../constants/colors';
 import { MOBILE_XS } from '../constants/sizes';
 
 const StyledProjectCard = styled(Link)`
@@ -13,19 +13,19 @@ const StyledProjectCard = styled(Link)`
 		'desc'
 		'tags';
 
-	border-radius: 5px;
-	text-decoration: none;
 	grid-template-rows: 150px auto 2fr auto;
 
+	border-radius: 5px;
+	text-decoration: none;
 	height: 300px;
-
 	overflow: hidden; // Necessary to keep image corners follow given border radius of its parent
+	font-weight: 300;
 
-	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : BASE1)};
-	background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2 : BASE03)};
+	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : DARK_THEME.TEXT)};
+	background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2 : DARK_THEME.CARD_BG)};
 
 	@media (min-width: ${MOBILE_XS}) {
-		height: 200px;
+		height: 210px;
 		grid-template-areas:
 			'title img'
 			'desc  img'
@@ -77,7 +77,7 @@ const Tag = styled.div`
 	margin-right: 5px;
 	margin-top: 5px;
 
-	background-color: ${(props) => (props.theme.main === 'LIGHT' ? '' : B0)};
+	background-color: ${(props) => (props.theme.main === 'LIGHT' ? '' : DARK_THEME.TAG_BG)};
 `;
 
 const ProjectCard = (props) => {

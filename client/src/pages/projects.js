@@ -32,7 +32,7 @@ const StyledProjects = styled.div`
 		/* Autofit will create as many columns as will fit within the given max value, without each cell going bellow the min value */
 		/* In this case. Create as many columns no smaller than 450 pixels within 1fr of the given space */
 		grid-column-gap: 20px;
-		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
 		/* grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)); */
 	}
 `;

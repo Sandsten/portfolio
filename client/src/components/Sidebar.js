@@ -8,6 +8,8 @@ import { DESKTOP_XS } from '../constants/sizes';
 // import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
 import { toggleTheme, setTheme } from '../redux-toolkit/slices/siteConfigSlice';
 
+import { DARK_THEME } from '../constants/colors';
+
 const StyledSidebar = styled.div`
 	display: grid;
 	grid-template-areas:
@@ -18,7 +20,8 @@ const StyledSidebar = styled.div`
 	padding: 10px;
 	margin-bottom: 2px;
 
-	background-color: ${(props) => (props.theme.main === 'LIGHT' ? BASE2_SATURATED : BASE03)};
+	background-color: ${(props) =>
+		props.theme.main === 'LIGHT' ? BASE2_SATURATED : DARK_THEME.SIDEBAR};
 
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-columns: 1fr;
@@ -36,7 +39,12 @@ const Name = styled.div`
 	grid-area: name;
 	font-size: 1.7em;
 	margin-bottom: 5px;
-	color: ${ORANGE};
+
+	/* Gradient effect */
+	background: -webkit-linear-gradient(#b58900, #00adb5);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 
 	@media (min-width: ${DESKTOP_XS}) {
 		font-size: 2.5em;

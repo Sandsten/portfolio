@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
-import { BLUE } from '../constants/colors';
+import { BASE0, BASE03, BASE3, BLUE, DARK_THEME } from '../constants/colors';
 import { Spacer } from './projects';
 
 import '../CSSTransitions/transitions.scss';
@@ -17,12 +17,14 @@ const StyledHomePage = styled.div`
 	font-size: 1em;
 	overflow-y: scroll;
 
+	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : DARK_THEME.TEXT)};
+
 	@media (min-width: ${DESKTOP_XS}) {
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 
 	@media (min-width: ${DESKTOP_XL}) {
-		grid-template-columns: 600px;
+		grid-template-columns: 800px;
 	}
 `;
 
@@ -32,8 +34,17 @@ export const StyledA = styled.a`
 	outline: none;
 	color: ${BLUE};
 
+	background: -webkit-linear-gradient(${DARK_THEME.LINK_1}, ${DARK_THEME.LINK_2});
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
 	:hover {
-		text-decoration: underline;
+		/* text-decoration: underline; */
+		background: -webkit-linear-gradient(${DARK_THEME.LINK_2}, ${DARK_THEME.LINK_1});
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 `;
 

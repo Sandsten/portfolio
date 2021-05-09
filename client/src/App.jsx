@@ -20,7 +20,7 @@ import tutorialsPage from './pages/tutorialsPage';
 // import { autoSignIn } from './redux/actions/userActions';
 import {setTheme} from './redux-toolkit/slices/siteConfigSlice';
 
-import { BASE02, BASE3, BASE03, BASE1, R3 } from './constants/colors';
+import { BASE02, BASE3, BASE03, BASE1, R3, DARK_THEME } from './constants/colors';
 
 import { DESKTOP_XS } from './constants/sizes';
 
@@ -42,8 +42,8 @@ const MainContainer = styled.div`
 	/* The webpage should always stretch the entire viewport */
 	height: 100vh;
 
-	background-color: ${(props) => (props.theme.main === 'LIGHT' ? BASE3 : BASE02)};
-	color: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE1)};
+	background-color: ${(props) => (props.theme.main === 'LIGHT' ? BASE3 : DARK_THEME.BACKGROUND_2)};
+	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : DARK_THEME.TEXT)};
 
 	/* Place the menu to the left when the screen is wide enough */
 	@media (min-width: ${DESKTOP_XS}) {
