@@ -10,19 +10,23 @@ import { toggleTheme, setTheme } from '../redux-toolkit/slices/siteConfigSlice';
 
 const StyledSidebar = styled.div`
 	display: grid;
-	grid-template-areas: 'name options' 'nav options';
+	grid-template-areas:
+		'name options'
+		'nav options';
 	grid-template-columns: 1fr auto;
 
 	padding: 10px;
-	height: auto;
-	position: sticky; /*Important that the parent has the correct height for this to work properly*/
-	top: 0;
-	/* Maybe make this less saturated? */
+	margin-bottom: 2px;
+
 	background-color: ${(props) => (props.theme.main === 'LIGHT' ? BASE2_SATURATED : BASE03)};
-	z-index: 100;
 
 	@media (min-width: ${DESKTOP_XS}) {
-		display: block;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto 1fr auto;
+		grid-template-areas:
+			'name'
+			'nav'
+			'options';
 		height: 100vh;
 		padding: 20px;
 	}
@@ -94,6 +98,7 @@ const ThemeButton = ({ className, width = 24, height = 24, handleClick }) => {
 
 const StyledThemeButton = styled(ThemeButton)`
 	grid-area: options;
+	align-self: center;
 	fill: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE2_SATURATED)};
 
 	:hover {
