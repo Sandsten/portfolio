@@ -17,19 +17,18 @@ const StyledProjects = styled.div`
 	grid-area: main;
 
 	display: grid;
-
 	align-content: start;
-
 	grid-template-columns: 1fr;
 	grid-row-gap: 20px;
 
 	/* TODO: How do we add padding to the bottom? The final card is flush with the screen edge which I do not want */
-	padding: 10px 10px 10px 10px;
+	padding: 10px;
 
 	overflow-y: scroll;
 
 	// The following is applied when browser width goes above min-width
 	@media (min-width: ${DESKTOP_XS}) {
+		padding: 20px;
 		/* Autofit will create as many columns as will fit within the given max value, without each cell going bellow the min value */
 		/* In this case. Create as many columns no smaller than 450 pixels within 1fr of the given space */
 		grid-column-gap: 20px;
@@ -72,7 +71,7 @@ const projects = () => {
 							title={project.title}
 							thumbnail={project.bgUrl}
 							description={project.descriptionShort}
-							tags={project.tools}
+							tags={['Project', ...project.tools]}
 							clickURL={project.localURL}
 						/>
 					</CSSTransition>

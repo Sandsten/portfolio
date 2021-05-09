@@ -15,7 +15,8 @@ const StyledProjectCard = styled(Link)`
 
 	border-radius: 5px;
 	text-decoration: none;
-	grid-template-rows: 3fr auto 2fr 1fr;
+	grid-template-rows: 150px auto 2fr auto;
+
 	height: 300px;
 
 	overflow: hidden; // Necessary to keep image corners follow given border radius of its parent
@@ -69,7 +70,7 @@ const TagContainer = styled.div`
 `;
 
 const Tag = styled.div`
-	font-size: 0.8em;
+	font-size: 0.7em;
 	padding: 2px 5px 2px 5px;
 	width: max-content; // Sets the width of the div to its content
 	border-radius: 5px;
