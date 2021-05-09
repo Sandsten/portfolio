@@ -10,18 +10,18 @@ import '../CSSTransitions/transitions.scss';
 
 const StyledHomePage = styled.div`
 	display: grid;
-	height: 100vh;
+	align-content: start;
+	grid-row-gap: 20px;
+
 	padding: 20px 0 0 20px;
 	font-size: 1em;
 	overflow-y: scroll;
 
 	@media (min-width: ${DESKTOP_XS}) {
 		font-size: 1.2em;
-		/* width: 70vw; */
 	}
 
 	@media (min-width: ${DESKTOP_XL}) {
-		/* width: 50vw; */
 		grid-template-columns: 600px;
 	}
 `;

@@ -15,7 +15,10 @@ const StyledProjectCard = styled(Link)`
 
 	border-radius: 5px;
 	text-decoration: none;
-	grid-template-rows: auto 1fr auto;
+	grid-template-rows: 3fr auto 2fr 1fr;
+	height: 300px;
+
+	overflow: hidden; // Necessary to keep image corners follow given border radius of its parent
 
 	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : BASE1)};
 	background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2 : BASE03)};
@@ -28,6 +31,7 @@ const StyledProjectCard = styled(Link)`
 			'tags  img';
 
 		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto 1fr auto;
 	}
 
 	:hover {
@@ -91,11 +95,13 @@ const ProjectCard = ({ data, style }) => {
 			</Title>
 			<Description>{data.descriptionShort}</Description>
 			<TagContainer>
-				{data.tools.map((value) => (
-					<Tag>{value}</Tag>
-				))}
+				{data.tools.map((value) => {
+					if (value == 'cpp') {
+						value = 'c++';
+					}
+					return <Tag key={value}>{value}</Tag>;
+				})}
 			</TagContainer>
-			{/* <Tags>{data.tools.join(', ')}</Tags> */}
 			<Image src={thumbnail} alt={data.title + 'thumbnail'} />
 		</StyledProjectCard>
 	);

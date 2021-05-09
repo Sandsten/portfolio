@@ -18,7 +18,7 @@ const StyledProjects = styled.div`
 
 	display: grid;
 
-	align-content: safe start;
+	align-content: start;
 
 	grid-template-columns: 1fr;
 	grid-row-gap: 20px;
