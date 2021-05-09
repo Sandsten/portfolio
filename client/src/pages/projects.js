@@ -68,7 +68,13 @@ const projects = () => {
 						timeout={500}
 					>
 						{/* transition delay has to be passed down to the component for it to work */}
-						<ProjectCard data={project} />
+						<ProjectCard
+							title={project.title}
+							thumbnail={project.bgUrl}
+							description={project.descriptionShort}
+							tags={project.tools}
+							clickURL={project.localURL}
+						/>
 					</CSSTransition>
 				);
 			})}

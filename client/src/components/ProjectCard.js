@@ -79,30 +79,33 @@ const Tag = styled.div`
 	background-color: ${(props) => (props.theme.main === 'LIGHT' ? '' : B0)};
 `;
 
-const ProjectCard = ({ data, style }) => {
-	var thumbnail;
+const ProjectCard = (props) => {
+	const { title, thumbnail, description, tags, clickURL } = props;
+
+	// TODO: Update database with correct url endings
+	let thumbnailUrl;
 	try {
 		// Update database to use webp format instead?
-		thumbnail = `https://staffansandberg.com/${data.bgUrl}`.replace('png', 'webp');
+		thumbnailUrl = `https://staffansandberg.com/${thumbnail}`.replace('png', 'webp');
 	} catch (error) {
-		thumbnail = '';
+		thumbnailUrl = '';
 	}
 
 	return (
-		<StyledProjectCard style={style} to={'/projects/' + data.localURL}>
+		<StyledProjectCard to={'/projects/' + clickURL}>
 			<Title>
-				<b>{data.title}</b>
+				<b>{title}</b>
 			</Title>
-			<Description>{data.descriptionShort}</Description>
+			<Description>{description}</Description>
 			<TagContainer>
-				{data.tools.map((value) => {
-					if (value == 'cpp') {
-						value = 'c++';
+				{tags.map((tag) => {
+					if (tag == 'cpp') {
+						tag = 'c++';
 					}
-					return <Tag key={value}>{value}</Tag>;
+					return <Tag key={tag}>{tag}</Tag>;
 				})}
 			</TagContainer>
-			<Image src={thumbnail} alt={data.title + 'thumbnail'} />
+			<Image src={thumbnailUrl} alt={title + 'thumbnail'} />
 		</StyledProjectCard>
 	);
 };
