@@ -28,17 +28,14 @@ const StyledProjects = styled.div`
 
 	// The following is applied when browser width goes above min-width
 	@media (min-width: ${DESKTOP_XS}) {
-		padding: 20px;
+		padding-left: 15px;
 		/* Autofit will create as many columns as will fit within the given max value, without each cell going bellow the min value */
 		/* In this case. Create as many columns no smaller than 450 pixels within 1fr of the given space */
-		grid-column-gap: 20px;
+		grid-column-gap: 15px;
+		grid-row-gap: 15px;
 		grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
 		/* grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)); */
 	}
-`;
-
-export const Spacer = styled.div`
-	height: 10px;
 `;
 
 const projects = () => {

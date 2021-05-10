@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
-import { BASE0, BASE03, BASE3, BLUE, DARK_THEME } from '../constants/colors';
-import { Spacer } from './projects';
+import { BASE03, BLUE, DARK_THEME } from '../constants/colors';
 
 import '../CSSTransitions/transitions.scss';
 
@@ -123,7 +122,6 @@ const homePage = () => {
 					</CSSTransition>
 				);
 			})}
-			<Spacer />
 		</StyledHomePage>
 	);
 };
