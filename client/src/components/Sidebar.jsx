@@ -64,7 +64,7 @@ export const StyledLink = styled(Link)`
 	}
 `;
 
-const SidebarLink = styled(StyledLink)<{path: string}>`
+const SidebarLink = styled(StyledLink)`
 	/* Keep the button highlighted when de-focused or page refreshes */
 	${(props) =>
 		props.path === props.to &&
@@ -123,7 +123,7 @@ const StyledThemeButton = styled(ThemeButton)`
 `;
 
 const Sidebar = (props) => {
-	const [urlPath, setUrlPath] = useState<string>("");
+	const [urlPath, setUrlPath] = useState("");
 	const dispatch = useDispatch();
 
 	useEffect(() => {
