@@ -7,8 +7,7 @@ import ProjectCard from '../components/ProjectCard';
 
 import { getProjects } from '../redux-toolkit/slices/projectsSlice';
 
-import { BASE02, BASE3 } from '../constants/colors';
-import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
+import { DESKTOP_XS } from '../constants/sizes';
 
 import '../CSSTransitions/transitions.scss';
 

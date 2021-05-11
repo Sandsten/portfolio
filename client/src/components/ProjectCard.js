@@ -36,7 +36,9 @@ const StyledProjectCard = styled(Link)`
 	}
 
 	:hover {
-		transform: scale(1.02);
+		/* transform: scale(1.02); */
+		transform: translateY(-1px); // scale(1.005);
+		/* box-shadow: 0px 2px 10px 1px black; */
 	}
 `;
 
