@@ -9,7 +9,7 @@ import Sidebar from './components/Sidebar';
 import HomePage from './pages/homePage';
 import APITest from './Admin/APITest';
 import Admin from './Admin/Admin';
-import projects from './pages/projects';
+import projects from './pages/projectsPage';
 import projectPage from './pages/projectPage';
 import cv from './pages/cv';
 import blog from './pages/blog';

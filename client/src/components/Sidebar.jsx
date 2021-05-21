@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import { BASE2, BASE0, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
+import { BASE2, BASE03, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
-import { toggleTheme, setTheme } from '../redux-toolkit/slices/siteConfigSlice';
+import { toggleTheme } from '../redux-toolkit/slices/siteConfigSlice';
 
 import { DARK_THEME } from '../constants/colors';
 
