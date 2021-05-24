@@ -5,22 +5,20 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // Removes unuse
 module.exports = {
 	target: 'web',
 	mode: 'production',
-	entry: {
-		app: './src/index.js',
-	},
 	output: {
 		path: path.resolve(__dirname, './build'),
-		filename: '[name].[contenthash].frontend.js', // Content hash is a hash based on the file content
+		filename: '[name].[contenthash].frontend.js', // Content hash is a hash based on
 		publicPath: '/',
+	},
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js', '.jsx'],
 	},
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.(t|j)sx?$/,
+				use: { loader: 'ts-loader' },
 				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader',
-				},
 			},
 			{
 				test: /\.glsl$/,
@@ -30,9 +28,7 @@ module.exports = {
 				test: /\.scss$/,
 				// Order of modules matters
 				use: [
-					process.env.NODE_ENV !== 'production'
-						? 'style-loader'
-						: MiniCssExtractPlugin.loader,
+					process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
 					'css-loader',
 					'sass-loader',
 				],
@@ -58,11 +54,8 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
 		new HtmlWebPackPlugin({
 			template: './src/index.html',
-			filename: 'index.html',
-			favicon: 'src/favicon.ico',
 		}),
 	],
 	optimization: {

@@ -1,18 +1,14 @@
 FROM node:14
 
-# Can define environment variables here, but it can also be done optionally from the compose file
-# Easier to do in compose, easier accessible. Image doesn't has to be rebuilt
-
 WORKDIR /server
 
-# This folder will be created inside the container!
+# Copy over package file and install
 COPY [ "package.json", "package-lock.json", "./" ]
-
 RUN npm install
 
+# Copy everything into the docker container
+# .dockerignore file will prevent node_modules if it exists
 COPY . .
-# COPY ./src ./src
-# COPY ./.env ./
 
 # Default is to just run the regular start command
 CMD [ "npm", "start" ]

@@ -2,13 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import {
-	BASE03,
-	BASE2,
-	BASE2_SATURATED,
-	BASE02_SATURATED,
-	BASE1,
-} from '../constants/colors';
+import { BASE03, BASE2, BASE1, B0, DARK_THEME } from '../constants/colors';
 import { MOBILE_XS } from '../constants/sizes';
 
 const StyledProjectCard = styled(Link)`
@@ -18,33 +12,33 @@ const StyledProjectCard = styled(Link)`
 		'title'
 		'desc'
 		'tags';
-	grid-template-rows: 150px auto 1fr auto;
 
-	min-height: 300px;
+	grid-template-rows: 150px auto 2fr auto;
+
 	border-radius: 5px;
 	text-decoration: none;
-	outline: none;
-	overflow: hidden;
-	color: ${(p) => (p.theme === 'LIGHT' ? BASE03 : BASE1)};
-	background-color: ${(p) => (p.theme === 'LIGHT' ? BASE2 : BASE03)};
+	height: 300px;
+	overflow: hidden; // Necessary to keep image corners follow given border radius of its parent
+	font-weight: 300;
+
+	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : DARK_THEME.TEXT)};
+	background-color: ${(p) => (p.theme.main === 'LIGHT' ? BASE2 : DARK_THEME.CARD_BG)};
 
 	@media (min-width: ${MOBILE_XS}) {
-		min-height: auto; /*Nullify the previous min-height*/
-		height: 200px;
+		height: 210px;
 		grid-template-areas:
 			'title img'
 			'desc  img'
 			'tags  img';
-		grid-template-rows: auto 1fr auto;
+
 		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto 1fr auto;
 	}
 
-	&:hover {
-		background-color: ${(p) =>
-			p.theme === 'LIGHT' ? BASE2_SATURATED : BASE02_SATURATED};
-		/* outline-style: solid; */
-		box-shadow: 0 0 0 2pt; // will look like a rounded outline
-		transform: scale(1.01);
+	:hover {
+		/* transform: scale(1.02); */
+		transform: translateY(-1px); // scale(1.005);
+		/* box-shadow: 0px 2px 10px 1px black; */
 	}
 `;
 
@@ -66,35 +60,55 @@ const Image = styled.img`
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
-	filter: ${(p) => (p.theme === 'LIGHT' ? 'none' : 'brightness(80%)')};
+	/* overflow: hidden; */
 `;
 
-const Tags = styled.div`
+const TagContainer = styled.div`
 	grid-area: tags;
-	font-size: 0.9em;
 	margin: 10px;
+	/* Using flex here since we can't have uneven grid columns */
+	display: flex;
+	flex-wrap: wrap;
 `;
 
-const ProjectCard = ({ data, theme, style }) => {
-	var thumbnail;
+const Tag = styled.div`
+	font-size: 0.7em;
+	padding: 2px 5px 2px 5px;
+	width: max-content; // Sets the width of the div to its content
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+
+	background-color: ${(props) => (props.theme.main === 'LIGHT' ? '' : DARK_THEME.TAG_BG)};
+`;
+
+const ProjectCard = (props) => {
+	const { title, thumbnail, description, tags, clickURL } = props;
+
+	// TODO: Update database with correct url endings
+	let thumbnailUrl;
 	try {
-		thumbnail = `https://staffansandberg.com/${data.bgUrl}`;
+		// Update database to use webp format instead?
+		thumbnailUrl = `https://staffansandberg.com/${thumbnail}`.replace('png', 'webp');
 	} catch (error) {
-		thumbnail = '';
+		thumbnailUrl = '';
 	}
 
 	return (
-		<StyledProjectCard
-			style={style}
-			theme={theme}
-			to={'/projects/' + data.localURL}
-		>
+		<StyledProjectCard to={'/projects/' + clickURL}>
 			<Title>
-				<b>{data.title}</b>
+				<b>{title}</b>
 			</Title>
-			<Description>{data.descriptionShort}</Description>
-			<Tags>{data.tools.join(', ')}</Tags>
-			<Image src={thumbnail} alt={data.title + 'thumbnail'} />
+			<Description>{description}</Description>
+			<TagContainer>
+				{tags.map((tag) => {
+					if (tag == 'cpp') {
+						tag = 'c++';
+					}
+					return <Tag key={tag}>{tag}</Tag>;
+				})}
+			</TagContainer>
+			<Image src={thumbnailUrl} alt={title + 'thumbnail'} />
 		</StyledProjectCard>
 	);
 };

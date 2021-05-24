@@ -2,15 +2,21 @@
 @import './fonts.scss';
 
 * {
-  font-family: 'Fira Code';
-  /* Include padding in total width and height
+	font-family: 'Fira Code';
+	/* Include padding in total width and height
     in our case it's for the height, to not go over 100% 
     of screen size 
     https://www.w3schools.com/csS/css3_box-sizing.asp
   */
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
 }
+
+// ::-webkit-scrollbar {
+// 	width: 10px;
+// }

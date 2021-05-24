@@ -14,15 +14,18 @@ var db, blogposts, users, projects;
 /// User
 //////////////
 
+// ALWAYS SEND BACK DATA IN JSON FORMAT
+
 // Sign in to the website using a username and password
 exports.signIn = (req, res) => {
 	const { username, password } = req.body;
-	console.log("Attempting to sign in");
-	users.findOne({ username }).then((user) => {
+
+	// Find a user with the given username in the database
+	users.findOne({ username: username.toLowerCase().trim() }).then((user) => {
 		if (user === null) {
-			console.log('Wrong username or password');
-			res.status(404).send();
+			res.status(400).send({ message: 'Wrong username or password' });
 		} else {
+			// If  a user is found see if password is correct
 			bcrypt.compare(password, user.password, (err, correctPassword) => {
 				if (err) throw err;
 				if (correctPassword) {
@@ -30,10 +33,11 @@ exports.signIn = (req, res) => {
 					var token = jwtUtilities.createJWT(user);
 					res
 						.cookie('access-card', token, { httpOnly: true })
-						.status(200).send();
+						.status(200)
+						.send({ message: 'Signed in successfully' });
 				} else {
 					console.log('Wrong username or password');
-					res.status(404).send();
+					res.status(400).send({ message: 'Wrong username or password' });
 				}
 			});
 		}
@@ -55,15 +59,15 @@ exports.signInWithToken = (req, res) => {
 
 exports.signOut = (req, res) => {
 	console.log('Admin signing out. Deleting JWT from client');
-	res.clearCookie('access-card').sendStatus(200);
+	res.clearCookie('access-card').status(200);
+	res.send({
+		message: 'Signed out successfully',
+	});
 };
 
 exports.createAccount = (req, res) => {
 	const { username, password } = req.body;
-
 	console.log('\nAttempting to create a new admin account');
-	console.log(username);
-
 	users
 		.find()
 		.count()
@@ -79,7 +83,7 @@ exports.createAccount = (req, res) => {
 						console.log('Password hashed for maximum security');
 						users
 							.insertOne({
-								username,
+								username: username.toLowerCase(),
 								password: hash,
 							})
 							.then((result) => {
@@ -113,11 +117,12 @@ exports.getProjects = (req, res) => {
 		.toArray()
 		.then((projects) => {
 			console.log('Sending projects to client');
-			res.status(200).send(projects);
+			console.log(typeof projects);
+			res.status(200).send({ projects });
 		})
 		.catch((e) => {
 			console.log('ERROR' + e);
-			res.status(404).send(e);
+			res.status(401).send({ message: e });
 		});
 };
 
@@ -172,8 +177,6 @@ exports.updateProjectOrder = (req, res) => {
 exports.addBlogpost = (req, res) => {
 	var obj = req.body;
 
-	console.log(req.user);
-
 	blogposts
 		.insertOne(obj)
 		.then((result) => {
@@ -186,7 +189,6 @@ exports.addBlogpost = (req, res) => {
 
 exports.removeBlogpost = (req, res) => {
 	var body = req.body;
-
 	var id = body.id;
 
 	if (!id) {
@@ -223,7 +225,6 @@ exports.updateBlogpost = (req, res) => {
 			}
 		)
 		.then((result) => {
-			console.log(result);
 			if (result.matchedCount == 0) {
 				res.status(410).send('no blogpost with that id found');
 				return;
@@ -289,8 +290,8 @@ exports.purgeBlogposts = (req, res) => {
 // Pick if we are using live or local server
 var DATABASE_URL;
 if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
-	DATABASE_URL = 'mongodb://localhost:27017/portfolio';
-	console.log('Using LOCAL server');
+	DATABASE_URL = 'mongodb://mongodb:27017/portfolio'; // IP is the name of the serive in our compose file
+	console.log('Using LOCAL database');
 } else {
 	var username =
 		dockerSecret.read(process.env.MONGODB_ATLAS_USERNAME_FILE) ||
@@ -301,7 +302,7 @@ if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
 		process.env.MONGODB_ATLAS_PASSWORD;
 
 	DATABASE_URL = `mongodb+srv://${username}:${password}@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
-	console.log('Using LIVE server');
+	console.log('Using REMOTE database');
 }
 
 MongoClient.connect(
@@ -309,7 +310,6 @@ MongoClient.connect(
 	{ useNewUrlParser: true, useUnifiedTopology: true },
 	(err, client) => {
 		if (err) throw err;
-
 		db = client.db('portfolio');
 		blogposts = db.collection('blogposts');
 		users = db.collection('users');

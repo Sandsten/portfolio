@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import {
-	BASE2,
-	BASE03,
-	ORANGE,
-	BASE2_SATURATED,
-	BLUE,
-	YELLOW,
-} from '../constants/colors';
+import { BASE2, BASE03, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
-import { setTheme, toggleTheme } from '../redux/actions/appSettingsActions';
+import { toggleTheme } from '../redux-toolkit/slices/siteConfigSlice';
+
+import { DARK_THEME } from '../constants/colors';
 
 const StyledSidebar = styled.div`
 	display: grid;
-	grid-template-areas: 'name options' 'nav options';
+	grid-template-areas:
+		'name options'
+		'nav options';
 	grid-template-columns: 1fr auto;
 
 	padding: 10px;
-	height: auto;
-	position: sticky; /*Important that the parent has the correct height for this to work properly*/
-	top: 0;
-	/* Maybe make this less saturated? */
-	background-color: ${(p) => (p.theme === 'LIGHT' ? BASE2_SATURATED : BASE03)};
-	z-index: 100;
+	margin-bottom: 2px;
+
+	background-color: ${(props) =>
+		props.theme.main === 'LIGHT' ? BASE2_SATURATED : DARK_THEME.SIDEBAR};
 
 	@media (min-width: ${DESKTOP_XS}) {
-		display: block;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto 1fr auto;
+		grid-template-areas:
+			'name'
+			'nav'
+			'options';
 		height: 100vh;
 		padding: 20px;
 	}
@@ -38,7 +38,12 @@ const Name = styled.div`
 	grid-area: name;
 	font-size: 1.7em;
 	margin-bottom: 5px;
-	color: ${ORANGE};
+
+	/* Gradient effect */
+	background: -webkit-linear-gradient(#b58900, #00adb5);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 
 	@media (min-width: ${DESKTOP_XS}) {
 		font-size: 2.5em;
@@ -52,7 +57,7 @@ export const StyledLink = styled(Link)`
 	margin-right: 20px;
 	text-decoration: none;
 	outline: none;
-	color: ${(p) => (p.theme === 'LIGHT' ? BASE03 : BASE2)};
+	color: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE2)};
 
 	:hover {
 		text-decoration: underline;
@@ -73,7 +78,7 @@ const SidebarLink = styled(StyledLink)`
 	}
 `;
 
-const ThemeButton = ({ className, width = 24, height = 24, handleClick }) => {
+const ThemeButton = ({className, width, height, handleClick }) => {
 	return (
 		<svg
 			className={className}
@@ -100,11 +105,12 @@ const ThemeButton = ({ className, width = 24, height = 24, handleClick }) => {
 
 const StyledThemeButton = styled(ThemeButton)`
 	grid-area: options;
-	fill: ${(p) => (p.theme === 'LIGHT' ? BASE03 : BASE2_SATURATED)};
+	align-self: center;
+	fill: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE2_SATURATED)};
 
 	:hover {
 		cursor: pointer;
-		fill: ${(p) => (p.theme === 'LIGHT' ? 'black' : YELLOW)};
+		fill: ${(props) => (props.theme.main === 'LIGHT' ? 'black' : YELLOW)};
 	}
 
 	@media (min-width: ${DESKTOP_XS}) {
@@ -117,58 +123,38 @@ const StyledThemeButton = styled(ThemeButton)`
 `;
 
 const Sidebar = (props) => {
-	const [urlPath, setUrlPath] = useState(null);
-	const theme = useSelector((state) => state.appSettings.theme);
+	const [urlPath, setUrlPath] = useState("");
 	const dispatch = useDispatch();
-
-	// This is equivalent to componentDidMount
-	useEffect(() => {
-		// If there's no theme stored in local storage, default to dark theme!
-		var storedTheme = localStorage.getItem('theme');
-		if (!storedTheme) storedTheme = 'DARK';
-		dispatch(setTheme(storedTheme));
-	}, []);
 
 	useEffect(() => {
 		setUrlPath(props.location.pathname);
-		if (theme) localStorage.setItem('theme', theme);
 	});
 
 	const handleThemeToggle = () => {
+		// Updating the theme for the site is handled inside the top level component App.jsx
 		dispatch(toggleTheme());
 	};
 
-	if (!theme) return null;
-
 	return (
-		<StyledSidebar theme={theme}>
+		<StyledSidebar>
 			<Name>Staffan Sandberg</Name>
 			<span>
 				{[
 					['/', 'About'],
 					['/projects', 'Projects'],
+					['/tutorials', 'Tutorials'],
 					// ['/cv', 'CV'],
 					// ['/blogposts', 'Blog'],
 					// ['/tutorials', 'Tutorials'],
 				].map((page) => {
 					return (
-						<SidebarLink
-							key={page[1]}
-							theme={theme}
-							path={urlPath}
-							to={page[0]}
-						>
+						<SidebarLink key={page[1]} path={urlPath} to={page[0]}>
 							{page[1]}
 						</SidebarLink>
 					);
 				})}
 			</span>
-			<StyledThemeButton
-				theme={theme}
-				width="50"
-				height="50"
-				handleClick={handleThemeToggle}
-			/>
+			<StyledThemeButton width={50} height={50} handleClick={handleThemeToggle} />
 		</StyledSidebar>
 	);
 };
