@@ -117,7 +117,6 @@ exports.getProjects = (req, res) => {
 		.toArray()
 		.then((projects) => {
 			console.log('Sending projects to client');
-			console.log(typeof projects);
 			res.status(200).send({ projects });
 		})
 		.catch((e) => {
@@ -289,17 +288,12 @@ exports.purgeBlogposts = (req, res) => {
 
 // Pick if we are using live or local server
 var DATABASE_URL;
-if (process.env.NODE_ENV === 'development' && process.env.SERVER !== 'live') {
+if (process.env.NODE_ENV === 'development' && process.env.DATABASE !== 'remote') {
 	DATABASE_URL = 'mongodb://mongodb:27017/portfolio'; // IP is the name of the serive in our compose file
 	console.log('Using LOCAL database');
 } else {
-	var username =
-		dockerSecret.read(process.env.MONGODB_ATLAS_USERNAME_FILE) ||
-		process.env.MONGODB_ATLAS_USERNAME;
-
-	var password =
-		dockerSecret.read(process.env.MONGODB_ATLAS_PASSWORD_FILE) ||
-		process.env.MONGODB_ATLAS_PASSWORD;
+	var username = dockerSecret.read('MONGODB_ATLAS_USERNAME');
+	var password = dockerSecret.read('MONGODB_ATLAS_PASSWORD');
 
 	DATABASE_URL = `mongodb+srv://${username}:${password}@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
 	console.log('Using REMOTE database');
