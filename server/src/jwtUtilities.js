@@ -2,8 +2,7 @@ const moment = require('moment');
 const jwt = require('jwt-simple');
 const dockerSecret = require('./docker-secret-reader');
 
-const SECRET =
-	dockerSecret.read(process.env.JWT_SECRET_FILE) || process.env.JWT_SECRET;
+const SECRET = dockerSecret.read('JWT_SECRET');
 
 // Middleware for checking if a valid JWT was passed with the api request
 exports.authorizeAPICall = (req, res, next) => {
