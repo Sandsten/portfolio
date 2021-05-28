@@ -1,38 +1,40 @@
 ## Dockerfile for creating a production image
-#FROM node:lts-alpine3.13
-FROM node@sha256:954f97825c2b535defef235dd8b92a7936b59b12aa6685bc1b5c17864b2812c3
+FROM node:lts-alpine3.13@sha256:954f97825c2b535defef235dd8b92a7936b59b12aa6685bc1b5c17864b2812c3
+# v14.17.0
 
-# Create a build of our frontend
-WORKDIR /client
+# Create a folder for frontend building and set current directory to it
+WORKDIR /frontend-building
 
 # Copy package files from client folder into our new working directory in our image
 COPY [ "./client/package.json", "./client/package-lock.json", "./" ]
 
-# Make sure all dev dependencies are installed for the client, so we are able to build using webpack
-ENV NODE_ENV=development
-
+# Install all packages required for building the frontend. which includes dev-dependencies
 RUN npm install
 
+# Copy all client code into /frontend-building directory inside the container
 COPY ./client .
 
+# Build the frontent with webpack
 RUN npm run build
 
-# Main directory with Node.js server
+# Change working directory to a new one called portfolio. This will be the final main directory
 WORKDIR /portfolio
 
 # Grab the built frontend into our main directory
-RUN mv ../client/build ./
+RUN mv ../frontend-building/build ./
 
-# Remove the client directory since it isn't needed anymore
-RUN rm -r ../client
+# Remove the client directory, we don't need this anymore
+RUN rm -r ../frontend-building
 
 COPY [ "./server/package.json", "./server/package-lock.json", "./" ]
 
 # Only the production packages are needed in the image ment for being deployed
-ENV NODE_ENV=production
+ENV NODE_ENV production
 
-RUN npm install
+# Make a clean install of node packages which are needed for production
+RUN npm ci --only=production
 
-COPY ./server .
+# Copy all server code
+COPY ./server/src ./src
 
 CMD [ "npm", "start" ]
