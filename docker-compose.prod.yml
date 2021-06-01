@@ -1,15 +1,34 @@
-version: '3'
+version: '3.8'
 
 services:
   # Node backend
   app:
-    image: test:2
+    image: sandsten/portfolio-website:1.1.4
+    deploy:
+      replicas: 1
     ports:
       - 3000:3000
+    
+    # The environment variables has to be extended with _FILE according to the docs
+    # NOTE: The environment variables will only store the path to the file in which the secret is stored
+    # In the container/service secrets will be injected to the folder /run/secrets
+    # To then access the different secrets in your application you have to read the content of the files!
     environment:
-      - PORT=3000
-      - NODE_ENV=production
-      - SERVER=remote
+      JWT_SECRET_FILE: /run/secrets/JWT_SECRET
+      MONGODB_ATLAS_USERNAME_FILE: /run/secrets/MONGODB_ATLAS_USERNAME
+      MONGODB_ATLAS_PASSWORD_FILE: /run/secrets/MONGODB_ATLAS_PASSWORD
+      SERVER: remote
+    # Grant this service access to the following secrets
+    secrets:
+      - JWT_SECRET
+      - MONGODB_ATLAS_USERNAME
+      - MONGODB_ATLAS_PASSWORD
 
-    # Mongo database
-# Volumes for mongo database
+# If you have created a secret on a manager node in the swarm. Use external: true
+secrets:
+  JWT_SECRET:
+    external: true
+  MONGODB_ATLAS_USERNAME:
+    external: true
+  MONGODB_ATLAS_PASSWORD:
+    external: true

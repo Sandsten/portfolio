@@ -12,6 +12,7 @@ exports.read = (envVariable) => {
 		if (value == undefined) {
 			console.log(`${envVariable} doesn't exist as either a docker secret or an .env variable`);
 		}
-		return value;
 	}
+	console.log(value);
+	return value;
 };
