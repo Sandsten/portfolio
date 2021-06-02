@@ -286,17 +286,16 @@ exports.purgeBlogposts = (req, res) => {
 		});
 };
 
-// Pick if we are using live or local server
+// Select which database url to use based on env variable
 var DATABASE_URL;
-if (process.env.NODE_ENV === 'development' && process.env.DATABASE !== 'remote') {
-	DATABASE_URL = 'mongodb://mongodb:27017/portfolio'; // IP is the name of the serive in our compose file
-	console.log('Using LOCAL database');
-} else {
+if (process.env.DATABASE == 'remote') {
 	var username = dockerSecret.read('MONGODB_ATLAS_USERNAME');
 	var password = dockerSecret.read('MONGODB_ATLAS_PASSWORD');
-
 	DATABASE_URL = `mongodb+srv://${username}:${password}@cluster0-l6pm1.mongodb.net/test?retryWrites=true&w=majority`;
-	console.log('Using REMOTE database');
+} else if (process.env.DATABASE == 'local') {
+	DATABASE_URL = 'mongodb://mongodb:27017/portfolio'; // IP is the name of the serive in our compose file
+} else {
+	console.error('Please specify which database to use');
 }
 
 MongoClient.connect(
@@ -309,6 +308,8 @@ MongoClient.connect(
 		users = db.collection('users');
 		projects = db.collection('projects');
 
-		console.log(`Connection to database established!`);
+		console.log(
+			`Connection to ${process.env.DATABASE == 'remote' ? 'REMOTE' : 'LOCAL'} database established!`
+		);
 	}
 );

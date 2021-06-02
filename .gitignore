@@ -1,6 +1,3 @@
 node_modules
-HerokuFiles
 build
-.firebase
-.env
-test.js
+secrets.env

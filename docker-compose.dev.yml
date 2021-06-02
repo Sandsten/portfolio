@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   frontend:
@@ -15,7 +15,8 @@ services:
     volumes:
       - ./client/src:/client/src
     environment:
-      - NODE_ENV=development
+      NODE_ENV: development
+      DATABASE: remote
 
   # Node backend
   backend:
@@ -32,15 +33,9 @@ services:
       # If we had ./server:/server instead, the installed node_modules in in our container would be deleted!
       - ./server/src:/server/src
     environment:
-      - PORT=3000
-      - NODE_ENV=development
-      - DATABASE=remote
+      PORT: 3000
+      NODE_ENV: development
+      DATABASE: remote
+    env_file:
+      - ./secrets.env
     command: ['npm', 'run', 'start:dev']
-
-  # mongodb:
-  #   image: mongo
-  #   restart: always
-  #   ports:
-  #     - 27017:27017
-  #   volumes:
-  #     - ~/mongo-data:/data/db
