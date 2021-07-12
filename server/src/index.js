@@ -3,9 +3,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const history = require('connect-history-api-fallback');
 
-// Allows us read .env variables from process.env.
-require('dotenv').config();
-
 const databse = require('./database');
 const config = require('./headerConfig');
 const jwtUtilities = require('./jwtUtilities');
