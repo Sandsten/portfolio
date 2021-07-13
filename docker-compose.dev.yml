@@ -16,7 +16,6 @@ services:
       - ./client/src:/client/src
     environment:
       NODE_ENV: development
-      DATABASE: remote
 
   # Node backend
   backend:
