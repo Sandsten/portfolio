@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { BASE2, BASE03, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
@@ -44,6 +44,10 @@ const Name = styled.div`
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+
+  :hover {
+    cursor: pointer;
+  }
 
 	@media (min-width: ${DESKTOP_XS}) {
 		font-size: 2.5em;
@@ -124,6 +128,8 @@ const StyledThemeButton = styled(ThemeButton)`
 
 const Sidebar = (props) => {
 	const [urlPath, setUrlPath] = useState("");
+  const history = useHistory();
+  const handleNavHome = () => history.push('/');
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -137,7 +143,9 @@ const Sidebar = (props) => {
 
 	return (
 		<StyledSidebar>
-			<Name>Staffan Sandberg</Name>
+      <Name onClick={handleNavHome}>
+        Staffan Sandberg
+      </Name>
 			<span>
 				{[
 					['/', 'About'],
