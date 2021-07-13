@@ -1,0 +1,16 @@
+# Compose file for production
+version: '3.8'
+
+services:
+  portfolio:
+    image: sandsten/portfolio-website:latest
+    # '127.0.0.1:3000:3000' will ensure port 3000 is only exposed to host and not remote
+    # Remote access should be handled by Nginx instead!
+    ports:
+      - '127.0.0.1:3000:3000'
+    environment:
+      DATABASE: remote
+      NODE_ENV: production
+      PORT: 3000
+    env_file:
+      - secrets.env
