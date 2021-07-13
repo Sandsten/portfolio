@@ -1,3 +1,6 @@
+# Compose file for developing
+# Creates two separate containers running frontend and backend separately
+# Bind mounts to src/ folders to allow for editing in real-time
 version: '3.8'
 
 services:
