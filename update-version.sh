@@ -31,16 +31,17 @@ fi
 
 # Get the array back to its original form "x.y.x"
 # Replace spaces with .
-mystr=$(echo ${myarray[*]} | tr ' ' '.')
-echo "New version: " $mystr
+newVersion=$(echo ${myarray[*]} | tr ' ' '.')
+echo "New version: " $newVersion
 # Surround with '
 # Doesn't work the other way around... so have to do this extra maneuver
-mystr="'$mystr'"
+newVersion="'$newVersion'"
 # Replace single quote with double quote
-mystr=$(echo $mystr | tr "'" '"')
+newVersion=$(echo $newVersion | tr "'" '"')
 # Update the version value
-newPackageContent=$(jq ".version|=$mystr" $packageFile)
+newPackageContent=$(jq ".version|=$newVersion" $packageFile)
 # Overwrite the content in package.json with the new one where version has been updated
+# jq . <json string> will print pretty
 echo $newPackageContent | jq . > package.json
 
 # Build the docker image
