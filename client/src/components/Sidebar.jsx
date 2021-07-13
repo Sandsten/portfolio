@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import { BASE2, BASE03, BASE2_SATURATED, BLUE, YELLOW } from '../constants/colors';
+import { BASE2, BASE03, BASE2_SATURATED, BLUE, YELLOW, BASE3 } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
 import { toggleTheme } from '../redux-toolkit/slices/siteConfigSlice';
 
@@ -91,8 +91,7 @@ const SidebarLink = styled(StyledLink)`
     ${(props) =>
 		props.path === props.to &&
 		css`
-			color: ${BLUE};
-      background: ${DARK_THEME.BACKGROUND_2};
+      background: ${(props) => (props.theme.main === 'LIGHT' ? BASE3 : DARK_THEME.BACKGROUND_2)};
 		`}
 		/* margin-bottom: 20px; */
 	}
