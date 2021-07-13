@@ -25,6 +25,7 @@ const StyledSidebar = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-columns: 1fr;
 		grid-template-rows: auto 1fr auto;
+    grid-row-gap: 1em;
 		grid-template-areas:
 			'name'
 			'nav'
@@ -51,10 +52,11 @@ const Name = styled.div`
 
 	@media (min-width: ${DESKTOP_XS}) {
 		font-size: 2.5em;
-		margin-bottom: 20px;
+		/* margin-bottom: 20px; */
 	}
 `;
 
+// Not sure what the ide with this is, is it used elsewhere?
 export const StyledLink = styled(Link)`
 	font-size: 1.2em;
 	margin-bottom: 5px;
@@ -65,6 +67,13 @@ export const StyledLink = styled(Link)`
 
 	:hover {
 		text-decoration: underline;
+	}
+
+  @media (min-width: ${DESKTOP_XS}) {
+		/* font-size: 2.5em; */
+		/* margin-bottom: 20px; */
+    padding: 10px;
+    margin: 0px;
 	}
 `;
 
@@ -78,7 +87,14 @@ const SidebarLink = styled(StyledLink)`
 
 	@media (min-width: ${DESKTOP_XS}) {
 		display: block;
-		margin-bottom: 20px;
+    margin-right: -20px;
+    ${(props) =>
+		props.path === props.to &&
+		css`
+			color: ${BLUE};
+      background: ${DARK_THEME.BACKGROUND_2};
+		`}
+		/* margin-bottom: 20px; */
 	}
 `;
 
