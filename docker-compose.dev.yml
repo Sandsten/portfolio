@@ -8,7 +8,7 @@ services:
     build:
       context: ./client # Build our frontend image. It will find the Dockerfile and build from it
       dockerfile: Dockerfile
-    image: portfolio-frontend:dev # If combined with "build". The created image from the build context will be given the name defined at "image"
+    image: sandsten/portfolio-frontend:dev # If combined with "build". The created image from the build context will be given the name defined at "image"
     ports:
       - 3001:3001 # For webpack-dev-server
       - 9229:9229 # For attaching a debuger
@@ -25,7 +25,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    image: portfolio-backend:dev
+    image: sandsten/portfolio-backend:dev
     # depends_on:
     #   - mongodb
     ports:
