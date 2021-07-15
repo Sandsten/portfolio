@@ -90,6 +90,9 @@ const SidebarLink = styled(StyledLink)`
 	@media (min-width: ${DESKTOP_XS}) {
 		display: block;
     margin-right: -20px;
+    margin-left: -20px;
+    padding-left: 20px;
+    
     ${(props) =>
 		props.path === props.to &&
 		css`
