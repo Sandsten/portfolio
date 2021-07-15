@@ -128,18 +128,20 @@ const homePage = () => {
 						I wanted to explore Virtual Reality a bit further, since I had only briefly used it
 						previously in one of my courses. Therefore I found a topic where I had to create a
 						driving simulator for electric vehicles in VR. In order to test a range critical
-						situation using two different dashboards. You can read about the project in a shorter
+						situation using two different dashboards.{' '}
+						{/*You can read about the project in a shorter
 						format compared to the article{' '}
 						<LinkInternal
 							text="here on my website"
 							handleNav={(route) => handleNav(route)}
 							route="/projects"
-						/>
+						/> */}
 					</Paragraph>
 					<Paragraph>
 						In my free time I enjoy playing classical guitar, video games, reading books and
-						learning new things in general. One newfound interest is Disc golf which I find very
-						enjoyable and meditative.
+						learning new things in general. One newfound interest is{' '}
+						<StyledA href="https://en.wikipedia.org/wiki/Disc_golf">Disc golf</StyledA> which I find
+						very enjoyable and meditative.
 					</Paragraph>
 					<Paragraph>
 						On this site you can see different projects that I've been a part of and blog posts

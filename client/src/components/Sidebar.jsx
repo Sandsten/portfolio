@@ -83,6 +83,7 @@ const SidebarLink = styled(StyledLink)`
 		props.path === props.to &&
 		css`
 			color: ${BLUE};
+      }
 		`}
 
 	@media (min-width: ${DESKTOP_XS}) {
@@ -92,8 +93,9 @@ const SidebarLink = styled(StyledLink)`
 		props.path === props.to &&
 		css`
       background: ${(props) => (props.theme.main === 'LIGHT' ? BASE3 : DARK_THEME.BACKGROUND_2)};
+      :hover {
+        text-decoration: none;
 		`}
-		/* margin-bottom: 20px; */
 	}
 `;
 
