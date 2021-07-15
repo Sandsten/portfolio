@@ -8,7 +8,7 @@ import { CSSTransition } from 'react-transition-group';
 import { fetchProjects } from '../redux/actions/projectsActions';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
-import { BLUE } from '../constants/colors';
+import { DARK_THEME } from '../constants/colors';
 
 import '../CSSTransitions/transitions.scss';
 
@@ -30,10 +30,10 @@ const ProjectTitle = styled.b`
 	font-size: 1.4em;
 `;
 const StyledA = styled.a`
-	color: ${(p) => (p.theme.main === 'LIGHT' ? '' : BLUE)};
+	color: ${(p) => (p.theme.main === 'LIGHT' ? '' : DARK_THEME.LINK_1)};
 `;
 const StyledLink = styled(Link)`
-	color: ${(p) => (p.theme.main === 'LIGHT' ? '' : BLUE)};
+	color: ${(p) => (p.theme.main === 'LIGHT' ? '' : DARK_THEME.LINK_1)};
 `;
 
 const projectPage = (props) => {

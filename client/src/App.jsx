@@ -11,9 +11,9 @@ import APITest from './Admin/APITest';
 import Admin from './Admin/Admin';
 import projects from './pages/projectsPage';
 import projectPage from './pages/projectPage';
-import cv from './pages/cv';
-import blog from './pages/blog';
-import blogpostPage from './pages/blogpostPage';
+// import cv from './pages/cv';
+// import blog from './pages/blog';
+// import blogpostPage from './pages/blogpostPage';
 import threeShaders from './pages/threeShaders';
 import tutorialsPage from './pages/tutorialsPage';
 

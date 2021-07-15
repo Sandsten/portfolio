@@ -1,5 +1,4 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 module.exports = {
 	target: 'web',
@@ -62,7 +61,6 @@ module.exports = {
 	plugins: [
 		new HtmlWebPackPlugin({
 			template: './src/index.html',
-		}),
-		new ErrorOverlayPlugin(),
+		})
 	],
 };
