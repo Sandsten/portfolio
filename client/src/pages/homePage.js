@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
 import { DESKTOP_XL, DESKTOP_XS } from '../constants/sizes';
-import { BASE03, BLUE, DARK_THEME } from '../constants/colors';
+import { DARK_THEME, LIGHT_THEME } from '../constants/colors';
 
 import '../CSSTransitions/transitions.scss';
 
@@ -16,7 +16,7 @@ const StyledHomePage = styled.div`
 	padding: 10px 10px 0 10px;
 	overflow-y: scroll;
 
-	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : DARK_THEME.TEXT)};
+	color: ${(p) => (p.theme.main === 'LIGHT' ? LIGHT_THEME.TEXT : DARK_THEME.TEXT)};
 
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-columns: minmax(auto, 800px);
