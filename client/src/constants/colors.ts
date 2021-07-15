@@ -1,5 +1,28 @@
+// Make sure all themes have all colors available through this interface
+interface Theme {
+	BACKGROUND_1: string,
+	BACKGROUND_2: string,
+	TAG_BG: string,
+	CARD_BG: string,
+	TEXT: string,
+	SIDEBAR: string,
+	LINK_1: string,
+	LINK_2: string,
+}
+
 // TODO: Organize the theme colors like this instead!
-export const DARK_THEME = {
+export const DARK_THEME : Theme = {
+	BACKGROUND_1: '#202021',
+	BACKGROUND_2: '#2a2c37',
+	TAG_BG: '#000000',
+	CARD_BG: '#1d1e26',
+	TEXT: '#f8f8f2',
+	SIDEBAR: '#1d1e26',
+	LINK_1: '#9580ff',
+	LINK_2: '#80ffea',
+};
+
+export const LIGHT_THEME : Theme = {
 	BACKGROUND_1: '#202021',
 	BACKGROUND_2: '#2a2c37',
 	TAG_BG: '#000000',
