@@ -9,6 +9,7 @@ import { toggleTheme } from '../redux-toolkit/slices/siteConfigSlice';
 
 import { DARK_THEME } from '../constants/colors';
 
+// Always mobile first! Then add media sections for larger screens
 const StyledSidebar = styled.div`
 	display: grid;
 	grid-template-areas:
@@ -51,7 +52,7 @@ const Name = styled.div`
   }
 
 	@media (min-width: ${DESKTOP_XS}) {
-		font-size: 2.5em;
+		font-size: 2.1em;
 		/* margin-bottom: 20px; */
 	}
 `;
@@ -63,7 +64,7 @@ export const StyledLink = styled(Link)`
 	margin-right: 20px;
 	text-decoration: none;
 	outline: none;
-	color: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : BASE2)};
+	color: ${(props) => (props.theme.main === 'LIGHT' ? BASE03 : DARK_THEME.TEXT)};
 
 	:hover {
 		text-decoration: underline;
@@ -139,7 +140,7 @@ const StyledThemeButton = styled(ThemeButton)`
 		width: 100px;
 		height: 100px;
 		bottom: 75px;
-		left: 75px;
+		left: 50px;
 	}
 `;
 

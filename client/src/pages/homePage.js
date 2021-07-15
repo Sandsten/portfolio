@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
-import { DESKTOP_XL } from '../constants/sizes';
+import { DESKTOP_XL, DESKTOP_XS } from '../constants/sizes';
 import { BASE03, BLUE, DARK_THEME } from '../constants/colors';
 
 import '../CSSTransitions/transitions.scss';
@@ -13,14 +13,14 @@ const StyledHomePage = styled.div`
 	align-content: start;
 	grid-row-gap: 20px;
 
-	padding: 20px 0 0 20px;
-	font-size: 1em;
+	padding: 10px 10px 0 10px;
 	overflow-y: scroll;
 
 	color: ${(p) => (p.theme.main === 'LIGHT' ? BASE03 : DARK_THEME.TEXT)};
 
-	@media (min-width: ${DESKTOP_XL}) {
-		grid-template-columns: 800px;
+	@media (min-width: ${DESKTOP_XS}) {
+		grid-template-columns: minmax(auto, 800px);
+		padding: 20px 20px 0 20px;
 	}
 `;
 
