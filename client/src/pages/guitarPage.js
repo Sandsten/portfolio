@@ -26,9 +26,12 @@ const guitarPage = () => {
 	const music = [
 		{
 			title: 'Acoustic Piece - Avenged Sevenfold',
-			src: 'https://staffansandberg.com/guitar/acoustic-piece.mp3',
+			src: 'https://staffansandberg.com/media/music/guitar/acoustic-piece.mp3',
 		},
-		{ title: 'Romance', src: 'https://staffansandberg.com/guitar/romance-with-reverb.mp3' },
+		{
+			title: 'Spanish Romance (Romanza)',
+			src: 'https://staffansandberg.com/media/music/guitar/romance-with-reverb.mp3',
+		},
 	];
 
 	return (
