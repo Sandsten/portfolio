@@ -18,6 +18,8 @@ const StyledHomePage = styled.div`
 
 	color: ${(p) => (p.theme.main === 'LIGHT' ? LIGHT_THEME.TEXT : DARK_THEME.TEXT)};
 
+	height: 100vh;
+
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-columns: minmax(auto, 800px);
 		padding: 20px 20px 0 20px;

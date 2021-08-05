@@ -23,6 +23,7 @@ const StyledProjects = styled.div`
 	/* TODO: How do we add padding to the bottom? The final card is flush with the screen edge which I do not want */
 	padding: 10px;
 
+	height: 100vh;
 	overflow-y: scroll;
 
 	// The following is applied when browser width goes above min-width

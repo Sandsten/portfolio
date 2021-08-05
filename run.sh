@@ -5,21 +5,22 @@
 Help()
 {
    # Display Help
-   echo "Start dev environment with docker for portfolio"
+   echo "Starts the webap with production image as default. Options can be given to run in dev mode instead"
    echo
    echo "Syntax: scriptTemplate [-g|h|v|V]"
    echo "options:"
    echo "-h     Print this Help."
-   echo "-o     Remove orphans."
-   echo "-b     Rebuild images (if new npm packages have been added you should include this)."
+   echo "-d     Starts development environment"
+   echo "-b     Starts dev environmebt and also rebuilds images and removes orphans (use this if new packages have been added etc)."
+   echo "-p     Run production image."
    echo
 }
 
 # Base compose command
-DevCommand="docker-compose -f docker-compose.dev.yml up"
+DevCommand="docker-compose up"
 
 # list of arguments expected in the input
-optstring=":hob"
+optstring=":hdb"
 
 ## getops will return a list with all options given to script (-h etc)
 while getopts ${optstring} option; do
@@ -28,11 +29,12 @@ while getopts ${optstring} option; do
       Help
       exit
       ;; # Each option must end with ;;
-    o)
-      DevCommand+=" --remove-orphans"
-      ;;      
+    d)
+      DevCommand="docker-compose -f docker-compose.dev.yml up"
+      ;;
     b)
-      DevCommand+=" --build"
+      #DevCommand="docker-compose -f docker-compose.dev.yml up --build  --remove-orphans"
+      DevCommand="docker-compose -f docker-compose.dev.yml up --build  --remove-orphans"
       ;;
     \?) # Match any option which hasn't been defined up above ^
         echo "Error: Invalid option"
@@ -43,10 +45,3 @@ done
 
 echo "Executing: "$DevCommand
 eval $DevCommand
-
-# "scripts": {
-#   "prod": "docker-compose -f docker-compose.prod.yml up --build -d",
-#   "dev": "docker-compose -f docker-compose.dev.yml up --remove-orphans",
-#   "dev:build": "docker-compose -f docker-compose.dev.yml up --build",
-#   "build": "docker build"
-# },

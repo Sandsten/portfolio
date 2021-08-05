@@ -16,6 +16,7 @@ import projectPage from './pages/projectPage';
 // import blogpostPage from './pages/blogpostPage';
 import threeShaders from './pages/threeShaders';
 import tutorialsPage from './pages/tutorialsPage';
+import guitarPage from './pages/guitarPage';
 
 // import { autoSignIn } from './redux/actions/userActions';
 import { setTheme } from './redux-toolkit/slices/siteConfigSlice';
@@ -46,7 +47,6 @@ const MainContainer = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-areas: 'sidebar main';
 		grid-template-columns: 200px 1fr;
-		grid-template-rows: 1fr;
 	}
 `;
 
@@ -85,6 +85,7 @@ const App = () => {
             {/* <Route path="/blogposts" component={blog} /> */}
             <Route path="/shaders" component={threeShaders} />
             <Route path="/tutorials" component={tutorialsPage} />
+            <Route path="/guitar" component={guitarPage} />
             <Route
               render={() => {
                 return <Redirect to="/" />;

@@ -164,6 +164,7 @@ const Sidebar = (props) => {
     ['/', 'About'],
     ['/projects', 'Projects'],
     ['/tutorials', 'Tutorials'],
+    ['/guitar', 'Guitar']
     // ['/cv', 'CV'],
     // ['/blogposts', 'Blog'],
     // ['/tutorials', 'Tutorials'],
