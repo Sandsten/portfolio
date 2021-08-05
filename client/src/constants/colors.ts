@@ -1,17 +1,18 @@
 // Make sure all themes have all colors available through this interface
 interface Theme {
-	BACKGROUND: string,
-	TAG_BG: string,
-	CARD_BG: string,
-	TEXT: string,
-	SIDEBAR: string,
-	LINK_1: string,
-	LINK_2: string,
-  THEME_TOGGLE: string
+	BACKGROUND: string;
+	TAG_BG: string;
+	CARD_BG: string;
+	TEXT: string;
+	SIDEBAR: string;
+	LINK_1: string;
+	LINK_2: string;
+	THEME_TOGGLE: string;
+	IS_PLAYING: string;
 }
 
 // TODO: Organize the theme colors like this instead!
-export const DARK_THEME : Theme = {
+export const DARK_THEME: Theme = {
 	BACKGROUND: '#2a2c37',
 	TAG_BG: '#000000',
 	CARD_BG: '#1d1e26',
@@ -19,10 +20,11 @@ export const DARK_THEME : Theme = {
 	SIDEBAR: '#1d1e26',
 	LINK_1: '#9580ff',
 	LINK_2: '#80ffea',
-  THEME_TOGGLE: '#eddeaf'
+	THEME_TOGGLE: '#eddeaf',
+	IS_PLAYING: 'rgb(4, 170, 109)',
 };
 
-export const LIGHT_THEME : Theme = {
+export const LIGHT_THEME: Theme = {
 	BACKGROUND: '#fdf6e3',
 	TAG_BG: '#000000',
 	CARD_BG: '#eee8d5',
@@ -30,5 +32,6 @@ export const LIGHT_THEME : Theme = {
 	SIDEBAR: '#eddeaf',
 	LINK_1: '#9580ff',
 	LINK_2: '#80ffea',
-  THEME_TOGGLE: '#202021'
+	THEME_TOGGLE: '#202021',
+	IS_PLAYING: 'rgb(4, 170, 109)',
 };

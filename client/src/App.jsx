@@ -47,6 +47,7 @@ const MainContainer = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-areas: 'sidebar main';
 		grid-template-columns: 200px 1fr;
+		/* grid-template-rows: 1fr; */
 	}
 `;
 

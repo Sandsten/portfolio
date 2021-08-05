@@ -35,7 +35,7 @@ const TutorialsPage = (props) => {
 				feeling strikes me I tend to make a video tutorial on how I went about solving it.{' '}
 			</StyledInfo>
 			{videos.map((url) => {
-				return <StyledIframe width={width} height={height} src={url} />;
+				return <StyledIframe key={url} width={width} height={height} src={url} />;
 			})}
 		</StyledTutorialsPage>
 	);
