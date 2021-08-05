@@ -31,10 +31,18 @@ const MusicPlayer = (props) => {
 	});
 	// If other track starts playing, pause this one if it's playing.
 
+	// If the user is seeking (moving the timeline slider) we don't want to change the background color!
+	// Since the bg should only change when the user pause the music to move focus elsewhere!
+	const handlePause = (e) => {
+		if (!e.target.seeking) {
+			setIsPlaying(false);
+		}
+	};
+
 	return (
 		<StyledMusicPlayer isPlaying={isPlaying}>
 			<StyledMusicTitle>{title}</StyledMusicTitle>
-			<StyledAudio controls onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)}>
+			<StyledAudio controls onPlay={() => setIsPlaying(true)} onPause={handlePause}>
 				<source src={src} type="audio/mpeg" />
 			</StyledAudio>
 		</StyledMusicPlayer>
