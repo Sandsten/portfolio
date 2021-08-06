@@ -32,6 +32,10 @@ const guitarPage = () => {
 			title: 'Spanish Romance (Romanza)',
 			src: 'https://staffansandberg.com/media/music/guitar/romance-with-reverb.mp3',
 		},
+		{
+			title: 'Nothing else matters (Intro)',
+			src: 'https://staffansandberg.com/media/music/guitar/nothing-else-matters-intro.mp3',
+		},
 	];
 
 	return (
@@ -48,7 +52,7 @@ const guitarPage = () => {
 					which are two game I logged waaay too many hours in!
 				</div>
 				<div>
-					Nowadays I turn to Youtube tutorials and guitar tabs when I yearn for something new to
+					Nowadays I turn to Youtube! tutorials and guitar tabs when I yearn for something new to
 					play. One great source for tabs and tutorials in my opinion is{' '}
 					<StyledA href="https://www.guitarnick.com/">Guitar Nick</StyledA>
 				</div>

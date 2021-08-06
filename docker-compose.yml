@@ -2,9 +2,8 @@
 version: '3.8'
 
 services:
-  portfolio:
-    # image: index.docker.io/sandsten/portfolio:latest
-    image: portfolio:prune2
+  app:
+    image: index.docker.io/sandsten/portfolio:latest
     # '127.0.0.1:3000:3000' will ensure port 3000 is only exposed to host and not remote
     # Remote access should be handled by Nginx instead!
     ports:
