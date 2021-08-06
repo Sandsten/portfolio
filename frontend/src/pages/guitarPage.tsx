@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
@@ -11,21 +12,25 @@ import '../CSSTransitions/transitions.scss';
 
 const Container = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
-		display: grid;
+    display: grid;
 		margin: 20px;
 		grid-template-columns: minmax(auto, 800px);
 		grid-row-gap: 10px;
 	}
-`;
+  `;
+
+type Music = { title: string, src: string };
+type MusicList = Array<Music>;
 
 const guitarPage = () => {
-	const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
+	// Stores last played song
+	const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
 
-	const handleOnPlay = (src) => {
+	const handleOnPlay = (src: string) => {
 		setCurrentlyPlaying(src);
 	};
 
-	const music = [
+	const music: MusicList = [
 		{
 			title: 'Acoustic Piece - Avenged Sevenfold',
 			src: 'https://staffansandberg.com/media/music/guitar/acoustic-piece.mp3',
