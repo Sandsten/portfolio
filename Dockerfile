@@ -28,16 +28,19 @@ RUN npm run build
 # Change working directory to backend
 WORKDIR /backend
 
-# Grab the built frontend into our main directory
-RUN mv ../frontend/build ./
-
 COPY [ "./server/package.json", "./server/package-lock.json", "./" ]
 
 # Only the production packages are needed in the image ment for being deployed
 ENV NODE_ENV production
 
+# Grab the built frontend into our main directory
 # Make a clean install of node packages which are needed for production
 RUN npm ci --only=production
+
+# Install and run node-prune. It deletes unnecessary files from node_modules, such as md files etc
+RUN apk update && apk add curl bash && rm -rf /var/cache/apk/*
+RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
+RUN /usr/local/bin/node-prune
 
 # Copy all server source code into image
 COPY ./server/src ./src
@@ -51,6 +54,10 @@ FROM node:lts-alpine3.13@sha256:954f97825c2b535defef235dd8b92a7936b59b12aa6685bc
 
 WORKDIR /app
 
-COPY --from=builder /backend/ /app/
+COPY --from=builder /frontend/build /app/build
+COPY --from=builder /backend/src /app/src
+COPY --from=builder /backend/node_modules /app/node_modules
 
-CMD [ "npm", "start" ]
+EXPOSE 3000
+
+CMD [ "node", "./src/index.js" ]
