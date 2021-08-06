@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
 import { DARK_THEME } from '../constants/colors';
@@ -22,27 +22,38 @@ const StyledAudio = styled.audio`
 `;
 
 const MusicPlayer = (props) => {
+	const playerControl = useRef(null);
+
+	// This is only for setting the bg color of the player
 	const [isPlaying, setIsPlaying] = useState(false);
 
-	const { src, title, pauseAllOther } = props;
+	const { src, title, onPlay, currentlyPlaying } = props;
 
 	useEffect(() => {
-		// console.log(isPlaying);
-	});
-	// If other track starts playing, pause this one if it's playing.
+		// If the user plays another song, pause all other ones
+		if (currentlyPlaying !== src) {
+			playerControl.current.pause();
+		}
+	}, [currentlyPlaying]);
+
+	const handleOnPlay = () => {
+		// Pass the src of currently playing song to parent component
+		onPlay(src);
+		setIsPlaying(!playerControl.current.paused);
+	};
 
 	// If the user is seeking (moving the timeline slider) we don't want to change the background color!
-	// Since the bg should only change when the user pause the music to move focus elsewhere!
+	// Since the bg should only change when the user click pause or plays another track
 	const handlePause = (e) => {
 		if (!e.target.seeking) {
-			setIsPlaying(false);
+			setIsPlaying(!playerControl.current.paused);
 		}
 	};
 
 	return (
 		<StyledMusicPlayer isPlaying={isPlaying}>
 			<StyledMusicTitle>{title}</StyledMusicTitle>
-			<StyledAudio controls onPlay={() => setIsPlaying(true)} onPause={handlePause}>
+			<StyledAudio controls onPlay={handleOnPlay} onPause={handlePause} ref={playerControl}>
 				<source src={src} type="audio/mpeg" />
 			</StyledAudio>
 		</StyledMusicPlayer>

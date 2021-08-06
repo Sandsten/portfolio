@@ -19,8 +19,10 @@ const Container = styled.div`
 `;
 
 const guitarPage = () => {
-	const handlePauseAllOther = (key) => {
-		console.log(key);
+	const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
+
+	const handleOnPlay = (src) => {
+		setCurrentlyPlaying(src);
 	};
 
 	const music = [
@@ -67,7 +69,8 @@ const guitarPage = () => {
 							key={data.src}
 							title={data.title}
 							src={data.src}
-							pauseAllOther={() => handlePauseAllOther(data.src)}
+							onPlay={handleOnPlay}
+							currentlyPlaying={currentlyPlaying}
 						/>
 					);
 				})}
