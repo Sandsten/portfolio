@@ -9,6 +9,11 @@ This website is currently hosted on a droplet provided by DigitalOcean.
 Most prominent tech used for developing this website
 * React
   * Frontend
+* Typescript
+  * Converting all .js files to .ts slowly but steadily. Nicer to have everything strongly typed and proper intellisense for all custom data. 
+* Redux
+  * Using redux for global state variables. Such as theme, if I'm signed in and so forth. 
+  * Handles api calls to backend.
 * Node
   * Backend
   * NPM for package management
@@ -17,7 +22,7 @@ Most prominent tech used for developing this website
   * Stores the websites admin username and hashed password
 * Docker
   * Building an image for easy deployment and storage of entire website
-  * So far it's 132Mb in size, continuously working on making it smaller
+  * So far it's 129Mb in size, continuously working on making it smaller
   * Deploying the image with docker-compose
 * Ubuntu
   * Operating system of choice when developing (Using WSL2 on Windows)
@@ -26,9 +31,10 @@ Most prominent tech used for developing this website
 * SSH
   * Accessing remote server
 * Nginx
-  * As reverse proxy from port 443 to node app
+  * Webserver as reverse proxy from port 443 to node app
+  * Serving images, music and videos used by the app
 * Certbot
-  * Generate SSL certificates to enable HTTPS
+  * Generate SSL certificates for HTTPS
 * VSCode
   * IDE of choice
 
@@ -77,5 +83,5 @@ services:
 ## Goal
 
 - Create a **front-end** and **back-end** application as my portfolio
-- To use **NodeJS with MongoDB as back-end**, **React as front-end**, **Webpack as bundler** and host it on **Heroku**
+- To use **NodeJS with MongoDB as back-end**, **React as front-end**, **Webpack as bundler** and host it on a **VPS (Using DigitalOcean)**
 
