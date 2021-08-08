@@ -1,11 +1,11 @@
 export interface Projects {
-	data: object[];
+	data: Record<string, unknown>[];
 	status: 'loading' | 'success' | 'failed' | null;
 	error: string | null;
 }
 
 export interface ProjectPayload {
-	projects: object[];
+	projects: Record<string, unknown>[];
 }
 
 export interface ProjectPayloadError {

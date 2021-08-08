@@ -19,8 +19,8 @@ export const signIn = createAsyncThunk<AdminPayload, Credentials, { rejectValue:
 			credentials: credentialsSetting,
 			body: JSON.stringify(credentials), // Converts Object to string format
 		});
-		console.log(response.status);
-		console.log(await response.body);
+		//console.log(response.status);
+		//console.log(await response.body);
 		if (response.status !== 200) {
 			return thunkApi.rejectWithValue((await response.json()) as AdminError);
 		}
@@ -33,7 +33,7 @@ export const createAdminAccount = createAsyncThunk<
 	Credentials,
 	{ rejectValue: AdminError }
 >('admin/createAccount', async (credentials, thunkApi) => {
-	console.log(credentials);
+	//console.log(credentials);
 	const response = await fetch(`${URL}/create-account`, {
 		method: 'POST',
 		headers: {
@@ -56,7 +56,7 @@ export const signOut = createAsyncThunk<AdminPayload, Credentials, { rejectValue
 			method: 'POST',
 			credentials: credentialsSetting,
 		});
-		console.log(await response.status);
+		//console.log(await response.status);
 		return (await response.json()) as AdminPayload;
 	}
 );
@@ -81,7 +81,7 @@ const adminSlice = createSlice({
 			state.status = 'success';
 		});
 		builder.addCase(signIn.rejected, (state, action) => {
-			console.log(action);
+			//console.log(action);
 			if (action.payload) {
 				state.error = action.payload.message;
 			}
@@ -92,12 +92,12 @@ const adminSlice = createSlice({
 			state.status = 'loading';
 		});
 		builder.addCase(signOut.fulfilled, (state, { payload }) => {
-			console.log(payload?.message);
+			//console.log(payload?.message);
 			state.signedIn = null;
 			state.status = 'success';
 		});
 		builder.addCase(signOut.rejected, (state, action) => {
-			console.log(action.payload?.message);
+			//console.log(action.payload?.message);
 			state.status = null;
 		});
 	},

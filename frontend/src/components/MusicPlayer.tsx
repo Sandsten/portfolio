@@ -43,17 +43,17 @@ const MusicPlayer = ({ src, title, onPlay, currentlyPlaying }: MusicPlayerProps)
 		}
 	}, [currentlyPlaying]);
 
-	function handleOnPlay() {
+	function handleOnPlay(e: React.ChangeEvent<HTMLAudioElement>) {
 		// Pass the src of currently playing song to parent component
-		onPlay(src);
-		setIsPlaying(!playerController.current?.paused);
+		onPlay(e.target.currentSrc);
+    setIsPlaying(true);
 	}
 
 	// If the user is seeking (moving the timeline slider) we don't want to change the background color!
 	// Since the bg should only change when the user click pause or plays another track
-	function handlePause() {
-		if (!playerController.current?.seeking) {
-			setIsPlaying(!playerController.current?.paused);
+	function handlePause(e: React.ChangeEvent<HTMLAudioElement>) {
+		if (!e.target.seeking) {
+      setIsPlaying(false);
 		}
 	}
 

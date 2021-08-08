@@ -64,7 +64,7 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem('theme', config.theme);
-  })
+  });
 
   return (
     <ThemeProvider theme={{ main: config.theme }}> {/*Pass the theme down to all components*/}
