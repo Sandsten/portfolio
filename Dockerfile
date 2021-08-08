@@ -5,6 +5,7 @@ FROM node:lts-alpine3.13@sha256:954f97825c2b535defef235dd8b92a7936b59b12aa6685bc
 ##################
 # FRONTEND BUILD #
 ##################
+# Generate the static files with webpack
 
 # Create a folder for frontend building and set current directory to it
 WORKDIR /frontend
@@ -24,6 +25,7 @@ RUN npm run build
 #################
 # BACKEND BUILD #
 #################
+# Install production npm packages
 
 # Change working directory to backend
 WORKDIR /backend
@@ -41,12 +43,12 @@ RUN apk update && apk add curl bash && rm -rf /var/cache/apk/*
 RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
 RUN /usr/local/bin/node-prune
 
-# Copy all backend source code into image
-COPY ./backend/src ./src
-
 ###############
 # FINAL BUILD #
 ###############
+# Copy over static frontend files
+# Copy over backend source code
+# Copy over installed node packages for backend
 
 ## This FROM will start a new container
 FROM node:lts-alpine3.13@sha256:954f97825c2b535defef235dd8b92a7936b59b12aa6685bc1b5c17864b2812c3
@@ -54,7 +56,7 @@ FROM node:lts-alpine3.13@sha256:954f97825c2b535defef235dd8b92a7936b59b12aa6685bc
 WORKDIR /app
 
 COPY --from=builder /frontend/build /app/build
-COPY --from=builder /backend/src /app/src
+COPY ./backend/src /app/src
 COPY --from=builder /backend/node_modules /app/node_modules
 
 EXPOSE 3000
