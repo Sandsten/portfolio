@@ -12,7 +12,7 @@ import Admin from './Admin/Admin';
 import projects from './pages/projectsPage';
 import projectPage from './pages/projectPage';
 // import cv from './pages/cv';
-// import blog from './pages/blog';
+import blogPage from './pages/blogPage';
 // import blogpostPage from './pages/blogpostPage';
 import threeShaders from './pages/threeShaders';
 import tutorialsPage from './pages/tutorialsPage';
@@ -86,6 +86,7 @@ const App = () => {
             {/* <Route path="/blogposts" component={blog} /> */}
             <Route path="/shaders" component={threeShaders} />
             <Route path="/tutorials" component={tutorialsPage} />
+            <Route path="/blog" component={blogPage} />
             <Route path="/guitar" component={guitarPage} />
             <Route
               render={() => {

@@ -140,8 +140,9 @@ const Sidebar = (props) => {
 
   const navList = [
     ['/', 'About'],
+    ['/blog', 'Blog'],
     ['/projects', 'Coding'],
-    ['/tutorials', 'Tutorials'],
+    ['/tutorials', 'DIY Fixes'],
     ['/guitar', 'Guitar']
   ];
 
