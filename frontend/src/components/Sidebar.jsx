@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
+import ThemeButton from './ThemeButton';
+
 import { LIGHT_THEME, DARK_THEME } from '../constants/colors';
 import { DESKTOP_XS } from '../constants/sizes';
 import { toggleTheme } from '../redux-toolkit/slices/siteConfigSlice';
@@ -78,7 +80,7 @@ export const StyledLink = styled(Link)`
 
 const SidebarLink = styled(StyledLink)`
 	/* Keep the button highlighted when de-focused or page refreshes */
-	${(props) =>
+	${(props) => 
     props.path === props.to &&
     css`
 			color: ${DARK_THEME.LINK_1};
@@ -91,40 +93,16 @@ const SidebarLink = styled(StyledLink)`
     margin-left: -20px;
     padding-left: 20px;
     
-    ${(props) =>
+    ${(props) => 
     props.path === props.to &&
     css`
       background: ${(props) => (props.theme.main === 'LIGHT' ? LIGHT_THEME.BACKGROUND : DARK_THEME.BACKGROUND)};
       :hover {
         text-decoration: none;
+      }
 		`}
 	}
 `;
-
-const ThemeButton = ({ className, width, height, handleClick }) => {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      onClick={handleClick}
-    >
-      <defs>
-        <path id="a" d="M0 0h24v24H0V0z" />
-      </defs>
-      <clipPath id="b">
-        <use xlinkHref="#a" overflow="visible" />
-      </clipPath>
-      <path
-        d="M6 14l3 3v5h6v-5l3-3V9H6zm5-12h2v3h-2zM3.5 5.875L4.914 4.46l2.12 2.122L5.62 7.997zm13.46.71l2.123-2.12 1.414 1.414L18.375 8z"
-        clipPath="url(#b)"
-      />
-    </svg>
-  );
-};
 
 const StyledThemeButton = styled(ThemeButton)`
 	grid-area: options;
@@ -155,24 +133,21 @@ const Sidebar = (props) => {
     setUrlPath(props.location.pathname);
   });
 
-  const handleThemeToggle = () => {
+  function handleThemeToggle() {
     // Updating the theme for the site is handled inside the top level component App.jsx
     dispatch(toggleTheme());
   };
 
   const navList = [
     ['/', 'About'],
-    ['/projects', 'Projects'],
+    ['/projects', 'Coding'],
     ['/tutorials', 'Tutorials'],
     ['/guitar', 'Guitar']
-    // ['/cv', 'CV'],
-    // ['/blogposts', 'Blog'],
-    // ['/tutorials', 'Tutorials'],
   ];
 
   return (
     <StyledSidebar>
-      <Name onClick={handleNavHome}>
+      <Name>
         Staffan Sandberg
       </Name>
       <span>

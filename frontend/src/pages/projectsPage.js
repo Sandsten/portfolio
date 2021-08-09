@@ -58,6 +58,7 @@ const projects = () => {
 				{projects.data.map((project, i) => {
 					return (
 						<ProjectCard
+							key={project.title}
 							title={project.title}
 							thumbnail={project.bgUrl}
 							description={project.descriptionShort}

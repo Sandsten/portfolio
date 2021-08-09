@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { DESKTOP_XS } from '../constants/sizes';
 
 import FadeIn from '../components/FadeIn';
+import ProjectCard from '../components/ProjectCard';
 
 const StyledTutorialsPage = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {

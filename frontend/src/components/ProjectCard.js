@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import styled from 'styled-components';
-import { BASE03, BASE2, BASE1, B0, DARK_THEME, LIGHT_THEME } from '../constants/colors';
+
+import { DARK_THEME, LIGHT_THEME } from '../constants/colors';
 import { MOBILE_XS } from '../constants/sizes';
 
 const StyledProjectCard = styled(Link)`
