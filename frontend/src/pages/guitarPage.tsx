@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
 
 import MusicPlayer from '../components/MusicPlayer';
 
@@ -9,6 +8,7 @@ import { DESKTOP_XS } from '../constants/sizes';
 import { StyledA } from './homePage';
 
 import '../CSSTransitions/transitions.scss';
+import FadeIn from '../components/FadeIn';
 
 const Container = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
@@ -46,7 +46,7 @@ const guitarPage = () => {
 	];
 
 	return (
-		<CSSTransition in={true} appear={true} classNames="fade" timeout={300}>
+    <FadeIn>
 			<Container>
 				<div>
 					In elementary school I was fortunate to have two very enthusiastic music teachers. Where
@@ -81,7 +81,7 @@ const guitarPage = () => {
 				})}
 				<div>More to come...</div>
 			</Container>
-		</CSSTransition>
+    </FadeIn>
 	);
 };
 

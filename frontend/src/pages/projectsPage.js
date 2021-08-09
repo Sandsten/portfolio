@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
 import ProjectCard from '../components/ProjectCard';
+import FadeIn from '../components/FadeIn';
 
 import { getProjects } from '../redux-toolkit/slices/projectsSlice';
 
@@ -42,7 +43,6 @@ const projects = () => {
 	const projects = useSelector((state) => state.projects);
 	// const projectsFetched = useSelector((state) => state.projects.fetched);
 
-	const [shouldAnimate, setShouldAnimate] = useState(true);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -53,17 +53,10 @@ const projects = () => {
 	if (!projects.data) return <StyledProjects theme={theme}>Loading projects...</StyledProjects>;
 
 	return (
-		<StyledProjects>
-			{projects.data.map((project, i) => {
-				return (
-					<CSSTransition
-						key={project._id}
-						in={shouldAnimate}
-						appear={shouldAnimate}
-						classNames="fade"
-						timeout={500}
-					>
-						{/* transition delay has to be passed down to the component for it to work */}
+		<FadeIn>
+			<StyledProjects>
+				{projects.data.map((project, i) => {
+					return (
 						<ProjectCard
 							title={project.title}
 							thumbnail={project.bgUrl}
@@ -71,10 +64,10 @@ const projects = () => {
 							tags={['Project', ...project.tools]}
 							clickURL={project.localURL}
 						/>
-					</CSSTransition>
-				);
-			})}
-		</StyledProjects>
+					);
+				})}
+			</StyledProjects>
+		</FadeIn>
 	);
 };
 
