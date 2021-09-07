@@ -123,13 +123,15 @@ const homePage = () => {
 
 				<Paragraph>
 					For{' '}
-					<StyledA href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all">
+					{/* <StyledA href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
+          aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all">
 						my thesis
-					</StyledA>{' '}
-					I wanted to explore Virtual Reality a bit further, since I had only briefly used it
-					previously in one of my courses. Therefore I found a topic where I had to create a driving
-					simulator for electric vehicles in VR. In order to test a range critical situation using
-					two different dashboards.{' '}
+					</StyledA>{' '} */}
+					<StyledA href="https://staffansandberg.com/masters-thesis">my thesis</StyledA> I wanted to
+					explore Virtual Reality a bit further, since I had only briefly used it previously in one
+					of my courses. Therefore I found a topic where I had to create a driving simulator for
+					electric vehicles in VR. In order to test a range critical situation using two different
+					dashboards.{' '}
 					{/*You can read about the project in a shorter
 						format compared to the article{' '}
 						<LinkInternal

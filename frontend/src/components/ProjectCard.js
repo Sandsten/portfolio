@@ -89,7 +89,8 @@ const ProjectCard = (props) => {
 	let thumbnailUrl;
 	try {
 		// Update database to use webp format instead?
-		thumbnailUrl = `https://staffansandberg.com/${thumbnail}`.replace('png', 'webp');
+		if (thumbnail.includes('https://staffansandberg.com/')) thumbnailUrl = thumbnail;
+		else thumbnailUrl = `https://staffansandberg.com/${thumbnail}`.replace('png', 'webp');
 	} catch (error) {
 		thumbnailUrl = '';
 	}

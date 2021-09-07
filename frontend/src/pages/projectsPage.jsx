@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import * as React from "react"
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
@@ -9,6 +10,8 @@ import FadeIn from '../components/FadeIn';
 import { getProjects } from '../redux-toolkit/slices/projectsSlice';
 
 import { DESKTOP_XS } from '../constants/sizes';
+
+import projectsMetadata from '../Content/Projects/projectsMetadata';
 
 import '../CSSTransitions/transitions.scss';
 
@@ -55,6 +58,16 @@ const projects = () => {
 	return (
 		<FadeIn>
 			<StyledProjects>
+        {projectsMetadata.map((project) => 
+						<ProjectCard
+            key={project.title}
+            title={project.title}
+            thumbnail={project.thumbnail}
+            description={project.description}
+            tags={project.tags}
+            clickURL={project.fullProjectPath}
+          />
+        )}
 				{projects.data.map((project, i) => {
 					return (
 						<ProjectCard

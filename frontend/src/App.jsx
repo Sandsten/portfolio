@@ -25,6 +25,8 @@ import { DARK_THEME, LIGHT_THEME } from './constants/colors';
 import { DESKTOP_XS } from './constants/sizes';
 
 import './styles/index.scss';
+import mastersThesis from './Content/Projects/mastersThesis';
+import { HealthyGamerGlossaryToAnki } from './Content/Blogposts/healthyGamerGlossaryToAnki';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -80,13 +82,15 @@ const App = () => {
             <Route path="/test" exact component={APITest} />
             <Route path="/admin" component={Admin} />
             {/* <Route path="/cv" component={cv} /> */}
+            <Route path="/projects/masters-thesis" component={mastersThesis} />
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
             {/* <Route path="/blogposts/:name" component={blogpostPage} /> */}
             {/* <Route path="/blogposts" component={blog} /> */}
             <Route path="/shaders" component={threeShaders} />
             <Route path="/tutorials" component={tutorialsPage} />
-            <Route path="/blog" component={blogPage} />
+            <Route path="/posts/healthy-gamer-glossary-to-anki" component={HealthyGamerGlossaryToAnki} />
+            <Route path="/posts" component={blogPage} />
             <Route path="/guitar" component={guitarPage} />
             <Route
               render={() => {

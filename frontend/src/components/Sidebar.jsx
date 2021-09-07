@@ -140,15 +140,15 @@ const Sidebar = (props) => {
 
   const navList = [
     ['/', 'About'],
-    ['/blog', 'Blog'],
-    ['/projects', 'Coding'],
+    ['/projects', 'Projects'],
+    ['/posts', 'Posts'],
     ['/tutorials', 'DIY Fixes'],
     ['/guitar', 'Guitar']
   ];
 
   return (
     <StyledSidebar>
-      <Name>
+      <Name onClick={handleNavHome}>
         Staffan Sandberg
       </Name>
       <span>

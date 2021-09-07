@@ -1,9 +1,36 @@
 import * as React from 'react';
 
-export default function blog() {
+import { blogPostsMetadata } from '../Content/Blogposts/blogPostsMetadata';
+import { Container, BlogPostCard } from '../Content/Blogposts/styledComponents';
+
+function blog() {
   return (
-    <div>
-      <h1>Blog</h1>     
-    </div>
-  )
+    <Container>
+      {blogPostsMetadata.map(post => {
+        const date = post.date.toISOString().split("T")[0];
+        const tags = post.tags.join(", ");
+        
+        return (
+          <BlogPostCard key={post.fullProjectPath}>
+            <div className="description">
+              <div>
+                <h3>{post.title}</h3>
+                <p>{post.description}</p>
+              </div>
+              <div>
+                <img src={post.thumbnail} alt={`thumbnail for ${post.title}`} />
+              </div>
+            </div>
+            <hr></hr>
+            <div className="metadata">
+              <span>{tags}</span>
+              <span className="date">{date}</span>
+            </div>
+          </BlogPostCard>
+        )  
+      })}
+    </Container>
+  );
 }
+
+export default blog;
