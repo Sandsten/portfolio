@@ -34,12 +34,15 @@ module.exports = {
 			},
 			{
 				test: /\.(jpg|png|svg|gif)$/,
-				use: ['file-loader'],
+				type: 'asset/resource',
 			},
 			{
 				//Load fonts
-				test: /\.(woff|woff2|eot|ttf|otf|pdf)$/,
-				use: ['file-loader'],
+				test: /\.(woff|woff2|eot|ttf|otf|svgs)$/,
+				type: 'asset/resource',
+				generator: {
+					filename: '[name][ext]',
+				},
 			},
 			{
 				test: /\.html$/,
