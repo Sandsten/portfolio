@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { DESKTOP_XS } from '../constants/sizes';
 
-import FadeIn from '../components/FadeIn';
-import ProjectCard from '../components/ProjectCard';
-
 const StyledTutorialsPage = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
 		display: grid;
@@ -64,20 +61,18 @@ const TutorialsPage = (props) => {
 	];
 
 	return (
-		<FadeIn>
-			<StyledTutorialsPage>
-				<div>
-					Sometimes when I come across an annoyance and manage to find a solution for it. I get the
-					feeling there's probably someone else out there with the same little annoyance. When that
-					feeling strikes me I tend to make a video tutorial on how I went about solving it.
-				</div>
-				<StyledTutorialVideosGrid>
-					{videos.map((video) => {
-						return <VideoPlayer key={video.title} title={video.title} src={video.src} />;
-					})}
-				</StyledTutorialVideosGrid>
-			</StyledTutorialsPage>
-		</FadeIn>
+		<StyledTutorialsPage>
+			<div>
+				Sometimes when I come across an annoyance and manage to find a solution for it. I get the
+				feeling there's probably someone else out there with the same little annoyance. When that
+				feeling strikes me I tend to make a video tutorial on how I went about solving it.
+			</div>
+			<StyledTutorialVideosGrid>
+				{videos.map((video) => {
+					return <VideoPlayer key={video.title} title={video.title} src={video.src} />;
+				})}
+			</StyledTutorialVideosGrid>
+		</StyledTutorialsPage>
 	);
 };
 

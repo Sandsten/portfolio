@@ -13,8 +13,6 @@ import { DESKTOP_XS } from '../constants/sizes';
 
 import projectsMetadata from '../Content/Projects/projectsMetadata';
 
-import '../CSSTransitions/transitions.scss';
-
 // Mobile first!
 const StyledProjects = styled.div`
 	grid-area: main;
@@ -56,32 +54,30 @@ const projects = () => {
 	if (!projects.data) return <StyledProjects theme={theme}>Loading projects...</StyledProjects>;
 
 	return (
-		<FadeIn>
-			<StyledProjects>
-        {projectsMetadata.map((project) => 
-						<ProjectCard
+    <StyledProjects>
+      {projectsMetadata.map((project) => 
+          <ProjectCard
+          key={project.title}
+          title={project.title}
+          thumbnail={project.thumbnail}
+          description={project.description}
+          tags={project.tags}
+          clickURL={project.fullProjectPath}
+        />
+      )}
+      {projects.data.map((project, i) => {
+        return (
+          <ProjectCard
             key={project.title}
             title={project.title}
-            thumbnail={project.thumbnail}
-            description={project.description}
-            tags={project.tags}
-            clickURL={project.fullProjectPath}
+            thumbnail={project.bgUrl}
+            description={project.descriptionShort}
+            tags={['Project', ...project.tools]}
+            clickURL={project.localURL}
           />
-        )}
-				{projects.data.map((project, i) => {
-					return (
-						<ProjectCard
-							key={project.title}
-							title={project.title}
-							thumbnail={project.bgUrl}
-							description={project.descriptionShort}
-							tags={['Project', ...project.tools]}
-							clickURL={project.localURL}
-						/>
-					);
-				})}
-			</StyledProjects>
-		</FadeIn>
+        );
+      })}
+    </StyledProjects>
 	);
 };
 

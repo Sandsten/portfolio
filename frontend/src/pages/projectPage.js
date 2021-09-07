@@ -3,14 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
-
-import { fetchProjects } from '../redux/actions/projectsActions';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
 import { DARK_THEME } from '../constants/colors';
-
-import '../CSSTransitions/transitions.scss';
 
 const StyledProjectPage = styled.div`
 	display: block;
@@ -85,35 +80,15 @@ const projectPage = (props) => {
 		</p>
 	) : null;
 
-	const CONTENT = [
-		<ProjectTitle>{project.title}</ProjectTitle>,
-		<p>{project.date}</p>,
-		<p>{project.tools.join(', ')}</p>,
-		<p>Project group size: {project.groupSize}</p>,
-		<p>{project.description}</p>,
-		website,
-		github,
-	];
-
 	return (
-		// Prevent StyledProjectPage from being a direct sibling to the sidebar
-		// otherwise its height will match it automatically which we don't want
 		<StyledProjectPage>
-			{CONTENT.map((text, i) => {
-				if (!text) return null; // Prevent github/website to try and render with cssTransition if they are null
-				return (
-					<CSSTransition
-						key={i}
-						in={true}
-						appear={true}
-						classNames="fade"
-						timeout={500}
-						style={{ transitionDelay: `${(i + 1) * staggerDelay}s` }}
-					>
-						{text}
-					</CSSTransition>
-				);
-			})}
+			<ProjectTitle>{project.title}</ProjectTitle>
+			<p>{project.date}</p>
+			<p>{project.tools.join(', ')}</p>
+			<p>Project group size: {project.groupSize}</p>
+			<p>{project.description}</p>
+			{website}
+			{github}
 		</StyledProjectPage>
 	);
 };

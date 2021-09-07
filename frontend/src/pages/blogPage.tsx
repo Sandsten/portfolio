@@ -9,7 +9,7 @@ function blog() {
       {blogPostsMetadata.map(post => {
         const date = post.date.toISOString().split("T")[0];
         const tags = post.tags.join(", ");
-        
+
         return (
           <BlogPostCard key={post.fullProjectPath}>
             <div className="description">
@@ -17,9 +17,7 @@ function blog() {
                 <h3>{post.title}</h3>
                 <p>{post.description}</p>
               </div>
-              <div>
                 <img src={post.thumbnail} alt={`thumbnail for ${post.title}`} />
-              </div>
             </div>
             <hr></hr>
             <div className="metadata">

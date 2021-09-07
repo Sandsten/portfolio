@@ -16,6 +16,14 @@ const blogPostsMetadata: Array<BlogPost> = [
 		date: new Date(2021, 9, 7),
 		fullProjectPath: 'healthy-gamer-glossary-to-anki',
 	},
+	// {
+	// 	title: `Attic Flooring`,
+	// 	description: `Upgraded attic with plywood flooring. Prior the floor was made up of old shelves and random planks. Now the storage capacity is much greater.`,
+	// 	thumbnail: 'https://staffansandberg.com/vinden/vinden-after.webp',
+	// 	tags: ['Carpentry', 'Attic', 'DIY'],
+	// 	date: new Date(2021, 8, 7),
+	// 	fullProjectPath: 'healthy-gamer-glossary-to-anki',
+	// },
 ];
 
 export { blogPostsMetadata };

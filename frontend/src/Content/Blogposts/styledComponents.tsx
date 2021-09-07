@@ -24,6 +24,7 @@ const BlogPostCard = styled.div`
   width: 100%;
   overflow: hidden;
   padding: 0.6em;
+  margin-bottom: 20px;
 
 	background-color: ${(props) =>
     props.theme.main === 'LIGHT' ? LIGHT_THEME.SIDEBAR : DARK_THEME.SIDEBAR};
@@ -35,6 +36,10 @@ const BlogPostCard = styled.div`
   .description {
     display: flex;
     flex-direction: column;
+
+    div {
+      padding-right: 10px;
+    }
   }
 
   h3 {
@@ -42,8 +47,9 @@ const BlogPostCard = styled.div`
   }
 
   img {
-    margin-left: auto;
     border-radius: 10px;
+    max-height: 200px;
+    margin-right: auto;
   }
   
   hr {
@@ -70,6 +76,9 @@ const BlogPostCard = styled.div`
     .description {
       flex-direction: row;
     } 
+    img {
+      margin-left: auto;
+    }
   }
 `;
 

@@ -24,7 +24,7 @@ import { setTheme } from './redux-toolkit/slices/siteConfigSlice';
 import { DARK_THEME, LIGHT_THEME } from './constants/colors';
 import { DESKTOP_XS } from './constants/sizes';
 
-import './styles/index.scss';
+// import './styles/index.scss';
 import mastersThesis from './Content/Projects/mastersThesis';
 import { HealthyGamerGlossaryToAnki } from './Content/Blogposts/healthyGamerGlossaryToAnki';
 

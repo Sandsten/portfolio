@@ -30,12 +30,11 @@ module.exports = {
 				loader: 'webpack-glsl-loader',
 			},
 			{
-				test: /\.scss$/,
+				test: /\.css$/,
 				// Order of modules matters
 				use: [
 					process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
 					'css-loader',
-					'sass-loader',
 				],
 			},
 			{
@@ -61,6 +60,6 @@ module.exports = {
 	plugins: [
 		new HtmlWebPackPlugin({
 			template: './src/index.html',
-		})
+		}),
 	],
 };
