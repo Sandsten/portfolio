@@ -85,3 +85,6 @@ services:
 - Create a **front-end** and **back-end** application as my portfolio
 - To use **NodeJS with MongoDB as back-end**, **React as front-end**, **Webpack as bundler** and host it on a **VPS (Using DigitalOcean)**
 
+## Referral links
+
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg)](https://www.digitalocean.com/?refcode=7cd7ba8d4cf5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
