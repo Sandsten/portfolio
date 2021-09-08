@@ -1,0 +1,14 @@
+# Bind mounts to src/ folders to allow for editing in real-time
+version: '3.8'
+
+services:
+  frontend:
+    image: sandsten/portfolio-frontend:dev # Use the frontend dev image to build the static files
+    container_name: frontend-builder
+    volumes:
+      - ./frontend/src:/frontend/src
+      - ./build:/frontend/build # Output the built files to ./build/files
+    environment:
+      NODE_ENV: development
+
+    command: ['npm', 'run', 'build']

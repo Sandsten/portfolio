@@ -17,7 +17,7 @@ function blog() {
                 <h3>{post.title}</h3>
                 <p>{post.description}</p>
               </div>
-                <img src={post.thumbnail} alt={`thumbnail for ${post.title}`} />
+              <img src={post.thumbnail} alt={`thumbnail for ${post.title}`} />
             </div>
             <hr></hr>
             <div className="metadata">
