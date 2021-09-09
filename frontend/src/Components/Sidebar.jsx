@@ -11,14 +11,12 @@ import { toggleTheme } from '../Redux/slices/siteConfigSlice';
 
 // Always mobile first! Then add media sections for larger screens
 const StyledSidebar = styled.div`
-  grid-area: sidebar;
-
 	display: grid;
 	grid-template-areas:
 		'name options'
 		'nav options';
 	
-  /* grid-template-columns: 1fr auto; */
+  grid-template-columns: 1fr auto;
 
 	padding: 10px;
 
@@ -30,8 +28,8 @@ const StyledSidebar = styled.div`
 		grid-template-rows: auto 1fr auto;
 		grid-template-areas:
 			'name'
-			'nav';
-		/* height: 100vh; */
+			'nav'
+      'options';
 		padding: 20px;
 	}
 `;
@@ -79,6 +77,7 @@ export const StyledLink = styled(Link)`
 `;
 
 const SidebarLink = styled(StyledLink)`
+  grid-area: nav;
 	/* Keep the button highlighted when de-focused or page refreshes */
 	${(props) => 
     props.path === props.to &&
@@ -123,6 +122,15 @@ const StyledThemeButton = styled(ThemeButton)`
 	}
 `;
 
+const NavItems = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: ${DESKTOP_XS}) {
+    flex-direction: column;
+  }
+`;
+
 const Sidebar = (props) => {
   const [urlPath, setUrlPath] = useState("");
   const history = useHistory();
@@ -151,7 +159,7 @@ const Sidebar = (props) => {
       <Name onClick={handleNavHome}>
         Staffan Sandberg
       </Name>
-      <span>
+      <NavItems>
         {navList.map((page) => {
           return (
             <SidebarLink key={page[1]} path={urlPath} to={page[0]}>
@@ -159,7 +167,7 @@ const Sidebar = (props) => {
             </SidebarLink>
           );
         })}
-      </span>
+        </NavItems>
       <StyledThemeButton width={50} height={50} handleClick={handleThemeToggle} />
     </StyledSidebar>
   );
