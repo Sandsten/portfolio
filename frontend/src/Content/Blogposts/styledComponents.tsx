@@ -14,6 +14,7 @@ const Container = styled.div`
 const Paragraph = styled.p`
   max-width: 80ch; // 1ch is the width of the "0" character
 
+  // Triggered if the <p> is the first of its kind in its parent
   :first-child {
     margin-top: 0;
   }

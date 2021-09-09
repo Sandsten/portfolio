@@ -1,29 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { DESKTOP_XS } from '../constants/sizes';
 import { Container, Paragraph } from '../Content/Blogposts/styledComponents';
 
-const StyledTutorialsPage = styled.div`
-	display: grid;
-	align-content: start;
-
-	@media (min-width: ${DESKTOP_XS}) {
-		max-width: 1100px;
-		grid-row-gap: 20px;
-		padding: 20px 10px 20px 20px;
-	}
-`;
-
 const StyledTutorialVideosGrid = styled.div`
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-	grid-gap: 15px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+
+	max-width: 1100px;
 `;
 
 const StyledVideoContainer = styled.div`
-	display: grid;
 	width: 500px;
-	padding-top: 10px;
 	font-weight: bold;
 `;
 
