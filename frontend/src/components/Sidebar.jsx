@@ -11,14 +11,16 @@ import { toggleTheme } from '../redux-toolkit/slices/siteConfigSlice';
 
 // Always mobile first! Then add media sections for larger screens
 const StyledSidebar = styled.div`
+  grid-area: sidebar;
+
 	display: grid;
 	grid-template-areas:
 		'name options'
 		'nav options';
-	grid-template-columns: 1fr auto;
+	
+  /* grid-template-columns: 1fr auto; */
 
 	padding: 10px;
-	margin-bottom: 2px;
 
 	background-color: ${(props) =>
     props.theme.main === 'LIGHT' ? LIGHT_THEME.SIDEBAR : DARK_THEME.SIDEBAR};
@@ -26,12 +28,10 @@ const StyledSidebar = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-columns: 1fr;
 		grid-template-rows: auto 1fr auto;
-    grid-row-gap: 1em;
 		grid-template-areas:
 			'name'
-			'nav'
-			'options';
-		height: 100vh;
+			'nav';
+		/* height: 100vh; */
 		padding: 20px;
 	}
 `;

@@ -38,6 +38,8 @@ const MainContainer = styled.div`
 	;
 	/* Make the menu at the top take up 90px and the main content the rest */
 	grid-template-rows: 90px 1fr;
+  grid-template-columns: 1fr;
+
 	/* vh: Relative to 1% of the height of the viewport* */
 	/* The webpage should always stretch the entire viewport */
 	height: 100vh;
@@ -49,7 +51,8 @@ const MainContainer = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-areas: 'sidebar main';
 		grid-template-columns: 200px 1fr;
-		/* grid-template-rows: 1fr; */
+		grid-template-rows: 1fr;
+    height: 100vh;
 	}
 `;
 

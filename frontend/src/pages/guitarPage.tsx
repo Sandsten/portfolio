@@ -8,6 +8,8 @@ import { DESKTOP_XS } from '../constants/sizes';
 import { StyledA } from './homePage';
 
 const Container = styled.div`
+  grid-area: main;
+
 	@media (min-width: ${DESKTOP_XS}) {
     display: grid;
 		margin: 20px;
