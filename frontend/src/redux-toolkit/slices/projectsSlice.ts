@@ -4,7 +4,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Projects, ProjectPayload, ProjectPayloadError } from '../../types/projects';
 
 const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
-const credentialsSetting = process.env.NODE_ENV === 'development' ? 'include' : 'same-origin';
 
 export const getProjects = createAsyncThunk<
 	ProjectPayload,
@@ -25,7 +24,7 @@ export const getProjects = createAsyncThunk<
 
 const initialState: Projects = {
 	data: [],
-	status: null,
+	status: 'initialized',
 	error: null,
 };
 
@@ -47,7 +46,7 @@ const projectsSlice = createSlice({
 			if (action.payload) {
 				state.error = action.payload.message;
 			}
-			state.status = null;
+			state.status = 'failed';
 		});
 	},
 });

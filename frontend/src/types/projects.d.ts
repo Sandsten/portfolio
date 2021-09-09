@@ -1,6 +1,6 @@
 export interface Projects {
 	data: Record<string, unknown>[];
-	status: 'loading' | 'success' | 'failed' | null;
+	status: 'loading' | 'success' | 'failed' | 'initialized';
 	error: string | null;
 }
 

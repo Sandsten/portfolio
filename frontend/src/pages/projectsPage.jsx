@@ -1,11 +1,10 @@
 import * as React from "react"
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
 
+import { Loading } from "../components/StateIndicators";
 import ProjectCard from '../components/ProjectCard';
-import FadeIn from '../components/FadeIn';
 
 import { getProjects } from '../redux-toolkit/slices/projectsSlice';
 
@@ -48,10 +47,11 @@ const projects = () => {
 
 	useEffect(() => {
 		// Update to not fetch if we already have all the project in our redux store state
-		if (projects.status == null) dispatch(getProjects());
+		if (projects.status == "initialized") dispatch(getProjects());
 	}, []);
 
-	if (!projects.data) return <StyledProjects theme={theme}>Loading projects...</StyledProjects>;
+  // With redux projects.status is initialized as null. It's never undefined
+  if (projects.status == "loading" || projects.status == "initialized") return <Loading>Loading...</Loading>;
 
 	return (
     <StyledProjects>
