@@ -5,9 +5,9 @@ import styled, { css } from 'styled-components';
 
 import ThemeButton from './ThemeButton';
 
-import { LIGHT_THEME, DARK_THEME } from '../constants/colors';
-import { DESKTOP_XS } from '../constants/sizes';
-import { toggleTheme } from '../redux-toolkit/slices/siteConfigSlice';
+import { LIGHT_THEME, DARK_THEME } from '../Constants/colors';
+import { DESKTOP_XS } from '../Constants/sizes';
+import { toggleTheme } from '../Redux/slices/siteConfigSlice';
 
 // Always mobile first! Then add media sections for larger screens
 const StyledSidebar = styled.div`

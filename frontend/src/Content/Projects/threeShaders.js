@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as Three from 'three';
-import * as ThreeHelpers from '../myThree/helpers';
+import * as ThreeHelpers from './Threejs/helpers';
 import styled from 'styled-components';
 
 const StyledThreeShader = styled.div`
@@ -48,8 +48,8 @@ const threeShaders = () => {
 		// Create a material which use our shader
 		material = new Three.ShaderMaterial({
 			uniforms: uniforms,
-			vertexShader: require(`../myThree/vertex-1.glsl`),
-			fragmentShader: require(`../myThree/fragment-3.glsl`),
+			vertexShader: require(`./Threejs/vertex-1.glsl`),
+			fragmentShader: require(`./Threejs/fragment-3.glsl`),
 		});
 
 		var mesh = new Three.Mesh(geometry, material);

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Projects, ProjectPayload, ProjectPayloadError } from '../../types/projects';
+import { Projects, ProjectPayload, ProjectPayloadError } from '../../Types/projects';
 
 const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
 

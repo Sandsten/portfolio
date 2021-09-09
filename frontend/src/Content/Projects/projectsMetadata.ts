@@ -1,4 +1,4 @@
-import { ProjectMetadata } from '../../types/projectsMetadata';
+import { ProjectMetadata } from '../../Types/projectsMetadata';
 
 const projectsMetadata: Array<ProjectMetadata> = [
 	{

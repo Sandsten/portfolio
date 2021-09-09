@@ -2,9 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 import { Link, useHistory } from 'react-router-dom';
 
-import { StyledLink } from "../../components/Sidebar";
-import { MOBILE_XS } from "../../constants/sizes";
-import { StyledA } from "../../pages/homePage";
+import { StyledLink } from "../../Components/Sidebar";
+import { MOBILE_XS } from "../../Constants/sizes";
+import { StyledA } from "../RootPages/homePage";
 
 const Container = styled.div`
   height: 100vh;

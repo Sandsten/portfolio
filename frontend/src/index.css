@@ -2,12 +2,12 @@
 	font-family: 'Fira Code';
 	font-style: normal;
 	font-weight: 400;
-	src: url('./fonts/fira-code-v2-latin-regular.eot'); /* IE9 Compat Modes */
-	src: local(''), url('./fonts/fira-code-v2-latin-regular.eot') format('embedded-opentype'),
-		/* IE6-IE8 */ url('./fonts/fira-code-v2-latin-regular.woff2') format('woff2'),
-		/* Super Modern Browsers */ url('./fonts/fira-code-v2-latin-regular.woff') format('woff'),
-		/* Modern Browsers */ url('./fonts/fira-code-v2-latin-regular.ttf') format('truetype'),
-		/* Safari, Android, iOS */ url('./fonts/fira-code-v2-latin-regular.svg') format('svg'); /* Legacy iOS */
+	src: url('./Fonts/fira-code-v2-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local(''), url('./Fonts/fira-code-v2-latin-regular.eot') format('embedded-opentype'),
+		/* IE6-IE8 */ url('./Fonts/fira-code-v2-latin-regular.woff2') format('woff2'),
+		/* Super Modern Browsers */ url('./Fonts/fira-code-v2-latin-regular.woff') format('woff'),
+		/* Modern Browsers */ url('./Fonts/fira-code-v2-latin-regular.ttf') format('truetype'),
+		/* Safari, Android, iOS */ url('./Fonts/fira-code-v2-latin-regular.svg') format('svg'); /* Legacy iOS */
 }
 
 * {

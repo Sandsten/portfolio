@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Container, Paragraph } from '../Content/Blogposts/styledComponents';
+import { Container, Paragraph } from '../styledComponents';
 
-import { DESKTOP_XL, DESKTOP_XS } from '../constants/sizes';
-import { DARK_THEME, LIGHT_THEME } from '../constants/colors';
+import { DESKTOP_XL, DESKTOP_XS } from '../../Constants/sizes';
+import { DARK_THEME, LIGHT_THEME } from '../../Constants/colors';
 
 // TODO: Apply the same style to both span and a without repeating!
 export const StyledLink = styled.span`

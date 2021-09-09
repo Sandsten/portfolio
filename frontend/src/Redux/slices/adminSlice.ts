@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Admin, AdminPayload, Credentials, AdminError } from '../../types/admin';
+import { Admin, AdminPayload, Credentials, AdminError } from '../../Types/admin';
 
 // Here we have to use localhost instead of service name since API calls are called from the outside of our docker containers
 // they are called from the browser!

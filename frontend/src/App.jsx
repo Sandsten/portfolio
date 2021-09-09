@@ -4,29 +4,25 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 
-import Sidebar from './components/Sidebar';
-// import TopBar from './components/TopBar';
-import HomePage from './pages/homePage';
+import Sidebar from './Components/Sidebar';
+import HomePage from './Content/RootPages/homePage';
 import APITest from './Admin/APITest';
 import Admin from './Admin/Admin';
-import projects from './pages/projectsPage';
-import projectPage from './pages/projectPage';
-// import cv from './pages/cv';
-import blogPage from './pages/blogPage';
-// import blogpostPage from './pages/blogpostPage';
-import threeShaders from './pages/threeShaders';
-import tutorialsPage from './pages/tutorialsPage';
-import guitarPage from './pages/guitarPage';
+import projects from './Content/RootPages/projectsPage';
+import projectPage from './Content/Projects/projectPage';
+import blogPage from './Content/RootPages/blogPage';
+import threeShaders from './Content/Projects/threeShaders';
+import tutorialsPage from './Content/RootPages/tutorialsPage';
+import guitarPage from './Content/RootPages/guitarPage';
 
 // import { autoSignIn } from './redux/actions/userActions';
-import { setTheme } from './redux-toolkit/slices/siteConfigSlice';
+import { setTheme } from './Redux/slices/siteConfigSlice';
 
-import { DARK_THEME, LIGHT_THEME } from './constants/colors';
-import { DESKTOP_XS } from './constants/sizes';
+import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
+import { DESKTOP_XS } from './Constants/sizes';
 
-// import './styles/index.scss';
 import mastersThesis from './Content/Projects/mastersThesis';
-import { HealthyGamerGlossaryToAnki } from './Content/Blogposts/healthyGamerGlossaryToAnki';
+import { HealthyGamerGlossaryToAnki } from './Content/Blogposts/healthyGamerGlossaryToAnkiPage';
 
 // Main container for the whole website
 const MainContainer = styled.div`

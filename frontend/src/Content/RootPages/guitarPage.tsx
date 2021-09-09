@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { Container, Paragraph } from '../Content/Blogposts/styledComponents';
-import MusicPlayer from '../components/MusicPlayer';
+import { Container, Paragraph } from '../styledComponents';
+import MusicPlayer from '../../Components/MusicPlayer';
 
 import { StyledA } from './homePage';
 

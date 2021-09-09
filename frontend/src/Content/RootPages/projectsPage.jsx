@@ -3,15 +3,15 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { Loading } from "../components/StateIndicators";
-import ProjectCard from '../components/ProjectCard';
-import { Container } from "../Content/Blogposts/styledComponents";
+import { Loading, LoadingFailed } from "../../Components/StateIndicators";
+import ProjectCard from '../../Components/ProjectCard';
+import { Container } from "../styledComponents";
 
-import { getProjects } from '../redux-toolkit/slices/projectsSlice';
+import { getProjects } from '../../Redux/slices/projectsSlice';
 
-import { DESKTOP_XS } from '../constants/sizes';
+import { DESKTOP_XS } from '../../Constants/sizes';
 
-import projectsMetadata from '../Content/Projects/projectsMetadata';
+import projectsMetadata from '../Projects/projectsMetadata';
 
 // Mobile first!
 const StyledProjects = styled.div`
@@ -50,6 +50,7 @@ const projects = () => {
 
   // With redux projects.status is initialized as null. It's never undefined
   if (projects.status == "loading" || projects.status == "initialized") return <Loading>Loading...</Loading>;
+  if (projects.status == "failed") return <LoadingFailed>Failed to find projects :( Try refresing the page</LoadingFailed>;
 
 	return (
     <Container>

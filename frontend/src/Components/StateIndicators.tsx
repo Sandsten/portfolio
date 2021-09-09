@@ -13,6 +13,11 @@ const Loading = styled.h2`
   padding-left: 20px;
 `;
 
+const LoadingFailed = styled.h2`
+  color: red;
+`;
+
 export {
-  Loading
+  Loading,
+  LoadingFailed
 }

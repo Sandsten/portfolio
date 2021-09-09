@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { SiteConfig } from '../../types/siteConfig';
+import { SiteConfig } from '../../Types/siteConfig';
 
 const initialState: SiteConfig = {
 	theme: 'DARK',

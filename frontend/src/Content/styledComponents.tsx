@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { DARK_THEME, LIGHT_THEME } from '../../constants/colors';
-import { DESKTOP_XL, DESKTOP_XS,  } from '../../constants/sizes';
+import { DARK_THEME, LIGHT_THEME } from '../Constants/colors';
+import { DESKTOP_XL, DESKTOP_XS,  } from '../Constants/sizes';
 
 const Container = styled.div`
   overflow-y: scroll;

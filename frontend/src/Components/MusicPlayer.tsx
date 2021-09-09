@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { compose } from 'redux';
 import styled from 'styled-components';
 
-import { DARK_THEME } from '../constants/colors';
+import { DARK_THEME } from '../Constants/colors';
 
 const StyledMusicPlayer = styled.div<{ isPlaying: boolean }>`
 	padding: 5px;

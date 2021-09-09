@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { blogPostsMetadata } from '../Content/Blogposts/blogPostsMetadata';
-import { Container, BlogPostCard } from '../Content/Blogposts/styledComponents';
+import { blogPostsMetadata } from '../Blogposts/blogPostsMetadata';
+import { Container, BlogPostCard } from '../styledComponents';
 
 function blog() {
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Container, Paragraph } from '../Content/Blogposts/styledComponents';
+import { Container, Paragraph } from '../styledComponents';
 
 const StyledTutorialVideosGrid = styled.div`
 	display: flex;

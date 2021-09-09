@@ -4,8 +4,8 @@ import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { DESKTOP_XS, DESKTOP_XL } from '../constants/sizes';
-import { DARK_THEME } from '../constants/colors';
+import { DESKTOP_XS, DESKTOP_XL } from '../../Constants/sizes';
+import { DARK_THEME } from '../../Constants/colors';
 
 const StyledProjectPage = styled.div`
 	display: block;

@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { DARK_THEME, LIGHT_THEME } from '../constants/colors';
-import { MOBILE_XS } from '../constants/sizes';
+import { DARK_THEME, LIGHT_THEME } from '../Constants/colors';
+import { MOBILE_XS } from '../Constants/sizes';
 
 const StyledProjectCard = styled(Link)`
 	display: grid;
