@@ -3,17 +3,19 @@ import { DARK_THEME, LIGHT_THEME } from '../../constants/colors';
 import { DESKTOP_XL, DESKTOP_XS,  } from '../../constants/sizes';
 
 const Container = styled.div`
-  height: 100vh;
   overflow-y: scroll;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-right: 10px;
-  
-  
+  padding: 10px 10px 0 10px;
+
   @media(min-width: ${DESKTOP_XS}){
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-right: 20px;
+    padding: 20px 20px 0 20px;
+  }
+`;
+
+const Paragraph = styled.p`
+  max-width: 80ch; // 1ch is the width of the "0" character
+
+  :first-child {
+    margin-top: 0;
   }
 `;
 
@@ -21,9 +23,8 @@ const BlogPostCard = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  width: 100%;
   overflow: hidden;
-  padding: 0.6em;
+  padding: 10px;
   margin-bottom: 20px;
 
 	background-color: ${(props) =>
@@ -84,5 +85,6 @@ const BlogPostCard = styled.div`
 
 export {
   Container,
+  Paragraph,
   BlogPostCard
 };

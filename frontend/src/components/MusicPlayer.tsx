@@ -11,6 +11,8 @@ const StyledMusicPlayer = styled.div<{ isPlaying: boolean }>`
 	padding-right: 10px;
 	border-radius: 10px;
 	margin-top: 10px;
+  max-width: 800px;
+
 
 	/* Change background color depending on wether the song is playing or not */
 	background-color: ${props => (props.isPlaying === true ? DARK_THEME.IS_PLAYING : DARK_THEME.LINK_1)};

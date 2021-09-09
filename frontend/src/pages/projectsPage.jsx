@@ -14,8 +14,6 @@ import projectsMetadata from '../Content/Projects/projectsMetadata';
 
 // Mobile first!
 const StyledProjects = styled.div`
-	grid-area: main;
-
 	display: grid;
 	align-content: start;
 	grid-template-columns: 1fr;
@@ -24,8 +22,11 @@ const StyledProjects = styled.div`
 	/* TODO: How do we add padding to the bottom? The final card is flush with the screen edge which I do not want */
 	padding: 10px;
 
+  // IMPORTANT: Don't set 100vh here! It's already done in the main container
+  // If we set it here too there's a weird effect that occurs.
 	/* height: 100vh; */
-	overflow-y: scroll;
+  
+  overflow-y: scroll;
 
 	// The following is applied when browser width goes above min-width
 	@media (min-width: ${DESKTOP_XS}) {

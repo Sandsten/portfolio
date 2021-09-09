@@ -42,6 +42,7 @@ const MainContainer = styled.div`
 
 	/* vh: Relative to 1% of the height of the viewport* */
 	/* The webpage should always stretch the entire viewport */
+  /* IMPORTANT: Only set 100vh here! All content placed inside will inherit automatically*/
 	height: 100vh;
 
 	background-color: ${(props) => (props.theme.main === 'LIGHT' ? LIGHT_THEME.BACKGROUND : DARK_THEME.BACKGROUND)};
@@ -52,7 +53,6 @@ const MainContainer = styled.div`
 		grid-template-areas: 'sidebar main';
 		grid-template-columns: 200px 1fr;
 		grid-template-rows: 1fr;
-    height: 100vh;
 	}
 `;
 

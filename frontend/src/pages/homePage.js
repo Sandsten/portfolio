@@ -2,26 +2,10 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { Container, Paragraph } from '../Content/Blogposts/styledComponents';
+
 import { DESKTOP_XL, DESKTOP_XS } from '../constants/sizes';
 import { DARK_THEME, LIGHT_THEME } from '../constants/colors';
-
-const StyledHomePage = styled.div`
-	display: grid;
-	align-content: start;
-	grid-row-gap: 20px;
-
-	padding: 10px 10px 0 10px;
-	overflow-y: scroll;
-
-	color: ${(p) => (p.theme.main === 'LIGHT' ? LIGHT_THEME.TEXT : DARK_THEME.TEXT)};
-
-	height: 100vh;
-
-	@media (min-width: ${DESKTOP_XS}) {
-		grid-template-columns: minmax(auto, 800px);
-		padding: 20px 20px 0 20px;
-	}
-`;
 
 // TODO: Apply the same style to both span and a without repeating!
 export const StyledLink = styled.span`
@@ -61,12 +45,6 @@ const ContactContainer = styled.div`
 	font-size: 1.3em;
 `;
 
-const Paragraph = styled.div`
-	:first-child {
-		margin-top: 0px;
-	}
-`;
-
 const Contact = () => {
 	return (
 		<ContactContainer>
@@ -97,7 +75,7 @@ const homePage = () => {
 	const handleNav = (route) => history.push(route);
 
 	return (
-		<StyledHomePage>
+		<Container>
 			<Paragraph>Hello and welcome to my website!</Paragraph>
 			<Paragraph>
 				My bachelor is in{' '}
@@ -147,7 +125,7 @@ const homePage = () => {
 			</Paragraph>
 			<Paragraph>You can find and contact me here:</Paragraph>
 			<Contact />
-		</StyledHomePage>
+		</Container>
 	);
 };
 

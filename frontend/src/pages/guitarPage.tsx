@@ -1,22 +1,10 @@
 import * as React from 'react';
 import { useState } from 'react';
-import styled from 'styled-components';
 
+import { Container, Paragraph } from '../Content/Blogposts/styledComponents';
 import MusicPlayer from '../components/MusicPlayer';
 
-import { DESKTOP_XS } from '../constants/sizes';
 import { StyledA } from './homePage';
-
-const Container = styled.div`
-  grid-area: main;
-
-	@media (min-width: ${DESKTOP_XS}) {
-    display: grid;
-		margin: 20px;
-		grid-template-columns: minmax(auto, 800px);
-		grid-row-gap: 10px;
-	}
-  `;
 
 type Music = { title: string, src: string };
 type MusicList = Array<Music>;
@@ -46,7 +34,7 @@ const guitarPage = () => {
 
 	return (
     <Container>
-      <div>
+      <Paragraph>
         In elementary school I was fortunate to have two very enthusiastic music teachers. Where
         one gave out extra guitar lessons on a weekly basis. I signed up for those with the
         intention to gain some guitar skills outside of{' '}
@@ -55,17 +43,17 @@ const guitarPage = () => {
         </StyledA>{' '}
         and <StyledA href="https://en.wikipedia.org/wiki/Frets_on_Fire">Frets on Fire</StyledA>,
         which are two game I logged waaay too many hours in!
-      </div>
-      <div>
+      </Paragraph>
+      <Paragraph>
         Nowadays I turn to Youtube! tutorials and guitar tabs when I yearn for something new to
         play. One great source for tabs and tutorials in my opinion is{' '}
         <StyledA href="https://www.guitarnick.com/">Guitar Nick</StyledA>
-      </div>
-      <div>
+      </Paragraph>
+      <Paragraph>
         Down below are a few recordings of me playing the guitar. I mostly play everything{' '}
         <StyledA href="https://en.wikipedia.org/wiki/Fingerstyle_guitar">fingerstyle</StyledA> on
         a classical guitar.
-      </div>
+      </Paragraph>
       {music.map((data) => {
         return (
           <MusicPlayer
@@ -77,7 +65,7 @@ const guitarPage = () => {
           />
         );
       })}
-      <div>More to come...</div>
+      <Paragraph>More to come...</Paragraph>
     </Container>
 	);
 };
