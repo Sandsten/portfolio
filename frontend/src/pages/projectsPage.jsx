@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { Loading } from "../components/StateIndicators";
 import ProjectCard from '../components/ProjectCard';
+import { Container } from "../Content/Blogposts/styledComponents";
 
 import { getProjects } from '../redux-toolkit/slices/projectsSlice';
 
@@ -19,18 +20,14 @@ const StyledProjects = styled.div`
 	grid-template-columns: 1fr;
 	grid-row-gap: 20px;
 
-	/* TODO: How do we add padding to the bottom? The final card is flush with the screen edge which I do not want */
-	padding: 10px;
-
   // IMPORTANT: Don't set 100vh here! It's already done in the main container
   // If we set it here too there's a weird effect that occurs.
 	/* height: 100vh; */
   
-  overflow-y: scroll;
+  margin-bottom: 10px;
 
 	// The following is applied when browser width goes above min-width
 	@media (min-width: ${DESKTOP_XS}) {
-		padding-left: 15px;
 		/* Autofit will create as many columns as will fit within the given max value, without each cell going bellow the min value */
 		/* In this case. Create as many columns no smaller than 450 pixels within 1fr of the given space */
 		grid-column-gap: 15px;
@@ -55,30 +52,32 @@ const projects = () => {
   if (projects.status == "loading" || projects.status == "initialized") return <Loading>Loading...</Loading>;
 
 	return (
-    <StyledProjects>
-      {projectsMetadata.map((project) => 
-          <ProjectCard
-          key={project.title}
-          title={project.title}
-          thumbnail={project.thumbnail}
-          description={project.description}
-          tags={project.tags}
-          clickURL={project.fullProjectPath}
-        />
-      )}
-      {projects.data.map((project, i) => {
-        return (
-          <ProjectCard
+    <Container>
+      <StyledProjects>
+        {projectsMetadata.map((project) => 
+            <ProjectCard
             key={project.title}
             title={project.title}
-            thumbnail={project.bgUrl}
-            description={project.descriptionShort}
-            tags={['Project', ...project.tools]}
-            clickURL={project.localURL}
+            thumbnail={project.thumbnail}
+            description={project.description}
+            tags={project.tags}
+            clickURL={project.fullProjectPath}
           />
-        );
-      })}
-    </StyledProjects>
+        )}
+        {projects.data.map((project, i) => {
+          return (
+            <ProjectCard
+              key={project.title}
+              title={project.title}
+              thumbnail={project.bgUrl}
+              description={project.descriptionShort}
+              tags={['Project', ...project.tools]}
+              clickURL={project.localURL}
+            />
+          );
+        })}
+      </StyledProjects>
+    </Container>
 	);
 };
 
