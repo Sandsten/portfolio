@@ -14,7 +14,7 @@ const blogPostsMetadata: Array<BlogPost> = [
 		thumbnail: 'https://staffansandberg.com/healthy-gamer-gg-glossary-to-anki/glossary-added.webp',
 		tags: ['Anki', 'Scrape', 'Javascript'],
 		date: new Date(2021, 9, 7),
-		fullProjectPath: 'healthy-gamer-glossary-to-anki',
+		fullProjectPath: '/posts/healthy-gamer-glossary-to-anki',
 	},
 	// {
 	// 	title: `Attic Flooring`,

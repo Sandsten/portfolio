@@ -7,6 +7,8 @@ import { Container, Paragraph } from '../styledComponents';
 import { DESKTOP_XS } from '../../Constants/sizes';
 import { StyledA } from '../RootPages/homePage';
 
+import { DARK_THEME } from '../../Constants/colors';
+
 /*
   FLEX DEFAULTS
   * Items display in a row (the flex-direction property's default is row).
@@ -102,13 +104,30 @@ const Image = (props: ImageProps) => {
 	);
 };
 
+const LinkToPaper = styled.span`
+	background-color: ${DARK_THEME.CARD_BG};
+	border-radius: 5px;
+	padding: 5px;
+`;
+
 interface Props {}
 
 const mastersThesis = (props: Props) => {
 	return (
 		<Container>
 			<h1>Master's Thesis</h1>
-			<p>Tjs asf</p>
+			<Paragraph>
+				Overview of my Master's thesis plus additional work I did the following year after
+				completing the thesis.
+			</Paragraph>
+			<LinkToPaper>
+				<StyledA
+					href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
+          aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all"
+				>
+					Full paper at DiVa
+				</StyledA>
+			</LinkToPaper>
 			<h2>The setup</h2>
 			<ImageRow>
 				<Image
@@ -137,7 +156,7 @@ const mastersThesis = (props: Props) => {
 					maxWidth={'350px'}
 				></Image>
 				<Image
-					caption="Fig 4: Second iteration of the poster."
+					caption="Fig 4: Second iteration of the poster. Attention grabbing incentives and covid precautions."
 					imageName="poster-version-2.webp"
 					maxWidth={'350px'}
 				></Image>
@@ -149,7 +168,7 @@ const mastersThesis = (props: Props) => {
 					maxWidth={'600px'}
 				></Image>
 			</ImageRow>
-			<p>Bla bla bla. Sign up page</p>
+			<Paragraph>Update in progress...</Paragraph>
 		</Container>
 	);
 };
