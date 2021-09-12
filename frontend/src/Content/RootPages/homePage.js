@@ -32,6 +32,10 @@ export const StyledA = styled.a`
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 
+	background-color: black;
+	padding: 5px;
+	border-radius: 10px;
+
 	:hover {
 		background: -webkit-linear-gradient(${DARK_THEME.LINK_2}, ${DARK_THEME.LINK_1});
 		cursor: pointer;

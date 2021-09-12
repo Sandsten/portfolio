@@ -34,6 +34,8 @@ await invoke('createDeck', 6, {deck: deckName});
 
 // Grab all DOM elements with the class "glossary-terms"
 // and create a js object where each key is a term and the value is its definition
+// NOTE: This part is dependent on how the websites DOM is layed out. 
+// If they decide to change it this won't work anymore and has to be tweaked slightly
 const scrapedGlossary = document.querySelectorAll(".glossary-term");
 const glossaryData = {};
 for (let i = 0; i < scrapedGlossary.length; i++) {

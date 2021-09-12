@@ -104,10 +104,10 @@ const Image = (props: ImageProps) => {
 	);
 };
 
-const LinkToPaper = styled.span`
+export const StyledLinkBackground = styled.span`
 	background-color: ${DARK_THEME.CARD_BG};
 	border-radius: 5px;
-	padding: 5px;
+	padding: 3px;
 `;
 
 interface Props {}
@@ -120,14 +120,14 @@ const mastersThesis = (props: Props) => {
 				Overview of my Master's thesis plus additional work I did the following year after
 				completing the thesis.
 			</Paragraph>
-			<LinkToPaper>
+			<StyledLinkBackground>
 				<StyledA
 					href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
           aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all"
 				>
 					Full paper at DiVa
 				</StyledA>
-			</LinkToPaper>
+			</StyledLinkBackground>
 			<h2>The setup</h2>
 			<ImageRow>
 				<Image

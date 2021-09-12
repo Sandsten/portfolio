@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { DARK_THEME } from '../Constants/colors';
 
 interface CodeContainerProps {
 	maxWidth: string;
@@ -18,6 +19,9 @@ const CodeContainer = styled.div<CodeContainerProps>`
 	font-size: 0.9em; // True for all children
 	max-width: ${(p) => p.maxWidth};
 	margin: 1em 0px;
+
+	background-color: ${DARK_THEME.CARD_BG};
+	padding: 10px;
 
 	button {
 		position: absolute;
@@ -50,6 +54,7 @@ interface CodeBoxProps {
 	width: string;
 	languange: 'javascript' | 'json';
 	caption?: string;
+	linesToHighlight?: Array<number>;
 }
 function CodeBox(props: CodeBoxProps) {
 	function handleCodeCopyToClipboard(code: string, e: React.MouseEvent) {
@@ -75,6 +80,13 @@ function CodeBox(props: CodeBoxProps) {
 				style={okaidia}
 				showLineNumbers={true}
 				wrapLines={true}
+				lineProps={(lineNumber) => {
+					let style = { display: 'block', backgroundColor: '' };
+					if (props.linesToHighlight?.includes(lineNumber)) {
+						style.backgroundColor = '#005D16'; //00FF3C 6B6E5D
+					}
+					return { style };
+				}}
 			>
 				{props.code}
 			</SyntaxHighlighter>

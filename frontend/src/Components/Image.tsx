@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { DARK_THEME } from '../Constants/colors';
 
 import { DESKTOP_XS } from '../Constants/sizes';
 
@@ -17,7 +18,7 @@ import { DESKTOP_XS } from '../Constants/sizes';
 const ImageRow = styled.div`
 	display: flex; // Takes up entire available width of page by default!
 	flex-direction: column;
-	align-items: baseline;
+	/* align-items: baseline; */
 
 	@media (min-width: ${DESKTOP_XS}) {
 		flex-direction: row;
@@ -50,8 +51,10 @@ const StyledFigure = styled.figure<StyledFigureType>`
 
 	max-width: ${(p) => p.maxWidth};
 
-	/* overflow: hidden; */
+	background-color: ${DARK_THEME.CARD_BG};
+	padding: 10px;
 
+	/* overflow: hidden; */
 	a {
 		height: 100%;
 	}
