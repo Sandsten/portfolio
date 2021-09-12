@@ -98,6 +98,7 @@ await invoke("addNotes", 6, {notes: cards}).then((cardIds) => {
     "https://coaching.healthygamer.gg"
   ]
 }`;
+
 	return (
 		<Container>
 			<h2>Dr. K's glossary to Anki collection</h2>
@@ -106,12 +107,22 @@ await invoke("addNotes", 6, {notes: cards}).then((cardIds) => {
 				caption="Fig 1: All glossary terms imported to your Anki collection"
 				maxWidth="1000px"
 			></Image>
-			<CodeBox width="800px" code={config} languange="json" />
+			<CodeBox
+				width="800px"
+				code={config}
+				languange="json"
+				caption="Fig 2: AnkiConnect config to allow requests from https://coaching.healthygamer.gg"
+			/>
 			<Paragraph>
 				Navigate to the glossary, open the console. Copy the code down below and paste it into the
 				console over at healthy gamer. Press enter and wait a second or two.
 			</Paragraph>
-			<CodeBox width="1200px" code={code2} languange="javascript" />
+			<CodeBox
+				width="1200px"
+				code={code2}
+				languange="javascript"
+				caption="Fig 3: Scrapes glossary page for all terms, format them to individual cards accepted by AnkiConnect and sends them to your Anki collection."
+			/>
 		</Container>
 	);
 }
