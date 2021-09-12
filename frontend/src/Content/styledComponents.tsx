@@ -16,6 +16,7 @@ const Container = styled.div`
 	h4,
 	h5,
 	h6 {
+		margin-top: 50px;
 		:first-child {
 			margin-top: 0;
 		}

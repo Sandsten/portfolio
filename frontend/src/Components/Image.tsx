@@ -2,12 +2,7 @@ import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Container, Paragraph } from '../Content/styledComponents';
-
 import { DESKTOP_XS } from '../Constants/sizes';
-import { StyledA } from '../Content/RootPages/homePage';
-
-import { DARK_THEME } from '../Constants/colors';
 
 /*
   FLEX DEFAULTS
@@ -50,18 +45,19 @@ const StyledFigure = styled.figure<StyledFigureType>`
 	// This will center the figure
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 0;
 
 	max-width: ${(p) => p.maxWidth};
-	/* max-height: 350px; */
 
-	overflow: hidden;
+	/* overflow: hidden; */
+
+	a {
+		height: 100%;
+	}
 
 	figcaption {
 		font-size: 0.9em;
-	}
-
-	:hover {
-		cursor: pointer;
 	}
 
 	// This is when the sidebar moves to the left side
@@ -84,6 +80,7 @@ const StyledImage = styled.img`
 
 interface ImageProps {
 	imageName: string;
+	figNumber: number;
 	caption: string;
 	maxWidth: string;
 }
@@ -91,16 +88,20 @@ interface ImageProps {
 const Image = (props: ImageProps) => {
 	const history = useHistory();
 
+	const id = `figure-${props.figNumber}`;
+
 	function openImage() {
 		// Only works when running on VPS with correct domain
-		history.push(`/${props.imageName}`);
+		// history.push(`/${props.imageName}`);
 	}
 
 	return (
-		<StyledFigure onClick={openImage} maxWidth={props.maxWidth}>
-			<StyledImage src={`https://staffansandberg.com/${props.imageName}`}></StyledImage>
+		<StyledFigure onClick={openImage} maxWidth={props.maxWidth} id={id}>
+			<a href={`https://staffansandberg.com/${props.imageName}`}>
+				<StyledImage src={`https://staffansandberg.com/${props.imageName}`}></StyledImage>
+			</a>
 			<figcaption>
-				<em>{props.caption}</em>
+				<em>{`Fig ${props.figNumber}: ${props.caption}`}</em>
 			</figcaption>
 		</StyledFigure>
 	);

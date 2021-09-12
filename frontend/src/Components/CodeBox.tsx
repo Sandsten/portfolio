@@ -17,6 +17,7 @@ const CodeContainer = styled.div<CodeContainerProps>`
 	position: relative;
 	font-size: 0.9em; // True for all children
 	max-width: ${(p) => p.maxWidth};
+	margin: 1em 0px;
 
 	button {
 		position: absolute;
