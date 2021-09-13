@@ -5,9 +5,7 @@ import styled, { css } from 'styled-components';
 
 import ThemeButton from './ThemeButton';
 
-import { LIGHT_THEME, DARK_THEME } from '../Constants/colors';
 import { DESKTOP_XS } from '../Constants/sizes';
-import { toggleTheme } from '../Redux/slices/siteConfigSlice';
 
 // Always mobile first! Then add media sections for larger screens
 const StyledSidebar = styled.div`
@@ -140,11 +138,6 @@ const Sidebar = (props) => {
     setUrlPath(props.location.pathname);
   });
 
-  function handleThemeToggle() {
-    // Updating the theme for the site is handled inside the top level component App.jsx
-    dispatch(toggleTheme());
-  };
-
   const navList = [
     ['/', 'About'],
     ['/projects', 'Projects'],
@@ -167,7 +160,7 @@ const Sidebar = (props) => {
           );
         })}
         </NavItems>
-      <StyledThemeButton width={50} height={50} handleClick={handleThemeToggle} />
+      <StyledThemeButton width={50} height={50} handleClick={props.toggleTheme} />
     </StyledSidebar>
   );
 };

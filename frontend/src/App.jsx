@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
@@ -15,13 +15,12 @@ import threeShaders from './Content/Projects/threeShaders';
 import tutorialsPage from './Content/RootPages/tutorialsPage';
 import guitarPage from './Content/RootPages/guitarPage';
 
-// import { autoSignIn } from './redux/actions/userActions';
-import { setTheme } from './Redux/slices/siteConfigSlice';
-
 import { DESKTOP_XS } from './Constants/sizes';
 
 import mastersThesis from './Content/Projects/mastersThesis';
 import { HealthyGamerGlossaryToAnki } from './Content/Blogposts/healthyGamerGlossaryToAnkiPage';
+
+import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -52,26 +51,25 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-  const themeColors = useSelector((state) => state.config.theme);
-  const dispatch = useDispatch();
+  const [theme, setThemeTo] = useState(DARK_THEME);
 
   useEffect(() => {
     var storedTheme = localStorage.getItem('theme');
     if (!storedTheme) storedTheme = 'dark';
-    dispatch(setTheme({ storedTheme }));
+    setThemeTo(storedTheme === "dark" ? DARK_THEME : LIGHT_THEME);
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('theme', themeColors.NAME);
-  });
+  function toggleTheme() {
+    setThemeTo(theme.NAME === "dark" ? LIGHT_THEME : DARK_THEME);
+  }
 
   return (
-    <ThemeProvider theme={{ colors: themeColors }}> {/*Pass the theme down to all components*/}
+    <ThemeProvider theme={{ colors: theme }}> {/*Pass the theme down to all components*/}
       <MainContainer >
         <BrowserRouter>
           {/* // https://reacttraining.com/react-router/web/api/Switch */}
           {/* Render the sidebar on all pages */}
-          <Route path="/" component={Sidebar} />
+          <Route path="/" render={(props) => <Sidebar {...props} toggleTheme={toggleTheme}/>}/>
           <Switch>
             {/* <Route path="/" component={TopBar} /> */}
             {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}

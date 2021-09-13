@@ -7,7 +7,7 @@ import projectsSlice from './slices/projectsSlice';
 export default configureStore({
 	reducer: {
 		admin: adminReducer,
-		config: siteConfigSlice,
+		// config: siteConfigSlice,
 		projects: projectsSlice,
 	},
 });
