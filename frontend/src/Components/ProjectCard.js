@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { DARK_THEME, LIGHT_THEME } from '../Constants/colors';
 import { MOBILE_XS } from '../Constants/sizes';
 
 const StyledProjectCard = styled(Link)`
@@ -21,8 +20,8 @@ const StyledProjectCard = styled(Link)`
 	overflow: hidden; // Necessary to keep image corners follow given border radius of its parent
 	font-weight: 300;
 
-	color: ${(p) => (p.theme.main === 'LIGHT' ? LIGHT_THEME.TEXT : DARK_THEME.TEXT)};
-	background-color: ${(p) => (p.theme.main === 'LIGHT' ? LIGHT_THEME.CARD_BG : DARK_THEME.CARD_BG)};
+	color: ${(p) => p.theme.colors.TEXT};
+	background-color: ${(p) => p.theme.colors.CARD_BG};
 
 	@media (min-width: ${MOBILE_XS}) {
 		height: 210px;
@@ -79,7 +78,7 @@ const Tag = styled.div`
 	margin-right: 5px;
 	margin-top: 5px;
 
-	background-color: ${(props) => (props.theme.main === 'LIGHT' ? '' : DARK_THEME.TAG_BG)};
+	background-color: ${(p) => p.theme.colors.TAG_BG};
 `;
 
 const ProjectCard = (props) => {

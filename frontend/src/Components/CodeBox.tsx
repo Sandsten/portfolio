@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { DARK_THEME } from '../Constants/colors';
 
 interface CodeContainerProps {
 	maxWidth: string;
@@ -20,13 +19,13 @@ const CodeContainer = styled.div<CodeContainerProps>`
 	max-width: ${(p) => p.maxWidth};
 	margin: 1em 0px;
 
-	background-color: ${DARK_THEME.CARD_BG};
+	background-color: ${(p) => p.theme.colors.CARD_BG};
 	padding: 10px;
 
 	button {
 		position: absolute;
-		right: 10px;
-		top: 10px;
+		right: 20px;
+		top: 30px;
 		visibility: hidden;
 		font-size: 1.1em;
 

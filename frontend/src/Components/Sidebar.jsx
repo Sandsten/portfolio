@@ -20,9 +20,8 @@ const StyledSidebar = styled.div`
 
 	padding: 10px;
 
-	background-color: ${(props) =>
-    props.theme.main === 'LIGHT' ? LIGHT_THEME.SIDEBAR : DARK_THEME.SIDEBAR};
-
+	background-color: ${(p) => p.theme.colors.SIDEBAR };
+    
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-columns: 1fr;
 		grid-template-rows: auto 1fr auto;
@@ -62,7 +61,7 @@ export const StyledLink = styled(Link)`
 	margin-right: 20px;
 	text-decoration: none;
 	outline: none;
-	color: ${(props) => (props.theme.main === 'LIGHT' ? LIGHT_THEME.TEXT : DARK_THEME.TEXT)};
+	color: ${(p) => p.theme.colors.TEXT};
 
 	:hover {
 		text-decoration: underline;
@@ -82,7 +81,7 @@ const SidebarLink = styled(StyledLink)`
 	${(props) => 
     props.path === props.to &&
     css`
-			color: ${DARK_THEME.LINK_1};
+			color: ${(p) => p.theme.colors.LINK_1};
       }
 		`}
 
@@ -95,7 +94,7 @@ const SidebarLink = styled(StyledLink)`
     ${(props) => 
     props.path === props.to &&
     css`
-      background: ${(props) => (props.theme.main === 'LIGHT' ? LIGHT_THEME.BACKGROUND : DARK_THEME.BACKGROUND)};
+      background: ${(p) => p.theme.colors.BACKGROUND};
       :hover {
         text-decoration: none;
       }
@@ -106,11 +105,11 @@ const SidebarLink = styled(StyledLink)`
 const StyledThemeButton = styled(ThemeButton)`
 	grid-area: options;
 	align-self: center;
-	fill: ${(props) => (props.theme.main === 'LIGHT' ? LIGHT_THEME.THEME_TOGGLE : DARK_THEME.THEME_TOGGLE)};
+	fill: ${(p) => p.theme.colors.THEME_TOGGLE};
 
 	:hover {
 		cursor: pointer;
-		fill: ${(props) => (props.theme.main === 'LIGHT' ? 'black' : 'yellow')};
+		fill: ${(props) => (props.theme.colors.name === 'light' ? 'black' : 'yellow')};
 	}
 
 	@media (min-width: ${DESKTOP_XS}) {

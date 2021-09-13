@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { DARK_THEME, LIGHT_THEME } from '../Constants/colors';
 import { DESKTOP_XL, DESKTOP_XS } from '../Constants/sizes';
 
 const Container = styled.div`
@@ -24,7 +23,7 @@ const Container = styled.div`
 `;
 
 const Paragraph = styled.p`
-	max-width: 80ch; // 1ch is the width of the "0" character
+	max-width: 90ch; // 1ch is the width of the "0" character
 
 	// Triggered if the <p> is the first of its kind in its parent
 	:first-child {
@@ -40,8 +39,7 @@ const BlogPostCard = styled.div`
 	padding: 10px;
 	margin-bottom: 20px;
 
-	background-color: ${(props) =>
-		props.theme.main === 'LIGHT' ? LIGHT_THEME.SIDEBAR : DARK_THEME.SIDEBAR};
+	background-color: ${(p) => p.theme.colors.SIDEBAR};
 
 	:hover {
 		cursor: pointer;

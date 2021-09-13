@@ -18,7 +18,6 @@ import guitarPage from './Content/RootPages/guitarPage';
 // import { autoSignIn } from './redux/actions/userActions';
 import { setTheme } from './Redux/slices/siteConfigSlice';
 
-import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
 import { DESKTOP_XS } from './Constants/sizes';
 
 import mastersThesis from './Content/Projects/mastersThesis';
@@ -41,8 +40,8 @@ const MainContainer = styled.div`
   /* IMPORTANT: Only set 100vh here! All content placed inside will inherit automatically*/
 	height: 100vh;
 
-	background-color: ${(props) => (props.theme.main === 'LIGHT' ? LIGHT_THEME.BACKGROUND : DARK_THEME.BACKGROUND)};
-	color: ${(p) => (p.theme.main === 'LIGHT' ? LIGHT_THEME.TEXT : DARK_THEME.TEXT)};
+	background-color: ${(p) => (p.theme.colors.BACKGROUND)};
+	color: ${(p) => (p.theme.colors.TEXT)};
 
 	/* Place the menu to the left when the screen is wide enough */
 	@media (min-width: ${DESKTOP_XS}) {
@@ -53,22 +52,21 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-  const config = useSelector((state) => state.config);
+  const themeColors = useSelector((state) => state.config.theme);
   const dispatch = useDispatch();
 
   useEffect(() => {
     var storedTheme = localStorage.getItem('theme');
-    if (!storedTheme) storedTheme = 'DARK';
+    if (!storedTheme) storedTheme = 'dark';
     dispatch(setTheme({ storedTheme }));
-    //dispatch(autoSignIn());
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('theme', config.theme);
+    localStorage.setItem('theme', themeColors.NAME);
   });
 
   return (
-    <ThemeProvider theme={{ main: config.theme }}> {/*Pass the theme down to all components*/}
+    <ThemeProvider theme={{ colors: themeColors }}> {/*Pass the theme down to all components*/}
       <MainContainer >
         <BrowserRouter>
           {/* // https://reacttraining.com/react-router/web/api/Switch */}

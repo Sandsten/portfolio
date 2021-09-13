@@ -7,8 +7,6 @@ import { Container, Paragraph } from '../styledComponents';
 import { DESKTOP_XS } from '../../Constants/sizes';
 import { StyledA } from '../RootPages/homePage';
 
-import { DARK_THEME } from '../../Constants/colors';
-
 /*
   FLEX DEFAULTS
   * Items display in a row (the flex-direction property's default is row).
@@ -105,9 +103,11 @@ const Image = (props: ImageProps) => {
 };
 
 export const StyledLinkBackground = styled.span`
-	background-color: ${DARK_THEME.CARD_BG};
+	background-color: ${(p) => p.theme.colors.CARD_BG};
 	border-radius: 5px;
-	padding: 3px;
+	/* padding: 3px; */
+	padding-top: 1px;
+	padding-bottom: 1px;
 `;
 
 interface Props {}

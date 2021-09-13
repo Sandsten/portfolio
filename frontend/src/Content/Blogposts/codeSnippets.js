@@ -28,55 +28,62 @@ function invoke(action, version, params={}) {
   });
 }
 
-// Tell AnkiConnect to create a new deck
-const deckName = "Healthy Gamer::Glossary" // Deck name. <parent>::<child>
-await invoke('createDeck', 6, {deck: deckName});
+// Scrapes the glossary page for terms and definitions. 
+// Returns an array with the cards formatted the way AnkiConnect wants it.
+function getCardsInAnkiConnectFormat(deckName) {
+  // Grab all DOM elements with the class "glossary-terms"
+  // and create a js object where each key is a term and the value is its definition
+  // NOTE: This part is dependent on how the websites DOM is layed out. 
+  // If they decide to change it this won't work anymore and has to be tweaked slightly
+  const scrapedGlossary = document.querySelectorAll(".glossary-term");
+  const glossaryData = {};
+  for (let i = 0; i < scrapedGlossary.length; i++) {
+    let term = scrapedGlossary[i].children[0].innerText;
+    let definition = scrapedGlossary[i].children[1].innerText;
+    glossaryData[term] = definition;
+  }
 
-// Grab all DOM elements with the class "glossary-terms"
-// and create a js object where each key is a term and the value is its definition
-// NOTE: This part is dependent on how the websites DOM is layed out. 
-// If they decide to change it this won't work anymore and has to be tweaked slightly
-const scrapedGlossary = document.querySelectorAll(".glossary-term");
-const glossaryData = {};
-for (let i = 0; i < scrapedGlossary.length; i++) {
-  let term = scrapedGlossary[i].children[0].innerText;
-  let definition = scrapedGlossary[i].children[1].innerText;
-  glossaryData[term] = definition;
-}
-
-// Create cards formatted the way AnkiConnect wants it.
-// It should be an array of cards
-const cards = [];
-const cardType = "Basic"     
-for (key in glossaryData) {
-  let card = 
-  {
-    "deckName": deckName,  // Name of the deck to put the card in
-    "modelName": cardType, // Type of card to create
-    "fields": {            // Set the value of the fields for the chosen card type
-      "Front": key, // Term
-      "Back": glossaryData[key] // Definition
-    },
-    "options": {
-      "allowDuplicate": false,     // Allow duplicate cards or not
-      "duplicateScope": "deck",    // If "deck", only check current deck for duplicates. Any other value will result in checking the entire collection
-      "duplicateScopeOptions": { 
-        "deckName": deckName,      // Which deck to check duplicates in
-        "checkChildren": false,    // If child decks should be used to when checking for duplicates
-        "checkAllModels": false    // If checking for duplicates are done across all card types
+  const cards = [];
+  const cardType = "Basic"     
+  for (key in glossaryData) {
+    let card = 
+    {
+      "deckName": deckName,  // Name of the deck to put the card in
+      "modelName": cardType, // Type of card to create
+      "fields": {            // Set the value of the fields for the chosen card type
+        "Front": key, // Term
+        "Back": glossaryData[key] // Definition
+      },
+      "options": {
+        "allowDuplicate": false,     // Allow duplicate cards or not
+        "duplicateScope": "deck",    // If "deck", only check current deck for duplicates. Any other value will result in checking the entire collection
+        "duplicateScopeOptions": { 
+          "deckName": deckName,      // Which deck to check duplicates in
+          "checkChildren": false,    // If child decks should be used to when checking for duplicates
+          "checkAllModels": false    // If checking for duplicates are done across all card types
+        }
       }
-    }
-  };
-  cards.push(card);
+    };
+    cards.push(card);
+  }
+  return cards;
 }
 
-console.log("Adding glossary to your Anki Collection...");
-await invoke("addNotes", 6, {notes: cards}).then((cardIds) => {
-  const message = "A new deck with the name " + deckName + " containing " + cardIds.length + " cards has been added to your Anki collection.";
+const deckName = "Healthy Gamer::Glossary" // Deck name. <parent>::<child>
+invoke('createDeck', 6, {deck: deckName}).then((deck) => {
+  // Get all the glossary terms, deck name has to be passed to format each card correctly
+  const cards = getCardsInAnkiConnectFormat(deckName);
+  // Add all the notes if we successfully created the deck
+  return invoke("addNotes", 6, {notes: cards});
+}).then((cardIds) => {
+  const message = "A new deck with the name " 
+      + deckName + " containing " + cardIds.length 
+      + " cards has been added to your Anki collection.";
   console.log(message);
   alert(message);
 }).catch(err => {
   console.log(err);
+  alert("Could not add the glossary to your collection, see console for more details");
 });`;
 
 export const ankiConnectConfig = `{

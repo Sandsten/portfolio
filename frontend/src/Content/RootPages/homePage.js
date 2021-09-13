@@ -4,8 +4,7 @@ import styled from 'styled-components';
 
 import { Container, Paragraph } from '../styledComponents';
 
-import { DESKTOP_XL, DESKTOP_XS } from '../../Constants/sizes';
-import { DARK_THEME, LIGHT_THEME } from '../../Constants/colors';
+import { DARK_THEME } from '../../Constants/colors';
 
 // TODO: Apply the same style to both span and a without repeating!
 export const StyledLink = styled.span`

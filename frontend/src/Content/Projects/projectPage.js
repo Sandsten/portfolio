@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../../Constants/sizes';
-import { DARK_THEME } from '../../Constants/colors';
 
 const StyledProjectPage = styled.div`
 	display: block;
@@ -25,10 +24,10 @@ const ProjectTitle = styled.b`
 	font-size: 1.4em;
 `;
 const StyledA = styled.a`
-	color: ${(p) => (p.theme.main === 'LIGHT' ? '' : DARK_THEME.LINK_1)};
+	color: ${(p) => p.theme.colors.LINK_1};
 `;
 const StyledLink = styled(Link)`
-	color: ${(p) => (p.theme.main === 'LIGHT' ? '' : DARK_THEME.LINK_1)};
+	color: ${(p) => p.theme.colors.LINK_1};
 `;
 
 const projectPage = (props) => {

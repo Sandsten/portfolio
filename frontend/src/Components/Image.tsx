@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { DARK_THEME } from '../Constants/colors';
 
 import { DESKTOP_XS } from '../Constants/sizes';
 
@@ -51,7 +50,7 @@ const StyledFigure = styled.figure<StyledFigureType>`
 
 	max-width: ${(p) => p.maxWidth};
 
-	background-color: ${DARK_THEME.CARD_BG};
+	background-color: ${(p) => p.theme.colors.CARD_BG};
 	padding: 10px;
 
 	/* overflow: hidden; */
@@ -70,6 +69,7 @@ const StyledFigure = styled.figure<StyledFigureType>`
 
 		:last-child {
 			margin-right: 0;
+			margin-bottom: 20px;
 		}
 	}
 `;

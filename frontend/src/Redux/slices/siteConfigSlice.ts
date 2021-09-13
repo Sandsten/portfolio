@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { SiteConfig } from '../../Types/siteConfig';
+import { DARK_THEME, LIGHT_THEME } from '../../Constants/colors';
 
 const initialState: SiteConfig = {
-	theme: 'DARK',
+	theme: DARK_THEME,
 };
 
 const siteConfigSlice = createSlice({
@@ -11,10 +11,10 @@ const siteConfigSlice = createSlice({
 	initialState,
 	reducers: {
 		toggleTheme: (state) => {
-			state.theme = state.theme === 'LIGHT' ? 'DARK' : 'LIGHT';
+			state.theme = state.theme.NAME === 'dark' ? LIGHT_THEME : DARK_THEME;
 		},
 		setTheme: (state, { payload }) => {
-			state.theme = payload.storedTheme;
+			state.theme = payload.storedTheme === 'dark' ? DARK_THEME : LIGHT_THEME;
 		},
 	},
 });

@@ -1,5 +1,6 @@
 // Make sure all themes have all colors available through this interface
-interface Theme {
+export interface Theme {
+	NAME: string;
 	BACKGROUND: string;
 	TAG_BG: string;
 	CARD_BG: string;
@@ -13,6 +14,7 @@ interface Theme {
 
 // TODO: Organize the theme colors like this instead!
 export const DARK_THEME: Theme = {
+	NAME: 'dark',
 	BACKGROUND: '#2a2c37',
 	TAG_BG: '#000000',
 	CARD_BG: '#1d1e26',
@@ -25,6 +27,7 @@ export const DARK_THEME: Theme = {
 };
 
 export const LIGHT_THEME: Theme = {
+	NAME: 'light',
 	BACKGROUND: '#fdf6e3',
 	TAG_BG: '#000000',
 	CARD_BG: '#eee8d5',
