@@ -33,7 +33,7 @@ const StyledSidebar = styled.div`
 
 const Name = styled.div`
 	grid-area: name;
-	font-size: 1.7em;
+	font-size: 1.1em;
 	margin-bottom: 5px;
 
 	/* Gradient effect */
@@ -47,7 +47,8 @@ const Name = styled.div`
   }
 
 	@media (min-width: ${DESKTOP_XS}) {
-		font-size: 2.1em;
+		font-size: 2em;
+    line-height: 1.3em;
 		/* margin-bottom: 20px; */
 	}
 `;

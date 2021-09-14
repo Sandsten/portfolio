@@ -42,6 +42,8 @@ const MainContainer = styled.div`
 	background-color: ${(p) => (p.theme.colors.BACKGROUND)};
 	color: ${(p) => (p.theme.colors.TEXT)};
 
+  line-height: 1.5em;
+
 	/* Place the menu to the left when the screen is wide enough */
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-areas: 'sidebar main';

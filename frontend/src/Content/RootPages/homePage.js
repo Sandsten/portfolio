@@ -46,6 +46,7 @@ export const StyledA = styled.a`
 
 const ContactContainer = styled.div`
 	font-size: 1.3em;
+	margin-left: -5px;
 `;
 
 const Contact = () => {
