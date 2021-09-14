@@ -35,6 +35,11 @@ const CopyableText = styled.span`
 
 const Outline = styled.ol`
 	li {
+		max-width: 500px;
+		:hover {
+			cursor: pointer;
+			background-color: ${(p) => p.theme.colors.LINK_1};
+		}
 		span {
 			:hover {
 				cursor: pointer;
@@ -100,22 +105,20 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			{/* <button onClick={scrollToTLDR}>TLDR</button> */}
 			<h2>Outline</h2>
 			<Outline>
-				<li>
-					<span onClick={() => scrollTo('1')}>Install AnkiConnect</span>
+				<li onClick={() => scrollTo('1')}>
+					<span>Install AnkiConnect</span>
 				</li>
-				<li>
-					<span onClick={() => scrollTo('2')}>Edit AnkiConnect configuration</span>
+				<li onClick={() => scrollTo('2')}>
+					<span>Edit AnkiConnect configuration</span>
 				</li>
-				<li>
-					<span onClick={() => scrollTo('3')}>
-						Scrape glossary webpage and add it to your Anki collection
-					</span>
+				<li onClick={() => scrollTo('3')}>
+					<span>Scrape glossary webpage and add it to your Anki collection</span>
 				</li>
-				<li>
-					<span onClick={() => scrollTo('4')}>Done</span>
+				<li onClick={() => scrollTo('4')}>
+					<span>Done</span>
 				</li>
-				<li>
-					<span onClick={() => scrollTo('5')}>Too Long Didn't Read Need Video (TLDRNV)</span>
+				<li onClick={() => scrollTo('5')}>
+					<span>Too Long Didn't Read Need Video (TLDRNV)</span>
 				</li>
 			</Outline>
 			<h2 id="1">
@@ -218,6 +221,21 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				imageName={`${rootImagePath}/press-enter-and-wait.webp`}
 				figNumber={3.2}
 				caption={`On the left hand side we can see that Anki has received a new deck. And in the browser on the right we get a message telling us how many cards have been added.`}
+				maxWidth="1000px"
+			/>
+			<h3>Scraping details</h3>
+			<Paragraph>
+				To figure out how to scrape the page I opened the browsers inspector and looked at how the
+				dom was layed out. In Figure 3.3 we can see that each term is encapsuled in a div with the
+				class name "glossary-term". And each glossary-term has two children with the class names
+				"title" and "description" respectively. To extract the text, the innerText property can be
+				used which gets the visible text on the page within the element it's called on. Lines 36, 39
+				and 40 in Figure 3 is doing the work of getting the appropriate elements and their text.
+			</Paragraph>
+			<Image
+				imageName={`${rootImagePath}/glossary-dom.webp`}
+				figNumber={3.3}
+				caption={`Each glossary-term has two children, title and description. InnerText can be used to get the visible text inside each one.`}
 				maxWidth="1000px"
 			/>
 			<h2 id="4">4. Done</h2>

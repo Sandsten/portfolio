@@ -30,29 +30,21 @@ function invoke(action, version, params={}) {
 
 // Scrapes the glossary page for terms and definitions. 
 // Returns an array with the cards formatted the way AnkiConnect wants it.
+// NOTE: This part is dependent on how the websites DOM is layed out. If they decide to change it this won't work anymore and has to be tweaked slightly
 function getCardsInAnkiConnectFormat(deckName) {
   // Grab all DOM elements with the class "glossary-terms"
-  // and create a js object where each key is a term and the value is its definition
-  // NOTE: This part is dependent on how the websites DOM is layed out. 
-  // If they decide to change it this won't work anymore and has to be tweaked slightly
-  const scrapedGlossary = document.querySelectorAll(".glossary-term");
-  const glossaryData = {};
-  for (let i = 0; i < scrapedGlossary.length; i++) {
-    let term = scrapedGlossary[i].children[0].innerText;
-    let definition = scrapedGlossary[i].children[1].innerText;
-    glossaryData[term] = definition;
-  }
-
+  const glossaryDOMElements = document.querySelectorAll(".glossary-term");
   const cards = [];
-  const cardType = "Basic"     
-  for (key in glossaryData) {
-    let card = 
+  for (let i = 0; i < glossaryDOMElements.length; i++) {
+    const term = glossaryDOMElements[i].children[0].innerText;
+    const definition = glossaryDOMElements[i].children[1].innerText;
+    const card = 
     {
       "deckName": deckName,  // Name of the deck to put the card in
-      "modelName": cardType, // Type of card to create
+      "modelName": "Basic", // Type of card to create
       "fields": {            // Set the value of the fields for the chosen card type
-        "Front": key, // Term
-        "Back": glossaryData[key] // Definition
+        "Front": term,
+        "Back": definition
       },
       "options": {
         "allowDuplicate": false,     // Allow duplicate cards or not
@@ -76,8 +68,7 @@ invoke('createDeck', 6, {deck: deckName}).then((deck) => {
   // Add all the notes if we successfully created the deck
   return invoke("addNotes", 6, {notes: cards});
 }).then((cardIds) => {
-  const message = "A new deck with the name " 
-      + deckName + " containing " + cardIds.length 
+  const message = "A new deck with the name " + deckName + " containing " + cardIds.length 
       + " cards has been added to your Anki collection.";
   console.log(message);
   alert(message);

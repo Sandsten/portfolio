@@ -11,7 +11,6 @@ module.exports = {
 		port: 3001,
 		historyApiFallback: true, // 404 responses will fall back to index.html. Required for using react-router-dom
 		// disableHostCheck: true // Might have to be enabled in order to run dev server in docker container
-		open: true,
 		client: {
 			overlay: true,
 		},
