@@ -52,6 +52,8 @@ const Description = styled.div`
 	font-size: 0.9em;
 	margin: 10px;
 	margin-top: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
 `;
 
 const Image = styled.img`
@@ -76,8 +78,8 @@ const Tag = styled.div`
 	width: max-content; // Sets the width of the div to its content
 	border-radius: 5px;
 	margin-right: 5px;
-	margin-top: 5px;
-
+	margin-top: 3px;
+	line-height: 1.1em;
 	background-color: ${(p) => p.theme.colors.TAG_BG};
 `;
 

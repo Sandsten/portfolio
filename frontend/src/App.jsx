@@ -42,8 +42,6 @@ const MainContainer = styled.div`
 	background-color: ${(p) => (p.theme.colors.BACKGROUND)};
 	color: ${(p) => (p.theme.colors.TEXT)};
 
-  line-height: 1.5em;
-
 	/* Place the menu to the left when the screen is wide enough */
 	@media (min-width: ${DESKTOP_XS}) {
 		grid-template-areas: 'sidebar main';
@@ -60,6 +58,10 @@ const App = () => {
     if (!storedTheme) storedTheme = 'dark';
     setThemeTo(storedTheme === "dark" ? DARK_THEME : LIGHT_THEME);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme.NAME);
+  })
 
   function toggleTheme() {
     setThemeTo(theme.NAME === "dark" ? LIGHT_THEME : DARK_THEME);
