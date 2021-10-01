@@ -5,6 +5,8 @@ import styled, { css } from 'styled-components';
 
 import ThemeButton from './ThemeButton';
 
+import { setTheme } from "../Redux/slices/siteConfigSlice";
+
 import { DESKTOP_XS } from '../Constants/sizes';
 
 // Always mobile first! Then add media sections for larger screens
@@ -133,7 +135,6 @@ const Sidebar = (props) => {
   const [urlPath, setUrlPath] = useState("");
   const history = useHistory();
   const handleNavHome = () => history.push('/');
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setUrlPath(props.location.pathname);

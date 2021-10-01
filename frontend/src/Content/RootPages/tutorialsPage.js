@@ -26,27 +26,15 @@ function VideoPlayer({ title, src }) {
 	);
 }
 
-const TutorialsPage = (props) => {
-	const [width, setWidth] = useState(300 * 2);
-	const [height, setHeight] = useState(null);
-
-	useEffect(() => {
-		setHeight(width / 1.8);
-	});
-
-	// const videos = [
-	// 	'https://www.youtube.com/embed/uP1u2lYN3DQ',
-	// 	'https://www.youtube.com/embed/D3Ls3jAgcwM',
-	// ];
-
+const TutorialsPage = () => {
 	const videos = [
 		{
 			title: 'Braun Series 3 Shaver Battery Replacement',
-			src: 'https://staffansandberg.com/media/video/braun-series-3-battery-replacement.mp4',
+			src: 'https://staffansandberg.com/media/video/braun-series-3-battery-replacement.webm',
 		},
 		{
 			title: 'Bosh Maxx 7 Washer How To Mute',
-			src: 'https://staffansandberg.com/media/video/bosh-maxx-7-varioperfect-turn-off-beep.mp4',
+			src: 'https://staffansandberg.com/media/video/bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping.webm',
 		},
 	];
 

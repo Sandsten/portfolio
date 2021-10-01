@@ -1,30 +1,15 @@
-export const healthyGamerToAnki = `// Sends http request to AnkiConnect
-function invoke(action, version, params={}) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-      xhr.addEventListener('error', () => reject('failed to issue request'));
-      xhr.addEventListener('load', () => {
-        try {
-          const response = JSON.parse(xhr.responseText);
-          if (Object.getOwnPropertyNames(response).length != 2) {
-            throw 'response has an unexpected number of fields';
-          }
-          if (!response.hasOwnProperty('error')) {
-            throw 'response is missing required error field';
-          }
-          if (!response.hasOwnProperty('result')) {
-            throw 'response is missing required result field';
-          }
-          if (response.error) {
-            throw response.error;
-          }
-          resolve(response.result);
-        } catch (e) {
-          reject(e);
-        }
-      });
-    xhr.open('POST', 'http://127.0.0.1:8765');
-    xhr.send(JSON.stringify({action, version, params}));
+export const healthyGamerToAnki = /*javascript*/ `// Sends http request to AnkiConnect
+function ankiConnectAction(action, version, params={}) {
+  return fetch('http://127.0.0.1:8765',{
+    method: "POST",
+    body: JSON.stringify({action, version, params}),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  })
+  .then(response => response.json())
+  .catch(error => {
+    console.error('Error:', error);
   });
 }
 
@@ -61,23 +46,31 @@ function getCardsInAnkiConnectFormat(deckName) {
   return cards;
 }
 
-const deckName = "Healthy Gamer::Glossary" // Deck name. <parent>::<child>
-invoke('createDeck', 6, {deck: deckName}).then((deck) => {
-  // Get all the glossary terms, deck name has to be passed to format each card correctly
-  const cards = getCardsInAnkiConnectFormat(deckName);
-  // Add all the notes if we successfully created the deck
-  return invoke("addNotes", 6, {notes: cards});
-}).then((cardIds) => {
-  const message = "A new deck with the name " + deckName + " containing " + cardIds.length 
-      + " cards has been added to your Anki collection.";
-  console.log(message);
-  alert(message);
-}).catch(err => {
-  console.log(err);
-  alert("Could not add the glossary to your collection, see console for more details");
-});`;
+async function main() {
+  const deckName = "Healthy Gamer::Glossary" // Deck name. <parent>::<child>
+  
+  console.log("Creating new deck...");
+  const createDeck = await ankiConnectAction('createDeck', 6, {deck: deckName});
+  if (createDeck.error) return;
+  console.log("OK");
 
-export const ankiConnectConfig = `{
+  console.log("Scraping glossary...")
+  const cards = getCardsInAnkiConnectFormat(deckName);
+  console.log("OK");
+  
+  console.log("Adding cards to new deck...");
+  const addCards = await ankiConnectAction("addNotes", 6, {notes: cards});
+  if (addCards.error) return;
+  console.log("OK");
+
+  const message = "A new deck with the name " + deckName + " containing " + addCards.result.length 
+      + " cards has been added to your Anki collection.";
+  alert(message);
+}
+
+main();`;
+
+export const ankiConnectConfig = /*javascript*/ `{
   "apiKey": null,
   "apiLogPath": null,
   "ignoreOriginList": [],

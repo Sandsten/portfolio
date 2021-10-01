@@ -14,7 +14,7 @@ const siteConfigSlice = createSlice({
 			state.theme = state.theme.NAME === 'dark' ? LIGHT_THEME : DARK_THEME;
 		},
 		setTheme: (state, { payload }) => {
-			state.theme = payload.storedTheme === 'dark' ? DARK_THEME : LIGHT_THEME;
+			state.theme = payload;
 		},
 	},
 });

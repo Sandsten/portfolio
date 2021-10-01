@@ -21,6 +21,7 @@ import mastersThesis from './Content/Projects/mastersThesis';
 import { HealthyGamerGlossaryToAnki } from './Content/Blogposts/healthyGamerGlossaryToAnkiPage';
 
 import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
+import { setTheme } from './Redux/slices/siteConfigSlice';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -51,12 +52,13 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-  const [theme, setThemeTo] = useState(DARK_THEME);
+  const theme = useSelector(state => state.config.theme)
+  const dispatch = useDispatch();
 
   useEffect(() => {
     var storedTheme = localStorage.getItem('theme');
     if (!storedTheme) storedTheme = 'dark';
-    setThemeTo(storedTheme === "dark" ? DARK_THEME : LIGHT_THEME);
+    dispatch(setTheme(storedTheme === "dark" ? DARK_THEME : LIGHT_THEME))
   }, []);
 
   useEffect(() => {
@@ -64,7 +66,7 @@ const App = () => {
   })
 
   function toggleTheme() {
-    setThemeTo(theme.NAME === "dark" ? LIGHT_THEME : DARK_THEME);
+    dispatch(setTheme(theme.NAME === "dark" ? LIGHT_THEME : DARK_THEME))
   }
 
   return (

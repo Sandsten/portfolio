@@ -2,7 +2,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {
+	base16AteliersulphurpoolLight,
+	tomorrow,
+} from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useSelector } from 'react-redux';
 
 interface CodeContainerProps {
 	maxWidth: string;
@@ -55,7 +59,11 @@ interface CodeBoxProps {
 	caption?: string;
 	linesToHighlight?: Array<number>;
 }
-function CodeBox(props: CodeBoxProps) {
+
+const CodeBox: React.FC<CodeBoxProps> = (props) => {
+	// TODO: Fix correct types
+	const theme: any = useSelector<any>((state) => state.config.theme);
+
 	function handleCodeCopyToClipboard(code: string, e: React.MouseEvent) {
 		navigator.clipboard.writeText(code);
 		const button = e.currentTarget;
@@ -76,7 +84,7 @@ function CodeBox(props: CodeBoxProps) {
 			</button>
 			<SyntaxHighlighter
 				language={props.languange}
-				style={okaidia}
+				style={theme.NAME == 'dark' ? tomorrow : base16AteliersulphurpoolLight}
 				showLineNumbers={true}
 				wrapLines={true}
 				lineProps={(lineNumber) => {
@@ -94,6 +102,6 @@ function CodeBox(props: CodeBoxProps) {
 			</Caption>
 		</CodeContainer>
 	);
-}
+};
 
 export default CodeBox;
