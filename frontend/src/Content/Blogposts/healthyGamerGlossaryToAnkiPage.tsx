@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { healthyGamerToAnki, ankiConnectConfig } from './codeSnippets';
 import { StyledA } from '../RootPages/homePage';
 import { StyledLinkBackground } from '../Projects/mastersThesis';
+import VideoPlayer from '../../Components/VideoPlayer';
 
 // anki-browse-new-cards.webp
 // ankiconnect-allow-hg-cors.webp
@@ -269,6 +270,12 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			</h2> */}
 			<h2 id="5">Too Long Didn't Read Need Video (TLDRNV)</h2>
 			<hr />
+			<VideoPlayer
+				src="https://staffansandberg.com/media/video/hg-glossary-to-anki.webm"
+				thumbnail=""
+				title=""
+				width="800"
+			/>
 		</Container>
 	);
 }

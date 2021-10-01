@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Paragraph } from '../styledComponents';
+import VideoPlayer from '../../Components/VideoPlayer';
 
 const StyledTutorialVideosGrid = styled.div`
 	display: flex;
@@ -9,22 +10,6 @@ const StyledTutorialVideosGrid = styled.div`
 
 	max-width: 1100px;
 `;
-
-const StyledVideoContainer = styled.div`
-	width: 500px;
-	font-weight: bold;
-`;
-
-function VideoPlayer({ title, src, thumbnail }) {
-	return (
-		<StyledVideoContainer>
-			<div>{title}</div>
-			<video width="500" height="300" poster={thumbnail} controls>
-				<source src={src} type="video/mp4" />
-			</video>
-		</StyledVideoContainer>
-	);
-}
 
 const TutorialsPage = () => {
 	const videos = [
