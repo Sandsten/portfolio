@@ -15,11 +15,11 @@ const StyledVideoContainer = styled.div`
 	font-weight: bold;
 `;
 
-function VideoPlayer({ title, src }) {
+function VideoPlayer({ title, src, thumbnail }) {
 	return (
 		<StyledVideoContainer>
 			<div>{title}</div>
-			<video width="500" height="300" controls>
+			<video width="500" height="300" poster={thumbnail} controls>
 				<source src={src} type="video/mp4" />
 			</video>
 		</StyledVideoContainer>
@@ -31,10 +31,14 @@ const TutorialsPage = () => {
 		{
 			title: 'Braun Series 3 Shaver Battery Replacement',
 			src: 'https://staffansandberg.com/media/video/braun-series-3-battery-replacement.webm',
+			thumbnail:
+				'https://staffansandberg.com/Braun%20Series%203%20battery%20replacement%20poster.webp',
 		},
 		{
 			title: 'Bosh Maxx 7 Washer How To Mute',
 			src: 'https://staffansandberg.com/media/video/bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping.webm',
+			thumbnail:
+				'https://staffansandberg.com/Bosh%20maxx%207%20VarioPerfect%20how%20to%20turn%20off%20the%20beeping%20poster.webp',
 		},
 	];
 
@@ -47,7 +51,14 @@ const TutorialsPage = () => {
 			</Paragraph>
 			<StyledTutorialVideosGrid>
 				{videos.map((video) => {
-					return <VideoPlayer key={video.title} title={video.title} src={video.src} />;
+					return (
+						<VideoPlayer
+							key={video.title}
+							title={video.title}
+							src={video.src}
+							thumbnail={video.thumbnail}
+						/>
+					);
 				})}
 			</StyledTutorialVideosGrid>
 		</Container>
