@@ -2,10 +2,13 @@ import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { Image } from '../../Components/Image';
+
 import { Container, Paragraph } from '../styledComponents';
 
 import { DESKTOP_XS } from '../../Constants/sizes';
 import { StyledA } from '../RootPages/homePage';
+import VideoPlayer from '../../Components/VideoPlayer';
 
 /*
   FLEX DEFAULTS
@@ -84,24 +87,6 @@ interface ImageProps {
 	maxWidth: string;
 }
 
-const Image = (props: ImageProps) => {
-	const history = useHistory();
-
-	function openImage() {
-		// Only works when running on VPS with correct domain
-		history.push(`/${props.imageName}`);
-	}
-
-	return (
-		<StyledFigure onClick={openImage} maxWidth={props.maxWidth}>
-			<StyledImage src={`https://staffansandberg.com/${props.imageName}`}></StyledImage>
-			<figcaption>
-				<em>{props.caption}</em>
-			</figcaption>
-		</StyledFigure>
-	);
-};
-
 export const StyledLinkBackground = styled.span`
 	background-color: ${(p) => p.theme.colors.CARD_BG};
 	border-radius: 5px;
@@ -127,6 +112,23 @@ const mastersThesis = (props: Props) => {
 				>
 					Full paper at DiVa
 				</StyledA>
+				<h2>Results (Simulator)</h2>
+				<Paragraph>Here I'll show the simulator I built in which my study was conducted.</Paragraph>
+				<Paragraph>
+					I built it using Unity to allow for rapid implementation and iteration. The final product
+					resulted in a driving simulator in which I could change the heads-up display through a
+					dropdown menu in the inspector and set a user id. Once in the game I could adjust the
+					user's virtual position to their comfort level. When hey were ready I could press "Start"
+					in the game UI to start recording data associated with the drive. Such as time, speed,
+					position, power usage and much more. Once the user either ran out of battery or made it to
+					the finish line all the data was saved to disk in .csv format.{' '}
+				</Paragraph>
+				<VideoPlayer
+					src="https://staffansandberg.com/media/video/driving-simulator-v1.webm"
+					width="500px"
+					title="Novel heads-up display in BEV"
+					thumbnail="https://staffansandberg.com/thesis/driving-simulator-v1-thumbnail.webp"
+				/>
 			</StyledLinkBackground>
 			<h2>The setup</h2>
 			<ImageRow>
@@ -134,11 +136,13 @@ const mastersThesis = (props: Props) => {
 					caption="Fig 1: Setup of driving simulator. VR headset, steering wheel + pedals, seat, speakers and microphone."
 					imageName="simulator-setup.webp"
 					maxWidth={'350px'}
+					figNumber={0}
 				></Image>
 				<Image
 					caption="Fig 2: View from the driver's perspective in VR."
 					imageName="driving-in-vr.webp"
 					maxWidth={'700px'}
+					figNumber={0}
 				></Image>
 			</ImageRow>
 			<h2>Recruiting Participants</h2>
@@ -154,11 +158,13 @@ const mastersThesis = (props: Props) => {
 					caption="Fig 3: First iteration of the poster."
 					imageName="poster-version-1.webp"
 					maxWidth={'350px'}
+					figNumber={0}
 				></Image>
 				<Image
 					caption="Fig 4: Second iteration of the poster. Attention grabbing incentives and covid precautions."
 					imageName="poster-version-2.webp"
 					maxWidth={'350px'}
+					figNumber={0}
 				></Image>
 			</ImageRow>
 			<ImageRow>
@@ -166,6 +172,7 @@ const mastersThesis = (props: Props) => {
 					caption="Fig 5: Sign up page where users landed once the QR code had been scanned."
 					imageName="signup-page.webp"
 					maxWidth={'600px'}
+					figNumber={0}
 				></Image>
 			</ImageRow>
 			<Paragraph>Update in progress...</Paragraph>

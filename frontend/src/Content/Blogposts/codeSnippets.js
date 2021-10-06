@@ -48,24 +48,18 @@ function getCardsInAnkiConnectFormat(deckName) {
 
 async function main() {
   const deckName = "Healthy Gamer::Glossary" // Deck name. <parent>::<child>
-  
-  console.log("Creating new deck...");
-  const createDeck = await ankiConnectAction('createDeck', 6, {deck: deckName});
-  if (createDeck.error) return;
-  console.log("OK");
-
-  console.log("Scraping glossary...")
   const cards = getCardsInAnkiConnectFormat(deckName);
-  console.log("OK");
-  
-  console.log("Adding cards to new deck...");
-  const addCards = await ankiConnectAction("addNotes", 6, {notes: cards});
-  if (addCards.error) return;
-  console.log("OK");
 
-  const message = "A new deck with the name " + deckName + " containing " + addCards.result.length 
-      + " cards has been added to your Anki collection.";
-  alert(message);
+  try {
+    const createDeck = await ankiConnectAction('createDeck', 6, {deck: deckName});
+    const addCards = await ankiConnectAction("addNotes", 6, {notes: cards});
+  
+    const message = "A new deck with the name " + deckName + " containing " + 
+                    addCards.result.length + " cards has been added to your Anki collection.";
+    alert(message);
+  } catch(e) {
+    console.error(e);
+  }
 }
 
 main();`;
