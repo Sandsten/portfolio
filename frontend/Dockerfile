@@ -1,14 +1,15 @@
-FROM node:lts-alpine3.13@sha256:954f97825c2b535defef235dd8b92a7936b59b12aa6685bc1b5c17864b2812c3
+FROM node:16-alpine3.11
 
 WORKDIR /frontend
 
 # Copy over package file and install
 COPY [ "package.json", "package-lock.json", "./" ]
 
-RUN npm install
+# RUN npm config set loglevel info
+# RUN npm set progress=false 
+RUN npm install --verbose
 
 # Copy everything into the docker container
-# .dockerignore file will prevent node_modules if it exists
 COPY . .
 
 EXPOSE 3001

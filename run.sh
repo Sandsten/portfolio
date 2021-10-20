@@ -17,7 +17,7 @@ Help()
 }
 
 # Base compose command
-DevCommand="docker-compose up"
+DevCommand="docker compose up"
 
 # list of arguments expected in the input
 optstring=":hdb"
@@ -30,11 +30,11 @@ while getopts ${optstring} option; do
       exit
       ;; # Each option must end with ;;
     d)
-      DevCommand="docker-compose -f docker-compose.dev.yml up"
+      DevCommand="docker compose -f docker-compose.dev.yml up"
       ;;
     b)
       #DevCommand="docker-compose -f docker-compose.dev.yml up --build  --remove-orphans"
-      DevCommand="docker-compose -f docker-compose.dev.yml up --build  --remove-orphans"
+      DevCommand="docker compose -f docker-compose.dev.yml up --build  --remove-orphans"
       ;;
     \?) # Match any option which hasn't been defined up above ^
         echo "Error: Invalid option"

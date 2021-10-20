@@ -102,8 +102,7 @@ const mastersThesis = (props: Props) => {
 		<Container>
 			<h1>Master's Thesis</h1>
 			<Paragraph>
-				Overview of my Master's thesis plus additional work I did the following year after
-				completing the thesis.
+				In my thesis I tried to answer how drivers behave in a range critial situaion whilst driving a BEV in VR. Specifically how two groups compare to each other, where one group used a novel dashboard based on previous research by my supervisor, and the other used a more conventional dashboard.
 			</Paragraph>
 			<StyledLinkBackground>
 				<StyledA
