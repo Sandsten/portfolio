@@ -1,6 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 
-const ThemeButton = ({ className, width, height, handleClick }) => {
+interface ThemeButtonProps {
+	className: string;
+	width: number;
+	height: number;
+	handleClick: React.MouseEventHandler;
+}
+
+const ThemeButton = ({ className, width, height, handleClick }:ThemeButtonProps) => {
 	return (
 		<svg
 			className={className}

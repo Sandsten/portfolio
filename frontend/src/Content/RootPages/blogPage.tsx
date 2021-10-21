@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 
+import styled from 'styled-components';
+
 import { blogPostsMetadata } from '../Blogposts/blogPostsMetadata';
 import { Container, BlogPostCard } from '../styledComponents';
 
@@ -15,7 +17,7 @@ function blog() {
 
 				return (
 					<BlogPostCard
-						key={post.fullProjectPath}
+						key={post.title}
 						onClick={() => history.push(post.fullProjectPath)}
 					>
 						<div className="description">

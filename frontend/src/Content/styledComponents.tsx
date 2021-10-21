@@ -64,6 +64,7 @@ const BlogPostCard = styled.div`
 		margin-right: auto;
 		height: 100%;
 		width: auto;
+		max-width: 400px;
 	}
 
 	hr {

@@ -17,13 +17,13 @@ const TutorialsPage = () => {
 			title: 'Braun Series 3 Shaver Battery Replacement',
 			src: 'https://staffansandberg.com/media/video/braun-series-3-battery-replacement.webm',
 			thumbnail:
-				'https://staffansandberg.com/Braun%20Series%203%20battery%20replacement%20poster.webp',
+				'https://staffansandberg.com/media/images/thumbnails/Braun%20Series%203%20battery%20replacement%20poster.webp',
 		},
 		{
 			title: 'Bosh Maxx 7 Washer How To Mute',
 			src: 'https://staffansandberg.com/media/video/bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping.webm',
 			thumbnail:
-				'https://staffansandberg.com/Bosh%20maxx%207%20VarioPerfect%20how%20to%20turn%20off%20the%20beeping%20poster.webp',
+				'https://staffansandberg.com/media/images/thumbnails/Bosh%20maxx%207%20VarioPerfect%20how%20to%20turn%20off%20the%20beeping%20poster.webp',
 		},
 	];
 

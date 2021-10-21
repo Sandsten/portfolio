@@ -82,7 +82,7 @@ const StyledImage = styled.img`
 `;
 
 interface ImageProps {
-	imageName: string;
+	imagePath: string;
 	figNumber: number;
 	caption: string;
 	maxWidth: string;
@@ -100,8 +100,8 @@ const Image = (props: ImageProps) => {
 
 	return (
 		<StyledFigure onClick={openImage} maxWidth={props.maxWidth} id={id}>
-			<a href={`https://staffansandberg.com/${props.imageName}`}>
-				<StyledImage src={`https://staffansandberg.com/${props.imageName}`}></StyledImage>
+			<a href={`https://staffansandberg.com/${props.imagePath}`}>
+				<StyledImage src={`https://staffansandberg.com/${props.imagePath}`}></StyledImage>
 			</a>
 			<figcaption>
 				<em>{`Fig ${props.figNumber}: ${props.caption}`}</em>

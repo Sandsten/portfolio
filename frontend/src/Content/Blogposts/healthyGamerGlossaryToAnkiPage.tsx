@@ -56,7 +56,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 	const history = useHistory();
 	const tldrRef = useRef(null);
 	const scrollContainer = useRef(null);
-	const rootImagePath = 'healthy-gamer-gg-glossary-to-anki';
+	const rootImagePath = 'media/images/healthy-gamer-gg-glossary-to-anki';
 	const ankiConnectCode = 2055492159;
 
 	function scrollToTLDR() {
@@ -147,13 +147,13 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			<Paragraph></Paragraph>
 			<ImageRow>
 				<Image
-					imageName={`${rootImagePath}/install-ankiconnect.webp`}
+					imagePath={`${rootImagePath}/install-ankiconnect.webp`}
 					figNumber={1.1}
 					caption={`[Tools > Add-ons > Get Add-ons]. Paste addon code ${ankiConnectCode} and press [OK] to install.`}
 					maxWidth="500px"
 				/>
 				<Image
-					imageName={`${rootImagePath}/ankiconnect-installed-successfully.webp`}
+					imagePath={`${rootImagePath}/ankiconnect-installed-successfully.webp`}
 					figNumber={1.2}
 					caption={`Restart Anki after addon has been installed`}
 					maxWidth="500px"
@@ -178,7 +178,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			</Paragraph>
 			<Paragraph>There's no need to restart Anki after updating AnkiConnect's config.</Paragraph>
 			<Image
-				imageName={`${rootImagePath}/ankiconnect-allow-hg-cors.webp`}
+				imagePath={`${rootImagePath}/ankiconnect-allow-hg-cors.webp`}
 				figNumber={2.1}
 				caption={`Config file with new settings. Open config with [Tools > Add-ons > (AnkiConnect > Config) or (AnkiConnect <double click>)].`}
 				maxWidth="700px"
@@ -209,7 +209,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				caption="Fig 3: Scrapes glossary page for all terms, format them to individual cards accepted by AnkiConnect and sends them to your Anki collection."
 			/>
 			<Image
-				imageName={`${rootImagePath}/paste-the-js-code.webp`}
+				imagePath={`${rootImagePath}/paste-the-js-code.webp`}
 				figNumber={3.1}
 				caption={`Pressing [F12] or [(right click anywhere on the page) > Inspect > Console] will open the console. Here the code from Figure 3 has been pasted inside it.`}
 				maxWidth="1000px"
@@ -219,7 +219,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				should also have a new deck as seen in Figure 3.2 as well.
 			</Paragraph>
 			<Image
-				imageName={`${rootImagePath}/press-enter-and-wait.webp`}
+				imagePath={`${rootImagePath}/press-enter-and-wait.webp`}
 				figNumber={3.2}
 				caption={`On the left hand side we can see that Anki has received a new deck. And in the browser on the right we get a message telling us how many cards have been added.`}
 				maxWidth="1000px"
@@ -234,7 +234,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				and 40 in Figure 3 is doing the work of getting the appropriate elements and their text.
 			</Paragraph>
 			<Image
-				imageName={`${rootImagePath}/glossary-dom.webp`}
+				imagePath={`${rootImagePath}/glossary-dom.webp`}
 				figNumber={3.3}
 				caption={`Each glossary-term has two children, title and description. InnerText can be used to get the visible text inside each one.`}
 				maxWidth="1000px"

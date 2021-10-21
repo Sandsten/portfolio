@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Image } from '../../Components/Image';
@@ -132,14 +131,14 @@ const mastersThesis = (props: Props) => {
 			<h2>The setup</h2>
 			<ImageRow>
 				<Image
-					caption="Fig 1: Setup of driving simulator. VR headset, steering wheel + pedals, seat, speakers and microphone."
-					imageName="simulator-setup.webp"
+					caption="Setup of driving simulator. VR headset, steering wheel + pedals, seat, speakers and microphone."
+					imagePath="media/images/thesis/simulator-setup.webp"
 					maxWidth={'350px'}
 					figNumber={0}
 				></Image>
 				<Image
-					caption="Fig 2: View from the driver's perspective in VR."
-					imageName="driving-in-vr.webp"
+					caption="View from the driver's perspective in VR."
+					imagePath="media/images/thesis/driving-in-vr.webp"
 					maxWidth={'700px'}
 					figNumber={0}
 				></Image>
@@ -154,22 +153,22 @@ const mastersThesis = (props: Props) => {
 			</Paragraph>
 			<ImageRow>
 				<Image
-					caption="Fig 3: First iteration of the poster."
-					imageName="poster-version-1.webp"
+					caption="First iteration of the poster."
+					imagePath="media/images/thesis/poster-version-1.webp"
 					maxWidth={'350px'}
 					figNumber={0}
 				></Image>
 				<Image
-					caption="Fig 4: Second iteration of the poster. Attention grabbing incentives and covid precautions."
-					imageName="poster-version-2.webp"
+					caption="Second iteration of the poster. Attention grabbing incentives and covid precautions."
+					imagePath="media/images/thesis/poster-version-2.webp"
 					maxWidth={'350px'}
 					figNumber={0}
 				></Image>
 			</ImageRow>
 			<ImageRow>
 				<Image
-					caption="Fig 5: Sign up page where users landed once the QR code had been scanned."
-					imageName="signup-page.webp"
+					caption="Sign up page where users landed once the QR code had been scanned."
+					imagePath="media/images/thesis/signup-page.webp"
 					maxWidth={'600px'}
 					figNumber={0}
 				></Image>

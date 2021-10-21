@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -83,15 +83,21 @@ const Tag = styled.div`
 	background-color: ${(p) => p.theme.colors.TAG_BG};
 `;
 
-const ProjectCard = (props) => {
-	const { title, thumbnail, description, tags, clickURL } = props;
+interface ProjectCardProps {
+	title: string;
+	thumbnail: string;
+	description: string;
+	tags: Array<string>;
+	clickURL: string;
+}
 
+const ProjectCard = ({ title, thumbnail, description, tags, clickURL }:ProjectCardProps) => {
 	// TODO: Update database with correct url endings
 	let thumbnailUrl;
 	try {
 		// Update database to use webp format instead?
 		if (thumbnail.includes('https://staffansandberg.com/')) thumbnailUrl = thumbnail;
-		else thumbnailUrl = `https://staffansandberg.com/${thumbnail}`.replace('png', 'webp');
+		else thumbnailUrl = `https://staffansandberg.com/media/images/thumbnails/${thumbnail}`.replace('png', 'webp');
 	} catch (error) {
 		thumbnailUrl = '';
 	}

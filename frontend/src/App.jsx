@@ -19,6 +19,7 @@ import { DESKTOP_XS } from './Constants/sizes';
 
 import mastersThesis from './Content/Projects/mastersThesis';
 import { HealthyGamerGlossaryToAnki } from './Content/Blogposts/healthyGamerGlossaryToAnkiPage';
+import { whinyDevices } from './Content/Blogposts/whinyDevices';
 
 import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
 import { setTheme } from './Redux/slices/siteConfigSlice';
@@ -91,6 +92,7 @@ const App = () => {
             <Route path="/shaders" component={threeShaders} />
             <Route path="/tutorials" component={tutorialsPage} />
             <Route path="/posts/healthy-gamer-glossary-to-anki" component={HealthyGamerGlossaryToAnki} />
+            <Route path="/posts/whiny-devices" component={whinyDevices} />
             <Route path="/posts" component={blogPage} />
             <Route path="/guitar" component={guitarPage} />
             <Route
