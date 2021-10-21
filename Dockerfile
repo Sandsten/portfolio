@@ -1,8 +1,5 @@
 ## Dockerfile for creating a production image
-FROM node:16-alpine3.11
-
-RUN echo $(npm -v)
-RUN echo "HELLO WORLD!"
+FROM node:16-alpine3.11 as builder
 
 
 
