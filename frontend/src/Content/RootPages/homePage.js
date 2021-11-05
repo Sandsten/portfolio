@@ -4,72 +4,26 @@ import styled from 'styled-components';
 
 import { Container } from '../styledComponents';
 
-import { DARK_THEME } from '../../Constants/colors';
-
-// TODO: Apply the same style to both span and a without repeating!
-export const StyledLink = styled.span`
-	background: -webkit-linear-gradient(${DARK_THEME.LINK_1}, ${DARK_THEME.LINK_2});
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-
-	:hover {
-		background: -webkit-linear-gradient(${DARK_THEME.LINK_2}, ${DARK_THEME.LINK_1});
-		cursor: pointer;
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-`;
-
-export const StyledA = styled.a`
-	text-decoration: none;
-	outline: none;
-
-	background: -webkit-linear-gradient(${DARK_THEME.LINK_1}, ${DARK_THEME.LINK_2});
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-
-	background-color: black;
-	padding: 5px;
-	border-radius: 10px;
-
-	:hover {
-		background: -webkit-linear-gradient(${DARK_THEME.LINK_2}, ${DARK_THEME.LINK_1});
-		cursor: pointer;
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-`;
+import Link from '../../Components/Link';
 
 const ContactContainer = styled.div`
+	display: flex;
 	font-size: 1.3em;
 	margin-left: -5px;
+
+	span {
+		margin: 5px;
+	}
 `;
 
 const Contact = () => {
 	return (
 		<ContactContainer>
-			<StyledA href="https://www.linkedin.com/in/stsa/">Linkedin </StyledA>
-			<StyledA href="https://github.com/Sandsten">Github </StyledA>
-			<StyledA target="_blank" href="mailto:stsand@kth.se" rel="noopener noreferrer">
-				Email
-			</StyledA>
+			<Link href="https://www.linkedin.com/in/stsa/" text="Linkedin" />
+			<Link href="https://github.com/Sandsten" text="Github" />
+			{/* <Link target="_blank" href="mailto:stsand@kth.se" rel="noopener noreferrer" text="Email">
+				Email */}
 		</ContactContainer>
-	);
-};
-
-const LinkInternal = ({ text, handleNav, route }) => {
-	return (
-		<StyledLink
-			onClick={() => {
-				handleNav(route);
-			}}
-		>
-			{text}
-		</StyledLink>
 	);
 };
 
@@ -83,18 +37,20 @@ const homePage = () => {
 			<p>Hello and welcome to my website!</p>
 			<p>
 				My bachelor is in{' '}
-				<StyledA href="https://www.kth.se/student/kurser/program/TSVDK/20122/mal">
-					Simulation Technology and Virtual Design
-				</StyledA>{' '}
-				at <StyledA href="https://kth.se">Kungliga Tekniska Högskolan</StyledA>. Which sparked my
+				<Link
+					href="https://www.kth.se/student/kurser/program/TSVDK/20122/mal"
+					text="Simulation Technology and Virtual Design"
+				/>{' '}
+				at <Link href="https://kth.se" text="Kungliga Tekniska Högskolan" />. Which sparked my
 				interest for programming and graphics.
 			</p>
 
 			<p>
 				My master's is in{' '}
-				<StyledA href="https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765">
-					Interactive Media Technology
-				</StyledA>{' '}
+				<Link
+					href="https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765"
+					text="Interactive Media Technology"
+				/>{' '}
 				where I focused on visual media. Taking courses in computer graphics, game design,
 				information visualization and evaluation methods.
 			</p>
@@ -105,10 +61,11 @@ const homePage = () => {
           aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all">
 						my thesis
 					</StyledA>{' '} */}
-				<StyledA href="https://staffansandberg.com/masters-thesis">my thesis</StyledA> I wanted to
-				explore Virtual Reality a bit further, since I had only briefly used it previously in one of
-				my courses. Therefore I found a topic where I had to create a driving simulator for electric
-				vehicles in VR. In order to test a range critical situation using two different dashboards.{' '}
+				<Link href="https://staffansandberg.com/projects/masters-thesis" text="my thesis" /> I
+				wanted to explore Virtual Reality a bit further, since I had only briefly used it previously
+				in one of my courses. Therefore I found a topic where I had to create a driving simulator
+				for electric vehicles in VR. In order to test a range critical situation using two different
+				dashboards.{' '}
 				{/*You can read about the project in a shorter
 						format compared to the article{' '}
 						<LinkInternal
@@ -120,8 +77,8 @@ const homePage = () => {
 			<p>
 				In my free time I enjoy playing classical guitar, video games, reading books and learning
 				new things in general. One newfound interest is{' '}
-				<StyledA href="https://en.wikipedia.org/wiki/Disc_golf">Disc golf</StyledA> which I find
-				very enjoyable and meditative.
+				<Link href="https://en.wikipedia.org/wiki/Disc_golf" text="Disc golf" /> which I find very
+				enjoyable and meditative.
 			</p>
 			<p>
 				On this site you can see different projects that I've been a part of and blog posts about

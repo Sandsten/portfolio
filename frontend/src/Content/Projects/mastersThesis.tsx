@@ -6,8 +6,8 @@ import { Image } from '../../Components/Image';
 import { Container } from '../styledComponents';
 
 import { DESKTOP_XS } from '../../Constants/sizes';
-import { StyledA } from '../RootPages/homePage';
 import VideoPlayer from '../../Components/VideoPlayer';
+import Link from '../../Components/Link';
 
 /*
   FLEX DEFAULTS
@@ -73,27 +73,6 @@ const StyledFigure = styled.figure<StyledFigureType>`
 	}
 `;
 
-// Image will determine size of parent figure?
-const StyledImage = styled.img`
-	// width will match the width of the figure, the figure will adjust it width based on flexbox
-	// since aspect ratio is kept the width of the image is limited by the max-height
-	width: 100%;
-`;
-
-interface ImageProps {
-	imageName: string;
-	caption: string;
-	maxWidth: string;
-}
-
-export const StyledLinkBackground = styled.span`
-	background-color: ${(p) => p.theme.colors.CARD_BG};
-	border-radius: 5px;
-	/* padding: 3px; */
-	padding-top: 1px;
-	padding-bottom: 1px;
-`;
-
 interface Props {}
 
 const mastersThesis = (props: Props) => {
@@ -106,31 +85,29 @@ const mastersThesis = (props: Props) => {
 				dashboard based on previous research by my supervisor, and the other used a more
 				conventional dashboard.
 			</p>
-			<StyledLinkBackground>
-				<StyledA
-					href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
+			<Link
+				href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
           aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all"
-				>
-					Full paper at DiVa
-				</StyledA>
-				<h2>Results (Simulator)</h2>
-				<p>Here I'll show the simulator I built in which my study was conducted.</p>
-				<p>
-					I built it using Unity to allow for rapid implementation and iteration. The final product
-					resulted in a driving simulator in which I could change the heads-up display through a
-					dropdown menu in the inspector and set a user id. Once in the game I could adjust the
-					user's virtual position to their comfort level. When hey were ready I could press "Start"
-					in the game UI to start recording data associated with the drive. Such as time, speed,
-					position, power usage and much more. Once the user either ran out of battery or made it to
-					the finish line all the data was saved to disk in .csv format.{' '}
-				</p>
-				<VideoPlayer
-					src="https://staffansandberg.com/media/video/driving-simulator-v1.webm"
-					width="500px"
-					title="Novel heads-up display in BEV"
-					thumbnail="https://staffansandberg.com/media/images/thumbnails/driving-simulator-v1-thumbnail.webp"
-				/>
-			</StyledLinkBackground>
+				text="Full paper at DiVa"
+			/>
+
+			<h2>Results (Simulator)</h2>
+			<p>Here I'll show the simulator I built in which my study was conducted.</p>
+			<p>
+				I built it using Unity to allow for rapid implementation and iteration. The final product
+				resulted in a driving simulator in which I could change the heads-up display through a
+				dropdown menu in the inspector and set a user id. Once in the game I could adjust the user's
+				virtual position to their comfort level. When hey were ready I could press "Start" in the
+				game UI to start recording data associated with the drive. Such as time, speed, position,
+				power usage and much more. Once the user either ran out of battery or made it to the finish
+				line all the data was saved to disk in .csv format.{' '}
+			</p>
+			<VideoPlayer
+				src="https://staffansandberg.com/media/video/driving-simulator-v1.webm"
+				width="500px"
+				title="Novel heads-up display in BEV"
+				thumbnail="https://staffansandberg.com/media/images/thumbnails/driving-simulator-v1-thumbnail.webp"
+			/>
 			<h2>The setup</h2>
 			<ImageRow>
 				<Image
@@ -151,8 +128,8 @@ const mastersThesis = (props: Props) => {
 				Poster placed around KTH Campus to recruit students, staff and anyone who happen to pass by.
 				Since VR is a relatively novel technology I used it as an incentive to try and attract as
 				many participants as possible. And to make signing up as easy as possible I used the free
-				tier of <StyledA href="https://calendly.com/">Calendly</StyledA> and a generated QR code
-				which takes you directly to the sign up page
+				tier of <Link href="https://calendly.com/" text="Calendly" /> and a generated QR code which
+				takes you directly to the sign up page
 			</p>
 			<ImageRow>
 				<Image

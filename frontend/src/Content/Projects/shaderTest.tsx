@@ -4,8 +4,11 @@ import styled from 'styled-components';
 import { Container } from '../styledComponents';
 import TreeShader from './threeShaders';
 
-import projectsMetadata from '../Projects/projectsMetadata';
-import { StyledA } from '../RootPages/homePage';
+import Link from '../../Components/Link';
+
+const ShaderContainer = styled.div`
+	max-width: 1000px;
+`;
 
 interface Props {}
 const shaderTest = (props: Props) => {
@@ -15,13 +18,11 @@ const shaderTest = (props: Props) => {
 			<p>
 				Experimenting with implementation of vertex and fragment shaders using Three.js. I follow an
 				amazing Youtube channel called{' '}
-				<StyledA href="https://www.youtube.com/c/TheArtofCodeIsCool/videos">
-					The Art of Code
-				</StyledA>
+				<Link href="https://www.youtube.com/c/TheArtofCodeIsCool/videos" text="The Art of Code" />
 			</p>
-			<p>
+			<ShaderContainer>
 				<TreeShader />
-			</p>
+			</ShaderContainer>
 		</Container>
 	);
 };

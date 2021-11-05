@@ -7,9 +7,8 @@ import CodeBox from '../../Components/CodeBox';
 import styled from 'styled-components';
 
 import { healthyGamerToAnki, ankiConnectConfig } from './codeSnippets';
-import { StyledA } from '../RootPages/homePage';
-import { StyledLinkBackground } from '../Projects/mastersThesis';
 import VideoPlayer from '../../Components/VideoPlayer';
+import Link from '../../Components/Link';
 
 // anki-browse-new-cards.webp
 // ankiconnect-allow-hg-cors.webp
@@ -92,11 +91,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			<h1>Dr. K's glossary to Anki collection</h1>
 			<p>
 				In this short post I will go through how I added the entire glossary found at{' '}
-				<StyledLinkBackground>
-					<StyledA href="https://coaching.healthygamer.gg/guide">
-						Dr. K's Guide to Mental Health
-					</StyledA>
-				</StyledLinkBackground>{' '}
+				<Link href="https://coaching.healthygamer.gg/guide" text="Dr. K's Guide to Mental Health" />{' '}
 				to my Anki collection by running some Javascript in the browser.
 			</p>
 			<p>
@@ -123,10 +118,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				</li>
 			</Outline>
 			<h2 id="1">
-				1. Install{' '}
-				<StyledLinkBackground>
-					<StyledA href="https://github.com/FooSoft/anki-connect">AnkiConnect</StyledA>
-				</StyledLinkBackground>
+				1. Install <Link href="https://github.com/FooSoft/anki-connect" text="AnkiConnect" />
 			</h2>
 			<hr />
 			<p>
@@ -194,11 +186,10 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			<hr />
 			<p>
 				Navigate to{' '}
-				<StyledLinkBackground>
-					<StyledA href="https://coaching.healthygamer.gg/guide/glossary">
-						https://coaching.healthygamer.gg/guide/glossary
-					</StyledA>
-				</StyledLinkBackground>
+				<Link
+					href="https://coaching.healthygamer.gg/guide/glossary"
+					text="https://coaching.healthygamer.gg/guide/glossary"
+				/>
 				, open the developer console, paste the code from Figure 3 inside it and press [Enter] to
 				execute it.
 			</p>
@@ -255,11 +246,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				The same process can be used on any type of data. The only trick is to format the cards the
 				correct way and then make a HTTP request to AnkiConnect. To learn all the functions and
 				features available you can go through its{' '}
-				<StyledLinkBackground>
-					<StyledA href="https://github.com/FooSoft/anki-connect#ankiconnect">
-						README on Github.
-					</StyledA>
-				</StyledLinkBackground>
+				<Link href="https://github.com/FooSoft/anki-connect#ankiconnect" text="README on Github." />
 			</p>
 			<p>
 				The only thing which is a bit confusing is that they refer to cards as notes, which messed
