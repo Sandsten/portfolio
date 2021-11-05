@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Container, Paragraph } from '../styledComponents';
+import { Container } from '../styledComponents';
 
 import { DARK_THEME } from '../../Constants/colors';
 
@@ -80,26 +80,26 @@ const homePage = () => {
 
 	return (
 		<Container>
-			<Paragraph>Hello and welcome to my website!</Paragraph>
-			<Paragraph>
+			<p>Hello and welcome to my website!</p>
+			<p>
 				My bachelor is in{' '}
 				<StyledA href="https://www.kth.se/student/kurser/program/TSVDK/20122/mal">
 					Simulation Technology and Virtual Design
 				</StyledA>{' '}
 				at <StyledA href="https://kth.se">Kungliga Tekniska Högskolan</StyledA>. Which sparked my
 				interest for programming and graphics.
-			</Paragraph>
+			</p>
 
-			<Paragraph>
+			<p>
 				My master's is in{' '}
 				<StyledA href="https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765">
 					Interactive Media Technology
 				</StyledA>{' '}
 				where I focused on visual media. Taking courses in computer graphics, game design,
 				information visualization and evaluation methods.
-			</Paragraph>
+			</p>
 
-			<Paragraph>
+			<p>
 				For{' '}
 				{/* <StyledA href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
           aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all">
@@ -116,18 +116,18 @@ const homePage = () => {
 							handleNav={(route) => handleNav(route)}
 							route="/projects"
 						/> */}
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				In my free time I enjoy playing classical guitar, video games, reading books and learning
 				new things in general. One newfound interest is{' '}
 				<StyledA href="https://en.wikipedia.org/wiki/Disc_golf">Disc golf</StyledA> which I find
 				very enjoyable and meditative.
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				On this site you can see different projects that I've been a part of and blog posts about
 				things I've learnt and want to share.
-			</Paragraph>
-			<Paragraph>You can find and contact me here:</Paragraph>
+			</p>
+			<p>You can find and contact me here:</p>
 			<Contact />
 		</Container>
 	);

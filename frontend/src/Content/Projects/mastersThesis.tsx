@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Image } from '../../Components/Image';
 
-import { Container, Paragraph } from '../styledComponents';
+import { Container } from '../styledComponents';
 
 import { DESKTOP_XS } from '../../Constants/sizes';
 import { StyledA } from '../RootPages/homePage';
@@ -100,9 +100,12 @@ const mastersThesis = (props: Props) => {
 	return (
 		<Container>
 			<h1>Master's Thesis</h1>
-			<Paragraph>
-				In my thesis I tried to answer how drivers behave in a range critial situaion whilst driving a BEV in VR. Specifically how two groups compare to each other, where one group used a novel dashboard based on previous research by my supervisor, and the other used a more conventional dashboard.
-			</Paragraph>
+			<p>
+				In my thesis I tried to answer how drivers behave in a range critial situaion whilst driving
+				a BEV in VR. Specifically how two groups compare to each other, where one group used a novel
+				dashboard based on previous research by my supervisor, and the other used a more
+				conventional dashboard.
+			</p>
 			<StyledLinkBackground>
 				<StyledA
 					href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
@@ -111,8 +114,8 @@ const mastersThesis = (props: Props) => {
 					Full paper at DiVa
 				</StyledA>
 				<h2>Results (Simulator)</h2>
-				<Paragraph>Here I'll show the simulator I built in which my study was conducted.</Paragraph>
-				<Paragraph>
+				<p>Here I'll show the simulator I built in which my study was conducted.</p>
+				<p>
 					I built it using Unity to allow for rapid implementation and iteration. The final product
 					resulted in a driving simulator in which I could change the heads-up display through a
 					dropdown menu in the inspector and set a user id. Once in the game I could adjust the
@@ -120,12 +123,12 @@ const mastersThesis = (props: Props) => {
 					in the game UI to start recording data associated with the drive. Such as time, speed,
 					position, power usage and much more. Once the user either ran out of battery or made it to
 					the finish line all the data was saved to disk in .csv format.{' '}
-				</Paragraph>
+				</p>
 				<VideoPlayer
 					src="https://staffansandberg.com/media/video/driving-simulator-v1.webm"
 					width="500px"
 					title="Novel heads-up display in BEV"
-					thumbnail="https://staffansandberg.com/thesis/driving-simulator-v1-thumbnail.webp"
+					thumbnail="https://staffansandberg.com/media/images/thumbnails/driving-simulator-v1-thumbnail.webp"
 				/>
 			</StyledLinkBackground>
 			<h2>The setup</h2>
@@ -134,35 +137,35 @@ const mastersThesis = (props: Props) => {
 					caption="Setup of driving simulator. VR headset, steering wheel + pedals, seat, speakers and microphone."
 					imagePath="media/images/thesis/simulator-setup.webp"
 					maxWidth={'350px'}
-					figNumber={0}
+					figNumber={1}
 				></Image>
 				<Image
 					caption="View from the driver's perspective in VR."
 					imagePath="media/images/thesis/driving-in-vr.webp"
 					maxWidth={'700px'}
-					figNumber={0}
+					figNumber={2}
 				></Image>
 			</ImageRow>
 			<h2>Recruiting Participants</h2>
-			<Paragraph>
+			<p>
 				Poster placed around KTH Campus to recruit students, staff and anyone who happen to pass by.
 				Since VR is a relatively novel technology I used it as an incentive to try and attract as
 				many participants as possible. And to make signing up as easy as possible I used the free
 				tier of <StyledA href="https://calendly.com/">Calendly</StyledA> and a generated QR code
 				which takes you directly to the sign up page
-			</Paragraph>
+			</p>
 			<ImageRow>
 				<Image
 					caption="First iteration of the poster."
 					imagePath="media/images/thesis/poster-version-1.webp"
 					maxWidth={'350px'}
-					figNumber={0}
+					figNumber={3}
 				></Image>
 				<Image
 					caption="Second iteration of the poster. Attention grabbing incentives and covid precautions."
 					imagePath="media/images/thesis/poster-version-2.webp"
 					maxWidth={'350px'}
-					figNumber={0}
+					figNumber={4}
 				></Image>
 			</ImageRow>
 			<ImageRow>
@@ -170,10 +173,10 @@ const mastersThesis = (props: Props) => {
 					caption="Sign up page where users landed once the QR code had been scanned."
 					imagePath="media/images/thesis/signup-page.webp"
 					maxWidth={'600px'}
-					figNumber={0}
+					figNumber={5}
 				></Image>
 			</ImageRow>
-			<Paragraph>Update in progress...</Paragraph>
+			<p>Update in progress...</p>
 		</Container>
 	);
 };

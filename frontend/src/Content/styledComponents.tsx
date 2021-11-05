@@ -20,15 +20,15 @@ const Container = styled.div`
 			margin-top: 0;
 		}
 	}
-`;
 
-const Paragraph = styled.p`
-	max-width: 90ch; // 1ch is the width of the "0" character
+	p {
+		max-width: 90ch; // 1ch is the width of the "0" character
 
-	line-height: 1.5em;
-	// Triggered if the <p> is the first of its kind in its parent
-	:first-child {
-		margin-top: 0;
+		line-height: 1.5em;
+		// Triggered if the <p> is the first of its kind in its parent
+		:first-child {
+			margin-top: 0;
+		}
 	}
 `;
 
@@ -97,4 +97,4 @@ const BlogPostCard = styled.div`
 	}
 `;
 
-export { Container, Paragraph, BlogPostCard };
+export { Container, BlogPostCard };

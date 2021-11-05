@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Container, Paragraph } from '../styledComponents';
+import { Container } from '../styledComponents';
 import VideoPlayer from '../../Components/VideoPlayer';
 
 const StyledTutorialVideosGrid = styled.div`
@@ -29,11 +29,11 @@ const TutorialsPage = () => {
 
 	return (
 		<Container>
-			<Paragraph>
+			<p>
 				Sometimes when I come across an annoyance and manage to find a solution for it. I get the
 				feeling there's probably someone else out there with the same little annoyance. When that
 				feeling strikes me I tend to make a video tutorial on how I went about solving it.
-			</Paragraph>
+			</p>
 			<StyledTutorialVideosGrid>
 				{videos.map((video) => {
 					return (

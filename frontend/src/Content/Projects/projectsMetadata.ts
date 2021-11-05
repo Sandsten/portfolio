@@ -8,6 +8,20 @@ const projectsMetadata: Array<ProjectMetadata> = [
 		tags: ['Thesis', 'VR', 'Unity'],
 		fullProjectPath: 'masters-thesis',
 	},
+	{
+		title: `Shader Exploration`,
+		description: `Exploring vertex and fragment shaders with Three.js`,
+		thumbnail: 'https://staffansandberg.com/media/images/thumbnails/WebGL.webp',
+		tags: ['GLSL', 'Three.js', 'Math'],
+		fullProjectPath: 'shader-exploration',
+	},
+	// {
+	// 	title: `Tracking Card Game`,
+	// 	description: `Using AR to track a card game`,
+	// 	thumbnail: 'https://staffansandberg.com/media/images/thumbnails/thesis-thumbnail.webp',
+	// 	tags: ['AR', 'Unity'],
+	// 	fullProjectPath: 'ar-card-game',
+	// },
 ];
 
 export default projectsMetadata;

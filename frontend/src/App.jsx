@@ -23,6 +23,8 @@ import { whinyDevices } from './Content/Blogposts/whinyDevices';
 
 import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
 import { setTheme } from './Redux/slices/siteConfigSlice';
+import arCards from './Content/Projects/arCards';
+import shaderTest from './Content/Projects/shaderTest';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -85,6 +87,8 @@ const App = () => {
             <Route path="/admin" component={Admin} />
             {/* <Route path="/cv" component={cv} /> */}
             <Route path="/projects/masters-thesis" component={mastersThesis} />
+            <Route path="/projects/ar-card-game" component={arCards} />
+            <Route path="/projects/shader-exploration" component={shaderTest} />
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
             {/* <Route path="/blogposts/:name" component={blogpostPage} /> */}

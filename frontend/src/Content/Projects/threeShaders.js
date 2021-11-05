@@ -4,21 +4,15 @@ import * as ThreeHelpers from './Threejs/helpers';
 import styled from 'styled-components';
 
 const StyledThreeShader = styled.div`
-	/* The canvas won't fill the entire space automatically so we have to explicitly
-    Place it in the area called "main" */
-	grid-area: main;
-	display: grid;
-	height: 100vh;
-	overflow: hidden;
+	height: 500px;
 `;
 
 const threeShaders = () => {
 	const [isSupported] = useState(ThreeHelpers.isWebGL2Available());
 	const parentEl = useRef(null);
 
-	// Not sure
-	var renderer, uniforms, scene, camera, geometry, material;
-	var frameId = null;
+	let renderer, uniforms, scene, camera, geometry, material;
+	let frameId = null;
 
 	useEffect(() => {
 		// Used in shader
@@ -52,7 +46,7 @@ const threeShaders = () => {
 			fragmentShader: require(`./Threejs/fragment-3.glsl`),
 		});
 
-		var mesh = new Three.Mesh(geometry, material);
+		const mesh = new Three.Mesh(geometry, material);
 		mesh.name = 'baseShader';
 		scene.add(mesh);
 

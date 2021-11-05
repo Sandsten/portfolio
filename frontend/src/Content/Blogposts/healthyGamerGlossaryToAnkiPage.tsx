@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRef } from 'react';
 import { useHistory } from 'react-router';
-import { Container, Paragraph } from '../styledComponents';
+import { Container } from '../styledComponents';
 import { Image, ImageRow } from '../../Components/Image';
 import CodeBox from '../../Components/CodeBox';
 import styled from 'styled-components';
@@ -90,7 +90,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 	return (
 		<Container ref={scrollContainer}>
 			<h1>Dr. K's glossary to Anki collection</h1>
-			<Paragraph>
+			<p>
 				In this short post I will go through how I added the entire glossary found at{' '}
 				<StyledLinkBackground>
 					<StyledA href="https://coaching.healthygamer.gg/guide">
@@ -98,11 +98,11 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 					</StyledA>
 				</StyledLinkBackground>{' '}
 				to my Anki collection by running some Javascript in the browser.
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				All you have to do is install the Anki add-on AnkiConnect, add one line to its config file
 				and then paste some Javascript in your browser's console.
-			</Paragraph>
+			</p>
 			{/* <button onClick={scrollToTLDR}>TLDR</button> */}
 			<h2>Outline</h2>
 			<Outline>
@@ -129,22 +129,22 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				</StyledLinkBackground>
 			</h2>
 			<hr />
-			<Paragraph>
+			<p>
 				AnkiConnect is an extension for Anki which creates a backend with a bunch of functions for
 				reading and modifying your Anki collection through HTTP requests. Which allows us to add the
 				entire glossary with a single script!
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				Install it by first opening Anki and navigate to the Add-ons page [Tools {'>'} Add-ons {'>'}{' '}
 				Get Add-ons]. Enter the code{' '}
 				<CopyableText onClick={(e) => copyText(ankiConnectCode.toString(), e)}>
 					{ankiConnectCode}
 				</CopyableText>{' '}
 				and press [OK]. See Figure 1.1.
-			</Paragraph>
+			</p>
 			After the download is complete you have to restart Anki for the add-on to be installed. See
 			Figure 1.2.
-			<Paragraph></Paragraph>
+			<p></p>
 			<ImageRow>
 				<Image
 					imagePath={`${rootImagePath}/install-ankiconnect.webp`}
@@ -161,22 +161,22 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			</ImageRow>
 			<h2 id="2">2. Edit AnkiConnect configuration</h2>
 			<hr />
-			<Paragraph>
+			<p>
 				AnkiConnect won't accept requests from any sites besides https://localhost by default, to
 				avoid any random website you visit tinker with your Anki collection.
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				Since we want to make requests to AnkiConnect when on https://coaching.healthygamer.gg we
 				have to tell AnkiConnect that it's a website we trust. You can always revert back once the
 				glossary has been added to your collection.
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				To modify AnkiConnect's config you first have to open it as seen in Figure 2.1. Then replace
 				the content with the code in Figure 2.2 and press [OK]. The difference from the default one
 				is the addition of line #9 which makes AnkiConnect accept requests made from
 				https://coaching.healthygamer.gg
-			</Paragraph>
-			<Paragraph>There's no need to restart Anki after updating AnkiConnect's config.</Paragraph>
+			</p>
+			<p>There's no need to restart Anki after updating AnkiConnect's config.</p>
 			<Image
 				imagePath={`${rootImagePath}/ankiconnect-allow-hg-cors.webp`}
 				figNumber={2.1}
@@ -192,7 +192,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			/>
 			<h2 id="3">3. Scrape glossary webpage and add it to your Anki collection</h2>
 			<hr />
-			<Paragraph>
+			<p>
 				Navigate to{' '}
 				<StyledLinkBackground>
 					<StyledA href="https://coaching.healthygamer.gg/guide/glossary">
@@ -201,7 +201,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				</StyledLinkBackground>
 				, open the developer console, paste the code from Figure 3 inside it and press [Enter] to
 				execute it.
-			</Paragraph>
+			</p>
 			<CodeBox
 				width="1000px"
 				code={healthyGamerToAnki}
@@ -214,10 +214,10 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				caption={`Pressing [F12] or [(right click anywhere on the page) > Inspect > Console] will open the console. Here the code from Figure 3 has been pasted inside it.`}
 				maxWidth="1000px"
 			/>
-			<Paragraph>
+			<p>
 				After pressing [Enter] you should get a message as seen in Figure 3.2. Your Anki collection
 				should also have a new deck as seen in Figure 3.2 as well.
-			</Paragraph>
+			</p>
 			<Image
 				imagePath={`${rootImagePath}/press-enter-and-wait.webp`}
 				figNumber={3.2}
@@ -225,14 +225,14 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				maxWidth="1000px"
 			/>
 			<h3>Scraping details</h3>
-			<Paragraph>
+			<p>
 				To figure out how to scrape the page I opened the browsers inspector and looked at how the
 				dom was layed out. In Figure 3.3 we can see that each term is encapsuled in a div with the
 				class name "glossary-term". And each glossary-term has two children with the class names
 				"title" and "description" respectively. To extract the text, the innerText property can be
 				used which gets the visible text on the page within the element it's called on. Lines 36, 39
 				and 40 in Figure 3 is doing the work of getting the appropriate elements and their text.
-			</Paragraph>
+			</p>
 			<Image
 				imagePath={`${rootImagePath}/glossary-dom.webp`}
 				figNumber={3.3}
@@ -241,17 +241,17 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			/>
 			<h2 id="4">4. Done</h2>
 			<hr />
-			<Paragraph>
+			<p>
 				Happy learning! It's always fun to add something new to your vocabulary, and knowing these
 				terms at the top of your head makes following Dr. K's guide a bit smoother.
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				Memorizing terms can be tedious but with Anki a few initial hurdles to keep on practicing
 				are wiped of planet earth! As soon as the cards have been added though... which is kinda
 				boring if you ask me. Hence why I spent a day figuring out how I could avoid the tedious
 				task of doing it manually one by one.
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				The same process can be used on any type of data. The only trick is to format the cards the
 				correct way and then make a HTTP request to AnkiConnect. To learn all the functions and
 				features available you can go through its{' '}
@@ -260,11 +260,11 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 						README on Github.
 					</StyledA>
 				</StyledLinkBackground>
-			</Paragraph>
-			<Paragraph>
+			</p>
+			<p>
 				The only thing which is a bit confusing is that they refer to cards as notes, which messed
 				with my mental model for a while.
-			</Paragraph>
+			</p>
 			{/* <h2 ref={tldrRef} id="tldr">
 				TLDR
 			</h2> */}
