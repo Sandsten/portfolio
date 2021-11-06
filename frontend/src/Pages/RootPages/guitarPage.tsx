@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { Container } from '../styledComponents';
+import { Container } from '../../Components/Layout';
 import MusicPlayer from '../../Components/MusicPlayer';
 import Link from '../../Components/Link';
 

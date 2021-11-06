@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { blogPostsMetadata } from '../Blogposts/blogPostsMetadata';
-import { Container, BlogPostCard } from '../styledComponents';
+import { Container, BlogPostCard } from '../../Components/Layout';
 
 function blog() {
 	const history = useHistory();
@@ -16,10 +16,7 @@ function blog() {
 				const tags = post.tags.join(', ');
 
 				return (
-					<BlogPostCard
-						key={post.title}
-						onClick={() => history.push(post.fullProjectPath)}
-					>
+					<BlogPostCard key={post.title} onClick={() => history.push(post.fullProjectPath)}>
 						<div className="description">
 							<div>
 								<h3>{post.title}</h3>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container } from '../styledComponents';
+import { Container } from '../../Components/Layout';
 
 export function whinyDevices() {
 	return (

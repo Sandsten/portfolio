@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Container } from '../styledComponents';
+import { Container } from '../../Components/Layout';
 import TreeShader from './threeShaders';
 
 import Link from '../../Components/Link';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Container } from '../styledComponents';
+import { Container } from '../../Components/Layout';
 import VideoPlayer from '../../Components/VideoPlayer';
 
 const StyledTutorialVideosGrid = styled.div`

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Loading, LoadingFailed } from "../../Components/StateIndicators";
 import ProjectCard from '../../Components/ProjectCard';
-import { Container } from "../styledComponents";
+import { Container } from "../../Components/Layout";
 
 import { getProjects } from '../../Redux/slices/projectsSlice';
 

@@ -5,26 +5,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 
 import Sidebar from './Components/Sidebar';
-import HomePage from './Content/RootPages/homePage';
+import HomePage from './Pages/RootPages/homePage';
 import APITest from './Admin/APITest';
 import Admin from './Admin/Admin';
-import projects from './Content/RootPages/projectsPage';
-import projectPage from './Content/Projects/projectPage';
-import blogPage from './Content/RootPages/blogPage';
-import threeShaders from './Content/Projects/threeShaders';
-import tutorialsPage from './Content/RootPages/tutorialsPage';
-import guitarPage from './Content/RootPages/guitarPage';
+import projects from './Pages/RootPages/projectsPage';
+import projectPage from './Pages/Projects/projectPage';
+import blogPage from './Pages/RootPages/blogPage';
+import threeShaders from './Pages/Projects/threeShaders';
+import tutorialsPage from './Pages/RootPages/tutorialsPage';
+import guitarPage from './Pages/RootPages/guitarPage';
 
 import { DESKTOP_XS } from './Constants/sizes';
 
-import mastersThesis from './Content/Projects/mastersThesis';
-import { HealthyGamerGlossaryToAnki } from './Content/Blogposts/healthyGamerGlossaryToAnkiPage';
-import { whinyDevices } from './Content/Blogposts/whinyDevices';
+import mastersThesis from './Pages/Projects/mastersThesis';
+import { HealthyGamerGlossaryToAnki } from './Pages/Blogposts/healthyGamerGlossaryToAnkiPage';
+import { whinyDevices } from './Pages/Blogposts/whinyDevices';
 
 import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
 import { setTheme } from './Redux/slices/siteConfigSlice';
-import arCards from './Content/Projects/arCards';
-import shaderTest from './Content/Projects/shaderTest';
+import arCards from './Pages/Projects/arCards';
+import shaderTest from './Pages/Projects/shaderTest';
+import shaderEditor from './Pages/Projects/shaderEditor';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -89,6 +90,7 @@ const App = () => {
             <Route path="/projects/masters-thesis" component={mastersThesis} />
             <Route path="/projects/ar-card-game" component={arCards} />
             <Route path="/projects/shader-exploration" component={shaderTest} />
+            <Route path="/projects/shader-editor" component={shaderEditor} />
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
             {/* <Route path="/blogposts/:name" component={blogpostPage} /> */}

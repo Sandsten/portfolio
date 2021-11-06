@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRef } from 'react';
 import { useHistory } from 'react-router';
-import { Container } from '../styledComponents';
+import { Container } from '../../Components/Layout';
 import { Image, ImageRow } from '../../Components/Image';
 import CodeBox from '../../Components/CodeBox';
 import styled from 'styled-components';

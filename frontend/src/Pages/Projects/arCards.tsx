@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Container } from '../styledComponents';
+import { Container } from '../../Components/Layout';
 
-import projectsMetadata from '../Projects/projectsMetadata';
+import projectsMetadata from './projectsMetadata';
 
 interface Props {}
 const arCards = (props: Props) => {

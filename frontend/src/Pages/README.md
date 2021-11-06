@@ -1,0 +1,1 @@
+Store all files which are separate pages in this folder

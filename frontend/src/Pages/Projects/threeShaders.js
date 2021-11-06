@@ -94,6 +94,8 @@ const threeShaders = () => {
 		uniforms.u_resolution.value.x = width;
 		uniforms.u_resolution.value.y = height;
 
+		console.log(width, height);
+
 		renderer.setSize(width, height);
 	}
 

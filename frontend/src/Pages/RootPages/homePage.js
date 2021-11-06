@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Container } from '../styledComponents';
+import { Container } from '../../Components/Layout';
 
 import Link from '../../Components/Link';
 

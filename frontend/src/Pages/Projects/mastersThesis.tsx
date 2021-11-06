@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Image } from '../../Components/Image';
 
-import { Container } from '../styledComponents';
+import { Container } from '../../Components/Layout';
 
 import { DESKTOP_XS } from '../../Constants/sizes';
 import VideoPlayer from '../../Components/VideoPlayer';
