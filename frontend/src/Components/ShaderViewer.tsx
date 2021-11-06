@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import * as THREE from 'three';
+import styled from 'styled-components';
 
 import * as ThreeHelpers from '../Pages/Projects/Threejs/helpers';
+
+const StyledContainer = styled.span`
+	width: 100%;
+`;
 
 interface Props {
 	vertexShader: string;
@@ -108,7 +113,7 @@ const ShaderViewer = (props: Props) => {
 
 	if (!isSupported) return <div>Your browser does not support Webgl 2</div>;
 
-	return <div ref={parentEl}></div>;
+	return <StyledContainer ref={parentEl}></StyledContainer>;
 };
 
 export default ShaderViewer;
