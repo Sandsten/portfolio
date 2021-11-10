@@ -36,7 +36,7 @@ const BlogPostCard = styled.div`
 	display: flex;
 	flex-direction: column;
 	border-radius: 10px;
-	overflow: hidden;
+	/* overflow: hidden; */
 	padding: 10px;
 	margin-bottom: 20px;
 
@@ -60,11 +60,9 @@ const BlogPostCard = styled.div`
 	}
 
 	img {
-		border-radius: 10px;
-		margin-right: auto;
-		height: 100%;
-		width: auto;
+		width: 100%;
 		max-width: 400px;
+		border-radius: 10px;
 	}
 
 	hr {
