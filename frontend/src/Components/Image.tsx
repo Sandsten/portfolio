@@ -38,9 +38,9 @@ const StyledFigure = styled.figure<StyledFigureType>`
 
 	/* flex: initial; // same as flex: 0 1 auto; */
 
-	flex-grow: 1;
+	/* flex-grow: 1; */
 	flex-shrink: 1;
-	flex-basis: 0;
+	/* flex-basis: 0;  */
 
 	// This will center the figure
 	margin-left: auto;

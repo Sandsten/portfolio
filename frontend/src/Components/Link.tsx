@@ -6,7 +6,7 @@ import { DARK_THEME, LIGHT_THEME } from '../Constants/colors';
 export const StyledLinkContainer = styled.span`
 	background-color: ${(p) => p.theme.colors.CARD_BG};
 	border-radius: 5px;
-	/* padding: 3px; */
+	margin: 3px;
 	padding-top: 1px;
 	padding-bottom: 1px;
 

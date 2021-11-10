@@ -3,8 +3,12 @@ import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const StyledVideoContainer = styled.div`
-	width: 500px;
+	max-width: 500px;
 	font-weight: bold;
+`;
+
+const StyledVideo = styled.video`
+	width: 100%;
 `;
 
 type VideoPlayerProps = {
@@ -36,7 +40,7 @@ const VideoPlayer = ({ title, src, thumbnail, width = '500' }: VideoPlayerProps)
 	return (
 		<StyledVideoContainer>
 			<div>{title}</div>
-			<video
+			<StyledVideo
 				ref={videoRef}
 				width={width}
 				poster={thumbnail}
@@ -44,7 +48,7 @@ const VideoPlayer = ({ title, src, thumbnail, width = '500' }: VideoPlayerProps)
 				controls
 			>
 				<source src={src} type="video/mp4" />
-			</video>
+			</StyledVideo>
 		</StyledVideoContainer>
 	);
 };

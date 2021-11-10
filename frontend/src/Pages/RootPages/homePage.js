@@ -16,6 +16,11 @@ const ContactContainer = styled.div`
 	}
 `;
 
+const Portrait = styled.img`
+	width: 100%;
+	max-width: 300px;
+`;
+
 const Contact = () => {
 	return (
 		<ContactContainer>
@@ -28,9 +33,7 @@ const Contact = () => {
 };
 
 const homePage = () => {
-	const [shouldAnimate] = useState(true);
 	const history = useHistory();
-	const handleNav = (route) => history.push(route);
 
 	return (
 		<Container>
@@ -86,6 +89,9 @@ const homePage = () => {
 			</p>
 			<p>You can find and contact me here:</p>
 			<Contact />
+			<p>
+				<Portrait src="https://staffansandberg.com/media/images/other/portrait.webp" />
+			</p>
 		</Container>
 	);
 };

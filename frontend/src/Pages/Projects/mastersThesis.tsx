@@ -27,6 +27,7 @@ const ImageRow = styled.div`
 	@media (min-width: ${DESKTOP_XS}) {
 		flex-direction: row;
 		flex-wrap: nowrap;
+		flex-grow: 1;
 	}
 `;
 
@@ -90,7 +91,7 @@ const mastersThesis = (props: Props) => {
           aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all"
 				text="Full paper at DiVa"
 			/>
-
+			<Link href="https://github.com/Sandsten/bev-vr-simulator" text="Unity Project" />
 			<h2>Results (Simulator)</h2>
 			<p>Here I'll show the simulator I built in which my study was conducted.</p>
 			<p>
