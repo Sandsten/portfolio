@@ -10,6 +10,7 @@ export interface Theme {
 	LINK_2: string;
 	THEME_TOGGLE: string;
 	IS_PLAYING: string;
+	HAMBURGER_LINES: string;
 }
 
 // TODO: Organize the theme colors like this instead!
@@ -24,6 +25,7 @@ export const DARK_THEME: Theme = {
 	LINK_2: '#80ffea',
 	THEME_TOGGLE: '#eddeaf',
 	IS_PLAYING: 'rgb(4, 170, 109)',
+	HAMBURGER_LINES: '#1d1e26',
 };
 
 export const LIGHT_THEME: Theme = {
@@ -37,4 +39,5 @@ export const LIGHT_THEME: Theme = {
 	LINK_2: '#80ffea',
 	THEME_TOGGLE: '#202021',
 	IS_PLAYING: 'rgb(4, 170, 109)',
+	HAMBURGER_LINES: '#eee8d5',
 };

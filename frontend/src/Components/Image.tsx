@@ -18,7 +18,6 @@ const ImageRow = styled.div`
 	display: flex; // Takes up entire available width of page by default!
 	flex-direction: column;
 	/* align-items: baseline; */
-
 	@media (min-width: ${DESKTOP_XS}) {
 		flex-direction: row;
 		flex-wrap: nowrap;
@@ -37,10 +36,10 @@ const StyledFigure = styled.figure<StyledFigureType>`
 	/* flex: 1 1 auto; // Same as the three above */
 
 	/* flex: initial; // same as flex: 0 1 auto; */
-
-	/* flex-grow: 1; */
+	align-self: flex-end;
+	flex-grow: 1;
 	flex-shrink: 1;
-	/* flex-basis: 0;  */
+	flex-basis: 0;
 
 	// This will center the figure
 	margin-left: auto;
@@ -65,11 +64,10 @@ const StyledFigure = styled.figure<StyledFigureType>`
 	// This is when the sidebar moves to the left side
 	@media (min-width: ${DESKTOP_XS}) {
 		margin-left: 0;
-		margin-right: 20px;
+		margin-right: 0px;
 
 		:last-child {
 			margin-right: 0;
-			margin-bottom: 20px;
 		}
 	}
 `;
