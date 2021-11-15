@@ -1,0 +1,21 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "This website is for the sole purpose of being my portfolio and learning fullstack development.   So far I'm quite proficient in maintaining a server running Linux which serves various websites using Nginx.   For larger applications with lots of dependencies I'm using Docker to keep things separate from each other.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "docker compose -f docker-compose.dev.yml up --build  --remove-orphans"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sandsten/portfolio.git"
+  },
+  "author": "Staffan Sandberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sandsten/portfolio/issues"
+  },
+  "homepage": "https://staffansandberg.com"
+}

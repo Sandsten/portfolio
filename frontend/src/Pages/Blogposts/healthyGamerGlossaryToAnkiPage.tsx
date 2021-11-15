@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { useRef } from 'react';
-import { useHistory } from 'react-router';
 import { Container } from '../../Components/Layout';
 import { Image, ImageRow } from '../../Components/Image';
 import CodeBox from '../../Components/CodeBox';
 import styled from 'styled-components';
 
-import { healthyGamerToAnki, ankiConnectConfig } from './codeSnippets';
+import { healthyGamerToAnki, ankiConnectConfig } from '../../CodeSnippets/healthyGamerScrape';
 import VideoPlayer from '../../Components/VideoPlayer';
 import Link from '../../Components/Link';
 
@@ -52,19 +51,9 @@ const Outline = styled.ol`
 export interface IHealthyGamerGlossaryToAnkiProps {}
 
 export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiProps) {
-	const history = useHistory();
-	const tldrRef = useRef(null);
 	const scrollContainer = useRef(null);
 	const rootImagePath = 'media/images/healthy-gamer-gg-glossary-to-anki';
 	const ankiConnectCode = 2055492159;
-
-	function scrollToTLDR() {
-		if (tldrRef.current) {
-			const section = tldrRef.current as HTMLHeadingElement;
-			if (scrollContainer.current)
-				(scrollContainer.current as HTMLDivElement).scrollTo(0, section.offsetTop);
-		}
-	}
 
 	function scrollTo(id: string) {
 		const section = document.getElementById(id) as HTMLHeadingElement;
@@ -98,7 +87,6 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				All you have to do is install the Anki add-on AnkiConnect, add one line to its config file
 				and then paste some Javascript in your browser's console.
 			</p>
-			{/* <button onClick={scrollToTLDR}>TLDR</button> */}
 			<h2>Outline</h2>
 			<Outline>
 				<li onClick={() => scrollTo('1')}>
@@ -252,9 +240,6 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				The only thing which is a bit confusing is that they refer to cards as notes, which messed
 				with my mental model for a while.
 			</p>
-			{/* <h2 ref={tldrRef} id="tldr">
-				TLDR
-			</h2> */}
 			<h2 id="5">Too Long Didn't Read Need Video (TLDRNV)</h2>
 			<hr />
 			<VideoPlayer

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container } from '../../Components/Layout';
+import Link from '../../Components/Link';
 import VideoPlayer from '../../Components/VideoPlayer';
 
 const StyledTutorialVideosGrid = styled.div`
@@ -33,6 +34,19 @@ const TutorialsPage = () => {
 				Sometimes when I come across an annoyance and manage to find a solution for it. I get the
 				feeling there's probably someone else out there with the same little annoyance. When that
 				feeling strikes me I tend to make a video tutorial on how I went about solving it.
+			</p>
+			<p>
+				My current project which is taking some time to complete is a tutorial on how to digitalize
+				videos captured on a cam corder. At home we had a bunch of old MiniDV casettes which I took
+				upon myself to transfer to my home server for any family member to view via Plex.
+			</p>
+			<p>
+				I only upload videos to Youtube which I believe many people will benefit from. As of today
+				11-11-2021 theses two videos have a combined view count of 137 162.{' '}
+				<Link
+					href="https://www.youtube.com/channel/UCNE6qUrKRkuXqnGFf8ytEmg"
+					text="My Youtube channel"
+				/>
 			</p>
 			<StyledTutorialVideosGrid>
 				{videos.map((video) => {

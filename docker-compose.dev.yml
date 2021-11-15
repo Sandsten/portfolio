@@ -41,5 +41,5 @@ services:
       NODE_ENV: development
       DATABASE: remote
     env_file:
-      - ./secrets.env
+      - secrets.env
     command: ['npm', 'run', 'start:dev']
