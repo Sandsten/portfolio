@@ -12,7 +12,7 @@ const awayFromHome = (props: Props) => {
   return (
     <Container>
       <h1>Away From Home</h1>
-      <Link href='https://sonia-ch.github.io/ivis-project/#' text='Away From Home Website' />
+      <Link href='https://sonia-ch.github.io/ivis-project/#' text='Away From Home Website' inText={false}/>
       <p>In a group of 7 in a course in information visualization we came up with an idea of visualizing the location of refugees in an unbiased way. Where the unbiased part is not being able to identify each country straight away. Allowing the user to explore without any presumptions and can later get the name of the country on demand.</p>
 
       <Image 

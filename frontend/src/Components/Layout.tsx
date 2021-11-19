@@ -30,6 +30,10 @@ const Container = styled.div`
 			margin-top: 0;
 		}
 	}
+
+  .todo {
+    text-decoration: underline;
+  }
 `;
 
 const BlogPostCard = styled.div`

@@ -32,8 +32,9 @@ const mastersThesis = (props: Props) => {
 				href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
           aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all"
 				text="Full paper at DiVa"
+        inText={false}
 			/>
-			<Link href="https://github.com/Sandsten/bev-vr-simulator" text="Unity Project" />
+			<Link href="https://github.com/Sandsten/bev-vr-simulator" text="Unity Project" inText={false}/>
 			<h2>Simulator Setup</h2>
 			<p>
 				I built the simulator using Unity to allow for rapid implementation and iteration. The final
@@ -44,6 +45,13 @@ const mastersThesis = (props: Props) => {
 				position, power usage and much more. Once the user either ran out of battery or made it to
 				the finish line all the data was saved to disk in .csv format.{' '}
 			</p>
+
+      <p>
+        These are the two dashboards I implemented for each group. In Figure 1 we can see the novel one which aims to be transparent regarding how speed affects range. 
+        Where each vertical green bar shows how far you can drive if maintaining a certain speed. The original design was invented by my supervisor where I came up with the 
+        addition of the vertical blue line representing distance left to target.
+      </p>
+
       <ImageRow>
         <Image 
           imagePath="media/images/thesis/diff+cope1.webp"
@@ -59,7 +67,9 @@ const mastersThesis = (props: Props) => {
         />
       </ImageRow>
 
-      <p></p>
+      <p>
+        In the following two videos we can see the point of view of participants from each group when entering a highway. The design of the track had an initial slow part of 40 km/h followed by a highway at 110 km/h. Since this is a common scenario in which the guess-o-meter (Figure 2) can drastically reduce its estimate without the driver noticing. Where the novel dashboard (Figure 1) aims to give the user room for planning ahead, and to realize that 110 km/h most probably can't be maintained if the goal is to be reached.
+      </p>
       
 			<ImageRow>
 				<VideoPlayer
@@ -76,20 +86,19 @@ const mastersThesis = (props: Props) => {
 				/>
 			</ImageRow>
 
-			<ImageRow>
-				<Image
-					caption="Setup of driving simulator. VR headset, steering wheel + pedals, seat, speakers and microphone."
-					imagePath="media/images/thesis/simulator-setup.webp"
-					maxWidth={'350px'}
-					figNumber={1}
-				></Image>
-				{/* <Image
-					caption="View from the driver's perspective in VR."
-					imagePath="media/images/thesis/driving-in-vr.webp"
-					maxWidth={'700px'}
-					figNumber={2}
-				></Image> */}
-			</ImageRow>
+      <p>This is how the simulator was set up. Steering wheel, pedals, chair, VR headset, microphone, speakers and a desktop PC.</p>
+
+      <Image
+        caption="Setup of driving simulator. VR headset, steering wheel + pedals, seat, speakers and microphone."
+        imagePath="media/images/thesis/simulator-setup.webp"
+        maxWidth={'350px'}
+        figNumber={1}
+      />
+
+      <h2>Procedure</h2>
+
+      <p className='todo'>Talk about the procedure for each study. Intro + driving + questionnaire + interview</p>
+
 			<h2>Recruiting Participants</h2>
 			<p>
 				One tricky aspect of user studies is finding participants! I started with designing a poster
@@ -136,6 +145,8 @@ const mastersThesis = (props: Props) => {
 			</p>
 
 			<h2>Results</h2>
+
+      <p className='todo'>List the results. Quantitative and qualitative</p>
 
 			<ImageRow>
 				<Image
