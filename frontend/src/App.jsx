@@ -4,6 +4,10 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 
+import { setTheme } from './Redux/slices/siteConfigSlice';
+import { DESKTOP_XS } from './Constants/sizes';
+import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
+
 import Sidebar from './Components/Sidebar';
 import HomePage from './Pages/RootPages/homePage';
 import APITest from './Admin/APITest';
@@ -15,17 +19,14 @@ import threeShaders from './Pages/Projects/threeShaders';
 import tutorialsPage from './Pages/RootPages/tutorialsPage';
 import guitarPage from './Pages/RootPages/guitarPage';
 
-import { DESKTOP_XS } from './Constants/sizes';
-
 import mastersThesis from './Pages/Projects/mastersThesis';
 import { HealthyGamerGlossaryToAnki } from './Pages/Blogposts/healthyGamerGlossaryToAnkiPage';
 import { whinyDevices } from './Pages/Blogposts/whinyDevices';
 
-import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
-import { setTheme } from './Redux/slices/siteConfigSlice';
 import arCards from './Pages/Projects/arCards';
 import shaderTest from './Pages/Projects/shaderTest';
 import shaderEditor from './Pages/Projects/shaderEditor';
+import awayFromHome from './Pages/Projects/awayFromHome'
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -79,7 +80,7 @@ const App = () => {
         <BrowserRouter>
           {/* // https://reacttraining.com/react-router/web/api/Switch */}
           {/* Render the sidebar on all pages */}
-          <Route path="/" render={(props) => <Sidebar {...props} toggleTheme={toggleTheme}/>}/>
+          <Route path="/" render={(props) => <Sidebar {...props} toggleTheme={toggleTheme} />} />
           <Switch>
             {/* <Route path="/" component={TopBar} /> */}
             {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
@@ -89,6 +90,7 @@ const App = () => {
             {/* <Route path="/cv" component={cv} /> */}
             <Route path="/projects/masters-thesis" component={mastersThesis} />
             <Route path="/projects/ar-card-game" component={arCards} />
+            <Route path="/projects/away-from-home" component={awayFromHome} />
             <Route path="/projects/shader-exploration" component={shaderTest} />
             <Route path="/projects/shader-editor" component={shaderEditor} />
             <Route path="/projects/:name" component={projectPage} />

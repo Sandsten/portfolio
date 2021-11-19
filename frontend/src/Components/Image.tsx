@@ -17,8 +17,9 @@ import { DESKTOP_XS } from '../Constants/sizes';
 const ImageRow = styled.div`
 	display: flex; // Takes up entire available width of page by default!
 	flex-direction: column;
-	/* align-items: baseline; */
-	@media (min-width: ${DESKTOP_XS}) {
+  gap: 20px;
+
+  @media (min-width: ${DESKTOP_XS}) {
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}
@@ -44,8 +45,6 @@ const StyledFigure = styled.figure<StyledFigureType>`
 	// This will center the figure
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 0;
-	margin-bottom: 0;
 
 	max-width: ${(p) => p.maxWidth};
 
@@ -87,8 +86,6 @@ interface ImageProps {
 }
 
 const Image = (props: ImageProps) => {
-	const history = useHistory();
-
 	const id = `figure-${props.figNumber}`;
 
 	function openImage() {

@@ -1,11 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
-
-import { Image } from '../../Components/Image';
-
+import { Image, ImageRow } from '../../Components/Image';
 import { Container } from '../../Components/Layout';
-
-import { DESKTOP_XS } from '../../Constants/sizes';
 import VideoPlayer from '../../Components/VideoPlayer';
 import Link from '../../Components/Link';
 
@@ -19,64 +14,10 @@ import Link from '../../Components/Link';
   * The flex-wrap property is set to nowrap
 */
 
-const ImageRow = styled.div`
-	display: flex; // Takes up entire available width of page by default!
-	flex-direction: column;
-	align-items: baseline;
-	gap: 20px;
-
-	@media (min-width: ${DESKTOP_XS}) {
-		flex-direction: row;
-		flex-wrap: nowrap;
-		flex-grow: 1;
-	}
-`;
-
-// Allow author to specify the max width a figure can have!
-interface StyledFigureType {
-	maxWidth: string;
-}
-// Theses are the flex items inside an image row
-const StyledFigure = styled.figure<StyledFigureType>`
-	/* flex-grow: 1; // Allow item to increase its size along the main axis */
-	/* flex-shrink: 1; // Allow item to decrease its size along the main axis */
-	/* flex-basis: auto; // */
-	/* flex: 1 1 auto; // Same as the three above */
-
-	/* flex: initial; // same as flex: 0 1 auto; */
-
-	flex-grow: 1;
-	flex-shrink: 1;
-	flex-basis: 0;
-
-	// This will center the figure
-	margin-left: auto;
-	margin-right: auto;
-
-	max-width: ${(p) => p.maxWidth};
-	/* max-height: 350px; */
-
-	figcaption {
-		font-size: 0.9em;
-	}
-
-	:hover {
-		cursor: pointer;
-	}
-
-	// This is when the sidebar moves to the left side
-	@media (min-width: ${DESKTOP_XS}) {
-		margin-left: 0;
-		margin-right: 20px;
-
-		:last-child {
-			margin-right: 0;
-		}
-	}
-`;
 interface Props {}
 
 const mastersThesis = (props: Props) => {
+
 	return (
 		<Container>
 			<h1>Master's Thesis</h1>
@@ -103,16 +44,33 @@ const mastersThesis = (props: Props) => {
 				position, power usage and much more. Once the user either ran out of battery or made it to
 				the finish line all the data was saved to disk in .csv format.{' '}
 			</p>
+      <ImageRow>
+        <Image 
+          imagePath="media/images/thesis/diff+cope1.webp"
+          caption='Novel dashboard based on previous research. With the addition of a horizontal blue line for distance to target.'
+          figNumber={1}
+          maxWidth='500px'
+        />
+        <Image 
+          imagePath="media/images/thesis/guess-o-meter.webp"
+          caption='Conventional dashboard sometimes referred to as a "guess-o-meter".'
+          figNumber={2}
+          maxWidth='500px'
+        />
+      </ImageRow>
+
+      <p></p>
+      
 			<ImageRow>
 				<VideoPlayer
 					src="https://staffansandberg.com/media/video/driving-simulator-v1.webm"
-					width="500px"
+					maxWidth="500px"
 					title="Novel heads-up display in BEV"
 					thumbnail="https://staffansandberg.com/media/images/thumbnails/driving-simulator-v1-thumbnail.webp"
 				/>
 				<VideoPlayer
 					src="https://staffansandberg.com/media/video/driving-simulator-guess-o-meter.webm"
-					width="500px"
+					maxWidth="500px"
 					title="Conventional 'Guess-o-meter' in BEV"
 					thumbnail="https://staffansandberg.com/media/images/thumbnails/driving-in-vr-guess-o-meter-thumbnail.webp"
 				/>

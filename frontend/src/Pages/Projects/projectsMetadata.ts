@@ -15,13 +15,20 @@ const projectsMetadata: Array<ProjectMetadata> = [
 		tags: ['GLSL', 'Three.js', 'Math'],
 		fullProjectPath: 'shader-exploration',
 	},
-	// {
-	// 	title: `Tracking Card Game`,
-	// 	description: `Using AR to track a card game`,
-	// 	thumbnail: 'https://staffansandberg.com/media/images/thumbnails/thesis-thumbnail.webp',
-	// 	tags: ['AR', 'Unity'],
-	// 	fullProjectPath: 'ar-card-game',
-	// },
+	{
+		title: `Tracking Card Game with AR`,
+		description: `Using AR technology to track a card game`,
+		thumbnail: 'https://staffansandberg.com/media/images/thumbnails/tracking-cards.webp',
+		tags: ['AR', 'Unity'],
+		fullProjectPath: 'ar-card-game',
+	},
+  {
+		title: `Away From Home`,
+		description: `Visualizing how many refugees are living in each country in an unbiased way.`,
+		thumbnail: 'https://staffansandberg.com/media/images/thumbnails/away-from-home-thumbnail-2.webp',
+		tags: ['HTML', 'js', 'D3.js', 'Information Visualization'],
+		fullProjectPath: 'away-from-home',
+	},
 ];
 
 export default projectsMetadata;

@@ -246,7 +246,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 				src="https://staffansandberg.com/media/video/hg-glossary-to-anki.webm"
 				thumbnail=""
 				title=""
-				width="800"
+				maxWidth="800px"
 			/>
 		</Container>
 	);
