@@ -19,7 +19,7 @@ export const DARK_THEME: Theme = {
 	BACKGROUND: '#2a2c37',
 	TAG_BG: '#000000',
 	CARD_BG: '#1d1e26',
-	TEXT: '#f8f8f2',
+	TEXT: '#ffffff',
 	SIDEBAR: '#1d1e26',
 	LINK_1: '#9580ff',
 	LINK_2: '#80ffea',
