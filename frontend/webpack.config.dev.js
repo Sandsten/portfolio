@@ -6,6 +6,10 @@ module.exports = {
 	output: {
 		publicPath: '/',
 	},
+  watchOptions: {
+    aggregateTimeout: 200,
+    poll: 1000,
+  },
 	devServer: {
 		host: '0.0.0.0', // Required for working inside a docker container
 		port: 3001,
