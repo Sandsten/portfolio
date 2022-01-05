@@ -38,25 +38,25 @@ const StyledProjects = styled.div`
 `;
 
 const projects = () => {
-	const projects = useSelector((state) => state.projects);
-	// const projectsFetched = useSelector((state) => state.projects.fetched);
+  const projects = useSelector((state) => state.projects);
+  // const projectsFetched = useSelector((state) => state.projects.fetched);
 
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	useEffect(() => {
-		// Update to not fetch if we already have all the project in our redux store state
-		if (projects.status == "initialized") dispatch(getProjects());
-	}, []);
+  useEffect(() => {
+    // Update to not fetch if we already have all the project in our redux store state
+    if (projects.status == "initialized") dispatch(getProjects());
+  }, []);
 
   // With redux projects.status is initialized as null. It's never undefined
   if (projects.status == "loading" || projects.status == "initialized") return <Loading>Loading...</Loading>;
-  if (projects.status == "failed") return <LoadingFailed>Failed to find projects :( Try refresing the page</LoadingFailed>;
+  if (projects.status == "failed") return <LoadingFailed>Failed to find projects :( Try refreshing the page</LoadingFailed>;
 
-	return (
+  return (
     <Container>
       <StyledProjects>
-        {projectsMetadata.map((project) => 
-            <ProjectCard
+        {projectsMetadata.map((project) =>
+          <ProjectCard
             key={project.title}
             title={project.title}
             thumbnail={project.thumbnail}
@@ -79,7 +79,7 @@ const projects = () => {
         })}
       </StyledProjects>
     </Container>
-	);
+  );
 };
 
 export default projects;
