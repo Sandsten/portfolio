@@ -1,4 +1,6 @@
-FROM node:16-alpine3.11
+FROM node:20-alpine
+
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 WORKDIR /frontend
 

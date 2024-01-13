@@ -1,7 +1,5 @@
 ## Dockerfile for creating a production image
-FROM node:16-alpine3.11 as builder
-
-
+FROM node:20-alpine as builder
 
 #########################
 # BACKEND NODE PACKAGES #
@@ -22,8 +20,6 @@ RUN npm install
 RUN apk update && apk add curl bash && rm -rf /var/cache/apk/*
 RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
 RUN /usr/local/bin/node-prune
-
-
 
 ##########################
 # FRONTEND NODE PACKAGES #
@@ -66,7 +62,7 @@ RUN npm run build
 # Copy over installed node packages for backend
 
 ## This FROM will start a new container
-FROM node:16-alpine3.11
+FROM node:20-alpine
 
 WORKDIR /app
 

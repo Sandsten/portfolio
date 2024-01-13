@@ -83,40 +83,64 @@ const Tag = styled.div`
 	background-color: ${(p) => p.theme.colors.TAG_BG};
 `;
 
-interface ProjectCardProps {
-	title: string;
-	thumbnail: string;
-	description: string;
-	tags: Array<string>;
-	clickURL: string;
+type Thumbnails = Record<string, string>;
+
+const thumbnails: Thumbnails = {
+  "anki-hgg-added.webp": require('../assets/images/thumbnails/anki-hgg-added.webp'),
+  "away-from-home.resized.webp": require('../assets/images/thumbnails/away-from-home.resized.webp'),
+  "away-from-home.webp": require('../assets/images/thumbnails/away-from-home.webp'),
+  "bandmate.resized.webp": require('../assets/images/thumbnails/bandmate.resized.webp'),
+  "bandmate.webp": require('../assets/images/thumbnails/bandmate.webp'),
+  "banner-soundark.webp": require('../assets/images/thumbnails/banner-soundark.webp'),
+  "bear-with-me.webp": require('../assets/images/thumbnails/bear-with-me.webp'),
+  "birch-tree.webp": require('../assets/images/thumbnails/birch-tree.webp'),
+  "bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping-poster.webp": require('../assets/images/thumbnails/bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping-poster.webp'),
+  "braun-series-3-battery-replacement-poster.webp": require('../assets/images/thumbnails/braun-series-3-battery-replacement-poster.webp'),
+  "crowdsim.webp": require('../assets/images/thumbnails/crowdsim.webp'),
+  "driving-in-vr.webp": require('../assets/images/thumbnails/driving-in-vr.webp'),
+  "driving-simulator-v1-thumbnail.webp": require('../assets/images/thumbnails/driving-simulator-v1-thumbnail.webp'),
+  "godball.webp": require('../assets/images/thumbnails/godball.webp'),
+  "haptic-curling.webp": require('../assets/images/thumbnails/haptic-curling.webp'),
+  "lastShip.webp": require('../assets/images/thumbnails/lastShip.webp'),
+  "lion.webp": require('../assets/images/thumbnails/lion.webp'),
+  "per-albin.webp": require('../assets/images/thumbnails/per-albin.webp'),
+  "poster-version-2.webp": require('../assets/images/thumbnails/poster-version-2.webp'),
+  "shooting-range.webp": require('../assets/images/thumbnails/shooting-range.webp'),
+  "soundark.webp": require('../assets/images/thumbnails/soundark.webp'),
+  "storylines.webp": require('../assets/images/thumbnails/storylines.webp'),
+  "thesis-thumbnail.webp": require('../assets/images/thumbnails/thesis-thumbnail.webp'),
+  "tracking-cards.webp": require('../assets/images/thumbnails/tracking-cards.webp'),
+  "webgl.webp": require('../assets/images/thumbnails/webgl.webp'),
 }
 
-const ProjectCard = ({ title, thumbnail, description, tags, clickURL }:ProjectCardProps) => {
-	// TODO: Update database with correct url endings
-	let thumbnailUrl;
-	try {
-		// Update database to use webp format instead?
-		if (thumbnail.includes('https://staffansandberg.com/')) thumbnailUrl = thumbnail;
-		else thumbnailUrl = `https://staffansandberg.com/media/images/thumbnails/${thumbnail}`.replace('png', 'webp');
-	} catch (error) {
-		thumbnailUrl = '';
-	}
+interface ProjectCardProps {
+	project: ProjectCard;
+}
 
+interface ProjectCard {
+	title: string;
+	thumbnail: string;
+	summary: string;
+	tools: Array<string>;
+	page: string;
+}
+
+const ProjectCard = ({project}: ProjectCardProps) => {
 	return (
-		<StyledProjectCard to={'/projects/' + clickURL}>
+		<StyledProjectCard to={`/projects/${project.page}`}>
 			<Title>
-				<b>{title}</b>
+				<b>{project.title}</b>
 			</Title>
-			<Description>{description}</Description>
+			<Description>{project.summary}</Description>
 			<TagContainer>
-				{tags.map((tag) => {
+				{project.tools.map((tag) => {
 					if (tag == 'cpp') {
 						tag = 'c++';
 					}
 					return <Tag key={tag}>{tag}</Tag>;
 				})}
 			</TagContainer>
-			<Image src={thumbnailUrl} alt={title + 'thumbnail'} />
+			<Image src={thumbnails[project.thumbnail]} alt={`${project.title}-thumbnail`} />
 		</StyledProjectCard>
 	);
 };

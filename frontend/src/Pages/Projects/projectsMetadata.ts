@@ -22,7 +22,7 @@ const projectsMetadata: Array<ProjectMetadata> = [
 		tags: ['AR', 'Unity'],
 		fullProjectPath: 'ar-card-game',
 	},
-  {
+	{
 		title: `Away From Home`,
 		description: `Visualizing how many refugees are living in each country in an unbiased way.`,
 		thumbnail: 'https://staffansandberg.com/media/images/thumbnails/away-from-home-thumbnail-2.webp',
