@@ -6,11 +6,17 @@ import styled from 'styled-components';
 import { blogPostsMetadata } from '../Blogposts/blogPostsMetadata';
 import { Container, BlogPostCard } from '../../Components/Layout';
 
+
+const BlogPostsContainer = styled.div`
+	display: grid;
+`
+
 function blog() {
 	const history = useHistory();
 
 	return (
 		<Container>
+			<BlogPostsContainer>
 			{blogPostsMetadata.map((post) => {
 				const date = post.date.toISOString().split('T')[0];
 				const tags = post.tags.join(', ');
@@ -32,6 +38,7 @@ function blog() {
 					</BlogPostCard>
 				);
 			})}
+			</BlogPostsContainer>
 		</Container>
 	);
 }

@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
 
 import { Container } from '../../Components/Layout';
-
 import Link from '../../Components/Link';
 
 const ContactContainer = styled.div`
@@ -16,25 +14,16 @@ const ContactContainer = styled.div`
 	}
 `;
 
-const Portrait = styled.img`
-	width: 100%;
-	max-width: 300px;
-`;
-
 const Contact = () => {
 	return (
 		<ContactContainer>
 			<Link href="https://www.linkedin.com/in/stsa/" text="Linkedin" />
 			<Link href="https://github.com/Sandsten" text="Github" />
-			{/* <Link target="_blank" href="mailto:stsand@kth.se" rel="noopener noreferrer" text="Email">
-				Email */}
 		</ContactContainer>
 	);
 };
 
 const homePage = () => {
-	const history = useHistory();
-
 	return (
 		<Container>
 			<p>Hello and welcome to my website!</p>
@@ -60,22 +49,11 @@ const homePage = () => {
 
 			<p>
 				For{' '}
-				{/* <StyledA href="https://www.diva-portal.org/smash/record.jsf?dswid=9827&pid=diva2%3A1469206&c=1&searchType=UNDERGRADUATE&language=en&query=&af=%5B%5D&
-          aq=%5B%5B%7B%22author%22%3A%5B%22Sandberg%2C+Staffan%22%5D%7D%5D%5D&aq2=%5B%5B%7B%22dateIssued%22%3A%7B%22from%22%3A%222020%22%2C%22to%22%3A%222020%22%7D%7D%5D%5D&aqe=%5B%5D&noOfRows=50&sortOrder=author_sort_asc&sortOrder2=title_sort_asc&onlyFullText=true&sf=all">
-						my thesis
-					</StyledA>{' '} */}
 				<Link href="https://staffansandberg.com/projects/masters-thesis" text="my thesis" /> I
 				wanted to explore Virtual Reality a bit further, since I had only briefly used it previously
 				in one of my courses. Therefore I found a topic where I had to create a driving simulator
 				for electric vehicles in VR. In order to test a range critical situation using two different
 				dashboards.{' '}
-				{/*You can read about the project in a shorter
-						format compared to the article{' '}
-						<LinkInternal
-							text="here on my website"
-							handleNav={(route) => handleNav(route)}
-							route="/projects"
-						/> */}
 			</p>
 			<p>
 				In my free time I enjoy playing classical guitar, video games, reading books and learning
@@ -89,9 +67,6 @@ const homePage = () => {
 			</p>
 			<p>You can find and contact me here:</p>
 			<Contact />
-			<p>
-				<Portrait src="https://staffansandberg.com/media/images/other/portrait.webp" />
-			</p>
 		</Container>
 	);
 };

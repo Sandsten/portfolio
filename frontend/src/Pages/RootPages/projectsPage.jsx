@@ -5,7 +5,7 @@ import { Loading } from "../../Components/StateIndicators";
 import ProjectCard from '../../Components/ProjectCard';
 import { Container } from "../../Components/Layout";
 
-import { DESKTOP_XS } from '../../Constants/sizes';
+import { DESKTOP_XS, DESKTOP_XL } from '../../Constants/sizes';
 
 import projectsMetadata from '../../projects.json';
 
@@ -28,9 +28,13 @@ const StyledProjects = styled.div`
 		/* In this case. Create as many columns no smaller than 450 pixels within 1fr of the given space */
 		grid-column-gap: 15px;
 		grid-row-gap: 15px;
-		grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 		/* grid-template-row.webps: repeat(auto-fit, minmax(200px, 1fr)); */
 	}
+  
+  @media (min-width: ${DESKTOP_XL}) {
+    /* max-width: 1000px; */
+  }
 `;
 
 

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 import { DARK_THEME, LIGHT_THEME } from '../Constants/colors';
 
-export const StyledLinkContainer = styled.span<{inText: boolean}>`
-	background-color: ${(p) => p.theme.colors.CARD_BG};
+export const StyledLinkContainer = styled.span<{ inText: boolean }>`
+	/* background-color: ${(p) => p.theme.colors.CARD_BG}; */
 	border-radius: 5px;
 	
-  margin: ${p => p.inText ? "0px" : "0px 6px 0px 0px"};
+	margin: ${p => p.inText ? "0px" : "0px 6px 0px 0px"};
 	
-  padding-top: 1px;
+	padding-top: 1px;
 	padding-bottom: 1px;
 
 	a {
@@ -38,10 +38,10 @@ export const StyledLinkContainer = styled.span<{inText: boolean}>`
 interface Props {
 	href: string;
 	text: string;
-  inText?: boolean;
+	inText?: boolean;
 }
 const Link = (props: Props) => {
-  const {inText = true} = props;
+	const { inText = true } = props;
 	return (
 		<StyledLinkContainer inText={inText}>
 			<a href={props.href}>{props.text}</a>
