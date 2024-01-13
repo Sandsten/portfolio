@@ -34,6 +34,7 @@ const mastersThesis = (props: Props) => {
 				text="Full paper at DiVa"
         inText={false}
 			/>
+			{' '}
 			<Link href="https://github.com/Sandsten/bev-vr-simulator" text="Unity Project" inText={false}/>
 			<h2>Simulator Setup</h2>
 			<p>
