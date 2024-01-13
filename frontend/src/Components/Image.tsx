@@ -76,6 +76,7 @@ const StyledImage = styled.img`
 	// width will match the width of the figure, the figure will adjust it width based on flexbox
 	// since aspect ratio is kept the width of the image is limited by the max-height
 	width: 100%;
+	background-color: white;
 `;
 
 interface ImageProps {
@@ -95,9 +96,9 @@ const Image = (props: ImageProps) => {
 
 	return (
 		<StyledFigure onClick={openImage} maxWidth={props.maxWidth} id={id}>
-			<a href={`https://staffansandberg.com/${props.imagePath}`}>
-				<StyledImage src={`https://staffansandberg.com/${props.imagePath}`}></StyledImage>
-			</a>
+			{/* <a href={`https://staffansandberg.com/${props.imagePath}`}> */}
+				<StyledImage src={props.imagePath}></StyledImage>
+			{/* </a> */}
 			<figcaption>
 				<em>{`Fig ${props.figNumber}: ${props.caption}`}</em>
 			</figcaption>
