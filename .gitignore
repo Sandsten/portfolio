@@ -1,4 +1,5 @@
 node_modules
 build
 secrets.env
+secrets.txt
 .vscode
