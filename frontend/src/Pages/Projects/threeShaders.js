@@ -27,6 +27,7 @@ const threeShaders = () => {
 		};
 
 		// const context = canvasEl.current.getContext('webgl2');
+		Three.Plane
 		renderer = new Three.WebGLRenderer();
 		renderer.setPixelRatio(parentEl.devicePixelRatio);
 		parentEl.current.appendChild(renderer.domElement);
@@ -37,7 +38,7 @@ const threeShaders = () => {
 
 		scene = new Three.Scene();
 
-		geometry = new Three.PlaneBufferGeometry(2, 2);
+		geometry = new Three.PlaneGeometry(2, 2);
 
 		// Create a material which use our shader
 		material = new Three.ShaderMaterial({
