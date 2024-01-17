@@ -1,16 +1,12 @@
 const fs = require('fs');
 
-/* See if a docker secret exist for the given environment variable.
-If no docker secret exist, the env variable might have been set by the .env file
-If the env variable is still undefined, it doesn't exist as a docker secret file and hasn't been set by an .env file */
 let secrets = {};
+
 exports.read = (secretName) => {
 	let value;
 	// We only have to load secrets once
 	if (Object.keys(secrets).length == 0) {
-		console.log("Load secrets!")
 		try {
-			// const secretLocation = `/run/secrets/${secretName}`;
 			const secretLocation = `/run/secrets/my_secrets`;
 			value = fs.readFileSync(secretLocation, 'utf-8');
 			value = value.split("\r\n");
@@ -26,6 +22,9 @@ exports.read = (secretName) => {
 			const [key, value] = v.split("=");
 			secrets[key] = value;
 		});
+
+		if (Object.keys(secrets).length > 0)
+			console.log("Secrets loaded");
 	}
 
 	return secrets[secretName];
