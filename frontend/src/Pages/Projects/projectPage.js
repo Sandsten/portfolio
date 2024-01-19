@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../../Constants/sizes';
@@ -52,7 +51,7 @@ const projectPage = (props) => {
 		// }
 	}, []);
 
-	if (project === undefined) return <Redirect to="/projects" />;
+	// if (project === undefined) return <Navigate to="/projects" />;
 
 	// If projects haven't loaded yet
 	if (!project)

@@ -13,13 +13,18 @@ services:
     ports:
       - 3001:3001 # For webpack-dev-server
       - 9229:9229 # For attaching a debuger
-    # Map local frontend code onto our container frontend folder. (bind mount)
-    # The name of the folder in our container is defined in its Dockerfile
-    # By doing this we can make changes on our HOST and see changes in our container
-    volumes:
-      - ./frontend/src:/frontend/src
+    command: npm start
     environment:
       NODE_ENV: development
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend/src
+          target: /frontend/src
+          ignore:
+            - ./frontend/node_modules
+        - action: rebuild
+          path: ./frontend/package.json
 
   # Node backend
   backend:
@@ -40,6 +45,11 @@ services:
       PORT: 3000
       NODE_ENV: development
       DATABASE: remote
-    env_file:
-      - secrets.env
+    secrets:
+      - my_secrets
+    
     command: ['npm', 'run', 'start:dev']
+
+secrets:
+  my_secrets:
+    file: ./secrets.txt

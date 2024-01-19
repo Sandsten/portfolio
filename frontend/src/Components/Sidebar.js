@@ -169,9 +169,7 @@ const Sidebar = (props) => {
 	const navList = [
 		['/', 'About'],
 		['/projects', 'Projects'],
-		['/posts', 'Posts'],
-		['/tutorials', 'DIY Fixes'],
-		['/guitar', 'Guitar'],
+		['/tutorials', 'Tutorials'],
 	];
 
 	return (

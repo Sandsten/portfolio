@@ -117,7 +117,7 @@ export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiPro
 			<p>
 				Install it by first opening Anki and navigate to the Add-ons page [Tools {'>'} Add-ons {'>'}{' '}
 				Get Add-ons]. Enter the code{' '}
-				<CopyableText onClick={(e) => copyText(ankiConnectCode.toString(), e)}>
+				<CopyableText onClick={(e: React.MouseEvent) => copyText(ankiConnectCode.toString(), e)}>
 					{ankiConnectCode}
 				</CopyableText>{' '}
 				and press [OK]. See Figure 1.1.

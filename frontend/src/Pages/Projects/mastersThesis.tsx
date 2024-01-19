@@ -22,6 +22,10 @@ const mastersThesis = (props: Props) => {
 		return require(`../../assets/images/thesis/${name}`)
 	}
 
+	const loadVideo = (name: string) => {
+		return require(`../../assets/video/${name}`)
+	}
+
 	return (
 		<Container>
 			<h1>Master's Thesis</h1>
@@ -77,7 +81,7 @@ const mastersThesis = (props: Props) => {
 				In the following two videos we can see the point of view of participants from each group when entering a highway. The design of the track had an initial slow part of 40 km/h followed by a highway at 110 km/h. Since this is a common scenario in which the guess-o-meter (Figure 2) can drastically reduce its estimate without the driver noticing. Where the novel dashboard (Figure 1) aims to give the user room for planning ahead, and to realize that 110 km/h most probably can't be maintained if the goal is to be reached.
 			</p>
 
-			<ImageRow>
+			{/* <ImageRow>
 				<VideoPlayer
 					src="https://staffansandberg.com/media/video/driving-simulator-v1.webm"
 					maxWidth="500px"
@@ -85,12 +89,12 @@ const mastersThesis = (props: Props) => {
 					thumbnail="https://staffansandberg.com/media/images/thumbnails/driving-simulator-v1-thumbnail.webp"
 				/>
 				<VideoPlayer
-					src="https://staffansandberg.com/media/video/driving-simulator-guess-o-meter.webm"
+					src={loadVideo("driving-simulator-v1.webm")}
 					maxWidth="500px"
 					title="Conventional 'Guess-o-meter' in BEV"
 					thumbnail="https://staffansandberg.com/media/images/thumbnails/driving-in-vr-guess-o-meter-thumbnail.webp"
 				/>
-			</ImageRow>
+			</ImageRow> */}
 
 			<p>This is how the simulator was set up. Steering wheel, pedals, chair, VR headset, microphone, speakers and a desktop PC.</p>
 

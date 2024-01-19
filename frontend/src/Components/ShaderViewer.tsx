@@ -21,7 +21,7 @@ const ShaderViewer = (props: Props) => {
 	let uniforms: any; // TODO: Find the correct type
 	let scene: THREE.Scene;
 	let camera: THREE.Camera;
-	let geometry: THREE.PlaneBufferGeometry;
+	let geometry: THREE.PlaneGeometry;
 	let material: THREE.ShaderMaterial;
 	let frameId: number | null = null;
 
@@ -49,7 +49,7 @@ const ShaderViewer = (props: Props) => {
 
 		scene = new THREE.Scene();
 
-		geometry = new THREE.PlaneBufferGeometry(2, 2);
+		geometry = new THREE.PlaneGeometry(2, 2);
 
 		console.log(props.vertexShader, props.fragmentShader);
 

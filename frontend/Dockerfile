@@ -9,7 +9,7 @@ COPY [ "package.json", "package-lock.json", "./" ]
 
 # RUN npm config set loglevel info
 # RUN npm set progress=false 
-RUN npm install --verbose
+RUN npm install
 
 # Copy everything into the docker container
 COPY . .

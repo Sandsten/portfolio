@@ -14,7 +14,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "kill-port": "^1.5.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^3.0.2"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

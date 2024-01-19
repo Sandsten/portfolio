@@ -3,7 +3,7 @@ version: '3.8'
 
 services:
   app:
-    image: index.docker.io/sandsten/portfolio:latest
+    image: sandsten/portfolio:latest
     # '127.0.0.1:3000:3000' will ensure port 3000 is only exposed to host and not remote
     # Remote access should be handled by Nginx instead!
     ports:
@@ -12,5 +12,9 @@ services:
       DATABASE: remote
       NODE_ENV: production
       PORT: 3000
-    env_file:
-      - secrets.env
+    secrets:
+      - my_secrets
+
+secrets:
+  my_secrets:
+    file: ./secrets.txt

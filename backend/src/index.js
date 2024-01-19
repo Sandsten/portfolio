@@ -20,6 +20,7 @@ app.use(history());
 
 app.use(config.headerConfig);
 
+
 // Account handling
 app.post('/sign-in', databse.signIn);
 app.post('/auto-signin', databse.signInWithToken);
