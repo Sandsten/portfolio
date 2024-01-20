@@ -7,7 +7,7 @@ import { Container } from "../../Components/Layout";
 
 import { DESKTOP_XS, DESKTOP_XL } from '../../Constants/sizes';
 
-import projectsMetadata from '../../projects.json';
+import projectsMetadata from '../../projects';
 
 // Mobile first!
 const StyledProjects = styled.div`
