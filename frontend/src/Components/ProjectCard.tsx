@@ -87,9 +87,7 @@ type Thumbnails = Record<string, string>;
 
 const thumbnails: Thumbnails = {
 	"anki-hgg-added.webp": require('../assets/images/thumbnails/anki-hgg-added.webp'),
-	"away-from-home.resized.webp": require('../assets/images/thumbnails/away-from-home.resized.webp'),
 	"away-from-home.webp": require('../assets/images/thumbnails/away-from-home.webp'),
-	"bandmate.resized.webp": require('../assets/images/thumbnails/bandmate.resized.webp'),
 	"bandmate.webp": require('../assets/images/thumbnails/bandmate.webp'),
 	"banner-soundark.webp": require('../assets/images/thumbnails/banner-soundark.webp'),
 	"bear-with-me.webp": require('../assets/images/thumbnails/bear-with-me.webp'),

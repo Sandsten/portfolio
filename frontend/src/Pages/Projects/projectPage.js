@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../../Constants/sizes';
 
+import projectsMetadata from '../../projects';
+
 const StyledProjectPage = styled.div`
 	display: block;
 	padding: 20px;
@@ -30,30 +32,15 @@ const StyledLink = styled(Link)`
 `;
 
 const projectPage = (props) => {
-	// const [project, setProject] = useState(null);
-	const project = useSelector((state) => {
-		if (!state.projects.data) return null;
-		// Find the correct project in the redux state
-		return state.projects.data.find((project) => {
-			return project.localURL === props.match.params.name;
-		});
-	});
-	const projectsFetched = useSelector((state) => state.projects.fetched);
-	const dispatch = useDispatch();
-	const staggerDelay = 0.02;
+	// Find the project that match the url and show the info.
+	// This is temporary before all the projects have their own page.
+	const project = projectsMetadata.filter((project => {
+		if(props.match.params.name === project.page) {
+			return true
+		}
+		return false
+	}))[0];
 
-	useEffect(() => {
-		// If project wasn't in the redux state, fetch from database
-		// if (!projectsFetched) dispatch(fetchProjects());
-		//TODO: Opportunity for slight optimization, if refreshing on project page, only fetch that specific project
-		// if (!project) {
-		//   //dispatch(fetchProject(props.match.params.name));
-		// }
-	}, []);
-
-	// if (project === undefined) return <Navigate to="/projects" />;
-
-	// If projects haven't loaded yet
 	if (!project)
 		return <StyledProjectPage style={{ height: '100vh' }}>'Loading...'</StyledProjectPage>;
 

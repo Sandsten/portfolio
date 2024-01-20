@@ -92,16 +92,16 @@ const App = () => {
             <Route path="/projects/ar-card-game" component={arCards} />
             <Route path="/projects/away-from-home" component={awayFromHome} />
             <Route path="/projects/shader-exploration" component={shaderTest} />
-            <Route path="/projects/shader-editor" component={shaderEditor} />
+            {/* <Route path="/projects/shader-editor" component={shaderEditor} /> */}
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
             {/* <Route path="/blogposts/:name" component={blogpostPage} /> */}
             {/* <Route path="/blogposts" component={blog} /> */}
             <Route path="/shaders" component={threeShaders} />
             <Route path="/tutorials" component={tutorialsPage} />
-            <Route path="/posts/healthy-gamer-glossary-to-anki" component={HealthyGamerGlossaryToAnki} />
-            <Route path="/posts/whiny-devices" component={whinyDevices} />
-            <Route path="/posts" component={blogPage} />
+            {/* <Route path="/posts/healthy-gamer-glossary-to-anki" component={HealthyGamerGlossaryToAnki} /> */}
+            {/* <Route path="/posts/whiny-devices" component={whinyDevices} /> */}
+            {/* <Route path="/posts" component={blogPage} /> */}
             <Route path="/guitar" component={guitarPage} />
             <Route
               render={() => {

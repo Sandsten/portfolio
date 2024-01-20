@@ -99,8 +99,7 @@ const data: ProjectData[] = [
         ],
         summary: "Compete against your friends on who has the fastest reaction time",
         description: "During the weekend I decided to learn how to use Socket.IO with Node.js. I came up with a concept of a online game in which you compete against each other to hit appearing targets as fast as possible. The game is hosted on Heroku.",
-        website: "http://shootingrange.herokuapp.com/",
-        github: "https://github.com/Sandsten/ShootingRange",
+        github: "https://github.com/Sandsten/shooting-range",
         groupSize: "1 st",
     },
     {

@@ -16,7 +16,7 @@ const awayFromHome = (props: Props) => {
       <p>In a group of 7 in a course in information visualization we came up with an idea of visualizing the location of refugees in an unbiased way. Where the unbiased part is not being able to identify each country straight away. Allowing the user to explore without any presumptions and can later get the name of the country on demand.</p>
 
       <Image 
-        imagePath='media/images/away-from-home/away-from-home-1.webp'
+        imagePath={require("../../assets/images/thumbnails/away-from-home.webp")}
         caption='Selecting a square in the grid reveals the refugee population, but not the country which the square represent.'
         figNumber={1}
         maxWidth='1000px'
