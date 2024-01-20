@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { DESKTOP_XS } from '../Constants/sizes';
 
 // Images and videos could potentially share this wrapper
-const StyledFigure = styled.figure<{maxWidth: string}>`
+const StyledFigure = styled.figure<{ maxWidth: string }>`
 	/* flex-grow: 1; // Allow item to increase its size along the main axis */
 	/* flex-shrink: 1; // Allow item to decrease its size along the main axis */
 	/* flex-basis: auto; // */
@@ -56,7 +56,7 @@ type VideoPlayerProps = {
 	title?: string;
 	thumbnail?: string;
 	maxWidth?: string;
-  caption?: string;
+	caption?: string;
 };
 
 /*
@@ -78,22 +78,31 @@ const VideoPlayer = ({ title, src, thumbnail, maxWidth = '500', caption }: Video
 		}
 	}, []);
 
-	return (
-		<StyledFigure maxWidth={maxWidth}>
-			<div className='title'>{title}</div>
-			<video
+	let videoContainer = null;
+	if (src.includes("youtube.com")) {
+		videoContainer = <iframe allow='fullscreen' width="99%" height="315"
+			src={src}>
+		</iframe>;
+	} else {
+		videoContainer = <video
 				ref={videoRef}
 				poster={thumbnail}
 				onVolumeChange={rememberVolume}
 				controls
 			>
 				<source src={src} type="video/mp4" />
-			</video>
-      {caption ? 
-        <caption>
-          {caption}
-        </caption> 
-        : null}
+			</video>;
+	}
+
+	return (
+		<StyledFigure maxWidth={maxWidth}>
+			<div className='title'>{title}</div>
+			{videoContainer}	
+			{caption ?
+				<caption>
+					{caption}
+				</caption>
+				: null}
 		</StyledFigure>
 	);
 };

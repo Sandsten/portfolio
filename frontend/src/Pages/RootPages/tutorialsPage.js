@@ -16,15 +16,11 @@ const TutorialsPage = () => {
 	const videos = [
 		{
 			title: 'Braun Series 3 Shaver Battery Replacement',
-			src: 'https://staffansandberg.com/media/video/braun-series-3-battery-replacement.webm',
-			thumbnail:
-				'https://staffansandberg.com/media/images/thumbnails/Braun%20Series%203%20battery%20replacement%20poster.webp',
+			src: "https://www.youtube.com/embed/uP1u2lYN3DQ",
 		},
 		{
 			title: 'Bosh Maxx 7 Washer How To Mute',
-			src: 'https://staffansandberg.com/media/video/bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping.webm',
-			thumbnail:
-				'https://staffansandberg.com/media/images/thumbnails/Bosh%20maxx%207%20VarioPerfect%20how%20to%20turn%20off%20the%20beeping%20poster.webp',
+			src: "https://www.youtube.com/embed/D3Ls3jAgcwM",
 		},
 	];
 
@@ -42,7 +38,7 @@ const TutorialsPage = () => {
 			</p>
 			<p>
 				I only upload videos to Youtube which I believe many people will benefit from. As of today
-				11-11-2021 theses two videos have a combined view count of 137 162.{' '}
+				20-01-2024 theses two videos have a combined view count of 237.9K.{' '}
 				<Link
 					href="https://www.youtube.com/channel/UCNE6qUrKRkuXqnGFf8ytEmg"
 					text="My Youtube channel"
@@ -55,7 +51,6 @@ const TutorialsPage = () => {
 							key={video.title}
 							title={video.title}
 							src={video.src}
-							thumbnail={video.thumbnail}
 						/>
 					);
 				})}
