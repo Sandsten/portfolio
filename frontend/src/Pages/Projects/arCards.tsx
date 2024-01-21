@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Image, ImageRow } from '../../Components/Image';
+import Image from '../../Components/Image/Image';
+import ImageRow from '../../Components/ImageRow/ImageRow';
 
 import { Container } from '../../Components/Layout';
 import VideoPlayer from '../../Components/VideoPlayer';

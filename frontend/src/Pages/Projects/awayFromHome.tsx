@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { Container } from '../../Components/Layout';
-import { Image } from '../../Components/Image';
+import Image from '../../Components/Image/Image';
 import Link from '../../Components/Link';
 
 import projectsMetadata from '../Projects/projectsMetadata';

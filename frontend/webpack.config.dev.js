@@ -37,9 +37,9 @@ module.exports = {
 				loader: 'webpack-glsl-loader',
 			},
 			{
-				test: /\.css$/,
+				test: /\.(css|scss)$/,
 				// Order of modules matters
-				use: ['style-loader', 'css-loader'],
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 			{
 				test: /\.(jpg|png|svg|gif|pdf|webp|webm|ico)$/,

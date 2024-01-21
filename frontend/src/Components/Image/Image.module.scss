@@ -1,0 +1,45 @@
+.image {
+	width: 100%;
+	background-color: white;
+}
+
+.figure {
+	/* flex-grow: 1; // Allow item to increase its size along the main axis */
+	/* flex-shrink: 1; // Allow item to decrease its size along the main axis */
+	/* flex-basis: auto; // */
+	/* flex: 1 1 auto; // Same as the three above */
+
+	align-self: flex-end;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 0;
+
+	/* This will center the figure */
+	margin-left: auto;
+	margin-right: auto;
+
+	/* max-width: ${(p) => p.maxWidth}; */
+	max-width: 500px;
+
+	/* background-color: ${(p) => p.theme.colors.CARD_BG}; */
+	background-color: #1d1e26;
+	padding: 10px;
+
+	.a {
+		height: 100%;
+	}
+
+	.figcaption {
+		font-size: 0.9em;
+	}
+
+	/* // This is when the sidebar moves to the left side */
+	@media (min-width: 800px) {
+		margin-left: 0;
+		margin-right: 0px;
+
+		:last-child {
+			margin-right: 0;
+		}
+	}
+}

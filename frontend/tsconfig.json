@@ -9,6 +9,10 @@
     "allowJs": true,             // allow a partial TypeScript and JavaScript codebase
     "strict": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": false
-}
+    "allowSyntheticDefaultImports": false,
+    "esModuleInterop": true,
+    "plugins": [{
+      "name": "typescript-plugin-css-modules"
+    }]
+  }
 }

@@ -1,0 +1,11 @@
+.image {
+    display: flex; // takes up entire available width of page by default!
+    flex-direction: column;
+    gap: 20px;
+
+    @media (min-width: 800px) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+}

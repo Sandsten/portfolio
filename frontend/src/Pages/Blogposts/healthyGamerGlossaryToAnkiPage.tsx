@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useRef } from 'react';
 import { Container } from '../../Components/Layout';
-import { Image, ImageRow } from '../../Components/Image';
+import Image from '../../Components/Image/Image';
+import ImageRow from '../../Components/ImageRow/ImageRow';
 import CodeBox from '../../Components/CodeBox';
 import styled from 'styled-components';
 
