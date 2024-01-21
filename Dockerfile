@@ -1,5 +1,5 @@
 ## Dockerfile for creating a production image
-FROM node:20-alpine as builder
+FROM node:18-alpine as builder
 
 #########################
 # BACKEND NODE PACKAGES #
@@ -65,7 +65,7 @@ RUN npm run build
 # Copy over installed node packages for backend
 
 ## This FROM will start a new container
-FROM node:20-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
