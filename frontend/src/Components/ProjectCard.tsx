@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { MOBILE_XS } from '../Constants/sizes';
+import { DESKTOP_XL, MOBILE_XS } from '../Constants/sizes';
 
 const StyledProjectCard = styled(Link)`
 	display: grid;
@@ -33,11 +33,12 @@ const StyledProjectCard = styled(Link)`
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: auto 1fr auto;
 	}
-
+	
+	transition: transform 0.1s ease, box-shadow 0.1s ease;
 	:hover {
-		/* transform: scale(1.02); */
-		transform: translateY(-1px); // scale(1.005);
-		/* box-shadow: 0px 2px 10px 1px black; */
+		transform: translate(-2px, -2px); // scale(1.005);
+		box-shadow: 7px 7px 5px 0px black;
+		/* box-shadow: 7px 7px 5px 0px ${p => p.theme.colors.TAG_BG}; */
 	}
 `;
 
