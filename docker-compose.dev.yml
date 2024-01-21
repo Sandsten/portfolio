@@ -27,29 +27,29 @@ services:
           path: ./frontend/package.json
 
   # Node backend
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    image: sandsten/portfolio-backend:dev
-    container_name: backend
-    # depends_on:
-    #   - mongodb
-    ports:
-      - 3000:3000
-    volumes:
-      # Only include the src/ as a bind mount if we want to keep our local folder free of node_modules
-      # If we had ./backend:/backend instead, the installed node_modules in in our container would be deleted!
-      - ./backend/src:/backend/src
-    environment:
-      PORT: 3000
-      NODE_ENV: development
-      DATABASE: remote
-    secrets:
-      - my_secrets
+#   backend:
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile
+#     image: sandsten/portfolio-backend:dev
+#     container_name: backend
+#     # depends_on:
+#     #   - mongodb
+#     ports:
+#       - 3000:3000
+#     volumes:
+#       # Only include the src/ as a bind mount if we want to keep our local folder free of node_modules
+#       # If we had ./backend:/backend instead, the installed node_modules in in our container would be deleted!
+#       - ./backend/src:/backend/src
+#     environment:
+#       PORT: 3000
+#       NODE_ENV: development
+#       DATABASE: remote
+#     secrets:
+#       - my_secrets
     
-    command: ['npm', 'run', 'start:dev']
+#     command: ['npm', 'run', 'start:dev']
 
-secrets:
-  my_secrets:
-    file: ./secrets.txt
+# secrets:
+#   my_secrets:
+#     file: ./secrets.txt
