@@ -30,7 +30,7 @@ export const DARK_THEME: Theme = {
 
 export const LIGHT_THEME: Theme = {
 	NAME: 'light',
-	BACKGROUND: '#ffffff',
+	BACKGROUND: '#fdf6e3',
 	TAG_BG: '#fdf6e3',
 	CARD_BG: '#eee8d5',
 	TEXT: '#202021',
