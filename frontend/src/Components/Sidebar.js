@@ -86,10 +86,7 @@ const SidebarLink = styled(StyledLink)`
 	/* Keep the button highlighted when de-focused or page refreshes */
 	${(props) =>
 		props.path === props.to &&
-		css`
-			color: ${(p) => p.theme.colors.LINK_1};
-      }
-		`}
+		css`color: ${(p) => p.theme.colors.LINK_1};`}
 
 	// When in desktop mode make sure the highlighted background on selected page covers the entire sidebar
 	@media (min-width: ${DESKTOP_XS}) {
@@ -117,14 +114,20 @@ const NavItems = styled.div`
 	}
 `;
 
-const HamburgerButton = styled.div`
+const HamburgerButton = styled.b`
 	grid-area: options;
-	height: 40px; // Hardcoded to match child svg height
-	padding: 5px;
-	background-color: ${(props) => props.theme.colors.BACKGROUND};
+	height: 20px; // Hardcoded to match child svg height
+	width: 50px;
+	padding: 0px;
+	text-align: center;
+	font-size: 1.4em;
 
 	@media (min-width: ${DESKTOP_XS}) {
 		display: none;
+	}
+
+	:hover {
+		cursor: pointer;
 	}
 `;
 
@@ -153,7 +156,6 @@ const StyledThemeButton = styled(ThemeButton)`
 const Sidebar = (props) => {
 	const [urlPath, setUrlPath] = useState('');
 	const [hamburgerExpanded, setHamburgerExpanded] = useState(false);
-	const [hamburgerColor, setHamburgerColor] = useState();
 
 	const history = useHistory();
 	const handleNavHome = () => history.push('/');
@@ -172,15 +174,19 @@ const Sidebar = (props) => {
 		['/tutorials', 'Tutorials'],
 	];
 
+	const FoldingArrow = () => {
+		if (hamburgerExpanded) {
+			return "V"
+		} else {
+			return "<";
+		}
+	}
+
 	return (
 		<StyledSidebar>
 			<Name onClick={handleNavHome}>Staffan Sandberg</Name>
 			<HamburgerButton onClick={toggleHamburgerNavigation}>
-				<svg viewBox="0 0 50 40" width="50" height="40">
-					<rect y="0" width="100%" height="10" fill={props.theme.colors.HAMBURGER_LINES}></rect>
-					<rect y="15" width="100%" height="10" fill={props.theme.colors.HAMBURGER_LINES}></rect>
-					<rect y="30" width="100%" height="10" fill={props.theme.colors.HAMBURGER_LINES}></rect>
-				</svg>
+				<FoldingArrow />
 			</HamburgerButton>
 			<NavItems hamburgerExpanded={hamburgerExpanded}>
 				{navList.map((page) => {
