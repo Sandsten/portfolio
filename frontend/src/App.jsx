@@ -85,8 +85,8 @@ const App = () => {
             {/* <Route path="/" component={TopBar} /> */}
             {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
             <Route path="/" exact component={HomePage} />
-            <Route path="/test" exact component={APITest} />
-            <Route path="/admin" component={Admin} />
+            {/* <Route path="/test" exact component={APITest} />
+            <Route path="/admin" component={Admin} /> */}
             {/* <Route path="/cv" component={cv} /> */}
             <Route path="/projects/masters-thesis" component={mastersThesis} />
             <Route path="/projects/ar-card-game" component={arCards} />
