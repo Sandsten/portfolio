@@ -33,7 +33,7 @@ module.exports = {
 				],
 			},
 			{
-				test: /\.(jpg|png|svg|gif|webp)$/,
+				test: /\.(jpg|png|svg|gif|webp|webm|ico)$/,
 				type: 'asset/resource',
 			},
 			{
@@ -58,6 +58,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebPackPlugin({
 			template: './src/index.html',
+			favicon: './src/assets/images/favicon.ico'
 		}),
 	],
 	optimization: {

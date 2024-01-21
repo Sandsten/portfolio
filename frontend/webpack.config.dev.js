@@ -42,7 +42,7 @@ module.exports = {
 				use: ['style-loader', 'css-loader'],
 			},
 			{
-				test: /\.(jpg|png|svg|gif|pdf|webp|webm)$/,
+				test: /\.(jpg|png|svg|gif|pdf|webp|webm|ico)$/,
 				type: 'asset/resource',
 			},
 			{
@@ -67,6 +67,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebPackPlugin({
 			template: './src/index.html',
+			favicon: './src/assets/images/favicon.ico'
 		}),
 	],
 };
