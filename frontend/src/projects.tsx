@@ -114,7 +114,7 @@ const data: ProjectData[] = [
             "Mongodb"
         ],
         summary: "Online tool for finding bands and musicians in Sweden",
-        description: "Me and a friend launched our website we call BandMate. BandMate is a tool designed for musicians to find a band to join, and for bands to find musicians. We saw a lack of such services in Sweden where current ones were either outdated or over complicated according to us.",
+        description: "Me and a friend created the website BandMate. A social platform designed for band seeiking musicians. We saw a lack of such services in Sweden, where current sites were either outdated or over complicated according to us. Unfortunately we're not working on this anymore, but it was a great learning experience for expanding my knowledge in web development.",
         website: "http://bandmate.xyz",
         groupSize: "2 st",
     },
@@ -129,7 +129,7 @@ const data: ProjectData[] = [
         ],
         summary: "Styletransfer using a CNN in Python",
         description: "A re-implementation of the original style transfer algorithm using a convolutional neural network, as presented by Gatys et al. Additional experiments with different total loss functions and wether or not there's a correlation between content loss and our subjective perception.",
-        github: "https: //github.com/Sandsten/Pixicasso",
+        github: "https://github.com/Sandsten/pixicasso",
         groupSize: "3 st",
     },
     {

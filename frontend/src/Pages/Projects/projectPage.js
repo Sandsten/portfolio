@@ -57,7 +57,7 @@ const projectPage = (props) => {
 			</p>
 		);
 	} else if (project.website === 'http://bandmate.xyz') {
-		website = <p>Website: currently down</p>;
+		website = <p>Website: discontinued</p>;
 	}
 	const github = project.github ? (
 		<p>
