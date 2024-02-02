@@ -14,6 +14,34 @@ type ProjectData = {
 
 const data: ProjectData[] = [
     {
+        title: "Portfolio",
+        summary: "I built this website to explore web development further and to have my own corner on the internet.",
+        thumbnail: "portfolio-thumbnail.webp",
+        tools: [
+            "React.js",
+            "Node.js",
+            "Webpack",
+            "Apache",
+            "Ubuntu",
+            "Docker"
+        ],
+        fullProjectPath: "portfolio",
+        page: "portfolio"
+    },
+    {
+        title: "Plex Home Server",
+        summary: "Repurposing an old PC as a home server running Plex.",
+        thumbnail: "plex-logo.webp",
+        tools: [
+            "Plex",
+            "Ubuntu",
+            "Docker",
+            "Nginx"
+        ],
+        fullProjectPath: "home-server",
+        page: "home-server"
+    },
+    {
         title: "Master's Thesis",
         summary: "I built a VR driving simulator in Unity to investigate how drivers behave in a range critical situation",
         thumbnail: "thesis-thumbnail.webp",

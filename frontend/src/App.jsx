@@ -27,6 +27,8 @@ import arCards from './Pages/Projects/arCards';
 import shaderTest from './Pages/Projects/shaderTest';
 import shaderEditor from './Pages/Projects/shaderEditor';
 import awayFromHome from './Pages/Projects/awayFromHome'
+import Portfolio from './Pages/Projects/Portfolio';
+import HomeServer from './Pages/HomeServer/HomeServer';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -88,6 +90,8 @@ const App = () => {
             {/* <Route path="/test" exact component={APITest} />
             <Route path="/admin" component={Admin} /> */}
             {/* <Route path="/cv" component={cv} /> */}
+            <Route path="/projects/portfolio" component={Portfolio} />
+            <Route path="/projects/home-server" component={HomeServer} />
             <Route path="/projects/masters-thesis" component={mastersThesis} />
             <Route path="/projects/ar-card-game" component={arCards} />
             <Route path="/projects/away-from-home" component={awayFromHome} />

@@ -62,7 +62,7 @@ const Image = styled.img`
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
-	/* overflow: hidden; */
+	overflow: hidden;
 `;
 
 const TagContainer = styled.div`
@@ -103,6 +103,8 @@ const thumbnails: Thumbnails = {
 	"lastShip.webp": require('../assets/images/thumbnails/lastShip.webp'),
 	"lion.webp": require('../assets/images/thumbnails/lion.webp'),
 	"per-albin.webp": require('../assets/images/thumbnails/per-albin.webp'),
+	"plex-logo.webp": require('../assets/images/thumbnails/plex-logo.webp'),
+	"portfolio-thumbnail.webp": require('../assets/images/thumbnails/portfolio-thumbnail.webp'),
 	"poster-version-2.webp": require('../assets/images/thumbnails/poster-version-2.webp'),
 	"shooting-range.webp": require('../assets/images/thumbnails/shooting-range.webp'),
 	"soundark.webp": require('../assets/images/thumbnails/soundark.webp'),
