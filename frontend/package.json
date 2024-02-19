@@ -1,45 +1,15 @@
 {
-  "name": "frontend",
-  "version": "1.0.0",
-  "description": "Frontend for portfolio",
-  "repository": {
-    "url": "https://github.com/Sandsten/portfolio-website"
-  },
-  "main": "index.html",
+  "name": "portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=production --progress --config webpack.config.prod.js",
-    "start": "webpack serve --config webpack.config.dev.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
-    "@types/react-redux": "^7.1.16",
-    "@types/react-router-dom": "^5.1.7",
-    "@types/react-syntax-highlighter": "^15.5.11",
-    "@types/styled-components": "^5.1.9",
-    "@types/three": "^0.160.0",
-    "clean-webpack-plugin": "^4.0.0",
-    "css-loader": "^6.2.0",
-    "file-loader": "^6.2.0",
-    "html-loader": "^5.0.0",
-    "html-webpack-plugin": "^5.2.0",
-    "mini-css-extract-plugin": "^2.2.2",
-    "sass-loader": "^14.0.0",
-    "source-map-loader": "^5.0.0",
-    "style-loader": "^3.1.0",
-    "styled-components": "5.2.1",
-    "ts-loader": "^9.2.3",
-    "typescript": "^5.3.3",
-    "typescript-plugin-css-modules": "^5.0.2",
-    "webpack": "^5.24.3",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.1.1",
-    "webpack-glsl-loader": "^1.0.1"
-  },
+  
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^1.6.5",
@@ -50,5 +20,21 @@
     "react-syntax-highlighter": "^15.4.4",
     "redux-toolkit": "^1.1.2",
     "three": "^0.160.0"
+  },
+
+  "devDependencies": {
+    "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.1",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "styled-components": "5.2.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.0"
   }
 }

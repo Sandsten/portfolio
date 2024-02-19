@@ -1,8 +1,34 @@
-import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { DESKTOP_XL, MOBILE_XS } from '../Constants/sizes';
+import { MOBILE_XS } from '../Constants/sizes';
+
+import ankihggadded from '../assets/images/thumbnails/anki-hgg-added.webp'
+import awayfromhome from '../assets/images/thumbnails/away-from-home.webp'
+import bandmate from '../assets/images/thumbnails/bandmate.webp'
+import bannersoundark from '../assets/images/thumbnails/banner-soundark.webp'
+import bearwithme from '../assets/images/thumbnails/bear-with-me.webp'
+import birchtree from '../assets/images/thumbnails/birch-tree.webp'
+import boshmaxx7 from '../assets/images/thumbnails/bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping-poster.webp'
+import braunseries3 from '../assets/images/thumbnails/braun-series-3-battery-replacement-poster.webp'
+import crowdsim from '../assets/images/thumbnails/crowdsim.webp'
+import drivinginvr from '../assets/images/thumbnails/driving-in-vr.webp'
+import drivingsimulator from '../assets/images/thumbnails/driving-simulator-v1-thumbnail.webp'
+import godball from '../assets/images/thumbnails/godball.webp'
+import hapticcurling from '../assets/images/thumbnails/haptic-curling.webp'
+import lastShip from '../assets/images/thumbnails/lastShip.webp'
+import lion from '../assets/images/thumbnails/lion.webp'
+import peralbin from '../assets/images/thumbnails/per-albin.webp'
+import plexlogo from '../assets/images/thumbnails/plex-logo.webp'
+import portfoliothumbnail from '../assets/images/thumbnails/portfolio-thumbnail.webp'
+import posterversion2 from '../assets/images/thumbnails/poster-version-2.webp'
+import shootingrange from '../assets/images/thumbnails/shooting-range.webp'
+import soundark from '../assets/images/thumbnails/soundark.webp'
+import storylines from '../assets/images/thumbnails/storylines.webp'
+import thesisthumbnail from '../assets/images/thumbnails/thesis-thumbnail.webp'
+import trackingcards from '../assets/images/thumbnails/tracking-cards.webp'
+import webgl from '../assets/images/thumbnails/webgl.webp'
+
 
 const StyledProjectCard = styled(Link)`
 	display: grid;
@@ -87,31 +113,31 @@ const Tag = styled.div`
 type Thumbnails = Record<string, string>;
 
 const thumbnails: Thumbnails = {
-	"anki-hgg-added.webp": require('../assets/images/thumbnails/anki-hgg-added.webp'),
-	"away-from-home.webp": require('../assets/images/thumbnails/away-from-home.webp'),
-	"bandmate.webp": require('../assets/images/thumbnails/bandmate.webp'),
-	"banner-soundark.webp": require('../assets/images/thumbnails/banner-soundark.webp'),
-	"bear-with-me.webp": require('../assets/images/thumbnails/bear-with-me.webp'),
-	"birch-tree.webp": require('../assets/images/thumbnails/birch-tree.webp'),
-	"bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping-poster.webp": require('../assets/images/thumbnails/bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping-poster.webp'),
-	"braun-series-3-battery-replacement-poster.webp": require('../assets/images/thumbnails/braun-series-3-battery-replacement-poster.webp'),
-	"crowdsim.webp": require('../assets/images/thumbnails/crowdsim.webp'),
-	"driving-in-vr.webp": require('../assets/images/thumbnails/driving-in-vr.webp'),
-	"driving-simulator-v1-thumbnail.webp": require('../assets/images/thumbnails/driving-simulator-v1-thumbnail.webp'),
-	"godball.webp": require('../assets/images/thumbnails/godball.webp'),
-	"haptic-curling.webp": require('../assets/images/thumbnails/haptic-curling.webp'),
-	"lastShip.webp": require('../assets/images/thumbnails/lastShip.webp'),
-	"lion.webp": require('../assets/images/thumbnails/lion.webp'),
-	"per-albin.webp": require('../assets/images/thumbnails/per-albin.webp'),
-	"plex-logo.webp": require('../assets/images/thumbnails/plex-logo.webp'),
-	"portfolio-thumbnail.webp": require('../assets/images/thumbnails/portfolio-thumbnail.webp'),
-	"poster-version-2.webp": require('../assets/images/thumbnails/poster-version-2.webp'),
-	"shooting-range.webp": require('../assets/images/thumbnails/shooting-range.webp'),
-	"soundark.webp": require('../assets/images/thumbnails/soundark.webp'),
-	"storylines.webp": require('../assets/images/thumbnails/storylines.webp'),
-	"thesis-thumbnail.webp": require('../assets/images/thumbnails/thesis-thumbnail.webp'),
-	"tracking-cards.webp": require('../assets/images/thumbnails/tracking-cards.webp'),
-	"webgl.webp": require('../assets/images/thumbnails/webgl.webp'),
+	"anki-hgg-added.webp": ankihggadded,
+	"away-from-home.webp": awayfromhome,
+	"bandmate.webp": bandmate,
+	"banner-soundark.webp": bannersoundark,
+	"bear-with-me.webp": bearwithme,
+	"birch-tree.webp": birchtree,
+	"bosh-maxx-7-varioperfect-how-to-turn-off-the-beeping-poster.webp": boshmaxx7,
+	"braun-series-3-battery-replacement-poster.webp": braunseries3,
+	"crowdsim.webp": crowdsim,
+	"driving-in-vr.webp": drivinginvr,
+	"driving-simulator-v1-thumbnail.webp": drivingsimulator,
+	"godball.webp": godball,
+	"haptic-curling.webp": hapticcurling,
+	"lastShip.webp": lastShip,
+	"lion.webp": lion,
+	"per-albin.webp": peralbin,
+	"plex-logo.webp": plexlogo,
+	"portfolio-thumbnail.webp": portfoliothumbnail,
+	"poster-version-2.webp": posterversion2,
+	"shooting-range.webp": shootingrange,
+	"soundark.webp": soundark,
+	"storylines.webp": storylines,
+	"thesis-thumbnail.webp": thesisthumbnail,
+	"tracking-cards.webp": trackingcards,
+	"webgl.webp": webgl,
 }
 
 interface ProjectCardProps {
