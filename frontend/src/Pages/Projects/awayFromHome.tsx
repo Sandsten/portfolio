@@ -2,6 +2,8 @@ import { Container } from '../../Components/Layout';
 import Image from '../../Components/Image/Image';
 import Link from '../../Components/Link';
 
+import awayFromHomeImage from '../../assets/images/thumbnails/away-from-home.webp';
+
 const awayFromHome = () => {
   return (
     <Container>
@@ -10,7 +12,7 @@ const awayFromHome = () => {
       <p>In a group of 7 in a course in information visualization we came up with an idea of visualizing the location of refugees in an unbiased way. Where the unbiased part is not being able to identify each country straight away. Allowing the user to explore without any presumptions and can later get the name of the country on demand.</p>
 
       <Image 
-        imagePath={require("../../assets/images/thumbnails/away-from-home.webp")}
+        imagePath={awayFromHomeImage}
         caption='Selecting a square in the grid reveals the refugee population, but not the country which the square represent.'
         figNumber={1}
         maxWidth='1000px'
