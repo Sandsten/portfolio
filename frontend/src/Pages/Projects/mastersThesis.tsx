@@ -5,6 +5,13 @@ import { Container } from '../../Components/Layout';
 import VideoPlayer from '../../Components/VideoPlayer';
 import Link from '../../Components/Link';
 
+// import 
+import diffcope1 from "../../assets/images/thesis/diff+cope1.webp";
+import guessometer from "../../assets/images/thesis/guess-o-meter.webp";
+import simulatorsetup from "../../assets/images/thesis/simulator-setup.webp";
+import posterversion2 from "../../assets/images/thesis/poster-version-2.webp";
+import signuppage from "../../assets/images/thesis/signup-page.webp";
+import poweroverdistance from "../../assets/images/thesis/power-over-distance.webp";
 /*
   FLEX DEFAULTS
   * Items display in a row (the flex-direction property's default is row).
@@ -18,14 +25,6 @@ import Link from '../../Components/Link';
 interface Props { }
 
 const mastersThesis = (props: Props) => {
-
-	const loadFigure = (name: string) => {
-		return require(`../../assets/images/thesis/${name}`)
-	}
-
-	const loadVideo = (name: string) => {
-		return require(`../../assets/video/${name}`)
-	}
 
 	return (
 		<Container>
@@ -64,13 +63,13 @@ const mastersThesis = (props: Props) => {
 
 			<ImageRow>
 				<Image
-					imagePath={loadFigure("diff+cope1.webp")}
+					imagePath={diffcope1}
 					caption='Novel dashboard based on previous research. With the addition of a horizontal blue line for distance to target.'
 					figNumber={1}
 					maxWidth='500px'
 				/>
 				<Image
-					imagePath={loadFigure("guess-o-meter.webp")}
+					imagePath={guessometer}
 					caption='Conventional dashboard sometimes referred to as a "guess-o-meter".'
 					figNumber={2}
 					maxWidth='500px'
@@ -98,7 +97,7 @@ const mastersThesis = (props: Props) => {
 
 			<Image
 				caption="Setup of driving simulator. VR headset, steering wheel + pedals, seat, speakers and microphone."
-				imagePath={loadFigure("simulator-setup.webp")}
+				imagePath={simulatorsetup}
 				maxWidth={'350px'}
 				figNumber={3}
 			/>
@@ -126,14 +125,14 @@ const mastersThesis = (props: Props) => {
 			<ImageRow>
 				<Image
 					caption="Poster for recruting participants. VR games as incentive."
-					imagePath={loadFigure("poster-version-2.webp")}
+					imagePath={posterversion2}
 					// imagePath="media/images/thesis/poster-version-1.webp"
 					maxWidth={'350px'}
 					figNumber={3}
 				/>
 				<Image
 					caption="Sign up page where users landed once the QR code had been scanned."
-					imagePath={loadFigure("signup-page.webp")}
+					imagePath={signuppage}
 					maxWidth={'600px'}
 					figNumber={4}
 				/>
@@ -152,7 +151,7 @@ const mastersThesis = (props: Props) => {
 
 			<Image
 				caption="Average power over distance traveled during the first attempt."
-				imagePath={loadFigure("power-over-distance.webp")}
+				imagePath={poweroverdistance}
 				maxWidth={'1000px'}
 				figNumber={6}
 			/>
