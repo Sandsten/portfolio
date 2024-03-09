@@ -87,7 +87,7 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 				style={theme.NAME == 'dark' ? tomorrow : base16AteliersulphurpoolLight}
 				showLineNumbers={true}
 				wrapLines={true}
-				lineProps={(lineNumber) => {
+				lineProps={(lineNumber: number) => {
 					let style = { display: 'block', backgroundColor: '' };
 					if (props.linesToHighlight?.includes(lineNumber)) {
 						style.backgroundColor = '#005D16'; //00FF3C 6B6E5D

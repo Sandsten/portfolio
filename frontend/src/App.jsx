@@ -25,7 +25,6 @@ import { whinyDevices } from './Pages/Blogposts/whinyDevices';
 
 import arCards from './Pages/Projects/arCards';
 import shaderTest from './Pages/Projects/shaderTest';
-import shaderEditor from './Pages/Projects/shaderEditor';
 import awayFromHome from './Pages/Projects/awayFromHome'
 import Portfolio from './Pages/Projects/Portfolio';
 import HomeServer from './Pages/HomeServer/HomeServer';
@@ -80,32 +79,21 @@ const App = () => {
     <ThemeProvider theme={{ colors: theme }}> {/*Pass the theme down to all components*/}
       <MainContainer >
         <BrowserRouter>
-          {/* // https://reacttraining.com/react-router/web/api/Switch */}
           {/* Render the sidebar on all pages */}
           <Route path="/" render={(props) => <Sidebar {...props} toggleTheme={toggleTheme} />} />
           <Switch>
-            {/* <Route path="/" component={TopBar} /> */}
             {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
             <Route path="/" exact component={HomePage} />
-            {/* <Route path="/test" exact component={APITest} />
-            <Route path="/admin" component={Admin} /> */}
-            {/* <Route path="/cv" component={cv} /> */}
             <Route path="/projects/portfolio" component={Portfolio} />
             <Route path="/projects/home-server" component={HomeServer} />
             <Route path="/projects/masters-thesis" component={mastersThesis} />
             <Route path="/projects/ar-card-game" component={arCards} />
             <Route path="/projects/away-from-home" component={awayFromHome} />
             <Route path="/projects/shader-exploration" component={shaderTest} />
-            {/* <Route path="/projects/shader-editor" component={shaderEditor} /> */}
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
-            {/* <Route path="/blogposts/:name" component={blogpostPage} /> */}
-            {/* <Route path="/blogposts" component={blog} /> */}
             <Route path="/shaders" component={threeShaders} />
             <Route path="/tutorials" component={tutorialsPage} />
-            {/* <Route path="/posts/healthy-gamer-glossary-to-anki" component={HealthyGamerGlossaryToAnki} /> */}
-            {/* <Route path="/posts/whiny-devices" component={whinyDevices} /> */}
-            {/* <Route path="/posts" component={blogPage} /> */}
             <Route path="/guitar" component={guitarPage} />
             <Route
               render={() => {

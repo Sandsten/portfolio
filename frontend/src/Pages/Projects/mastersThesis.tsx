@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Image from '../../Components/Image/Image';
 import ImageRow from '../../Components/ImageRow/ImageRow';
 import { Container } from '../../Components/Layout';
@@ -22,9 +21,7 @@ import poweroverdistance from "../../assets/images/thesis/power-over-distance.we
   * The flex-wrap property is set to nowrap
 */
 
-interface Props { }
-
-const mastersThesis = (props: Props) => {
+const mastersThesis = () => {
 
 	return (
 		<Container>

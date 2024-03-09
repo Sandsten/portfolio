@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import styles from './HomeServer.module.css';
 
 function HomeServer() {

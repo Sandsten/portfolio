@@ -1,15 +1,10 @@
-import * as React from 'react';
-import styled from 'styled-components';
 import Image from '../../Components/Image/Image';
 import ImageRow from '../../Components/ImageRow/ImageRow';
 
 import { Container } from '../../Components/Layout';
 import VideoPlayer from '../../Components/VideoPlayer';
 
-import projectsMetadata from './projectsMetadata';
-
-interface Props {}
-const arCards = (props: Props) => {
+const arCards = () => {
 	return (
 		<Container>
 			<h1>Tracking Card Game with AR</h1>
