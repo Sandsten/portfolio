@@ -49,9 +49,7 @@ const Outline = styled.ol`
 	}
 `;
 
-export interface IHealthyGamerGlossaryToAnkiProps {}
-
-export function HealthyGamerGlossaryToAnki(props: IHealthyGamerGlossaryToAnkiProps) {
+export function HealthyGamerGlossaryToAnki() {
 	const scrollContainer = useRef(null);
 	const rootImagePath = 'media/images/healthy-gamer-gg-glossary-to-anki';
 	const ankiConnectCode = 2055492159;

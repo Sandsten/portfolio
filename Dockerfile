@@ -5,7 +5,6 @@ FROM node:18-alpine as builder
 # BACKEND NODE PACKAGES #
 #########################
 
-# Change working directory to backend
 WORKDIR /backend
 
 COPY [ "./backend/package.json", "./backend/package-lock.json", "./" ]
@@ -13,7 +12,6 @@ COPY [ "./backend/package.json", "./backend/package-lock.json", "./" ]
 # Only the production packages are needed
 ENV NODE_ENV production
 
-# Make a clean install of node packages which are needed for production
 RUN npm install
 
 # Install and run node-prune. It deletes unnecessary files from node_modules, such as md files etc
@@ -24,10 +22,11 @@ RUN node-prune /backend/node_modules
 ##########################
 # FRONTEND NODE PACKAGES #
 ##########################
-# Generate the static files with webpack
+# Generate the static files with vite
 
 # Create a folder for frontend building and set current directory to it
-WORKDIR /frontend
+WORKDIR /frontend:q
+
 
 # Copy package files from frontend folder into our new working directory in our image
 COPY [ "./frontend/package.json", "./frontend/package-lock.json", "./" ]
