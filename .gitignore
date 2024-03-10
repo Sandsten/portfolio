@@ -4,3 +4,4 @@ secrets.env
 secrets.txt
 .vscode
 .git.bfg-report
+dist

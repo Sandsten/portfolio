@@ -77,7 +77,7 @@ const Portfolio: React.FC = () => {
 
                 <p>The certificate and key from Cloudflare have to be stored on the VPS where the website is served. I use Apache as the webserver and the config is quite straight forward for enabling SSL</p>
 
-                <CodeBox figNumber={2} code={apacheConfig} languange='html' caption='Apache config with SSL cert and reverse proxy.'/>
+                <CodeBox figNumber={2} code={apacheConfig} languange='html' caption='Apache config with SSL cert and reverse proxy.' width='800px'/>
 
             </div>
         </ProjectContainer>

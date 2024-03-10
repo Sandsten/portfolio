@@ -134,7 +134,7 @@ export function HealthyGamerGlossaryToAnki() {
 				<Image
 					imagePath={`${rootImagePath}/ankiconnect-installed-successfully.webp`}
 					figNumber={1.2}
-					caption={`Restart Anki after addon has been installed`}
+					caption={'Restart Anki after addon has been installed'}
 					maxWidth="500px"
 				/>
 			</ImageRow>
@@ -159,7 +159,7 @@ export function HealthyGamerGlossaryToAnki() {
 			<Image
 				imagePath={`${rootImagePath}/ankiconnect-allow-hg-cors.webp`}
 				figNumber={2.1}
-				caption={`Config file with new settings. Open config with [Tools > Add-ons > (AnkiConnect > Config) or (AnkiConnect <double click>)].`}
+				caption={'Config file with new settings. Open config with [Tools > Add-ons > (AnkiConnect > Config) or (AnkiConnect <double click>)].'}
 				maxWidth="700px"
 			/>
 			<CodeBox
@@ -189,7 +189,7 @@ export function HealthyGamerGlossaryToAnki() {
 			<Image
 				imagePath={`${rootImagePath}/paste-the-js-code.webp`}
 				figNumber={3.1}
-				caption={`Pressing [F12] or [(right click anywhere on the page) > Inspect > Console] will open the console. Here the code from Figure 3 has been pasted inside it.`}
+				caption={'Pressing [F12] or [(right click anywhere on the page) > Inspect > Console] will open the console. Here the code from Figure 3 has been pasted inside it.'}
 				maxWidth="1000px"
 			/>
 			<p>
@@ -199,7 +199,7 @@ export function HealthyGamerGlossaryToAnki() {
 			<Image
 				imagePath={`${rootImagePath}/press-enter-and-wait.webp`}
 				figNumber={3.2}
-				caption={`On the left hand side we can see that Anki has received a new deck. And in the browser on the right we get a message telling us how many cards have been added.`}
+				caption={'On the left hand side we can see that Anki has received a new deck. And in the browser on the right we get a message telling us how many cards have been added.'}
 				maxWidth="1000px"
 			/>
 			<h3>Scraping details</h3>
@@ -214,7 +214,7 @@ export function HealthyGamerGlossaryToAnki() {
 			<Image
 				imagePath={`${rootImagePath}/glossary-dom.webp`}
 				figNumber={3.3}
-				caption={`Each glossary-term has two children, title and description. InnerText can be used to get the visible text inside each one.`}
+				caption={'Each glossary-term has two children, title and description. InnerText can be used to get the visible text inside each one.'}
 				maxWidth="1000px"
 			/>
 			<h2 id="4">4. Done</h2>

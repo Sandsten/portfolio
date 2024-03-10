@@ -49,7 +49,7 @@ const CodeContainer = styled.div<CodeContainerProps>`
 interface CodeBoxProps {
 	code: string;
 	width: string;
-	languange: 'javascript' | 'json' | 'yaml';
+	languange: 'javascript' | 'json' | 'yaml' | 'html';
 	caption?: string;
 	linesToHighlight?: Array<number>;
 	figNumber?: number;
