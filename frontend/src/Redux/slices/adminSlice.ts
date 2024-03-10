@@ -76,7 +76,7 @@ const adminSlice = createSlice({
 		builder.addCase(signIn.pending, (state) => {
 			state.status = 'loading';
 		});
-		builder.addCase(signIn.fulfilled, (state, { payload }) => {
+		builder.addCase(signIn.fulfilled, (state, {}) => {
 			state.signedIn = true;
 			state.status = 'success';
 		});
@@ -91,12 +91,12 @@ const adminSlice = createSlice({
 		builder.addCase(signOut.pending, (state) => {
 			state.status = 'loading';
 		});
-		builder.addCase(signOut.fulfilled, (state, { payload }) => {
+		builder.addCase(signOut.fulfilled, (state, {}) => {
 			//console.log(payload?.message);
 			state.signedIn = null;
 			state.status = 'success';
 		});
-		builder.addCase(signOut.rejected, (state, action) => {
+		builder.addCase(signOut.rejected, (state) => {
 			//console.log(action.payload?.message);
 			state.status = null;
 		});

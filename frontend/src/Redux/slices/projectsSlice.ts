@@ -9,7 +9,7 @@ export const getProjects = createAsyncThunk<
 	ProjectPayload,
 	null,
 	{ rejectValue: ProjectPayloadError }
->('projects/getProjects', async (obj, thunkApi) => {
+>('projects/getProjects', async (_, thunkApi) => {
 	const response = await fetch(`${URL}/get-projects`, {
 		method: 'GET',
 		headers: {
