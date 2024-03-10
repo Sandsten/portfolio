@@ -12,7 +12,6 @@ import Sidebar from './Components/Sidebar';
 import HomePage from './Pages/RootPages/homePage';
 import projects from './Pages/RootPages/projectsPage';
 import projectPage from './Pages/Projects/projectPage';
-import threeShaders from './Pages/Projects/threeShaders';
 import tutorialsPage from './Pages/RootPages/tutorialsPage';
 import guitarPage from './Pages/RootPages/guitarPage';
 
@@ -23,6 +22,7 @@ import shaderTest from './Pages/Projects/shaderTest';
 import awayFromHome from './Pages/Projects/awayFromHome'
 import Portfolio from './Pages/Projects/Portfolio/Portfolio';
 import HomeServer from './Pages/Projects/HomeServer/HomeServer';
+import ThreeShaders from './Pages/Projects/threeShaders';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -87,7 +87,7 @@ const App = () => {
             <Route path="/projects/shader-exploration" component={shaderTest} />
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
-            <Route path="/shaders" component={threeShaders} />
+            <Route path="/shaders" component={ThreeShaders} />
             <Route path="/tutorials" component={tutorialsPage} />
             <Route path="/guitar" component={guitarPage} />
             <Route
