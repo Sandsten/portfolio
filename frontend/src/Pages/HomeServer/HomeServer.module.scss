@@ -1,0 +1,27 @@
+.scrollContainer {
+    overflow-y: scroll;
+}
+
+.container {
+    max-width: 1200px;
+
+    display: grid;
+    
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "content navbar";
+
+    margin-left: 20px;
+
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr;
+        grid-template-areas: "content";
+	}
+
+}
+
+.outlineSidebar {
+    @media (max-width: 800px) {
+        visibility: hidden;
+	}
+}

@@ -29,9 +29,10 @@ const CodeContainer = styled.div<CodeContainerProps>`
 	button {
 		position: absolute;
 		right: 20px;
-		top: 30px;
+		top: 26px;
 		visibility: hidden;
-		font-size: 1.1em;
+		font-size: 2em;
+		background-color: ${(p) => p.theme.colors.CARD_BG};
 
 		:hover {
 			cursor: pointer;
@@ -45,17 +46,10 @@ const CodeContainer = styled.div<CodeContainerProps>`
 	}
 `;
 
-const Caption = styled.div`
-	margin-top: -5px;
-	em {
-		/* font-size: 0.9em; */
-	}
-`;
-
 interface CodeBoxProps {
 	code: string;
 	width: string;
-	languange: 'javascript' | 'json';
+	languange: 'javascript' | 'json' | 'yaml';
 	caption?: string;
 	linesToHighlight?: Array<number>;
 }
@@ -67,9 +61,9 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 	function handleCodeCopyToClipboard(code: string, e: React.MouseEvent) {
 		navigator.clipboard.writeText(code);
 		const button = e.currentTarget;
-		button.textContent = 'Copied to clipboard!';
+		button.textContent = '✅';
 		setTimeout(() => {
-			button.textContent = 'Copy code to clipboard';
+			button.textContent = '📋';
 		}, 1500);
 	}
 
@@ -80,7 +74,7 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 					handleCodeCopyToClipboard(props.code, e);
 				}}
 			>
-				Copy code to clipboard
+				📋
 			</button>
 			<SyntaxHighlighter
 				language={props.languange}
@@ -88,7 +82,7 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 				showLineNumbers={true}
 				wrapLines={true}
 				lineProps={(lineNumber: number) => {
-					let style = { display: 'block', backgroundColor: '' };
+					const style = { display: 'block', backgroundColor: '' };
 					if (props.linesToHighlight?.includes(lineNumber)) {
 						style.backgroundColor = '#005D16'; //00FF3C 6B6E5D
 					}
@@ -97,9 +91,9 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 			>
 				{props.code}
 			</SyntaxHighlighter>
-			<Caption>
-				<em>{props.caption}</em>
-			</Caption>
+
+			<em>{props.caption}</em>
+
 		</CodeContainer>
 	);
 };
