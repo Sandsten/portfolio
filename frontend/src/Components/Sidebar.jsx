@@ -169,16 +169,16 @@ const Sidebar = (props) => {
 	};
 
 	const navList = [
-		['/', 'About'],
 		['/projects', 'Projects'],
 		['/tutorials', 'Tutorials'],
+		['/about', 'About'],
 	];
 
 	const FoldingArrow = () => {
 		if (hamburgerExpanded) {
-			return "V"
+			return 'V'
 		} else {
-			return "<";
+			return '<';
 		}
 	}
 

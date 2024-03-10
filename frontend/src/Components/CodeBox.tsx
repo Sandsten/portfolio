@@ -52,6 +52,7 @@ interface CodeBoxProps {
 	languange: 'javascript' | 'json' | 'yaml';
 	caption?: string;
 	linesToHighlight?: Array<number>;
+	figNumber?: number;
 }
 
 const CodeBox: React.FC<CodeBoxProps> = (props) => {
@@ -66,6 +67,8 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 			button.textContent = '📋';
 		}, 1500);
 	}
+
+	const figureNumberText = props.figNumber ? `Figure ${props.figNumber}: ` : '';
 
 	return (
 		<CodeContainer maxWidth={props.width}>
@@ -92,7 +95,7 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 				{props.code}
 			</SyntaxHighlighter>
 
-			<em>{props.caption}</em>
+			<em>{figureNumberText}{props.caption}</em>
 
 		</CodeContainer>
 	);

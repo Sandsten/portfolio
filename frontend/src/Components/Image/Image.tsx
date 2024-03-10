@@ -21,7 +21,7 @@ const Image = (props: ImageProps) => {
 				src={props.imagePath}
 			/>
 			<figcaption>
-				<em>{`Fig ${props.figNumber}: ${props.caption}`}</em>
+				<em>{`Figure ${props.figNumber}: ${props.caption}`}</em>
 			</figcaption>
 		</figure>
 	);

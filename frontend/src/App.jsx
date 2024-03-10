@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
@@ -10,24 +10,19 @@ import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
 
 import Sidebar from './Components/Sidebar';
 import HomePage from './Pages/RootPages/homePage';
-import APITest from './Admin/APITest';
-import Admin from './Admin/Admin';
 import projects from './Pages/RootPages/projectsPage';
 import projectPage from './Pages/Projects/projectPage';
-import blogPage from './Pages/RootPages/blogPage';
 import threeShaders from './Pages/Projects/threeShaders';
 import tutorialsPage from './Pages/RootPages/tutorialsPage';
 import guitarPage from './Pages/RootPages/guitarPage';
 
 import mastersThesis from './Pages/Projects/mastersThesis';
-import { HealthyGamerGlossaryToAnki } from './Pages/Blogposts/healthyGamerGlossaryToAnkiPage';
-import { whinyDevices } from './Pages/Blogposts/whinyDevices';
 
 import arCards from './Pages/Projects/arCards';
 import shaderTest from './Pages/Projects/shaderTest';
 import awayFromHome from './Pages/Projects/awayFromHome'
-import Portfolio from './Pages/Projects/Portfolio';
-import HomeServer from './Pages/HomeServer/HomeServer';
+import Portfolio from './Pages/Projects/Portfolio/Portfolio';
+import HomeServer from './Pages/Projects/HomeServer/HomeServer';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -64,15 +59,15 @@ const App = () => {
   useEffect(() => {
     var storedTheme = localStorage.getItem('theme');
     if (!storedTheme) storedTheme = 'dark';
-    dispatch(setTheme(storedTheme === "dark" ? DARK_THEME : LIGHT_THEME))
+    dispatch(setTheme(storedTheme === 'dark' ? DARK_THEME : LIGHT_THEME))
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("theme", theme.NAME);
+    localStorage.setItem('theme', theme.NAME);
   })
 
   function toggleTheme() {
-    dispatch(setTheme(theme.NAME === "dark" ? LIGHT_THEME : DARK_THEME))
+    dispatch(setTheme(theme.NAME === 'dark' ? LIGHT_THEME : DARK_THEME))
   }
 
   return (
@@ -83,7 +78,7 @@ const App = () => {
           <Route path="/" render={(props) => <Sidebar {...props} toggleTheme={toggleTheme} />} />
           <Switch>
             {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
-            <Route path="/" exact component={HomePage} />
+            <Route path="/about" component={HomePage} />
             <Route path="/projects/portfolio" component={Portfolio} />
             <Route path="/projects/home-server" component={HomeServer} />
             <Route path="/projects/masters-thesis" component={mastersThesis} />
@@ -97,7 +92,7 @@ const App = () => {
             <Route path="/guitar" component={guitarPage} />
             <Route
               render={() => {
-                return <Redirect to="/" />;
+                return <Redirect to="/projects" />;
               }}
             />
           </Switch>
