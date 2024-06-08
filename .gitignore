@@ -4,3 +4,5 @@ secrets.env
 secrets.txt
 .vscode
 .git.bfg-report
+
+**/pnpm-lock.yaml
