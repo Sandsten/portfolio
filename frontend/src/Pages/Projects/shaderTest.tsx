@@ -1,4 +1,3 @@
-import * as React from 'react';
 import styled from 'styled-components';
 
 import { Container } from '../../Components/Layout';
@@ -10,8 +9,7 @@ const ShaderContainer = styled.div`
 	max-width: 1000px;
 `;
 
-interface Props {}
-const shaderTest = (props: Props) => {
+const shaderTest = () => {
 	return (
 		<Container>
 			<h1>Shader Exploration</h1>

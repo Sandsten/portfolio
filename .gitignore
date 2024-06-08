@@ -6,3 +6,4 @@ secrets.txt
 .git.bfg-report
 
 **/pnpm-lock.yaml
+dist

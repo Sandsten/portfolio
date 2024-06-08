@@ -19,7 +19,7 @@ const blogPostsMetadata: Array<BlogPost> = [
 	{
 		title: `Dr. K's guide glossary to Anki`,
 		description: `Easily extract the glossary, turn it into an Anki deck and add it to your Anki collection`,
-		thumbnail: require("../../assets/images/healthy-gamer-gg-glossary-to-anki/anki-hgg-added.webp"),
+		thumbnail: "../../assets/images/healthy-gamer-gg-glossary-to-anki/anki-hgg-added.webp",
 		tags: ['Anki', 'Scrape', 'Javascript'],
 		date: new Date(2021, 8, 7),
 		fullProjectPath: '/tutorials/healthy-gamer-glossary-to-anki',

@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import styles from './Image.module.scss';
 
 interface ImageProps {
@@ -12,16 +10,18 @@ interface ImageProps {
 const Image = (props: ImageProps) => {
 	const id = `figure-${props.figNumber}`;
 
-	function openImage() {
-		// Only works when running on VPS with correct domain
-		// history.push(`/${props.imageName}`);
-	}
-
 	return (
-		<figure className={styles.figure} onClick={openImage} id={id}>
-			<img className={styles.image} src={props.imagePath}></img>
+		<figure 
+			className={styles.figure} 
+			style={{ maxWidth: props.maxWidth }}
+			id={id}
+		>
+			<img 
+				className={styles.image}
+				src={props.imagePath}
+			/>
 			<figcaption>
-				<em>{`Fig ${props.figNumber}: ${props.caption}`}</em>
+				<em>{`Figure ${props.figNumber}: ${props.caption}`}</em>
 			</figcaption>
 		</figure>
 	);

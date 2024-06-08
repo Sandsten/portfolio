@@ -14,55 +14,55 @@ type ProjectData = {
 
 const data: ProjectData[] = [
     {
-        title: "Portfolio",
-        summary: "I built this website to explore web development further and to have my own corner on the internet.",
-        thumbnail: "portfolio-thumbnail.webp",
+        title: 'Portfolio',
+        summary: 'I built this website to explore web development further and to have my own corner on the internet.',
+        thumbnail: 'portfolio-thumbnail.webp',
         tools: [
-            "React.js",
-            "Node.js",
-            "Webpack",
-            "Apache",
-            "Ubuntu",
-            "Docker"
+            'React.js',
+            'Node.js',
+            'Vite',
+            'Apache',
+            'Ubuntu',
+            'Docker'
         ],
-        fullProjectPath: "portfolio",
-        page: "portfolio"
+        fullProjectPath: 'portfolio',
+        page: 'portfolio'
     },
     {
-        title: "Plex Home Server",
-        summary: "Repurposing an old PC as a home server running Plex.",
-        thumbnail: "plex-logo.webp",
+        title: 'Plex Home Server',
+        summary: 'Repurposing an old PC as a home server running Plex.',
+        thumbnail: 'plex-logo.webp',
         tools: [
-            "Plex",
-            "Ubuntu",
-            "Docker",
-            "Nginx"
+            'Plex',
+            'Ubuntu',
+            'Docker',
+            'Nginx'
         ],
-        fullProjectPath: "home-server",
-        page: "home-server"
+        fullProjectPath: 'home-server',
+        page: 'home-server'
     },
     {
-        title: "Master's Thesis",
-        summary: "I built a VR driving simulator in Unity to investigate how drivers behave in a range critical situation",
-        thumbnail: "thesis-thumbnail.webp",
+        title: 'Master\'s Thesis',
+        summary: 'I built a VR driving simulator in Unity to investigate how drivers behave in a range critical situation',
+        thumbnail: 'thesis-thumbnail.webp',
         tools: [
-            "Thesis",
-            "VR",
-            "Unity"
+            'Thesis',
+            'VR',
+            'Unity'
         ],
-        fullProjectPath: "masters-thesis",
-        page: "masters-thesis"
+        fullProjectPath: 'masters-thesis',
+        page: 'masters-thesis'
     },
     {
-        title: "Shader Exploration",
-        summary: "Exploring vertex and fragment shaders with Three.js",
-        thumbnail: "webgl.webp",
+        title: 'Shader Exploration',
+        summary: 'Exploring vertex and fragment shaders with Three.js',
+        thumbnail: 'webgl.webp',
         tools: [
-            "GLSL",
-            "Three.js"
+            'GLSL',
+            'Three.js'
         ],
-        fullProjectPath: "shader-exploration",
-        page: "shader-exploration"
+        fullProjectPath: 'shader-exploration',
+        page: 'shader-exploration'
     },
     // {
     //  "title: "Tracking Card Game with AR",
@@ -75,148 +75,148 @@ const data: ProjectData[] = [
     //  "page: "ar-card-game"
     // },
     {
-        title: "Away From Home",
-        summary: "Visualizing how many refugees are living in each country in an unbiased way.",
-        thumbnail: "away-from-home.webp",
+        title: 'Away From Home',
+        summary: 'Visualizing how many refugees are living in each country in an unbiased way.',
+        thumbnail: 'away-from-home.webp',
         tools: [
-            "HTML",
-            "Javascript",
-            "D3.js",
+            'HTML',
+            'Javascript',
+            'D3.js',
         ],
-        page: "away-from-home"
+        page: 'away-from-home'
     },
     {
-        title: "bARk",
-        page: "bark",
-        date: "KTH: Nov-Dec - 2016",
-        thumbnail: "birch-tree.webp",
+        title: 'bARk',
+        page: 'bark',
+        date: 'KTH: Nov-Dec - 2016',
+        thumbnail: 'birch-tree.webp',
         tools: [
-            "Unity",
-            "Vuforia",
-            "C#",
-            "firebase"
+            'Unity',
+            'Vuforia',
+            'C#',
+            'firebase'
         ],
-        summary: "Watch your own tree grow in AR",
-        description: "The goal with this project was to explore AR technology and enable users to leave a personal mark in the world and share it with others. In the form of designing your own tree.",
-        website: "https://apan1000.github.io/bARk/",
-        groupSize: "6 st",
+        summary: 'Watch your own tree grow in AR',
+        description: 'The goal with this project was to explore AR technology and enable users to leave a personal mark in the world and share it with others. In the form of designing your own tree.',
+        website: 'https://apan1000.github.io/bARk/',
+        groupSize: '6 st',
     },
     {
-        title: "Bear with me",
-        page: "bear-with-me",
-        date: "Global Game Jam 2019",
-        thumbnail: "bear-with-me.webp",
+        title: 'Bear with me',
+        page: 'bear-with-me',
+        date: 'Global Game Jam 2019',
+        thumbnail: 'bear-with-me.webp',
         tools: [
-            "Unity",
-            "C#"
+            'Unity',
+            'C#'
         ],
-        summary: "A game made in Unity during Global Game Jam 2019",
-        description: "A game that I and two friends made during Global Game Jam 2019. Together we came up with an idea around the given topic and then split the work between us. I decided to work with player movement and player interaction with objects.",
-        website: "https://pjheden.github.io/bearwithme-gamejam-2019/",
-        groupSize: "3 st",
+        summary: 'A game made in Unity during Global Game Jam 2019',
+        description: 'A game that I and two friends made during Global Game Jam 2019. Together we came up with an idea around the given topic and then split the work between us. I decided to work with player movement and player interaction with objects.',
+        website: 'https://pjheden.github.io/bearwithme-gamejam-2019/',
+        groupSize: '3 st',
     },
     {
-        title: "Online reaction game",
-        page: "online-reaction-game",
-        date: "9/3 - 10/3 - 2019",
-        thumbnail: "shooting-range.webp",
+        title: 'Online reaction game',
+        page: 'online-reaction-game',
+        date: '9/3 - 10/3 - 2019',
+        thumbnail: 'shooting-range.webp',
         tools: [
-            "React.js",
-            "Node.js",
-            "Socket.IO"
+            'React.js',
+            'Node.js',
+            'Socket.IO'
         ],
-        summary: "Compete against your friends on who has the fastest reaction time",
-        description: "During the weekend I decided to learn how to use Socket.IO with Node.js. I came up with a concept of a online game in which you compete against each other to hit appearing targets as fast as possible. The game is hosted on Heroku.",
-        github: "https://github.com/Sandsten/shooting-range",
-        groupSize: "1 st",
+        summary: 'Compete against your friends on who has the fastest reaction time',
+        description: 'During the weekend I decided to learn how to use Socket.IO with Node.js. I came up with a concept of a online game in which you compete against each other to hit appearing targets as fast as possible. The game is hosted on Heroku.',
+        github: 'https://github.com/Sandsten/shooting-range',
+        groupSize: '1 st',
     },
     {
-        title: "BandMate",
-        page: "bandmate",
-        date: "Jan - 2019",
-        thumbnail: "bandmate.webp",
+        title: 'BandMate',
+        page: 'bandmate',
+        date: 'Jan - 2019',
+        thumbnail: 'bandmate.webp',
         tools: [
-            "React.js",
-            "Redux",
-            "Node.js",
-            "Mongodb"
+            'React.js',
+            'Redux',
+            'Node.js',
+            'Mongodb'
         ],
-        summary: "Online tool for finding bands and musicians in Sweden",
-        description: "Me and a friend created the website BandMate. A social platform designed for band seeiking musicians. We saw a lack of such services in Sweden, where current sites were either outdated or over complicated according to us. Unfortunately we're not working on this anymore, but it was a great learning experience for expanding my knowledge in web development.",
-        website: "http://bandmate.xyz",
-        groupSize: "2 st",
+        summary: 'Online tool for finding bands and musicians in Sweden',
+        description: 'Me and a friend created the website BandMate. A social platform designed for band seeiking musicians. We saw a lack of such services in Sweden, where current sites were either outdated or over complicated according to us. Unfortunately we\'re not working on this anymore, but it was a great learning experience for expanding my knowledge in web development.',
+        website: 'http://bandmate.xyz',
+        groupSize: '2 st',
     },
     {
-        title: "Style transfer",
-        page: "Style-transfer",
-        date: "KTH: May - 2018",
-        thumbnail: "lion.webp",
+        title: 'Style transfer',
+        page: 'Style-transfer',
+        date: 'KTH: May - 2018',
+        thumbnail: 'lion.webp',
         tools: [
-            "Python",
-            "TensorFlow"
+            'Python',
+            'TensorFlow'
         ],
-        summary: "Styletransfer using a CNN in Python",
-        description: "A re-implementation of the original style transfer algorithm using a convolutional neural network, as presented by Gatys et al. Additional experiments with different total loss functions and wether or not there's a correlation between content loss and our subjective perception.",
-        github: "https://github.com/Sandsten/pixicasso",
-        groupSize: "3 st",
+        summary: 'Styletransfer using a CNN in Python',
+        description: 'A re-implementation of the original style transfer algorithm using a convolutional neural network, as presented by Gatys et al. Additional experiments with different total loss functions and wether or not there\'s a correlation between content loss and our subjective perception.',
+        github: 'https://github.com/Sandsten/pixicasso',
+        groupSize: '3 st',
     },
     {
-        title: "SounDark",
-        page: "soundark",
-        date: "KTH: Sep-Okt - 2016",
-        thumbnail: "soundark.webp",
+        title: 'SounDark',
+        page: 'soundark',
+        date: 'KTH: Sep-Okt - 2016',
+        thumbnail: 'soundark.webp',
         tools: [
-            "Oculus Rift",
-            "Unity",
-            "C#"
+            'Oculus Rift',
+            'Unity',
+            'C#'
         ],
-        summary: "A VR game in which you see through echo location",
-        description: "A Virtual Reality game in which the player with the use echolocation, navigate through procedurally generated maces. Sound is picked up by oculus rift and translated into sound waves that enables the player to see.",
-        website: "https://hubris37.github.io/Sonar/",
-        groupSize: "6 st",
+        summary: 'A VR game in which you see through echo location',
+        description: 'A Virtual Reality game in which the player with the use echolocation, navigate through procedurally generated maces. Sound is picked up by oculus rift and translated into sound waves that enables the player to see.',
+        website: 'https://hubris37.github.io/Sonar/',
+        groupSize: '6 st',
     },
     {
-        title: "Bachelor's Thesis",
-        page: "crowd-simulation",
-        date: "KTH: Mar-May - 2016",
-        thumbnail: "crowdsim.webp",
+        title: 'Bachelor\'s Thesis',
+        page: 'crowd-simulation',
+        date: 'KTH: Mar-May - 2016',
+        thumbnail: 'crowdsim.webp',
         tools: [
-            "Unity",
-            "C#"
+            'Unity',
+            'C#'
         ],
-        summary: "Exploration of group formations using the RVO algorithm",
-        description: "We explored simulation of group formations in Unity using the RVO algorithm. ",
-        website: "https://crowdsimulationproject.blogspot.com/",
-        groupSize: "2 st",
+        summary: 'Exploration of group formations using the RVO algorithm',
+        description: 'We explored simulation of group formations in Unity using the RVO algorithm. ',
+        website: 'https://crowdsimulationproject.blogspot.com/',
+        groupSize: '2 st',
     },
     {
-        title: "Haptic curling",
-        page: "haptic-curling",
-        date: "KTH: Nov-Dec - 2016",
-        thumbnail: "haptic-curling.webp",
+        title: 'Haptic curling',
+        page: 'haptic-curling',
+        date: 'KTH: Nov-Dec - 2016',
+        thumbnail: 'haptic-curling.webp',
         tools: [
-            "Novint Falcon",
-            "C++"
+            'Novint Falcon',
+            'C++'
         ],
-        summary: "Curling game using the Novint Falcon for haptic feedback",
-        description: "Virtual curling with haptic feedback. Feel the weight of the stone as you push it along the ice. Novint falcon provides haptic feedback in three dimensions which we utilize to make the feedback feel as realistic as possible.",
-        github: "https://github.com/Sandsten/DT2140_HapticProject",
-        groupSize: "4 st",
+        summary: 'Curling game using the Novint Falcon for haptic feedback',
+        description: 'Virtual curling with haptic feedback. Feel the weight of the stone as you push it along the ice. Novint falcon provides haptic feedback in three dimensions which we utilize to make the feedback feel as realistic as possible.',
+        github: 'https://github.com/Sandsten/DT2140_HapticProject',
+        groupSize: '4 st',
     },
     {
-        title: "Last ship standing",
-        page: "last-ship-standing",
-        date: "KTH: Mar-Apr - 2016",
-        thumbnail: "lastShip.webp",
+        title: 'Last ship standing',
+        page: 'last-ship-standing',
+        date: 'KTH: Mar-Apr - 2016',
+        thumbnail: 'lastShip.webp',
         tools: [
-            "HTML",
-            "Javascript",
-            "CSS"
+            'HTML',
+            'Javascript',
+            'CSS'
         ],
-        summary: "Local multiplayer game, last one alive wins",
-        description: "A local multiplayer game in which you battle each other with pirate ships.",
-        github: "http://martin36.github.io/LastShipStanding/LastShipStanding/",
-        groupSize: "4 st",
+        summary: 'Local multiplayer game, last one alive wins',
+        description: 'A local multiplayer game in which you battle each other with pirate ships.',
+        github: 'http://martin36.github.io/LastShipStanding/LastShipStanding/',
+        groupSize: '4 st',
     }
 ]
 

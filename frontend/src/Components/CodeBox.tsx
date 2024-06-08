@@ -29,9 +29,10 @@ const CodeContainer = styled.div<CodeContainerProps>`
 	button {
 		position: absolute;
 		right: 20px;
-		top: 30px;
+		top: 26px;
 		visibility: hidden;
-		font-size: 1.1em;
+		font-size: 2em;
+		background-color: ${(p) => p.theme.colors.CARD_BG};
 
 		:hover {
 			cursor: pointer;
@@ -45,19 +46,13 @@ const CodeContainer = styled.div<CodeContainerProps>`
 	}
 `;
 
-const Caption = styled.div`
-	margin-top: -5px;
-	em {
-		/* font-size: 0.9em; */
-	}
-`;
-
 interface CodeBoxProps {
 	code: string;
 	width: string;
-	languange: 'javascript' | 'json';
+	languange: 'javascript' | 'json' | 'yaml' | 'html';
 	caption?: string;
 	linesToHighlight?: Array<number>;
+	figNumber?: number;
 }
 
 const CodeBox: React.FC<CodeBoxProps> = (props) => {
@@ -67,11 +62,13 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 	function handleCodeCopyToClipboard(code: string, e: React.MouseEvent) {
 		navigator.clipboard.writeText(code);
 		const button = e.currentTarget;
-		button.textContent = 'Copied to clipboard!';
+		button.textContent = '✅';
 		setTimeout(() => {
-			button.textContent = 'Copy code to clipboard';
+			button.textContent = '📋';
 		}, 1500);
 	}
+
+	const figureNumberText = props.figNumber ? `Figure ${props.figNumber}: ` : '';
 
 	return (
 		<CodeContainer maxWidth={props.width}>
@@ -80,15 +77,15 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 					handleCodeCopyToClipboard(props.code, e);
 				}}
 			>
-				Copy code to clipboard
+				📋
 			</button>
 			<SyntaxHighlighter
 				language={props.languange}
 				style={theme.NAME == 'dark' ? tomorrow : base16AteliersulphurpoolLight}
 				showLineNumbers={true}
 				wrapLines={true}
-				lineProps={(lineNumber) => {
-					let style = { display: 'block', backgroundColor: '' };
+				lineProps={(lineNumber: number) => {
+					const style = { display: 'block', backgroundColor: '' };
 					if (props.linesToHighlight?.includes(lineNumber)) {
 						style.backgroundColor = '#005D16'; //00FF3C 6B6E5D
 					}
@@ -97,9 +94,9 @@ const CodeBox: React.FC<CodeBoxProps> = (props) => {
 			>
 				{props.code}
 			</SyntaxHighlighter>
-			<Caption>
-				<em>{props.caption}</em>
-			</Caption>
+
+			<em>{figureNumberText}{props.caption}</em>
+
 		</CodeContainer>
 	);
 };

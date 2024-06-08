@@ -52,7 +52,7 @@ app.use(config.headerConfig);
 
 // Serve static front-end content when in production
 if (process.env.NODE_ENV === 'production') {
-	var staticPath = path.join(__dirname, '../build');
+	var staticPath = path.join(__dirname, '../dist');
 	app.use(express.static(staticPath));
 }
 

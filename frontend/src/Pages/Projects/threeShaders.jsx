@@ -3,11 +3,14 @@ import * as Three from 'three';
 import * as ThreeHelpers from './Threejs/helpers';
 import styled from 'styled-components';
 
+import vertexShader from './Threejs/vertex-1.glsl?raw';
+import fragmentShader from './Threejs/fragment-3.glsl?raw'
+
 const StyledThreeShader = styled.div`
 	height: 500px;
 `;
 
-const threeShaders = () => {
+const ThreeShaders = () => {
 	const [isSupported] = useState(ThreeHelpers.isWebGL2Available());
 	const parentEl = useRef(null);
 
@@ -43,8 +46,8 @@ const threeShaders = () => {
 		// Create a material which use our shader
 		material = new Three.ShaderMaterial({
 			uniforms: uniforms,
-			vertexShader: require(`./Threejs/vertex-1.glsl`),
-			fragmentShader: require(`./Threejs/fragment-3.glsl`),
+			vertexShader: vertexShader,
+			fragmentShader: fragmentShader,
 		});
 
 		const mesh = new Three.Mesh(geometry, material);
@@ -105,4 +108,4 @@ const threeShaders = () => {
 	return <StyledThreeShader ref={parentEl} />;
 };
 
-export default threeShaders;
+export default ThreeShaders;

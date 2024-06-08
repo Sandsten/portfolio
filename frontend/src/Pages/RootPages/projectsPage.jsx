@@ -1,9 +1,9 @@
-import * as React from "react"
+import * as React from 'react'
 import styled from 'styled-components';
 
-import { Loading } from "../../Components/StateIndicators";
+import { Loading } from '../../Components/StateIndicators';
 import ProjectCard from '../../Components/ProjectCard';
-import { Container } from "../../Components/Layout";
+import { Container } from '../../Components/Layout';
 
 import { DESKTOP_XS, DESKTOP_XL } from '../../Constants/sizes';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
@@ -10,25 +10,19 @@ import { DARK_THEME, LIGHT_THEME } from './Constants/colors';
 
 import Sidebar from './Components/Sidebar';
 import HomePage from './Pages/RootPages/homePage';
-import APITest from './Admin/APITest';
-import Admin from './Admin/Admin';
 import projects from './Pages/RootPages/projectsPage';
 import projectPage from './Pages/Projects/projectPage';
-import blogPage from './Pages/RootPages/blogPage';
-import threeShaders from './Pages/Projects/threeShaders';
 import tutorialsPage from './Pages/RootPages/tutorialsPage';
 import guitarPage from './Pages/RootPages/guitarPage';
 
 import mastersThesis from './Pages/Projects/mastersThesis';
-import { HealthyGamerGlossaryToAnki } from './Pages/Blogposts/healthyGamerGlossaryToAnkiPage';
-import { whinyDevices } from './Pages/Blogposts/whinyDevices';
 
 import arCards from './Pages/Projects/arCards';
 import shaderTest from './Pages/Projects/shaderTest';
-import shaderEditor from './Pages/Projects/shaderEditor';
 import awayFromHome from './Pages/Projects/awayFromHome'
-import Portfolio from './Pages/Projects/Portfolio';
-import HomeServer from './Pages/HomeServer/HomeServer';
+import Portfolio from './Pages/Projects/Portfolio/Portfolio';
+import HomeServer from './Pages/Projects/HomeServer/HomeServer';
+import ThreeShaders from './Pages/Projects/threeShaders';
 
 // Main container for the whole website
 const MainContainer = styled.div`
@@ -65,51 +59,40 @@ const App = () => {
   useEffect(() => {
     var storedTheme = localStorage.getItem('theme');
     if (!storedTheme) storedTheme = 'dark';
-    dispatch(setTheme(storedTheme === "dark" ? DARK_THEME : LIGHT_THEME))
+    dispatch(setTheme(storedTheme === 'dark' ? DARK_THEME : LIGHT_THEME))
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("theme", theme.NAME);
+    localStorage.setItem('theme', theme.NAME);
   })
 
   function toggleTheme() {
-    dispatch(setTheme(theme.NAME === "dark" ? LIGHT_THEME : DARK_THEME))
+    dispatch(setTheme(theme.NAME === 'dark' ? LIGHT_THEME : DARK_THEME))
   }
 
   return (
     <ThemeProvider theme={{ colors: theme }}> {/*Pass the theme down to all components*/}
       <MainContainer >
         <BrowserRouter>
-          {/* // https://reacttraining.com/react-router/web/api/Switch */}
           {/* Render the sidebar on all pages */}
           <Route path="/" render={(props) => <Sidebar {...props} toggleTheme={toggleTheme} />} />
           <Switch>
-            {/* <Route path="/" component={TopBar} /> */}
             {/* Matching works by checking if the string assigned to path exits in the url string path in the browser <Switch> makes sure that we only render the first match! */}
-            <Route path="/" exact component={HomePage} />
-            {/* <Route path="/test" exact component={APITest} />
-            <Route path="/admin" component={Admin} /> */}
-            {/* <Route path="/cv" component={cv} /> */}
+            <Route path="/about" component={HomePage} />
             <Route path="/projects/portfolio" component={Portfolio} />
             <Route path="/projects/home-server" component={HomeServer} />
             <Route path="/projects/masters-thesis" component={mastersThesis} />
             <Route path="/projects/ar-card-game" component={arCards} />
             <Route path="/projects/away-from-home" component={awayFromHome} />
             <Route path="/projects/shader-exploration" component={shaderTest} />
-            {/* <Route path="/projects/shader-editor" component={shaderEditor} /> */}
             <Route path="/projects/:name" component={projectPage} />
             <Route path="/projects" component={projects} />
-            {/* <Route path="/blogposts/:name" component={blogpostPage} /> */}
-            {/* <Route path="/blogposts" component={blog} /> */}
-            <Route path="/shaders" component={threeShaders} />
+            <Route path="/shaders" component={ThreeShaders} />
             <Route path="/tutorials" component={tutorialsPage} />
-            {/* <Route path="/posts/healthy-gamer-glossary-to-anki" component={HealthyGamerGlossaryToAnki} /> */}
-            {/* <Route path="/posts/whiny-devices" component={whinyDevices} /> */}
-            {/* <Route path="/posts" component={blogPage} /> */}
             <Route path="/guitar" component={guitarPage} />
             <Route
               render={() => {
-                return <Redirect to="/" />;
+                return <Redirect to="/projects" />;
               }}
             />
           </Switch>
